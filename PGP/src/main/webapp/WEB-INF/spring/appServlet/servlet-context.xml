@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<!-- 업로드된 파일(사진) 들을 원래 가지는 성격의 파일로 정용하기 위한 설정 -->
+	<resources mapping="/BoardPhoto/**" location="/BoardPhoto/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
 	<context:component-scan base-package="p.g.p" />
-	
+
 	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 식별자 -->
 		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
@@ -36,10 +41,10 @@
 		<beans:property name="password" value="bit" />
 	</beans:bean>
 	<!--MyBatis&Spring 연동 -->
+
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="mapperLocations"
-			value="classpath:p/g/p/mapper/*.xml" />
+		<beans:property name="mapperLocations" value="classpath:p/g/p/mapper/*.xml" />
 		<!--calsspath:xml이 위치한 패키지 경로 -->
 
 	</beans:bean>
@@ -47,6 +52,54 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory" />
 	</beans:bean>
-	<!--회원가입을 위한 memberSerive 빈-->
-	<beans:bean id="memberservice" class="p.g.p.service.MemberService"/>
+	<!--회원가입을 위한 memberSerive 빈 -->
+	<beans:bean id="memberservice" class="p.g.p.service.MemberService" />
+
+
+	<!-- 파일업로드 처리를 위한 multipartResolver bean 등록 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding">
+			<beans:value>utf-8</beans:value>
+		</beans:property>
+	</beans:bean>
+	<!--게시판 서비스 -->
+	<beans:bean id="boardservice" class="p.g.p.service.BoardService" />
+
+	<beans:bean id="boardphotoUp" class="p.g.p.service.BoardPhotoUpLoad" />
+
+	<!--카테고리 모델 1 빈 -->
+	<beans:bean id="room" class="p.g.p.model.Category_Room" />
+
+	<beans:bean id="space" class="p.g.p.model.Category_Space" />
+
+	<!-- 마이페이지 Mp_update_service 빈 -->
+	<beans:bean id="Mp_update_service" class="p.g.p.service.Mp_update_service" />
+
+	<!-- 마이페이지 Mp_file_service 빈 -->
+	<beans:bean id="Mp_file_service" class="p.g.p.service.Mp_file_service" />
+
+	<!-- 마이페이지 Mp_scrap_service 빈 -->
+	<beans:bean id="Mp_scrap_service" class="p.g.p.service.Mp_scrap_service" />
+
+	<!-- 마이페이지 Mp_myphoto_service 빈 -->
+	<beans:bean id="Mp_myphoto_service" class="p.g.p.service.Mp_myphoto_service" />
+
+	<!-- 관리자 ManagerService 빈 -->
+	<beans:bean id="ManagerService" class="p.g.p.service.ManagerService" />
+
+	<!-- 관리자 Mg_noticeInsert_service 빈 -->
+	<beans:bean id="Mg_noticeInsert_service" class="p.g.p.service.Mg_noticeInsert_service" />
+
+	<!-- 관리자 Mg_noticeList_service 빈 -->
+	<beans:bean id="Mg_noticeList_service" class="p.g.p.service.Mg_noticeList_service" />
+
+	<!-- 관리자 Mg_noticeView_service 빈 -->
+	<beans:bean id="Mg_noticeView_service" class="p.g.p.service.Mg_noticeView_service" />
+	
+	
+	   <!--포토디테일서비스 빈-->
+   <beans:bean id="photodetailservice" class="p.g.p.service.PhotodetailService"/>
+   <context:component-scan base-package="p.g.p" />
 </beans:beans>
+

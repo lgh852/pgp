@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.Mp_dao">
+
+	<!-- idx로 검색 -->
+	<select id="selectById" resultType="p.g.p.model.Member_info">
+
+		SELECT * FROM MEMBER_INFO
+		WHERE
+		MEMBER_ID = #{ID}
+
+	</select>
+
+	<!-- 설정 클릭하면 수정할 수 있도록 -->
+
+	<update id="updateById" parameterType="p.g.p.model.Member_info">
+
+		UPDATE `pgp`.`member_info`
+		SET
+		member_nickname=#{member_nickname},
+		member_gender=#{member_gender},
+		member_phone=#{member_phone},
+		member_birth=#{member_birth},
+		member_photo=#{member_photo},
+		member_intro=#{member_intro}
+		WHERE
+		member_id =#{member_id};
+
+	</update>
+
+	<!-- 내가 스크랩한 사진들 출력하기 -->
+
+	<select id="selectScrapPhotoList" resultType="p.g.p.model.Board_Photo"
+		parameterType="String">
+
+		select
+		a.member_id,b.board_like,b.board_scrap,b.board_comment,b.board_cnt,c.photo_name
+		from pgp.member_info as a
+		inner join pgp.board as b
+		on
+		a.member_idx=b.member_idx
+		inner join pgp.board_photo as c
+		on
+		b.board_idx=c.board_idx
+		where
+		a.member_id=#{member_id};
+
+	</select>
+
+	<!-- 내가 올린 사진들 출력하기 -->
+
+	<select id="selectMyPhotoList" resultType="p.g.p.model.Board"
+		parameterType="String">
+
+		select
+		a.member_id,b.board_title,b.board_contents,b.board_idx
+		from
+		pgp.member_info as a
+		join pgp.board as b
+		on a.member_idx=b.member_idx
+		where
+		a.member_id=#{member_id};
+
+	</select>
+
+</mapper>

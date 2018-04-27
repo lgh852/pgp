@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import p.g.p.model.Manager;
 import p.g.p.model.Member_info;
-import p.g.p.service.MemberService;
+import p.g.p.service.ManagerService;
 
 @Controller
-@RequestMapping(value = "/member/loginform")
-public class LoginController {
+@RequestMapping(value="/manager/managerloginform")
+public class ManagerController {
+	
 	@Autowired
-	MemberService service;
-
+	ManagerService service;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String loginform(Model model) {
 
-		String page = "member/loginform.jsp";
+		String page = "manager/managerloginform.jsp";
 		String view = "home";
 		model.addAttribute("page", page);
 
@@ -30,25 +32,25 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(@RequestParam("member_id")String id,
-			@RequestParam("member_pw")String pw,Model model,HttpSession session) {
+	public String login(@RequestParam("manager_id")String id,
+			@RequestParam("manager_pw")String pw,Model model,Manager manager,HttpSession session) {
 		
-		String page = "member/login.jsp";		
 		String view ="home";
-	
-		Member_info member= service.loginService(id,pw);
-		System.out.println(member);
-		if(member!=null) {
+		manager = service.loginService(manager,id,pw);
+		if(manager!=null) {
 			//null아니면 성공
-			session.setAttribute("user",member);
-			model.addAttribute("msg","로그인 성공");		
-			System.out.println("성");
+			session.setAttribute("manager",manager);
+			session.setMaxInactiveInterval(60*60*60);
+			
+			model.addAttribute("msg","관리자 로그인 성공");			
 		}else {
-			System.out.println("시류ㅐ실패");
-			model.addAttribute("msg","로그인실패");
+
+			model.addAttribute("msg","관리자 로그인 실패 ㅠㅠ");
 		}
 		
-		model.addAttribute("page",page);
+		
 		return view;
 	}
+	
+
 }

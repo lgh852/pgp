@@ -14,13 +14,13 @@
 		member_phone,
 		member_intro)
 		VALUES
-		 (#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro});
+		(#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro});
 	</insert>
-	
-	<select id="loginSelect" resultType="p.g.p.model.Member_info">
-		
-		select * from pgp.member_info where member_id = #{id}; 
-	</select>
 
+	<select id="loginSelect" resultType="p.g.p.model.Member_info">
+
+		select * from
+		pgp.member_info where member_id = #{id};
+	</select>
 
 </mapper>

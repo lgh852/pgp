@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.PhotoDao">
+
+
+	<insert id="insertComment" parameterType="p.g.p.model.Board_Comment">
+		insert into board_comment(board_comment_contents,member_idx,board_idx)
+		values(#{board_comment_contents},#{member_idx},#{board_idx})
+	</insert>
+
+
+	<select id="selectCommentAll" resultType="p.g.p.model.Join_BoardComment_MemberInfo">
+		 select * from board_comment left join member_info on member_info.member_idx=board_comment.member_idx order by board_comment_regdate desc;
+	</select>
+	
+	<delete id="deleteComment" parameterType="p.g.p.model.Board_Comment">
+	delete from board_comment where board_comment_idx=#{board_comment_idx}
+	</delete>
+
+</mapper>

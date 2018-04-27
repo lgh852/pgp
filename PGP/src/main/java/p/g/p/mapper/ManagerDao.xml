@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.ManagerDao">
+
+	<!-- <insert id="insertMember" parameterType="p.g.p.model.Manager"> INSERT 
+		INTO pgp.member_info (member_id, member_pw, member_name, member_nickname, 
+		member_birth, member_phone, member_intro) VALUES (#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro}); 
+		</insert> -->
+
+	<select id="loginSelect" resultType="p.g.p.model.Manager">
+
+		select * from pgp.manager where manager_id= #{id};
+
+	</select>
+
+
+	<!-- 공지사항 입력하기 -->
+
+	<insert id="insertNotice" parameterType="p.g.p.model.Notice">
+
+		INSERT INTO pgp.notice(
+		notice_title,
+		notice_contents,
+		manager_idx)
+		VALUES(
+		#{notice_title},
+		#{notice_contents},
+		#{manager_idx});
+
+
+	</insert>
+
+	<!-- 공지사항 목록 보여주기 -->
+	<select id="selectNoticeList" resultType="p.g.p.model.Notice">
+
+		select
+		*
+		from pgp.notice;
+
+	</select>
+	
+	<!-- 공지사항 내용 보여주기  -->
+	<select id="selectByNoticeIdx" resultType="p.g.p.model.Notice">
+	
+	    select
+	    *
+	    from pgp.notice
+	    where notice_idx = #{notice_idx};
+	
+	</select>
+
+
+
+
+</mapper>

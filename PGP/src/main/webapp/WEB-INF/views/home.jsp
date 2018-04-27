@@ -40,27 +40,30 @@
             <a class="nav-link" href="<%=request.getContextPath()%>/">홈 <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">사진</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/photo/photofeed">사진</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">가구랭킹</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">공지사항</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">질문과답변</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/manager/faqlist">질문과답변</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="<%=request.getContextPath()%>/board/boardUpload">글쓰기</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a>
+          </li>
+         
+            <li class="nav-item">
+            <a class="nav-link" href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
           </li>
         <c:if test="${user!=null}">
-        <li class="nav-item">
-            <a class="nav-link" href="#">마이페이지</a>
-          </li>
+       
             <li class="nav-item">
             <a class="nav-link" href="#">로그아웃</a>
           </li>
+          
         </c:if>
            <c:if test="${user==null}">
                <li class="nav-item">
@@ -70,15 +73,31 @@
             <a class="nav-link" href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
           </li>
                  </c:if>
+                 
+                 
+            <c:if test="${manager!=null}">
+     
+        
+            <li class="nav-item">
+            <a class="nav-link" href="<%=request.getContextPath()%>/manager/noticeinsert"> 공지사항 입력하기</a>
+          </li>
+            </c:if>
+            
+              <c:if test="${user!=null}">
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
+            
+            
+            
+              <a class="dropdown-item" href="<%=request.getContextPath()%>/mypage/mp_main">마이페이지</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
+              
             </div>
           </li>
-            
+                  </c:if>
+                 
             
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -113,15 +132,7 @@
           <small>Since 2011</small>
         </div>
       </div>
-
-      <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-        <div class="media text-muted pt-3">
-              <jsp:include page="${page}"/>
-        </div>
-       
-        
-        </div>
+          <jsp:include page="${page}"/>
       </main>
         
 
