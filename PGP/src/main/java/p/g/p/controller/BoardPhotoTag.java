@@ -8,18 +8,14 @@ import p.g.p.model.Board;
 
 @Controller
 public class BoardPhotoTag {
-	@RequestMapping("/board/boardPhtoTag")
-	public String BoardphotoTagForm(Model model,Board board) {
+	@RequestMapping("/board/boardPhtoTagForm")
+	
+	public String BoardphotoTagForm(Model model) {
+		
 		String view = "home";
-		String page = "board/boardPhtoTag.jsp";
+		String page = "board/boardPhotoTagForm.jsp";
 		
 		model.addAttribute("page",page);
-		System.out.println(board);
-		System.out.println(board);
-		System.out.println(board);
-		System.out.println(board);
-		System.out.println(board);
-		
 		return view;
 	}
 	

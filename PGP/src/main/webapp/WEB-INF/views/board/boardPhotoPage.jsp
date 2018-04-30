@@ -12,6 +12,15 @@
 
     }
 </style>
+<script>
+	
+
+</script>
+
+<form action="<%=request.getContextPath()%>/board/boardPhtoTagForm" method="post">
+<button type="submit" class="btn btn-primary" >태그 페이지 </button>
+</form>
+
  <c:forEach var="listPhoto" items="${listPhoto}">
 	
 	<div class= "imgcenter"><img src="<%=request.getContextPath()%>/resources/BoardPhoto/${listPhoto.photo_name}" height="430px" width="430px" style="margin: 0 auto;">

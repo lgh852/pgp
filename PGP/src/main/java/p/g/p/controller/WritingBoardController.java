@@ -56,7 +56,7 @@ public class WritingBoardController {
 
 		if (resultCnt > 0) {
 			// 성공
-			page = "board/boardPhtoTagForm.jsp";
+			page = "board/boardPhotoPage.jsp";
 			view = "home";
 			model.addAttribute("page", page);
 
