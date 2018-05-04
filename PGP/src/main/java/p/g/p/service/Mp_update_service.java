@@ -30,12 +30,15 @@ public class Mp_update_service {
 	
 	public int Mp_update(Member_info member,HttpServletRequest request) throws IllegalStateException, IOException {
 		
-				
-		
 		service.memberPhotoUpload(member, request);
 		
-        dao = sqlSessionTemplate.getMapper(Mp_dao.class);
-		int resultCnt = dao.updateById(member);
+	    dao = sqlSessionTemplate.getMapper(Mp_dao.class);
+        
+        int resultCnt = dao.updateById(member);
+		
+	
+		
+		
 		System.out.println("===========================================================");
 		System.out.println(resultCnt);
 		

@@ -35,9 +35,10 @@
 		parameterType="String">
 
 		select
-		a.member_id,b.board_like,b.board_scrap,b.board_comment,b.board_cnt,c.photo_name
+		*
 		from pgp.member_info as a
-		inner join pgp.board as b
+		inner join pgp.board as
+		b
 		on
 		a.member_idx=b.member_idx
 		inner join pgp.board_photo as c
@@ -50,7 +51,7 @@
 
 	<!-- 내가 올린 사진들 출력하기 -->
 
-	<select id="selectMyPhotoList" resultType="p.g.p.model.Board"
+	<select id="selectMyPhotoList" resultType="p.g.p.model.Join_board_boardphoto"
 		parameterType="String">
 
 		select
@@ -79,5 +80,6 @@
 		a.member_id=#{member_id};
 
 
-	</select>
+     </select>
+
 </mapper>

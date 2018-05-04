@@ -6,8 +6,9 @@
 
 		
 
-			<c:forEach var="scrap" items="${scrap}">
-                    ${scrap.photo_name}
+<c:forEach var="scrap" items="${scrap}">
 
+<img src="<%=request.getContextPath()%>/resources/memberphoto/${scrap.photo_name}" width="300px" height="300px">
+                   
 </c:forEach>
  

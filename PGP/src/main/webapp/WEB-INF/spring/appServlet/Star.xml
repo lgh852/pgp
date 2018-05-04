@@ -6,8 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	   <!--포토디테일서비스 빈-->
-   <beans:bean id="photodetailservice" class="p.g.p.service.PhotodetailService"/>
+	
    	
    <beans:bean id="navershopping" class="p.g.p.service.NaverShoppingService"/>
-</beans:beans>
+   </beans:beans>

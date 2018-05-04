@@ -38,7 +38,7 @@ public class Mp_file_service {
 		// 파일 저장 : 증명사진.jpg
 		// 회원의 사진은 하나만 존재한다.
 		// 파일 이름 생성 : 회원아이디_원본파일이름
-		if (!member.getMember_photo().isEmpty() ) {
+		if (!member.getPhotofile().isEmpty() ) {
 			// 새로운 파일 이름 생성 -> 파일 저장 -> DB에 저장할 파일이름 set
 			String fileName = member.getMember_id()+"_"+member.getPhotofile().getOriginalFilename();
 			member.getPhotofile().transferTo(new File(dir, fileName));
