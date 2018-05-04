@@ -52,9 +52,6 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory" />
 	</beans:bean>
-	<!--회원가입을 위한 memberSerive 빈 -->
-	<beans:bean id="memberservice" class="p.g.p.service.MemberService" />
-
 
 	<!-- 파일업로드 처리를 위한 multipartResolver bean 등록 -->
 	<beans:bean id="multipartResolver"
@@ -63,6 +60,11 @@
 			<beans:value>utf-8</beans:value>
 		</beans:property>
 	</beans:bean>
+
+	<!--회원가입을 위한 memberSerive 빈 -->
+	<beans:bean id="memberservice" class="p.g.p.service.MemberService" />
+
+
 	<!--게시판 서비스 -->
 	<beans:bean id="boardservice" class="p.g.p.service.BoardService" />
 
@@ -90,16 +92,20 @@
 
 	<!-- 관리자 Mg_noticeInsert_service 빈 -->
 	<beans:bean id="Mg_noticeInsert_service" class="p.g.p.service.Mg_noticeInsert_service" />
-
+	<!-- Mp_myComment_service -->
+	<beans:bean id="comment" class="p.g.p.service.Mp_myComment_service" />
 	<!-- 관리자 Mg_noticeList_service 빈 -->
 	<beans:bean id="Mg_noticeList_service" class="p.g.p.service.Mg_noticeList_service" />
 
 	<!-- 관리자 Mg_noticeView_service 빈 -->
 	<beans:bean id="Mg_noticeView_service" class="p.g.p.service.Mg_noticeView_service" />
 
-   
-   <context:component-scan base-package="p.g.p"/>
-   
-   <beans:import resource="Star.xml"/>
+	<!-- 사이드바 Sb_like_service 빈 -->
+	<beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
+
+
+	<context:component-scan base-package="p.g.p" />
+
+	<beans:import resource="Star.xml" />
 </beans:beans>
 

@@ -6,25 +6,25 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.Mp_dao;
-import p.g.p.model.Board;
-import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.Board_Comment;
 
-public class Mp_myphoto_service {
-
+public class Mp_myComment_service {
+	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-
+	
 	private Mp_dao dao;
-
-	public List<Join_board_boardphoto> Mp_MyphotoList(String member_id) {
+	
+	public List<Board_Comment> Mp_myCommentList(String member_id){
 		
-
 		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
-
-		List<Join_board_boardphoto> list = dao.selectMyPhotoList(member_id);
-
+		
+		List<Board_Comment> list = dao.selectMyCommentList(member_id);
+		
+		
+		
 		return list;
-
+		
 	}
 
 }

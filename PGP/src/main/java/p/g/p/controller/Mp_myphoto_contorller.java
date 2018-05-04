@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import p.g.p.model.Board;
+import p.g.p.model.Join_board_boardphoto;
 import p.g.p.service.Mp_myphoto_service;
 
 
@@ -24,7 +25,7 @@ public class Mp_myphoto_contorller {
 	@RequestMapping(method=RequestMethod.GET)
 	public String mypageMyphoto(@RequestParam("member_id")String member_id,Model model) {
 		
-		List<Board> myphoto = service.Mp_MyphotoList(member_id);
+		List<Join_board_boardphoto> myphoto = service.Mp_MyphotoList(member_id);
 		
 		model.addAttribute("myphoto", myphoto);
 		

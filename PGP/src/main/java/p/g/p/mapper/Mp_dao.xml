@@ -64,4 +64,20 @@
 
 	</select>
 
+	<!-- 내가 등록한 댓글 출력하기 -->
+	<select id="selectMyCommentList" resultType="p.g.p.model.Board_Comment"
+		parameterType="String">
+
+
+
+		SELECT
+		a.member_id,b.board_comment_contents,b.board_comment_regdate
+		from
+		pgp.member_info as a
+		join pgp.board_comment as b
+		where
+		a.member_id=#{member_id};
+
+
+	</select>
 </mapper>
