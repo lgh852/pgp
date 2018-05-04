@@ -1,53 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script>
-	$(document)
-			.ready(
-					function() {
-						var upload = $('#inputGroupFile02')[0], imgbox = document
-								.getElementById('imgbox'), state = $('#inputGroupFile02');
 
-						if (typeof window.FileReader === 'undefined') {
-							state.className = 'fail';
-						} else {
-							state.className = 'success';
-
-						}
-
-						upload.onchange = function(e) {
-							e.preventDefault();
-
-							var file = upload.files[0], reader = new FileReader();
-							reader.onload = function(event) {
-								var img = new Image();
-								img.src = event.target.result;
-								$('#imgPre').attr("src",event.target.result);
-								// note: no onload required since we've got the dataurl...I think! :)
-								if (img.width > 450 || img.height > 450) {
-									img.width = 430;
-
-									if (img.height > 450) {
-										img.height = 430;
-									}
-
-								}
-								//imgbox.appendChild(img);
-							};
-							reader.readAsDataURL(file);
-
-							return false;
-						};
-						$('#summernote').summernote({
-							height : 300,
-							width : 800,
-							MinHeight : null,
-							maxHeight : null,
-							focus : true
-
-						});
-
-					});
-</script>
 <style>
 #imgbox {
 	width: 450px;
@@ -146,5 +99,3 @@
 </form>
     
     
-
-</html>

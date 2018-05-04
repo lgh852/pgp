@@ -1,45 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script src="https://code.jquery.com/jquery-1.10.2.js">    </script>
-<script>
-    $(document).ready(function(){
-    	$("#shopping").click(function(){
-    		window.name = "boardform";
-    		 window.open('<%=request.getContextPath()%>/board/shoppingList','shopping','width=800px , height=800','_blank', left ='500',top='500');    	
 
-
-    	});
-     	var imgtagbox = $('#imgtagbox');
-    	imgtagbox.click(function (event) {
-    		  var x = event.offsetX;
-              var y = event.offsetY;
-				//alert('x'+x+'y'+y)
-    		   $('.serchbox').css({
-				"top": y,
-				"left": x
-			}).show()
-    			
-    		});
-    	
-    	$('#tags').click(function() {
-   
-    		 var link = $("#link").val();
-    		 alert(link);
-    		 $.ajax({
-                 type : "GET",
-                 url : "/board/boardAjaxTag",
-                 dataType : "text",
-	             data : {
-                	 link:link
-                 }
-       
-           
-        });
-    	
-	});
-});
-</script>
 
 <style>
 .serchbox {
