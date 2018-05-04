@@ -6,9 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.PhotoDao;
+import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
 import p.g.p.model.Join_BoardComment_MemberInfo;
-import p.g.p.model.Member_info;
 
 public class PhotodetailService {
 
@@ -31,21 +31,59 @@ public class PhotodetailService {
 	
 
 
-	public List<Join_BoardComment_MemberInfo> ListselectCommentAll() {
+	public List<Join_BoardComment_MemberInfo> ListselectCommentAll(int board_idx) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
-		List<Join_BoardComment_MemberInfo> list= dao.selectCommentAll();
+		List<Join_BoardComment_MemberInfo> list= dao.selectCommentAll(board_idx);
 		
 		return list;
 		
 	}
 	
-	public Board_Comment ListdeleteComment() {
+	public int ListdeleteComment(int board_comment_idx) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
-		Board_Comment delete_C=dao.deleteComment();
-		
-		return delete_C;
+		int resultCnt=dao.deleteComment(board_comment_idx);
+		if(resultCnt<0) {
+			resultCnt=-1;
+		}
+		return 1;
 	}
 	
+	public int commentTotalCntView(int board_idx) {
+	
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		int resultCnt = 0;
+		resultCnt =dao.commentTotalCnt(board_idx);
+		System.out.println(resultCnt+"dsdsdsdjajdjasjkdjajksdjsadjk이거야야야야ㅑ야야야야ㅑ ");
+		return resultCnt;
+	}
+	
+	public int boardCntUpdateView(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+
+		int resultCnt=dao.boardCntUpdate(board_idx);
+		System.out.println("조회수ㅜ우우우ㅜ우우우ㅜ우우우우ㅜ우웅");
+		return resultCnt;
+	}
+	
+	public int boardCntView(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		int resultboardCnt= dao.boardCntSelect(board_idx);
+		return resultboardCnt;
+
+	}
+	
+	public String photodetailView(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		String photoName=dao.selectPhotoFeed(board_idx);
+		return photoName;
+		
+	}
+	
+	public Board boardSelectView(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		Board boardselect=dao.boardSelect(board_idx);
+		return boardselect;
+	}
 
 	
 	

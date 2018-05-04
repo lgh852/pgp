@@ -101,5 +101,6 @@
    <context:component-scan base-package="p.g.p"/>
    
    <beans:import resource="Star.xml"/>
+   <beans:import resource="rlakdyd.xml"/>
 </beans:beans>
 

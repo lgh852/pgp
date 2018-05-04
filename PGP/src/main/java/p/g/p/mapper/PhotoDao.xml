@@ -5,17 +5,50 @@
 
 
 	<insert id="insertComment" parameterType="p.g.p.model.Board_Comment">
-		insert into board_comment(board_comment_contents,member_idx,board_idx)
+		insert into
+		board_comment(board_comment_contents,member_idx,board_idx)
 		values(#{board_comment_contents},#{member_idx},#{board_idx})
 	</insert>
 
 
-	<select id="selectCommentAll" resultType="p.g.p.model.Join_BoardComment_MemberInfo">
-		 select * from board_comment left join member_info on member_info.member_idx=board_comment.member_idx order by board_comment_regdate desc;
+	<select id="selectPhotoFeed" resultType="String" parameterType="p.g.p.model.Board_Photo">
+		select photo_name from board_photo where board_idx=#{board_idx}
 	</select>
-	
+
+
+	<select id="selectCommentAll" resultType="p.g.p.model.Join_BoardComment_MemberInfo" parameterType="p.g.p.model.Join_BoardComment_MemberInfo">
+		  select * from
+		board_comment left join member_info on
+		member_info.member_idx=board_comment.member_idx 
+        where board_idx=#{board_idx}
+        order by
+		board_comment_regdate desc
+	</select>
+
+
 	<delete id="deleteComment" parameterType="p.g.p.model.Board_Comment">
-	delete from board_comment where board_comment_idx=#{board_comment_idx}
+		delete from
+		board_comment where board_comment_idx=#{board_comment_idx}
 	</delete>
 
+<!-- 댓글 수  -->
+	<select id="commentTotalCnt" resultType="int">
+		select count(*) from
+		board_comment where board_idx=#{board_idx}
+	</select>
+
+<!-- 조회수 증가  -->
+	<update id="boardCntUpdate" parameterType="p.g.p.model.Join_Board_MemberInfo">
+		update board set
+		board_cnt=board_cnt+1 where board_idx=#{board_idx}
+	</update>
+	
+<!-- 조회수 출력 -->
+	<select id="boardCntSelect" resultType="int" parameterType="p.g.p.model.Board">
+		select board_cnt from board where board_idx=#{board_idx}
+	</select>
+
+	<select id="boardSelect" resultType="p.g.p.model.Board" parameterType="p.g.p.model.Board">
+		select * from board where board_idx=#{board_idx}
+	</select>
 </mapper>

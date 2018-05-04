@@ -9,10 +9,6 @@ public class Join_BoardComment_MemberInfo {
 	private Date board_comment_regdate;
 	private int member_idx;
 	private int board_idx;
-	public Join_BoardComment_MemberInfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public Join_BoardComment_MemberInfo(String member_id, int board_comment_idx, String board_comment_contents,
 			Date board_comment_regdate, int member_idx, int board_idx) {
 		super();
@@ -22,6 +18,16 @@ public class Join_BoardComment_MemberInfo {
 		this.board_comment_regdate = board_comment_regdate;
 		this.member_idx = member_idx;
 		this.board_idx = board_idx;
+	}
+	public Join_BoardComment_MemberInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Join_BoardComment_MemberInfo [member_id=" + member_id + ", board_comment_idx=" + board_comment_idx
+				+ ", board_comment_contents=" + board_comment_contents + ", board_comment_regdate="
+				+ board_comment_regdate + ", member_idx=" + member_idx + ", board_idx=" + board_idx + "]";
 	}
 	public String getMember_id() {
 		return member_id;
@@ -59,6 +65,7 @@ public class Join_BoardComment_MemberInfo {
 	public void setBoard_idx(int board_idx) {
 		this.board_idx = board_idx;
 	}
+	
 	
 	
 	
