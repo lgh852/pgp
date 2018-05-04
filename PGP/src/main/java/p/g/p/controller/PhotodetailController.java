@@ -36,7 +36,7 @@ public class PhotodetailController {
 		
 		if (del.equals("default")) {
 			photodetailservice.boardCntUpdateView(board_idx);
-		}
+		} 
 		//조회수 출력
 		board_cnt_view = photodetailservice.boardCntView(board_idx);
 		model.addAttribute("board_cnt_view", board_cnt_view);
