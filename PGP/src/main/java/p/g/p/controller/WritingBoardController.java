@@ -62,7 +62,7 @@ public class WritingBoardController {
 
 			// 사진을 보여눌 select 문
 			board.getBoard_idx();
-			List<Board_Photo> listPhoto = serviec.photoSelect(board, photo);
+			List<Board_Photo> listPhoto = serviec.photoSelect(board);
 			// 사진 정보 전달
 			model.addAttribute("listPhoto",listPhoto);
 		} else {

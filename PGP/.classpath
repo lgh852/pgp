@@ -25,5 +25,15 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/403room-19/.m2/repository/net/sf/sociaal/xmlpull-xpp3/3.0.0.20130526/xmlpull-xpp3-3.0.0.20130526.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="xmlpull-xpp3-3.0.0.20130526.jar"/>
+			<attribute name="maven.groupId" value="net.sf.sociaal"/>
+			<attribute name="maven.artifactId" value="xmlpull-xpp3"/>
+			<attribute name="maven.version" value="3.0.0.20130526"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

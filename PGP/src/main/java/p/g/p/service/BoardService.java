@@ -114,17 +114,35 @@ public class BoardService {
 		
 	}
 
-	public 	List<Board_Photo> photoSelect(Board board,Board_Photo photo) {
+	public 	List<Board_Photo> photoSelect(Board board) {
 		int board_idx = board.getBoard_idx();
 		dao = sessionTemplate.getMapper(BoarDao.class);
 		List<Board_Photo> listPhoto = dao.photoselect(board_idx);
-		if(photo != null) {
+		if(listPhoto != null) {
 		
+		}else {
+			listPhoto = null;
+		}
+		
+		return listPhoto;
+	}
+	public Board_Photo phototagselect(String board_idx) {
+		
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		
+		Board_Photo photo = dao.photoTagformselect(board_idx);
+		
+		if(photo!=null) {
+			
 		}else {
 			photo = null;
 		}
 		
-		return listPhoto;
+		
+		
+		 
+		return photo;
+				
 	}
 
 }

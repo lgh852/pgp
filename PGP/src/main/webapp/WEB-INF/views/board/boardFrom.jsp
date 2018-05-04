@@ -24,7 +24,7 @@
 								$('#imgPre').attr("src",event.target.result);
 								// note: no onload required since we've got the dataurl...I think! :)
 								if (img.width > 450 || img.height > 450) {
-									img.width = 4300;
+									img.width = 430;
 
 									if (img.height > 450) {
 										img.height = 430;
@@ -78,7 +78,7 @@
 
 <div class="imgcenter">
 	<div id="imgbox">
-	<img id="imgPre" alt="aa" src="" height="430px" width="430px" style="margin: 0 auto;">
+	<img id="imgPre" alt="aa" src="" height="450px" width="450px" style="margin: 0 auto;">
 	</div>
 </div>
 
@@ -86,9 +86,9 @@
 	method="post" enctype="multipart/form-data">
 	
 	
-	
-	<div class="input-group mb-3 inputsize margincen">
 	<input type="text" name="board_title">
+	<div class="input-group mb-3 inputsize margincen">
+	
 		<div class="custom-file">
 			<input type="file" class="custom-file-input fileboxsize"
 				id="inputGroupFile02" name="FileName"> <label

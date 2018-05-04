@@ -19,4 +19,6 @@ public interface BoarDao {
 
 	public List<Board_Photo>photoselect(int board_idx); 
 
+	public Board_Photo photoTagformselect(String board_idx); 
+
 }
