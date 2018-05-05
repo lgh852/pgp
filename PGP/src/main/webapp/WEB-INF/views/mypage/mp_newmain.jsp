@@ -94,3 +94,13 @@
 </script>
 
 
+
+
+<p class="text-left">
+		<button type="button"
+			onclick="location.href='<%=request.getContextPath()%>/star/sidebar?member_id=${member.member_id}'"
+			class="btn btn-primary" data-toggle="button" aria-pressed="false">
+		    사진 페이지로 보내줘! 사이드바 만들거야 </button>
+	</p>
+
+
