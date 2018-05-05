@@ -2,7 +2,24 @@
 	pageEncoding="UTF-8"%>
 <script>
   
-    
+function aclick(){
+    //$('.inner').text('sdasd')
+ 
+$('.taginfo').css({
+				"top" : '200px',
+				"left" : '200px'
+			}).show()
+    $('.inner').text('saas');
+};
+
+ function reclick(){
+   $('.taginfo').css({
+				"top" : '0px',
+				"left" : '0px',
+				"display":'none'
+			}).show()
+     
+ };
 </script>
 <style>
     .taginfo{
