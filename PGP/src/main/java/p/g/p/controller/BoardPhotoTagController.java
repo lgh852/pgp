@@ -21,11 +21,13 @@ public class BoardPhotoTagController {
 		
 		String view = "home";
 		String page ="";
-		Board_Photo photo = service.phototagselect(board_idx);		
+		Board_Photo photo = service.phototagselect(board_idx);	
+		
 		if(photo !=null) {
 			page = "board/boardPhotoTagForm.jsp";
 			model.addAttribute("page",page);
 			model.addAttribute("photo",photo);
+			model.addAttribute("board_idx",board_idx);
 		}else {
 			model.addAttribute("page",page);
 			model.addAttribute("photo",photo);
