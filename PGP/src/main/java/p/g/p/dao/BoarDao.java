@@ -26,4 +26,7 @@ public interface BoarDao {
 	
 	public int tagnocount(Url_Tag tag);
 	
+	public String selectTagInfo(Url_Tag tag);
+	
+	public int tagdelete(Url_Tag tag);
 }
