@@ -7,7 +7,7 @@
 	
 <script>
 $(document).ready(function(){
-		 $('#choice').click(function(){
+		 $('.close').click(function(){
 		 		alert('선택하셧습니다'); 
 		 		opener.document.getElementById('link').value = document.getElementById('linkdata').value;
 		 		 window.close();
@@ -15,6 +15,9 @@ $(document).ready(function(){
 		 	});
 	});
 </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
 
 	<center>
 		<form action="shoppingList.do">
@@ -39,6 +42,7 @@ $(document).ready(function(){
 		<tbody>
 
 </c:if>
+
 			<c:forEach items="${shoppingList}" var="b">
 				<tr>
 					<th scope="row"><a href="${b.link}"><img src="${b.image}"
@@ -57,5 +61,3 @@ $(document).ready(function(){
 		</tbody>
 
 	</table>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	

@@ -1,38 +1,27 @@
 package p.g.p.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import p.g.p.model.Url_Tag;
+import p.g.p.service.BoardService;
 
 @Controller
-@RequestMapping("/board/boardAjaxTag")
 public class AjaxBoardTagController {
+	@Autowired
+	BoardService service;
+	
+	@RequestMapping("/board/boardAjaxTag")
+	@ResponseBody
+	public String BoardphotoTag(Url_Tag tag) {
+	
+		int checks = service.taginsert(tag);
+		String check=String.valueOf(checks);
 
-	public String BoardphotoTag(@RequestParam("link")String link) {
-		
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		System.out.println(link+"안녕하세요");
-		
-		
-		return "Y";
+		System.out.println(check);
+		return check;
 	}
 	
 }
