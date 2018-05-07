@@ -100,20 +100,18 @@
 	<!-- 관리자 Mg_noticeView_service 빈 -->
 	<beans:bean id="Mg_noticeView_service" class="p.g.p.service.Mg_noticeView_service" />
 
-<<<<<<< HEAD
-   
+
    <context:component-scan base-package="p.g.p"/>
    
    <beans:import resource="Star.xml"/>
    <beans:import resource="rlakdyd.xml"/>
-=======
+
 	<!-- 사이드바 Sb_like_service 빈 -->
 	<beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
 
 
 	<context:component-scan base-package="p.g.p" />
 
-	<beans:import resource="Star.xml" />
->>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
+
 </beans:beans>
 
