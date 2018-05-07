@@ -40,18 +40,19 @@
 
 	<select id="boardPhoto" resultType="p.g.p.model.Board_Photo">
 
-		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
+		SELECT * FROM PGP.BOARD_PHOTO
+		WHERE BOARD_IDX = #{board_idx}
 
 	</select>
 	<select id="photoselect" resultType="p.g.p.model.Board_Photo">
-	
+
 		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
-		
+
 	</select>
-	<select id="photoTagformselect" resultType="p.g.p.model.Board_Photo" >
-	
+	<select id="photoTagformselect" resultType="p.g.p.model.Board_Photo">
+
 		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
-		
+
 	</select>
 	<insert id="taginsert" parameterType="p.g.p.model.Url_Tag">
 		INSERT INTO PGP.url_tag
@@ -59,9 +60,23 @@
 		VALUES
 		(#{tag_url},#{tag_position_y},#{tag_position_x},#{board_idx},#{tag_no});
 	</insert>
-	
+
 	<select id="tagnocount" resultType="int" parameterType="p.g.p.model.Url_Tag">
-		
+
 		select count(*) from pgp.url_tag where board_idx = #{board_idx}
 	</select>
+
+	<select id="selectTagInfo" resultType="String" parameterType="p.g.p.model.Url_Tag">
+
+		SELECT tag_url FROM pgp.url_tag where board_idx = #{board_idx} and
+		tag_no =#{tag_no};
+
+	</select>
+
+	<delete id="tagdelete" parameterType="p.g.p.model.Url_Tag">
+
+		delete from pgp.url_tag where tag_no = #{tag_no} and board_idx = #{board_idx};
+
+
+	</delete>
 </mapper>

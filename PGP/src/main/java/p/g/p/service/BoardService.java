@@ -151,14 +151,7 @@ public class BoardService {
 		dao = sessionTemplate.getMapper(BoarDao.class);
 		int check;
 		int count = dao.tagnocount(tag);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
+
 		
 		if(count>=0&&count<5) {
 			tag.setTag_no(count+1);
@@ -178,6 +171,57 @@ public class BoardService {
 		}
 		
 				
+		return check;
+	}
+
+	public String selectTagInfo(Url_Tag tag) {
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		String tag_url =  dao.selectTagInfo(tag);
+		
+		
+		
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		System.out.println(tag_url);
+		
+		if (tag_url!=null) {
+			return tag_url;
+		}else {
+			tag_url = "null";
+		}
+		return tag_url;
+	}
+
+	public String deletetag(Url_Tag tag) {
+	
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		
+		int resultcnt = dao.tagdelete(tag);
+		String check ="";
+		if(resultcnt>0) {
+			//성공
+		check = "y";
+		}else {
+			//실패
+			check="n";
+		}
+		
 		return check;
 	}
 
