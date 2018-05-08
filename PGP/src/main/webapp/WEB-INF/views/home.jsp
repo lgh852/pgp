@@ -50,7 +50,7 @@
 					href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a></li>
 
 				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
+					href="<%=request.getContextPath()%>/manager/managerloginform">관리자.</a>
 				</li>
 				<c:if test="${user!=null}">
 
@@ -135,8 +135,7 @@
 	<script src="<%=request.getContextPath()%>/resources/js/holder.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/offcanvas.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/board.js"></script>
-	
+	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 	
 	

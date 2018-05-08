@@ -17,7 +17,6 @@ public class BoardPhotoTagController {
 	BoardService service;
 	@RequestMapping("/board/boardPhtoTagForm")
 	public String BoardphotoTagForm(Model model,@RequestParam("board_idx")String board_idx) {
-
 		
 		String view = "home";
 		String page ="";

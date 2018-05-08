@@ -17,8 +17,28 @@ public class BoardTagInfoController {
 	@RequestMapping("/board/taginfo")
 	@ResponseBody
 	public String taginfo(Url_Tag tag) {
-		
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			System.out.println(tag);
+			
 		String url_tag = service.selectTagInfo(tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		System.out.println(url_tag);
+		
 		
 		
 		return url_tag;
