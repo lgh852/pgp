@@ -3,8 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<style>
 
-<<<<<<< HEAD
+#layerPopup{
+  padding:20px; 
+  border:4px solid #ddd; 
+  position:absolute; 
+  left:100px; 
+  top:100px; 
+  background:#fff;
+}
+
+#layerPopup button{
+  cursor:pointer;
+}
+
+.scrapp{
+
+overflow:hidden;
+
+}
+
+</style>
+
+
+
 <div align="center">
 	<img
 		src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
@@ -97,24 +120,6 @@ $(document).ready(function(){
 
 </div>
 
-$(document).ready(function(){ 
-$('btnLike').click(function(){
-
-$ajax({
-url:"/like",
-data: { command: 'like', 
-
-
-
-
-
-)
-
-
-
- } 
- }
-
 
 
 <img src="<%=request.getContextPath()%>/resources/images/pp.png"
@@ -169,14 +174,14 @@ data: { command: 'like',
 
 		<p class="text-left">
 			<button type="button"
-				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}'"
+				onclick="location.href='<%=request.getContextPath()%>/sidebar/mp_myComment?member_id=${member.member_id}'"
 				class="btn btn-primary" data-toggle="button" aria-pressed="false">
 				스크랩</button>
 		</p>
 
 		<p class="text-left">
 			<button type="button"
-				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}'"
+				onclick="location.href='<%=request.getContextPath()%>/sidebar/sb_report?member_id=${member.member_id}'"
 				class="btn btn-primary" data-toggle="button" aria-pressed="false">
 				신고</button>
 		</p>
@@ -187,3 +192,21 @@ data: { command: 'like',
 
 
 	</div>
+	
+	<div id="scrap" class="scrapp">
+	
+  <a href="#layerPopup">스크랩</a>
+  <div id="layerPopup">
+    <ul>
+  <li id="one" class="hot"><a href="#">스크랩북</a></li>
+  
+           <div id="newScrapButton"><button href="#" id="showForm">
+         폴더명 추가하기</button></div>
+    <form id="newScrapForm"><input type="text" id="scrapFolderName" placeholder="스크랩북 이름을 입력해줘잉"/>
+      <input type="submit" id="addButton" value="추가"/>
+    </form>
+    <button type="button" id="close">닫기</button>
+  </div>
+</div>
+	
+	

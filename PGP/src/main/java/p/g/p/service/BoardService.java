@@ -15,6 +15,7 @@ import p.g.p.model.Board_Photo;
 import p.g.p.model.Category_Room;
 import p.g.p.model.Category_Space;
 import p.g.p.model.Member_info;
+import p.g.p.model.Url_Tag;
 
 public class BoardService {
 
@@ -143,6 +144,41 @@ public class BoardService {
 		 
 		return photo;
 				
+	}
+
+	public int taginsert(Url_Tag tag) {
+		
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		int check;
+		int count = dao.tagnocount(tag);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		System.out.println(count);
+		
+		if(count>=0&&count<5) {
+			tag.setTag_no(count+1);
+			int result = dao.taginsert(tag);
+			//count 햇을때 나온 수에다 +1의 값을 저장해줌 그수를 다시 no에 저장 
+			
+			if(result>0) {
+				check = tag.getTag_no();
+			}else {
+				check = 15;
+				//저장불가 
+			}
+
+		}else {
+			//no가 5개 이상일경우 더이상 행성할수 없다는 태그 
+			check = 55;
+		}
+		
+				
+		return check;
 	}
 
 }

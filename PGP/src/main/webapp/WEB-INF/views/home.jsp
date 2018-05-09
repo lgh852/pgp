@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,7 +54,7 @@
 				</li>
 				<c:if test="${user!=null}">
 
-					<li class="nav-item"><a class="nav-link" href="#">로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/" id ="logout">로그아웃</a></li>
 
 				</c:if>
 				<c:if test="${user==null}">
@@ -135,6 +136,9 @@
 	<script src="<%=request.getContextPath()%>/resources/js/offcanvas.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/board.js"></script>
+	
+	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+	
 	
 </body>
 </html>
