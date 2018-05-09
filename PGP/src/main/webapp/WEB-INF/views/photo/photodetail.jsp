@@ -15,21 +15,22 @@
 
 
 
-		<c:if test="${memberIdx==user.member_idx}">
-			<div align="right">
+	<c:if test="${memberIdx==user.member_idx}">
+		<div align="right">
 
-				<a class="btn btn-primary"
-					href="<%=request.getContextPath()%>/photo/"
-					role="button">요게수정 </a> 
-					<a class="btn btn-danger"
-					href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${boardIdx}"
-					role="button">요게사아악제 </a>
-			</div>
-			<br>
-		</c:if>
+			<a class="btn btn-primary"
+				href="<%=request.getContextPath()%>/photo/" role="button">요게수정 </a>
+			<a class="btn btn-danger"
+				href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${boardIdx}"
+				role="button">요게사아악제 </a>
+		</div>
+		<br>
+	</c:if>
+	
+	
 	<form method="post">
 		<div>
-			사진 글 번호 : ${boardIdx} 
+			사진 글 번호 : ${boardIdx}
 			<hr>
 			제목 / ${boardTitle} /
 			<hr>

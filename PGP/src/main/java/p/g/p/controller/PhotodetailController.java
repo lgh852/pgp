@@ -133,6 +133,7 @@ public class PhotodetailController {
 		model.addAttribute("boardContents",board.getBoard_contents());
 		model.addAttribute("boardTitle",board.getBoard_title());
 		model.addAttribute("memberIdx",board.getMember_idx());
+		model.addAttribute("boardIdx",board.getBoard_idx());
 		
 		//조회수 기준 인기사진 출력 
 		List<Join_board_boardphoto> popularPhotoList=photodetailservice.popluarphotoSelect();
