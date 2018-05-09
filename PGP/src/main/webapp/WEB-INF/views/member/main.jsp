@@ -6,6 +6,7 @@
 			width="800px">
 	</div>
 </div>
+
 <div class="hidden-xs hidden-sm col-md-5 text-right">
 	<div class="screen-box screen-slider">
 		<div class="item">

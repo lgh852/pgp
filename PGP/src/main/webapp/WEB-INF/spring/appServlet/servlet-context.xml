@@ -123,8 +123,10 @@
 		</interceptor>
 	</interceptors>
 
+	<!-- photoList  -->
+	<!-- <beans:bean id="photolistview" class="p.g.p.service.PhotoService"/>
+ -->
 	<context:component-scan base-package="p.g.p" />
-
 
 
 </beans:beans>

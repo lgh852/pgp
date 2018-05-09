@@ -54,11 +54,11 @@
 		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
 
 	</select>
-	<insert id="taginsert" parameterType="p.g.p.model.Url_Tag">
+	<insert id="taginsert" parameterType="p.g.p.model.Url_Tag" useGeneratedKeys="true" keyProperty="tag_idx">
 		INSERT INTO PGP.url_tag
-		(tag_url,tag_position_y,tag_position_x,board_idx,tag_no)
+		(tag_url,tag_position_y,tag_position_x,board_idx)
 		VALUES
-		(#{tag_url},#{tag_position_y},#{tag_position_x},#{board_idx},#{tag_no});
+		(#{tag_url},#{tag_position_y},#{tag_position_x},#{board_idx});
 	</insert>
 
 	<select id="tagnocount" resultType="int" parameterType="p.g.p.model.Url_Tag">
@@ -68,15 +68,15 @@
 
 	<select id="selectTagInfo" resultType="String" parameterType="p.g.p.model.Url_Tag">
 
-		SELECT tag_url FROM pgp.url_tag where board_idx = #{board_idx} and
-		tag_no =#{tag_no};
-
+		SELECT tag_url FROM pgp.url_tag where board_idx = #{board_idx} and tag_idx = #{tag_idx};
+		
 	</select>
 
 	<delete id="tagdelete" parameterType="p.g.p.model.Url_Tag">
-
-		delete from pgp.url_tag where tag_no = #{tag_no} and board_idx = #{board_idx};
-
+	
+		delete from pgp.url_tag where tag_idx = #{tag_idx} and board_idx = #{board_idx};
 
 	</delete>
+	
+
 </mapper>

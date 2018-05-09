@@ -62,7 +62,8 @@
 }
 </style>
 <c:forEach var="photo" items="${photo}">
-
+<a class="btn btn-primary" href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${photo.board_idx}" role="button">저장</a>
+	
 	<div class="imgcenter">
 		<img
 			src="<%=request.getContextPath()%>/resources/BoardPhoto/${photo.photo_name}"
@@ -107,8 +108,9 @@
 		<input type="hidden" id="tag3"> 
 		<input type="hidden" id="tag4">
 		<input type="hidden" id="tag5">
-
-	</div>
+		
+	</div>	
+	
 
 
 </c:forEach>

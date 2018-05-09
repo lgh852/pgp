@@ -39,6 +39,7 @@ PhotofeedService photofeedservice;
 		
 		
 		
+		model.addAttribute("photoList",photoList);		
 		
 		return view;
 	}

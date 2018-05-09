@@ -18,7 +18,10 @@ public class BoardTagInfoController {
 	@ResponseBody
 	public String taginfo(Url_Tag tag) {
 		
+			
 		String url_tag = service.selectTagInfo(tag);
+
+		
 		
 		
 		return url_tag;
