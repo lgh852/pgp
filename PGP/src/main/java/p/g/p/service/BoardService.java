@@ -149,35 +149,89 @@ public class BoardService {
 	public int taginsert(Url_Tag tag) {
 		
 		dao = sessionTemplate.getMapper(BoarDao.class);
-		int check;
 		int count = dao.tagnocount(tag);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		System.out.println(count);
-		
+		int idx;
 		if(count>=0&&count<5) {
-			tag.setTag_no(count+1);
+		
 			int result = dao.taginsert(tag);
-			//count 햇을때 나온 수에다 +1의 값을 저장해줌 그수를 다시 no에 저장 
-			
-			if(result>0) {
-				check = tag.getTag_no();
-			}else {
-				check = 15;
-				//저장불가 
+			idx = tag.getTag_idx();
+
+			if(result<0) {
+				idx = 55;
 			}
 
 		}else {
 			//no가 5개 이상일경우 더이상 행성할수 없다는 태그 
-			check = 55;
+			idx = 55;
 		}
 		
 				
+		return idx;
+	}
+
+	public String selectTagInfo(Url_Tag tag) {
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		String tag_url =  dao.selectTagInfo(tag);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+
+		System.out.println("확인!!!"+tag_url);
+		System.out.println("확인!!!"+tag_url);
+		
+		
+		if (tag_url!=null) {
+			return tag_url;
+		}else {
+			tag_url = "null";
+		}
+		return tag_url;
+	}
+
+	public String deletetag(Url_Tag tag) {
+	
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		System.out.println("이승기"+tag);
+		
+		int resultcnt = dao.tagdelete(tag);
+		String check ="";
+		
+		if(resultcnt>0) {
+			//성공
+		check = "y";
+		}else {
+			//실패
+			check="n";
+		}
+		
 		return check;
 	}
 

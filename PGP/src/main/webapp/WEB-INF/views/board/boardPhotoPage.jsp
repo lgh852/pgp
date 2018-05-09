@@ -14,9 +14,9 @@
    	
 
 </style>
-
+	
  <c:forEach var="listPhoto" items="${listPhoto}">
- 
+ 	
 	<a class="btn btn-primary" href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${listPhoto.board_idx}" role="button">페이지</a>
 
 	<div class= "imgcenter" style="width: 450px,;height: 450px">
