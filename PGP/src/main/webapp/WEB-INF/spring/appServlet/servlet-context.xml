@@ -123,6 +123,7 @@
 		</interceptor>
 	</interceptors>
 
+
 	<!-- photoList  -->
 	<!-- <beans:bean id="photolistview" class="p.g.p.service.PhotoService"/>
  -->
