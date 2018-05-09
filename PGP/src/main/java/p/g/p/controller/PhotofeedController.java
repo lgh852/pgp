@@ -27,13 +27,7 @@ PhotofeedService photofeedservice;
 	
 		
 		List<Board_Photo> photoList=photofeedservice.BoardPhotoList();
-		model.addAttribute("photoList",photoList);
-		
-		
-		
-		
-		
-		
+		model.addAttribute("photoList",photoList);		
 		
 		return view;
 	}

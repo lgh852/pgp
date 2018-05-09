@@ -41,6 +41,8 @@
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/photo/photofeed">사진</a></li>
+					<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath()%>/photo/photoList">앙~~~기모띄</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">가구랭킹</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a></li>
