@@ -17,7 +17,7 @@ table>tr>td {
 	<c:forEach var="p1" items="${photoList}">
 		<tr height="60px">
 			<td width="100px">${p1.photo_idx}사진번호</td>
-
+	<td width="100px">${p1.board_idx}게시글 번호 </td>
 			<td width="100px"><a
 				href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${p1.board_idx}">
 					<img

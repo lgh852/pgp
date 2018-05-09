@@ -8,9 +8,18 @@
 select * from board_photo 
 </select>
 
-
-
-
+	<!-- 삭제 버튼 누를시 글 그림 삭제   -->
+	<delete id="boardCommentDelete">
+	  select * from board_comment where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardPhotoDelete">
+	select * from board_photo where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardDelete">
+	select * from board where board_idx=#{board_idx};
+	</delete>
 
 
 
