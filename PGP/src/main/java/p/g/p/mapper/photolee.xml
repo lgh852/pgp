@@ -9,7 +9,8 @@ SELECT m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board
 FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx = b.member_idx
 LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx LEFT JOIN 
 pgp.category_room r on r.category_idx = b.category_idx LEFT JOIN
-pgp.category_space s on s.category_idx = b.category_idx2 where b.board_idx>240;
+pgp.category_space s on s.category_idx = b.category_idx2 ;
+<!-- where b.board_idx>240 -->
 	</select>
 
 

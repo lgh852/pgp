@@ -72,7 +72,7 @@ public class WritingBoardController {
 			view = "home";
 			model.addAttribute("msg", msg);
 			model.addAttribute("page", page);
-
+			
 		}
 
 		return view;

@@ -22,6 +22,7 @@ public interface PhotoDao {
 	public int boardCommentDelete(int board_idx);   // 댓글 다   삭제 
 	public int boardPhotoDelete(int board_idx); 	//사진 다 삭제	
 	public int boardDelete(int board_idx); //글쓰기 다 삭제 
+	public int urlDelete(int board_idx);//url 태그 다 삭제 
 	
 	
 }

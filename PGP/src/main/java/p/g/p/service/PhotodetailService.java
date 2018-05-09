@@ -117,12 +117,23 @@ public class PhotodetailService {
 		return resultCnt;
 	}
 
+	public int urlDelete(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		int resultCnt = dao.urlDelete(board_idx);
+		return resultCnt;
+	}
 	public int AllDelete(int board_idx) {
-		int resultCnt = boardPhotoDelete(board_idx);
-		int resultCnt2 = boardCommentDelete(board_idx);
-		int resultCnt3 = boardDelete(board_idx);
-		if (resultCnt > 0 && resultCnt2 > 0 && resultCnt3 > 0) {
-			System.out.println("야야야야얍!!!!!!!==>"+resultCnt);
+		int resultCnt = boardPhotoDelete(board_idx); //꼭ㅈ삭제 
+		int resultCnt2=urlDelete(board_idx);
+		int resultCnt3 = boardCommentDelete(board_idx);
+		int resultCnt4 = boardDelete(board_idx);//꼭 삭제 
+		
+		System.out.println("야야야야얍!!!!!!!==>"+resultCnt);
+		System.out.println("야야야야얍!!!!!!!==>"+resultCnt2);
+		System.out.println("야야야야얍!!!!!!!==>"+resultCnt3);
+		System.out.println("야야야야얍!!!!!!!==>"+resultCnt4);
+		if (resultCnt > 0 && resultCnt4 > 0) {
+
 			return resultCnt;
 		}
 		return -1;

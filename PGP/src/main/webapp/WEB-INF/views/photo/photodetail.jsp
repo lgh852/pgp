@@ -14,7 +14,6 @@
 <div>
 
 
-
 	<c:if test="${memberIdx==user.member_idx}">
 		<div align="right">
 

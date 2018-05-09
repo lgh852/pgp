@@ -15,6 +15,7 @@ public class PhotofeedAllDeleteController {
 	@RequestMapping("photo/photofeedAllDelete")
 	public String feedAllDelete(@RequestParam(value = "board_idx") int board_idx) {
 		int resultCnt = photodetailservice.AllDelete(board_idx);
+		System.out.println("resultCnt"+resultCnt);
 		String page = "../";
 		if (resultCnt > 0) {
 			page="redirect:photofeed";
