@@ -16,14 +16,12 @@ public class Sb_like_controller {
 	@Autowired
 	Sb_like_service service;
 
-	@ResponseBody
+	
 	@RequestMapping(value="/like", method=RequestMethod.GET)
+	@ResponseBody
 	public String sbLike(int board_idx, String member_id){
 		
-		HashMap<String,Object> hashmap = new HashMap<String,Object>();
 		
-		hashmap.put("board_idx", board_idx);
-		hashmap.put("member_id", member_id);
 		
 		return null;
 		

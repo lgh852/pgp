@@ -11,7 +11,7 @@ function() {
 
 		$ajax({
 			type : 'GET',
-			url : '/like',
+			url : '/p/like',
 			dataType : 'text',
 			data : {
 				board_idx : board_idx,
@@ -23,9 +23,9 @@ function() {
 				var like_img = '';
 
 				if (result.status == 404) {
-					like_img = "./resources/images/like.png";
+					like_img = "../resources/images/heart.jpg";
 				} else {
-					like_img = "./resources/images/dislike.png";
+					like_img = "../resources/images/emptyheart.png";
 				}
 
 				/*
