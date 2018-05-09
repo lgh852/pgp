@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
-import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
-import p.g.p.model.Join_Board_MemberInfo;
+import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.Member_info;
 import p.g.p.service.PhotodetailService;
 
@@ -33,10 +32,10 @@ public class PhotodetailController {
 		
 		model.addAttribute("page", page);
 		int board_cnt_view = 0;
-		
+		 
 		if (del.equals("default")) {
 			photodetailservice.boardCntUpdateView(board_idx);
-		} 
+		}
 		//조회수 출력
 		board_cnt_view = photodetailservice.boardCntView(board_idx);
 		model.addAttribute("board_cnt_view", board_cnt_view);
@@ -44,6 +43,9 @@ public class PhotodetailController {
 		//댓글수
 		int commentCnt = photodetailservice.commentTotalCntView(board_idx);
 		model.addAttribute("commentCnt", commentCnt);
+		//댓글 디비에 저장
+		int commentUpdate=photodetailservice.commentTotalUpdate(board_idx);
+		model.addAttribute("commentUpdate",commentUpdate);
 
 		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
 		model.addAttribute("Commentlist", Commentlist);
@@ -57,6 +59,24 @@ public class PhotodetailController {
 		model.addAttribute("boardContents",board.getBoard_contents());
 		model.addAttribute("boardTitle",board.getBoard_title());
 		model.addAttribute("memberIdx",board.getMember_idx());
+		model.addAttribute("boardIdx",board.getBoard_idx());
+		
+		//조회수 기준 인기사진 출력 
+		List<Join_board_boardphoto> popularPhotoList=photodetailservice.popluarphotoSelect();
+		model.addAttribute("popularPhotoList",popularPhotoList);
+		
+		//조회수 기준 인기사진 페이징 
+	/*	List<PhotoDetailPageMaker> listPage=photodetailservice.listPage();
+		model.addAttribute("listPage",listPage);*/
+		
+		
+		/*//글 그림 데이터 다 삭제 
+		int allDeleteCnt=photodetailservice.AllDelete(board_idx);
+		if(allDeleteCnt<0) {
+			page = "photo/photoCommentFail.jsp";
+			model.addAttribute("page", page);
+		}
+		*/
 		return view;
 
 	}
@@ -88,15 +108,16 @@ public class PhotodetailController {
 		if (comment < 0) {
 			page = "photo/photoCommentFail.jsp";
 			model.addAttribute("page", page);
-		} else {
-
-		}
+		} 
 		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
 		model.addAttribute("Commentlist", Commentlist);
 
 		//댓글수 
 		int commentCnt = photodetailservice.commentTotalCntView(board_idx);
 		model.addAttribute("commentCnt", commentCnt);
+		//댓글 디비에 저장
+		int commentUpdate=photodetailservice.commentTotalUpdate(board_idx);
+		model.addAttribute("commentUpdate",commentUpdate);
 
 		//조회수 출력
 		int board_cnt_view = photodetailservice.boardCntView(board_idx);
@@ -112,6 +133,11 @@ public class PhotodetailController {
 		model.addAttribute("boardContents",board.getBoard_contents());
 		model.addAttribute("boardTitle",board.getBoard_title());
 		model.addAttribute("memberIdx",board.getMember_idx());
+		
+		//조회수 기준 인기사진 출력 
+		List<Join_board_boardphoto> popularPhotoList=photodetailservice.popluarphotoSelect();
+		model.addAttribute("popularPhotoList",popularPhotoList);
+		
 		return view;
 
 	}

@@ -34,8 +34,11 @@
 <!-- 댓글 수  -->
 	<select id="commentTotalCnt" resultType="int">
 		select count(*) from
-		board_comment where board_idx=#{board_idx}
+		board_comment where board_idx=#{board_idx}	
 	</select>
+	<update id="commentTotalUpdate" parameterType="p.g.p.model.Board">
+	 update board set board_comment=(select count(*) from board_comment where board_idx=#{board_idx}) where board_idx=#{board_idx}
+	</update>
 
 <!-- 조회수 증가  -->
 	<update id="boardCntUpdate" parameterType="p.g.p.model.Join_Board_MemberInfo">
@@ -51,4 +54,24 @@
 	<select id="boardSelect" resultType="p.g.p.model.Board" parameterType="p.g.p.model.Board">
 		select * from board where board_idx=#{board_idx}
 	</select>
+	
+	<!--조회수 기준으로 카테고리 인기 사진 출력   -->
+	<select id="popluarphotoSelect" resultType="p.g.p.model.Join_board_boardphoto">
+	 select photo_name from board,board_photo where board.board_idx=board_photo.board_idx order by board_cnt desc limit 3	
+	</select>
+	
+	<!-- 삭제 버튼 누를시 글 그림 삭제   -->
+	<delete id="boardCommentDelete">
+	  delete  from board_comment where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardPhotoDelete">
+	delete from board_photo where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardDelete">
+	delete from board where board_idx=#{board_idx};
+	</delete>
+	
+	
 </mapper>

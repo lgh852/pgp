@@ -24,12 +24,17 @@ PhotofeedService photofeedservice;
 		String page="photo/photofeed.jsp";
 		model.addAttribute("page",page);
 		
-	
 		
 		List<Board_Photo> photoList=photofeedservice.BoardPhotoList();
 		model.addAttribute("photoList",photoList);
 		
-		
+		/*//글 그림 데이터 다 삭제 
+		int allDeleteCnt=photodetailservice.AllDelete(board_idx);
+		if(allDeleteCnt<0) {
+			page = "photo/photoCommentFail.jsp";
+			model.addAttribute("page", page);
+		}
+		*/
 		
 		
 		
@@ -38,4 +43,6 @@ PhotofeedService photofeedservice;
 		return view;
 	}
 
+	
+	
 }

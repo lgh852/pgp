@@ -8,19 +8,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import p.g.p.service.PhotodetailService;
 
 @Controller
-public class PhotoCommentDeleteController {
+public class PhotofeedAllDeleteController {
 	@Autowired
 	PhotodetailService photodetailservice;
 
-	@RequestMapping("photo/photoCommentDelete")
-
-	public String CommentDelete(@RequestParam(value = "board_idx") int board_idx,
-			@RequestParam(value = "board_comment_idx") int board_comment_idx) {
-		int resultCnt = photodetailservice.ListdeleteComment(board_comment_idx);
-		String del = "del_success";
+	@RequestMapping("photo/photofeedAllDelete")
+	public String feedAllDelete(@RequestParam(value = "board_idx") int board_idx) {
+		int resultCnt = photodetailservice.AllDelete(board_idx);
 		String page = "../";
 		if (resultCnt > 0) {
-			page = "redirect:photodetail?board_idx=" + board_idx + "&del=" + del;
+			page="redirect:photofeed";
 		}
 		return page;
 	}
