@@ -73,5 +73,9 @@
 	delete from board where board_idx=#{board_idx};
 	</delete>
 	
+	<delete id="urlDelete">
+	delete from url_tag where board_idx=#{board_idx};
+	</delete>
+	
 	
 </mapper>

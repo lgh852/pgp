@@ -4,7 +4,7 @@
 
 
 
-    
+
 
         <style>
             .size {
@@ -82,22 +82,51 @@
             .m10right {
                 margin-right: 6px
             }
-			.ss{
-				display: none;
-			}
-        </style>
 
-        <div class="size"> </div>
+            .ss {
+                display: none;
+            }
+            
+        </style>
+        <style>
+            .navmain{
+                border: 1px solid black; float: left; width: 24.8% ; height: 100%;text-align: center;
+                
+            }
+            .navside{
+                border: 1px solid black; float: left; width: 12.4%;height: 100%
+            }
+        </style>
+        <div class="size">
+            
+            <div class="navside">
+
+            </div>
+            <div class="navmain">
+                <h3 style="display: block;border-top: 30px;" >정렬</h3>
+                
+            </div>
+            <div class="navmain">
+                <h3>공간</h3>
+            </div>
+            <div class="navmain">
+                <h3>평수</h3>
+            </div>
+            
+            <div  class="navside">
+
+            </div>
+        </div>
         <div class="censize">
 
             <c:forEach var="list" items="${list}" varStatus="status">
-          
+
                 <ul>
                     <li class="viewli" style="position: relative">
                         <a href="#">
                             <div style="height: 280"><img src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" width="280" height="280">
 
-                                <div class="di2 fontcount"><img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_scrap} <img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_comment} <img src="html.css/25.jpg" width="37" height="37" class="m10right"><span id ="likecnt${status.count}">${list.board_like}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수&nbsp;&nbsp;<span id="f">${list.board_cnt}</span></div>
+                                <div class="di2 fontcount"><img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_scrap} <img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_comment} <img src="html.css/25.jpg" width="37" height="37" class="m10right"><span id="likecnt${status.count}">${list.board_like}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수&nbsp;&nbsp;<span id="f">${list.board_cnt}</span></div>
 
                             </div>
                         </a>
@@ -114,27 +143,26 @@
                                     </div>
                                 </div>
                                     </a>
-                                  
+
                                 <a style="position: absolute;right:5px;top:3px;" href="#" class="like"><img src="#" width="30px" height="30px"></a>
-                               	<a style="position: absolute;right:5px;top:3px;" href="#" class="like"><img src="#" width="30px" height="30px"></a>
-                                 <c:if test="${list.likeck==null}">
-                                <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
+                                <a style="position: absolute;right:5px;top:3px;" href="#" class="like"><img src="#" width="30px" height="30px"></a>
+                                <c:if test="${list.likeck==null}">
+                                    <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
                                    <img class ="heart${status.count}" src="<%=request.getContextPath()%>/resources/images/heart1.png" width="30px" height="30px"></a></c:if>
-                                    <c:if test="${list.likeck!=null}">
-                                <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
+                                <c:if test="${list.likeck!=null}">
+                                    <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
                                    <img class ="heart${status.count}" src="<%=request.getContextPath()%>/resources/images/heart2.jpg" width="30px" height="30px"></a></c:if>
                                 <p>${list.board_contents}</p>
-                                
+
                             </div>
                         </div>
                     </li>
                 </ul>
-                <ul >
-                <li class="ss"><input type="hidden" class="likech${status.count}" value="${list.like_check}"></li>
-				
-                <li class="ss"><input type="hidden" class="bidx${status.count}" value="${list.board_idx}"></li>
+                <ul>
+                    <li class="ss"><input type="hidden" class="likech${status.count}" value="${list.like_check}"></li>
+
+                    <li class="ss"><input type="hidden" class="bidx${status.count}" value="${list.board_idx}"></li>
                 </ul>
-                	
+
             </c:forEach>
         </div>
-    
