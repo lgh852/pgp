@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <form action="<%=request.getContextPath()%>/manager/managerloginform" method="post">
 	<div class="input-group mb-3">
 		<div class="input-group-prepend">
