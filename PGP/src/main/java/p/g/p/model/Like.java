@@ -1,20 +1,27 @@
 package p.g.p.model;
 
-public class like {
+public class Like {
 	
 	private int like_idx;
 	private int member_idx;
 	private int board_idx;
+	private int like_check;
 	
-	public like() {
+	public Like() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public like(int like_idx, int member_idx, int board_idx) {
+	public Like(int like_idx, int member_idx, int board_idx, int like_check) {
 		super();
 		this.like_idx = like_idx;
 		this.member_idx = member_idx;
 		this.board_idx = board_idx;
+		this.like_check = like_check;
+	}
+	@Override
+	public String toString() {
+		return "like [like_idx=" + like_idx + ", member_idx=" + member_idx + ", board_idx=" + board_idx
+				+ ", like_check=" + like_check + "]";
 	}
 	public int getLike_idx() {
 		return like_idx;
@@ -34,11 +41,13 @@ public class like {
 	public void setBoard_idx(int board_idx) {
 		this.board_idx = board_idx;
 	}
-	@Override
-	public String toString() {
-		return "like [like_idx=" + like_idx + ", member_idx=" + member_idx + ", board_idx=" + board_idx + "]";
+	public int getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(int like_check) {
+		this.like_check = like_check;
 	}
 	
-	
+
 
 }

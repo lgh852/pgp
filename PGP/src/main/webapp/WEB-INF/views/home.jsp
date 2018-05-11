@@ -51,9 +51,18 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a></li>
 
+               <c:if test="${manager==null}">
 				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/manager/managerloginform">관리자.</a>
+					href="<%=request.getContextPath()%>/manager/managerloginform">관리자로그인</a>
 				</li>
+				</c:if>
+				
+				 <c:if test="${manager!=null}">
+				<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath()%>/manager/main">관리자페이지</a>
+				</li>
+				</c:if>
+				
 				<c:if test="${user!=null}">
 
 					<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/" id ="logout">로그아웃</a></li>
@@ -139,6 +148,8 @@
 	<script src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/sidebar.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
 	
 	
 </body>

@@ -3,4 +3,24 @@
 
 <mapper namespace="p.g.p.dao.Sb_dao">
 
+<insert id="reportboard" parameterType="p.g.p.model.report">
+
+INSERT INTO
+
+pgp.report(
+report_contents,
+board_idx,
+storyboard_idx,
+member_idx
+
+)
+VALUES(
+#{report_contents},
+#{board_idx},
+#{storyboard_idx},
+#{member_idx});
+
+
+</insert>
+
 </mapper>

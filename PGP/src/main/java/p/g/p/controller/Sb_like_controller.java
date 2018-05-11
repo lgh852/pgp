@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import p.g.p.model.Like;
 import p.g.p.service.Sb_like_service;
 
 @Controller 
@@ -19,7 +20,10 @@ public class Sb_like_controller {
 	
 	@RequestMapping(value="/like", method=RequestMethod.GET)
 	@ResponseBody
-	public String sbLike(int board_idx, String member_id){
+	public String sbLike(Like like){
+		
+		String ck ="";
+		
 		
 		
 		

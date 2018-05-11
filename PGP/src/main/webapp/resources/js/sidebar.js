@@ -83,8 +83,65 @@ function() {
 
 			$newScrapForm.hide();
 			$newScrapButton.show();
-			$textInput.val('');
+			var $textInput = $('input:text').val();
 		});
 	});
+	
+	
+	 $("#reportPopup").hide();
+	 $("#report > a").click(function(){
+		  
+		    $("#report > a").blur();
+		    $("#reportPopup").show();
+		    $("#reportPopup a").focus();
+	 });
+	 
+	 $("#report_submit").click(function(){
+		 
+		 var board_idx = $("#board_idx").val();
+		 var storyboard_idx = $("#storyboard_idx").val();
+		 var member_idx = $("#member_idx").val();
+		 var report_contents = $("#report_contents").val();
+		 
+		 alert(board_idx);
+		 alert(storyboard_idx);
+		 alert(member_idx);
+		 alert(report_contents);
 
+			 
+			 alert('이얍');
+	    
+			$.ajax({
+				type : 'POST',
+				url : '/p/sidebar/sb_report',
+				dataType : 'text',
+				data : {
+					board_idx : board_idx,
+					storyboard_idx : storyboard_idx,
+					member_idx : member_idx,
+					report_contents : report_contents
+
+				},
+			success : function(data) {
+				
+			
+				
+				if(data=='y'){
+					//실행
+					
+					alert('성공');
+					
+					 /* $("#report > a").focus();
+				      $("#reportPopupform").submit();
+				      $("#reportPopup").hide();*/
+					
+				}else
+				{alert('실패');}
+				} 
+	  });
+	  
+	  });
+	 
+	  
+	 
 });
