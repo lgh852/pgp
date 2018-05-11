@@ -127,6 +127,8 @@
 	<!-- photoList  -->
 	<!-- <beans:bean id="photolistview" class="p.g.p.service.PhotoService"/>
  -->
+ 	<beans:bean id="photolistlservice" class="p.g.p.service.PhotoListLeeService"/>
+ 	
 	<context:component-scan base-package="p.g.p" />
 
 

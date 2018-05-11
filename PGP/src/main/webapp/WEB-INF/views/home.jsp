@@ -139,6 +139,7 @@
 	<script src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
 	
 	
 </body>

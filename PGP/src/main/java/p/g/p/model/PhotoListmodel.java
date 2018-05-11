@@ -31,6 +31,9 @@ public class PhotoListmodel {
 	private String member_gender;
 	private MultipartFile photofile;
 	private String member_photo;
+	private int like_idx;
+	private int like_check;
+	private String likeck;
 	public PhotoListmodel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,7 +43,7 @@ public class PhotoListmodel {
 			int photo_idx, String photo_name, MultipartFile fileName, String category_room, String category_space,
 			String member_id, String member_pw, String member_name, String member_nickname, String member_birth,
 			String member_phone, String member_intro, String member_gender, MultipartFile photofile,
-			String member_photo) {
+			String member_photo, int like_idx, int like_check, String likeck) {
 		super();
 		this.board_idx = board_idx;
 		this.board_title = board_title;
@@ -68,6 +71,9 @@ public class PhotoListmodel {
 		this.member_gender = member_gender;
 		this.photofile = photofile;
 		this.member_photo = member_photo;
+		this.like_idx = like_idx;
+		this.like_check = like_check;
+		this.likeck = likeck;
 	}
 	@Override
 	public String toString() {
@@ -80,7 +86,7 @@ public class PhotoListmodel {
 				+ member_pw + ", member_name=" + member_name + ", member_nickname=" + member_nickname
 				+ ", member_birth=" + member_birth + ", member_phone=" + member_phone + ", member_intro=" + member_intro
 				+ ", member_gender=" + member_gender + ", photofile=" + photofile + ", member_photo=" + member_photo
-				+ "]";
+				+ ", like_idx=" + like_idx + ", like_check=" + like_check + ", likeck=" + likeck + "]";
 	}
 	public int getBoard_idx() {
 		return board_idx;
@@ -238,5 +244,25 @@ public class PhotoListmodel {
 	public void setMember_photo(String member_photo) {
 		this.member_photo = member_photo;
 	}
+	public int getLike_idx() {
+		return like_idx;
+	}
+	public void setLike_idx(int like_idx) {
+		this.like_idx = like_idx;
+	}
+	public int getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(int like_check) {
+		this.like_check = like_check;
+	}
+	public String getLikeck() {
+		return likeck;
+	}
+	public void setLikeck(String likeck) {
+		this.likeck = likeck;
+	} 
+	
+	
 	
 }
