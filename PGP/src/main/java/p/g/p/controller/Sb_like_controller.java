@@ -21,7 +21,7 @@ public class Sb_like_controller {
 	@ResponseBody
 	public String sbLike(int board_idx, String member_id){
 		
-		
+		//132132132
 		
 		return null;
 		
