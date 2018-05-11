@@ -6,7 +6,7 @@
 
 <div align="center">
 	<img
-		src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
+		src="<%=request.getContextPath()%>/resources/memberphoto/${photoName}"
 		width="400px" height="200px">
 </div>
 <br>
@@ -14,22 +14,22 @@
 <div>
 
 
-	<c:if test="${memberIdx==user.member_idx}">
-		<div align="right">
 
-			<a class="btn btn-primary"
-				href="<%=request.getContextPath()%>/photo/" role="button">요게수정 </a>
-			<a class="btn btn-danger"
-				href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${boardIdx}"
-				role="button">요게사아악제 </a>
-		</div>
-		<br>
-	</c:if>
-	
-	
+		<c:if test="${memberIdx==user.member_idx}">
+			<div align="right">
+
+				<a class="btn btn-primary"
+					href="<%=request.getContextPath()%>/photo/updatePhotodetail?board_idx=${boardIdx}"
+					role="button">요게수정 </a>
+					 <a class="btn btn-danger"
+					href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${boardIdx}"
+					role="button">요게사아악제 </a>
+			</div>
+			<br>
+		</c:if>
 	<form method="post">
 		<div>
-			사진 글 번호 : ${boardIdx}
+			사진 글 번호 : ${boardIdx} 
 			<hr>
 			제목 / ${boardTitle} /
 			<hr>

@@ -13,6 +13,7 @@ public class PhotoCommentDeleteController {
 	PhotodetailService photodetailservice;
 
 	@RequestMapping("photo/photoCommentDelete")
+
 	public String CommentDelete(@RequestParam(value = "board_idx") int board_idx,
 			@RequestParam(value = "board_comment_idx") int board_comment_idx) {
 		int resultCnt = photodetailservice.ListdeleteComment(board_comment_idx);

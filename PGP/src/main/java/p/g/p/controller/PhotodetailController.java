@@ -27,6 +27,7 @@ public class PhotodetailController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String detail(@RequestParam(value = "del", defaultValue = "default") String del, Model model,
 			 HttpSession session,@RequestParam(value="board_idx",defaultValue="0")int board_idx) {
+		System.out.println("뭐야!!!!!!!!!!!!!!!!!!!!"+board_idx);
 		String view = "home";
 		String page = "photo/photodetail.jsp";
 		
@@ -40,9 +41,12 @@ public class PhotodetailController {
 		board_cnt_view = photodetailservice.boardCntView(board_idx);
 		model.addAttribute("board_cnt_view", board_cnt_view);
 
+		System.out.println("이이이이이얍!!===>****"+board_idx);
 		//댓글수
 		int commentCnt = photodetailservice.commentTotalCntView(board_idx);
 		model.addAttribute("commentCnt", commentCnt);
+		
+		
 		//댓글 디비에 저장
 		int commentUpdate=photodetailservice.commentTotalUpdate(board_idx);
 		model.addAttribute("commentUpdate",commentUpdate);
