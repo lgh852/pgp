@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.MainPageDao">
+
+	<select id="maxcntimg" resultType="String">
+		select photo_name from pgp.board_photo where board_idx = (select board_idx
+		from pgp.board where board_cnt=(select max(board_cnt) from
+		pgp.board));
+	</select>
+
+</mapper>

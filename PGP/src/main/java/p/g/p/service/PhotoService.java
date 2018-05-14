@@ -18,10 +18,28 @@ public class PhotoService {
 	@Autowired
 	SqlSessionTemplate sessionTemplate;
 	
-	public List<PhotoListmodel> photolistview(Like like){
+	public List<PhotoListmodel> photolistview(Like like,PhotoListmodel photolist){
 		
 		dao = sessionTemplate.getMapper(PhotoleeDao.class);
-		List<PhotoListmodel> list = dao.photolist();
+		System.out.println("확인입니다"+photolist.getAlignment());
+		List<PhotoListmodel> list;
+		if(photolist.getAlignment().equals("board_cnt")) {
+			//cnt꺼 실행 
+			list = dao.photolistcnt(photolist);
+		}else if(photolist.getAlignment().equals("board_like")){
+			//like 실행
+			list = dao.photolistlike(photolist);
+		}else {
+			//일반 정렬
+			 list = dao.photolist(photolist);
+		}
+		System.out.println("확인입니다room"+photolist.getRoom());
+		System.out.println("확인입니다space"+photolist.getSpace());
+		System.out.println("확인입니다"+photolist.getAlignment());
+		System.out.println("확인입니다room"+photolist.getRoom());
+		System.out.println("확인입니다space"+photolist.getSpace());
+		
+			
 		
 		List<Like> likelist = selectimg(like);
 		for(int i=0;i<list.size();i++) {

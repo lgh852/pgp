@@ -24,15 +24,11 @@ public class Mg_noticeList_controller {
 		
 		model.addAttribute("notices",notices);
 		
-		
-		
 		String page = "manager/noticelist.jsp";
 		String view = "home";
 		model.addAttribute("page", page);
 
 		return view;
-
-	
 	}
 	
 

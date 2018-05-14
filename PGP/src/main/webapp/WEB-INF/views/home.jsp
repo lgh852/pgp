@@ -42,7 +42,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/photo/photofeed">사진</a></li>
 					<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/photo/photoList">앙~~~기모띄</a></li>
+					href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">앙~~~기모띄</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">가구랭킹</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a></li>
@@ -115,17 +115,10 @@
 	</div>
 
 	<main role="main" class="container">
-	<div
-		class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-		<img class="mr-3"
-			src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg"
-			alt="" width="48" height="48">
-		<div class="lh-100">
-			<h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-			<small>Since 2011</small>
-		</div>
-	</div>
-	<jsp:include page="${page}" /> </main>
+	
+	<jsp:include page="${page}" />
+	
+	 </main>
 
 
 	<!-- Bootstrap core JavaScript

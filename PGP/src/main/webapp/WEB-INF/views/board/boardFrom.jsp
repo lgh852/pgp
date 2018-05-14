@@ -63,14 +63,14 @@
 				<option value="7">드레스룸</option>
 				<option value="8">서재&작업실</option>
 				<option value="9">침실</option>
-				<option value="4">베란다</option>
-				<option value="5">사무공간</option>
-				<option value="6">상업공간</option>
-				<option value="7">가구&소품</option>
-				<option value="8">현관</option>
-				<option value="9">외관&기타</option>
-				<option value="10">복도</option>
-				<option value="11">제품후기</option>
+				<option value="10">베란다</option>
+				<option value="11">사무공간</option>
+				<option value="12">상업공간</option>
+				<option value="13">가구&소품</option>
+				<option value="14">현관</option>
+				<option value="15">외관&기타</option>
+				<option value="16">복도</option>
+				<option value="17">제품후기</option>
 			</select>
 			<div class="input-group-append">
 				<label class="input-group-text" for="inputGroupSelect02">공간</label>
@@ -83,8 +83,8 @@
 				<option value="1">10평 미만</option>
 				<option value="2">10평대</option>
 				<option value="3">20평대</option>
-				<option value="1">30평대</option>
-				<option value="2">40평대 이상</option>
+				<option value="4">30평대</option>
+				<option value="5">40평대 이상</option>
 			</select>
 			<div class="input-group-append">
 				<label class="input-group-text" for="inputGroupSelect02">평수</label>

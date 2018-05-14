@@ -41,14 +41,19 @@ public class LoginController {
 		if(member!=null) {
 			//null아니면 성공
 			session.setAttribute("user",member);
-			model.addAttribute("msg","로그인 성공");		
+		
+			model.addAttribute("page",page);
+				
+		   
 			System.out.println("성");
+			 return"redirect:/";
 		}else {
 			System.out.println("시류ㅐ실패");
 			model.addAttribute("msg","로그인실패");
+			model.addAttribute("page",page);
 		}
 		
-		model.addAttribute("page",page);
+		
 		return view;
 	}
 }

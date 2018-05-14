@@ -34,60 +34,9 @@ public class PhotoListmodel {
 	private int like_idx;
 	private int like_check;
 	private String likeck;
-	public PhotoListmodel() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PhotoListmodel(int board_idx, String board_title, String board_contents, int board_cnt, int board_comment,
-			int board_like, int board_scrap, Date board_regdate, int member_idx, int category_idx, int category_idx2,
-			int photo_idx, String photo_name, MultipartFile fileName, String category_room, String category_space,
-			String member_id, String member_pw, String member_name, String member_nickname, String member_birth,
-			String member_phone, String member_intro, String member_gender, MultipartFile photofile,
-			String member_photo, int like_idx, int like_check, String likeck) {
-		super();
-		this.board_idx = board_idx;
-		this.board_title = board_title;
-		this.board_contents = board_contents;
-		this.board_cnt = board_cnt;
-		this.board_comment = board_comment;
-		this.board_like = board_like;
-		this.board_scrap = board_scrap;
-		this.board_regdate = board_regdate;
-		this.member_idx = member_idx;
-		this.category_idx = category_idx;
-		this.category_idx2 = category_idx2;
-		this.photo_idx = photo_idx;
-		this.photo_name = photo_name;
-		FileName = fileName;
-		this.category_room = category_room;
-		this.category_space = category_space;
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_name = member_name;
-		this.member_nickname = member_nickname;
-		this.member_birth = member_birth;
-		this.member_phone = member_phone;
-		this.member_intro = member_intro;
-		this.member_gender = member_gender;
-		this.photofile = photofile;
-		this.member_photo = member_photo;
-		this.like_idx = like_idx;
-		this.like_check = like_check;
-		this.likeck = likeck;
-	}
-	@Override
-	public String toString() {
-		return "PhotoListmodel [board_idx=" + board_idx + ", board_title=" + board_title + ", board_contents="
-				+ board_contents + ", board_cnt=" + board_cnt + ", board_comment=" + board_comment + ", board_like="
-				+ board_like + ", board_scrap=" + board_scrap + ", board_regdate=" + board_regdate + ", member_idx="
-				+ member_idx + ", category_idx=" + category_idx + ", category_idx2=" + category_idx2 + ", photo_idx="
-				+ photo_idx + ", photo_name=" + photo_name + ", FileName=" + FileName + ", category_room="
-				+ category_room + ", category_space=" + category_space + ", member_id=" + member_id + ", member_pw="
-				+ member_pw + ", member_name=" + member_name + ", member_nickname=" + member_nickname
-				+ ", member_birth=" + member_birth + ", member_phone=" + member_phone + ", member_intro=" + member_intro
-				+ ", member_gender=" + member_gender + ", photofile=" + photofile + ", member_photo=" + member_photo
-				+ ", like_idx=" + like_idx + ", like_check=" + like_check + ", likeck=" + likeck + "]";
-	}
+	private String Alignment;
+	private String room;
+	private String space;
 	public int getBoard_idx() {
 		return board_idx;
 	}
@@ -261,8 +210,83 @@ public class PhotoListmodel {
 	}
 	public void setLikeck(String likeck) {
 		this.likeck = likeck;
-	} 
-	
-	
+	}
+	public String getAlignment() {
+		return Alignment;
+	}
+	public void setAlignment(String alignment) {
+		Alignment = alignment;
+	}
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public String getSpace() {
+		return space;
+	}
+	public void setSpace(String space) {
+		this.space = space;
+	}
+	@Override
+	public String toString() {
+		return "PhotoListmodel [board_idx=" + board_idx + ", board_title=" + board_title + ", board_contents="
+				+ board_contents + ", board_cnt=" + board_cnt + ", board_comment=" + board_comment + ", board_like="
+				+ board_like + ", board_scrap=" + board_scrap + ", board_regdate=" + board_regdate + ", member_idx="
+				+ member_idx + ", category_idx=" + category_idx + ", category_idx2=" + category_idx2 + ", photo_idx="
+				+ photo_idx + ", photo_name=" + photo_name + ", FileName=" + FileName + ", category_room="
+				+ category_room + ", category_space=" + category_space + ", member_id=" + member_id + ", member_pw="
+				+ member_pw + ", member_name=" + member_name + ", member_nickname=" + member_nickname
+				+ ", member_birth=" + member_birth + ", member_phone=" + member_phone + ", member_intro=" + member_intro
+				+ ", member_gender=" + member_gender + ", photofile=" + photofile + ", member_photo=" + member_photo
+				+ ", like_idx=" + like_idx + ", like_check=" + like_check + ", likeck=" + likeck + ", Alignment="
+				+ Alignment + ", room=" + room + ", space=" + space + "]";
+	}
+	public PhotoListmodel(int board_idx, String board_title, String board_contents, int board_cnt, int board_comment,
+			int board_like, int board_scrap, Date board_regdate, int member_idx, int category_idx, int category_idx2,
+			int photo_idx, String photo_name, MultipartFile fileName, String category_room, String category_space,
+			String member_id, String member_pw, String member_name, String member_nickname, String member_birth,
+			String member_phone, String member_intro, String member_gender, MultipartFile photofile,
+			String member_photo, int like_idx, int like_check, String likeck, String alignment, String room,
+			String space) {
+		super();
+		this.board_idx = board_idx;
+		this.board_title = board_title;
+		this.board_contents = board_contents;
+		this.board_cnt = board_cnt;
+		this.board_comment = board_comment;
+		this.board_like = board_like;
+		this.board_scrap = board_scrap;
+		this.board_regdate = board_regdate;
+		this.member_idx = member_idx;
+		this.category_idx = category_idx;
+		this.category_idx2 = category_idx2;
+		this.photo_idx = photo_idx;
+		this.photo_name = photo_name;
+		FileName = fileName;
+		this.category_room = category_room;
+		this.category_space = category_space;
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_nickname = member_nickname;
+		this.member_birth = member_birth;
+		this.member_phone = member_phone;
+		this.member_intro = member_intro;
+		this.member_gender = member_gender;
+		this.photofile = photofile;
+		this.member_photo = member_photo;
+		this.like_idx = like_idx;
+		this.like_check = like_check;
+		this.likeck = likeck;
+		Alignment = alignment;
+		this.room = room;
+		this.space = space;
+	}
+	public PhotoListmodel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

@@ -118,6 +118,7 @@
 			<exclude-mapping path="/member/**"/>
 			<exclude-mapping path="/manager/managerloginform"/>
 			<exclude-mapping path="/home"/>
+			<exclude-mapping path="/p/"/>
 			<!--인터셉터 클래스를 상속받아 사용할 메서드가 있는 클래스 경로-->
 			<beans:bean class="p.g.p.Interceptor.LoginCkInterceptor"/>
 		</interceptor>
@@ -129,7 +130,10 @@
  -->
  	<beans:bean id="photolistlservice" class="p.g.p.service.PhotoListLeeService"/>
  	
+ 	<beans:bean id="mainpage" class="p.g.p.service.MainPageService"/>
+ 	
 	<context:component-scan base-package="p.g.p" />
+	
 
 
 </beans:beans>
