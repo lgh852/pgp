@@ -41,9 +41,11 @@
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/photo/photofeed">사진</a></li>
-					<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">앙~~~기모띄</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">앙~~~기모띄</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">가구랭킹</a></li>
+					<a href="<%=request.getContextPath()%>/photo/photoList">앙~~~기모띄</a></li>
+				<li class="nav-item"> <a class="nav-link" href="<%=request.getContextPath()%>/furniture/furnitureRank">가구랭킹</a>
+				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -121,9 +123,6 @@
 	 </main>
 
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -133,6 +132,7 @@
 	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/sidebar.js"></script>
 	
 	
 </body>

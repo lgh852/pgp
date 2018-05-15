@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.PhotoDetailUpdateDao">
+
+
+<update id="UpdateBoard" parameterType="p.g.p.model.Board" >
+update board set board_title=#{board_title} , board_contents=#{board_contents} where board_idx=#{board_idx};
+</update>
+
+<update id="UpdateBoardPhoto" parameterType="p.g.p.model.Board_Photo">
+   update board_photo set photo_name=#{photo_name} where board_idx=#{board_idx};
+</update>
+
+<update id="UpdateCategoryRoom" parameterType="p.g.p.model.Join_Board_Category_RoomNSpace" >
+ update category_room set category_room=#{category_room} where category_idx=(select category_idx from board where board_idx=#{board_idx});
+</update>
+
+<update id="UpdateCategorySpace" parameterType="p.g.p.model.Join_Board_Category_RoomNSpace">
+update category_space set category_space=#{category_space} where category_idx=(select category_idx2 from board where board_idx=#{board_idx});
+</update>
+
+
+
+
+
+
+
+
+
+</mapper>

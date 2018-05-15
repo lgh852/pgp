@@ -17,7 +17,6 @@ import p.g.p.model.Join_board_boardphoto;
 public class PhotodetailService {
 
 	PhotoDao dao;
-
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
@@ -78,7 +77,6 @@ public class PhotodetailService {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		String photoName = dao.selectPhotoFeed(board_idx);
 		return photoName;
-
 	}
 
 	public Board boardSelectView(int board_idx) {
@@ -122,18 +120,18 @@ public class PhotodetailService {
 		int resultCnt = dao.urlDelete(board_idx);
 		return resultCnt;
 	}
+	
 	public int AllDelete(int board_idx) {
-		int resultCnt = boardPhotoDelete(board_idx); //꼭ㅈ삭제 
-		int resultCnt2=urlDelete(board_idx);
+		int resultCnt = boardPhotoDelete(board_idx);//꼭삭제 
+		int resultCnt2= urlDelete(board_idx);
 		int resultCnt3 = boardCommentDelete(board_idx);
-		int resultCnt4 = boardDelete(board_idx);//꼭 삭제 
-		
+		int resultCnt4 = boardDelete(board_idx); //꼭삭제 
 		System.out.println("야야야야얍!!!!!!!==>"+resultCnt);
 		System.out.println("야야야야얍!!!!!!!==>"+resultCnt2);
 		System.out.println("야야야야얍!!!!!!!==>"+resultCnt3);
 		System.out.println("야야야야얍!!!!!!!==>"+resultCnt4);
-		if (resultCnt > 0 && resultCnt4 > 0) {
-
+		if (resultCnt > 0  && resultCnt4 > 0) {
+			System.out.println("야야야야얍!!!!!!!==>"+resultCnt);
 			return resultCnt;
 		}
 		return -1;

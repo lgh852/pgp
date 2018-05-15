@@ -13,5 +13,5 @@
 	 <!--포토디테일서비스 빈-->
    <beans:bean id="photodetailservice" class="p.g.p.service.PhotodetailService"/>
    <beans:bean id="photofeedservice" class="p.g.p.service.PhotofeedService"/>
-	
+	<beans:bean id="photodetailupdateservice" class="p.g.p.service.PhotoDetailUpdateService"/>
 </beans:beans>
