@@ -2,6 +2,8 @@ package p.g.p.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mysql.fabric.Response;
 
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
@@ -26,7 +30,7 @@ public class PhotodetailController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String detail(@RequestParam(value = "del", defaultValue = "default") String del, Model model,
-			 HttpSession session,@RequestParam(value="board_idx",defaultValue="0")int board_idx) {
+			 HttpSession session,@RequestParam(value="board_idx",defaultValue="0")int board_idx,Cookie cookie,HttpServletResponse response) {
 		String view = "home";
 		String page = "photo/photodetail.jsp";
 		
@@ -77,6 +81,17 @@ public class PhotodetailController {
 			model.addAttribute("page", page);
 		}
 		*/
+/*		String board_no = String.valueOf(board_idx);
+		Member_info member = (Member_info)session.getAttribute("user");
+		String cookiename = member.getMember_id()+board_no;
+		
+		Cookie c1 = new Cookie(cookiename,board_no);
+
+		c1.setMaxAge(60*60*60*24);
+		
+		response.addCookie(c1);
+		
+		 A*/
 		return view;
 
 	}

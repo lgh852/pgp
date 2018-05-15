@@ -16,9 +16,6 @@
 		JOIN
 		pgp.category_space s on s.category_idx = b.category_idx2 where
 		b.board_idx>240
-
-
-
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
@@ -27,9 +24,9 @@
 		</if>
 		order by b.board_like desc;
 	</select>
+	
 	<select id="photolistcnt" resultType="p.g.p.model.PhotoListmodel"
 		parameterType="p.g.p.model.PhotoListmodel">
-
 		SELECT
 		m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
 		FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
@@ -40,9 +37,6 @@
 		JOIN
 		pgp.category_space s on s.category_idx = b.category_idx2 where
 		b.board_idx>240
-
-
-
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
@@ -50,7 +44,9 @@
 			and category_space = #{space}
 		</if>
 		order by b.board_cnt desc;
+	
 	</select>
+	
 	<select id="photolist" resultType="p.g.p.model.PhotoListmodel"
 		parameterType="p.g.p.model.PhotoListmodel">
 
@@ -64,9 +60,6 @@
 		JOIN
 		pgp.category_space s on s.category_idx = b.category_idx2 where
 		b.board_idx>240
-
-
-
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
