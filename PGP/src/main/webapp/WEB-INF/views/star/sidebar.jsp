@@ -8,8 +8,8 @@
 	padding: 20px;
 	border: 4px solid #ddd;
 	position: absolute;
-	left: 100px;
-	top: 100px;
+	left: 500px;
+	top: 1000px;
 	background: #fff;
 }
 
@@ -17,8 +17,17 @@
 	cursor: pointer;
 }
 
-.scrapp {
-	overflow: hidden;
+#reportPopup {
+	padding: 20px;
+	border: 4px solid #ddd;
+	position: absolute;
+	left: 500 px;
+	top: 1200px;
+	background: #fff;
+}
+
+#reportPopup button {
+	cursor: pointer;
 }
 </style>
 
@@ -102,26 +111,6 @@ $(document).ready(function(){
 
 
 
-
-<div class="a" id="likeArea">
-
-	<button type="button" id="btnLike">
-		<img
-			src="${ isLiked == true? './img/heart.jpg' : './img/empty_heart.png' }"
-			id="like_img" height="50px" width="50px">
-	</button>
-
-	<span id="like_count">${like_count}</span>
-
-
-</div>
-
-
-
-<img src="<%=request.getContextPath()%>/resources/images/pp.png"
-	width="400px" height="300px">
-
-
 <%-- 	<c:if test="${isExistsLikeData}">
 		<span id="like" style="color:red;">o</span>
 		</c:if>
@@ -156,67 +145,84 @@ $(document).ready(function(){
 			</tr>
 		</c:forEach>
 	</table>
+</form>
+
+${likeck}${likeck}
+<!-- 사이드바  -->
+
+<div id="likeArea">
+
+		<c:if test="${likeck==null}">
+			<a style="position: absolute; right: 600px; top: 800px"
+				onclick="likeclick(1)"> 
+				<img class="heart1"
+				src="<%=request.getContextPath()%>/resources/images/heart1.png"
+				width="50px" height="50px"></a>
+		</c:if>
+		
+		<c:if test="${likeck!=null}">
+			<a style="position: absolute; right: 600px; top: 800px"
+				onclick="likeclick(1)"> 
+				<img class="heart1"
+				src="<%=request.getContextPath()%>/resources/images/heart2.jpg"
+				width="50px" height="50px"></a>
+		</c:if>
 
 
-
-	<!-- 사이드바  -->
-	<div>
-		<p class="text-left">
-			<button type="button" id="like"
-				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}'"
-				class="btn btn-primary" data-toggle="button" aria-pressed="false">
-				좋아요</button>
-		</p>
-
-		<p class="text-left">
-			<button type="button"
-				onclick="location.href='<%=request.getContextPath()%>/sidebar/mp_myComment?member_id=${member.member_id}'"
-				class="btn btn-primary" data-toggle="button" aria-pressed="false">
-				스크랩</button>
-		</p>
-
-		<p class="text-left">
-			<button type="button"
-				onclick="location.href='<%=request.getContextPath()%>/sidebar/sb_report?member_id=${member.member_id}'"
-				class="btn btn-primary" data-toggle="button" aria-pressed="false">
-				신고</button>
-		</p>
-
-		<!-- 아이디 불러올 자리  -->
-
-
-
-
-	</div>
-	
-	
-	
-	<div id="btnLike">
-	
-	<img src="<%=request.getContextPath()%>/resources/images/emptyheart.png" width="100px" height="100px">
-	
-	</div>
-	
-	
-	
-	
+	 
+	<input type="hidden" id="board_idx" value="${board_idx}"> 
+	<input type="hidden" id="member_idx" value="${member_idx}">
 	
 
-	<div id="scrap" class="scrapp">
 
-		<a href="#layerPopup">스크랩</a>
-		<div id="layerPopup">
-			<ul>
-				<li id="one" class="hot"><a href="#">스크랩북</a></li>
+</div>
 
-				<div id="newScrapButton">
-					<button href="#" id="showForm">폴더명 추가하기</button>
-				</div>
-				<form id="newScrapForm">
-					<input type="text" id="scrapFolderName"
-						placeholder="스크랩북 이름을 입력해줘잉" /> <input type="submit"
-						id="addButton" value="추가" />
-				</form>
-				<button type="button" id="close">닫기</button>
+
+
+<div id="scrap" class="scrapp">
+
+	<a href="#layerPopup">스크랩</a>
+	<div id="layerPopup">
+		<ul>
+			<li id="one" class="hot"><a href="#">스크랩북</a></li>
+		</ul>
+		<div id="newScrapButton">
+			<button href="#" id="showForm">폴더명 추가하기</button>
 		</div>
+		<form id="newScrapForm">
+			<input type="text" id="scrapFolderName" placeholder="스크랩북 이름을 입력해줘잉" />
+			<input type="submit" id="addButton" value="추가" />
+		</form>
+		<button type="button" id="close">닫기</button>
 	</div>
+</div>
+
+
+<div id="report">
+	<a href="#reportPopup">신고</a>
+	<div id="reportPopup">
+
+
+
+		<div class="report_reason">
+			<select class="reason" id="report_contents">
+				<option selected value="0">주제와 맞지 않음</option>
+				<option selected value="1">정보가 부정확함</option>
+				<option selected value="2">지나친 광고성 게시물</option>
+				<option selected value="3">도배 및 중복 게시물</option>
+				<option selected value="4">저작권 침해가 우려됨</option>
+				<option selected value="5">욕설/비방이 심함</option>
+				<option selected value="6">외설적인 게시물</option>
+			</select>
+		</div>
+
+		<button type="button" id="report_submit">신고당해랏</button>
+
+
+		<input type="hidden" id="storyboard_idx" value="${storyboard_idx}">
+		<input type="hidden" id="board_idx" value="${board_idx}"> <input
+			type="hidden" id="member_idx" value="${member_idx}">
+
+
+	</div>
+</div>

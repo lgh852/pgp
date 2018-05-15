@@ -14,7 +14,7 @@
 		LEFT JOIN
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
 		JOIN
-		pgp.category_space s on s.category_idx = b.category_idx2 where b.board_idx>240 order by board_idx desc;
+		pgp.category_space s on s.category_idx = b.category_idx2 order by board_idx desc;
         
         
 	</select>

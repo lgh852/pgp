@@ -124,7 +124,7 @@
                 <ul>
                     <li class="viewli" style="position: relative">
                         <a href="#">
-                            <div style="height: 280"><img src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" width="280" height="280">
+                            <div style="height : 280"><img src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" width="280" height="280">
 
                                 <div class="di2 fontcount"><img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_scrap} <img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_comment} <img src="html.css/25.jpg" width="37" height="37" class="m10right"><span id="likecnt${status.count}">${list.board_like}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수&nbsp;&nbsp;<span id="f">${list.board_cnt}</span></div>
 

@@ -141,7 +141,7 @@
 	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
-	
+	<script src="<%=request.getContextPath()%>/resources/js/sidebar.js"></script>
 	
 </body>
 </html>

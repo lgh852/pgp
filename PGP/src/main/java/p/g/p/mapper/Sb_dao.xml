@@ -3,4 +3,60 @@
 
 <mapper namespace="p.g.p.dao.Sb_dao">
 
+<insert id="reportboard" parameterType="p.g.p.model.report">
+
+INSERT INTO
+
+pgp.report(
+report_contents,
+board_idx,
+storyboard_idx,
+member_idx
+
+)
+VALUES(
+#{report_contents},
+#{board_idx},
+#{storyboard_idx},
+#{member_idx});
+
+
+</insert>
+
+<select id="selectlikeck" resultType="p.g.p.model.Like" parameterType="p.g.p.model.Like"> 
+
+SELECT * FROM pgp.like where member_idx = #{member_idx} and board_idx=#{baord_idx};
+
+</select>
+
+<select id="likeup" parameterType="p.g.p.model.Like">
+
+insert into pgp.like(member_idx,board_idx)
+values(#{member_idx},#{board_idx});
+
+
+</select>
+ 
+<update id="likeUpdateUP" parameterType="p.g.p.model.Like">
+
+update pgp.board
+set board_like=board_like+1
+where board_idx=#{board_idx};
+
+</update>
+
+<update id="likeUpdateDown" parameterType="p.g.p.model.Like">
+
+update pgp.board
+set board_like = board_like-1
+where board_idx = #{board_idx};
+
+</update>
+
+<delete id="deletelike" parameterType="p.g.p.model.Like">
+delete from pgp.like where like_idx = #{like_idx}
+</delete>
+ <select id="mypagelikeck" resultType="p.g.p.model.PhotoListmodel" parameterType="String">
+ select * from pgp.like where board_idx = #{board_idx}
+ </select>
 </mapper>
