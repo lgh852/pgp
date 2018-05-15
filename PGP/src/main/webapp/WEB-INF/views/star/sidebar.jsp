@@ -224,5 +224,7 @@ ${likeck}${likeck}
 			type="hidden" id="member_idx" value="${member_idx}">
 
 
+<!-- 올려지는지좀 보ㅑㅈ -->
+
 	</div>
 </div>
