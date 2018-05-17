@@ -23,6 +23,28 @@
 		margin: 0 auto;
 	}
 	</style>
+	<style>
+    .ds {
+        display: none;
+    }
+
+    .listli {
+        position: relative;
+        height: 36px;
+    }
+
+    .searchtiele {
+        position: absolute;
+        left: 60px;
+    }
+
+    .imgmenu {
+        position: absolute;
+        left: 7px;
+
+    }
+
+</style>
 </head>
 <body class="bg-light">
 
@@ -96,11 +118,44 @@
 
 
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+			<form method="post" action="<%=request.getContextPath()%>/board/boardserach" id="serachform" class="form-inline my-2 my-lg-0">
+    <div>
+
+
+        <div id="mainsearchmenu" class="form-control mr-sm-2" style="width: 200px; height: 36px; margin: 0 auto; position: relative" onclick="searchmenu()">
+            <img src="html.css/%EA%B3%B0.png" width="33px;" height="25px">
+            <span class="searchtiele">검색</span></div>
+        <ul id="searchlist" class="list-group " style="width: 200px; display: none;">
+            <li class="list-group-item listli" style="position: relative">
+                <div style="position: absolute;bottom: 3px;" onclick="choicesearch(1)"><img src="html.css/%EA%B3%B0.png" width="33px;" height="25px"><span id="srtitle1">사진 검색</span></div>
+            </li>
+            <li class="list-group-item listli" style="position: relative">
+                <div style="position: absolute;bottom: 3px;" onclick="choicesearch(2)"><img src="html.css/%EA%B3%B0.png" width="33px;" height="25px"><span id="srtitle2">작성자 검색</span></div>
+            </li>
+            <li class="list-group-item listli" style="position: relative">
+                <div style="position: absolute;bottom: 3px;" onclick="choicesearch(3)"><img src="html.css/%EA%B3%B0.png" width="33px;" height="25px"><span id="srtitle3">제목 검색</span></div>
+            </li>
+            <li class="list-group-item listli" style="position: relative">
+                <div style="position: absolute;bottom: 3px;" onclick="choicesearch(4)"><img src="html.css/%EA%B3%B0.png" width="33px;" height="25px"><span id="srtitle4">내용 검색</span></div>
+            </li>
+            <li class="list-group-item listli" style="position: relative">
+                <div style="position: absolute;bottom: 3px;" onclick="choicesearch(5)"><img src="html.css/%EA%B3%B0.png" width="33px;" height="25px"><span id="srtitle5"> 전체 검색</span></div>
+            </li>
+            
+        </ul>
+        <div id= "serachs"style="display: none">
+            <img src="html.css/%EA%B3%B0.png" width="38px;" height="32px" onclick="searchmenu()"><input id="inputserach"class="form-control mr-sm-2" type="text" name="search" placeholder="" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input type="hidden" name="choice" id="sear">;
+        <input type="hidden" name="Alignment" value="board_idx">
+        <input type="hidden" name="room">
+        <input type="hidden" name="space">
+  
+        </div>
+
+    </div>
+</form>
+
 		</div>
 	</nav>
 
@@ -117,7 +172,7 @@
 	</div>
 
 	<main role="main" class="container">
-	
+		
 	<jsp:include page="${page}" />
 	
 	 </main>
@@ -132,8 +187,9 @@
 	<script src="<%=request.getContextPath()%>/resources/js/board1.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/sidebar.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/sidebar.js"></script>
 	
-	
+
+
 </body>
 </html>

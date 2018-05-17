@@ -13,7 +13,7 @@
 		LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
 		LEFT JOIN
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
-		JOIN
+		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
 		b.board_idx>240
 		<if test="!room.equals('')">
@@ -66,7 +66,10 @@
 		<if test="!space.equals('')">
 			and category_space = #{space}
 		</if>
-		order by b.board_idx desc;
+
+		order by board_idx desc;
+        
+
 	</select>
 	<insert id="likeUp" parameterType="p.g.p.model.Like">
 
@@ -104,7 +107,7 @@
 		board_like = board_like - 1
 
 		WHERE board_idx = #{board_idx};
-	</update>
+	</update>	
 	<delete id="deletelike" parameterType="p.g.p.model.Like">
 		delete from pgp.like where
 		like_idx = #{like_idx}
@@ -116,8 +119,7 @@
 		select board_idx from pgp.like where member_idx = #{member_idx};
 
 	</select>
-
-
+	
 
 
 </mapper>

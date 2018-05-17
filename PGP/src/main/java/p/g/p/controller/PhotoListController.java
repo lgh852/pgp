@@ -23,6 +23,9 @@ public class PhotoListController {
 	@RequestMapping("/photo/photoList")
 	public String photoList(Model model,HttpSession session,Like like,PhotoListmodel photolist) {
 		
+		System.out.println(like);
+		System.out.println(like);
+
 		String view = "home";
 		String page = "photo/photolist.jsp";
 		model.addAttribute("page",page);

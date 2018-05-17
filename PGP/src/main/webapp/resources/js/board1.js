@@ -1,3 +1,21 @@
+
+    function searchmenu() {
+           $('#serachs').hide();
+        $('#mainsearchmenu').hide();
+        $('#searchlist').show();
+        
+    }
+    function choicesearch(e){
+        var title = $('#srtitle'+e).text();
+       
+        $('#searchlist').hide();
+        $('#serachs').show();
+        $('#inputserach').attr("placeholder",title);
+        $('#sear').val(e);  
+    }
+
+
+
 $(document).ready(
 
 		function() {

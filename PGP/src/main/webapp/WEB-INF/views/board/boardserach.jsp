@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .size {
 	border: 1px solid black;
@@ -187,6 +185,9 @@
 					<c:when test="${Alignment =='board_like'}">
           			 좋아요
       	 	</c:when>
+      	 			<c:otherwise>
+     	  			최신순
+     	  			</c:otherwise>
 				</c:choose></span>
 
 		</div>
@@ -289,24 +290,23 @@
 
 		</div>
 	</div>
-
-	<div class="navside"></div>
+<div class="navside"></div>
 	<div class="navchoice" id="choicemenu">
 		<div class="choicebox">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=${room}&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=board_idx&room=${room}&space=${space}">
 				<h5>최신순</h5>
 			</a>
 		</div>
 		<div class="choicebox">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_cnt&room=${room}&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=board_cnt&room=${room}&space=${space}">
 				<h5>인기순</h5>
 			</a>
 		</div>
 		<div class="choicebox">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_like&room=${room}&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=board_like&room=${room}&space=${space}">
 				<h5>좋아요순</h5>
 			</a>
 		</div>
@@ -315,109 +315,109 @@
 	<div class="navchoice" id="choicemenuroom">
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=&space=${space}">
 				<h5>모든 공간</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=1&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=1&space=${space}">
 				<h5>원룸</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=2&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=2&space=${space}">
 				<h5>거실</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=3&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=3&space=${space}">
 				<h5>침실</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=4&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=4&space=${space}">
 				<h5>키친</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=5&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=5&space=${space}">
 				<h5>욕실</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=6&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=6&space=${space}">
 				<h5>아이방</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=7&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=7&space=${space}">
 				<h5>드레스룸</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=8&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=8&space=${space}">
 				<h5>서재&작업실</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=9&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=9&space=${space}">
 				<h5>침실</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=10&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=10&space=${space}">
 				<h5>베란다</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=11&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=11&space=${space}">
 				<h5>사무공간</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
-			< <a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=12&space=${space}">
+			<a
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=12&space=${space}">
 				<h5>상업공간</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=13&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=13&space=${space}">
 				<h5>가구&소품</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=14&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=14&space=${space}">
 				<h5>현관</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=15&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=15&space=${space}">
 				<h5>외관&기타</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=16&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=16&space=${space}">
 				<h5>복도</h5>
 			</a>
 		</div>
 		<div class="choiceboxroom">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=17&space=${space}">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=17&space=${space}">
 				<h5>제품후기</h5>
 			</a>
 		</div>
@@ -429,90 +429,110 @@
 	<div class="navchoice" id="choicemenuspace">
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=">
 				<h5>모든 평수</h5>
 			</a>
 		</div>
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=1">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=1">
 				<h5>10평 미만</h5>
 			</a>
 		</div>
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=2">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=2">
 				<h5>10평 </h5>
 			</a>
 		</div>
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=3">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=3">
 				<h5>20평대</h5>
 			</a>
 		</div>
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=4">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=4">
 				<h5>30평대</h5>
 			</a>
 		</div>
 		<div class="choiceboxspace">
 			<a
-				href="<%=request.getContextPath()%>/photo/photoList?Alignment=${Alignment}&room=${room}&space=5">
+				href="<%=request.getContextPath()%>/board/boardserach?search=${search}&choice=${choice}&Alignment=${Alignment}&room=${room}&space=5">
 				<h5>40평대 이상</h5>
 			</a>
 		</div>
 
 	</div>
 </div>
+	
 
-        <div class="censize">
+<div class="censize">
 
-            <c:forEach var="list" items="${list}" varStatus="status">
+	<c:forEach var="list" items="${list}" varStatus="status">
 
-                <ul>
-                    <li class="viewli" style="position: relative">
-                        <a href="#">
-                            <div style="height : 280"><img src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" width="280" height="280">
+		<ul>
+			<li class="viewli" style="position: relative"><a href="#">
+					<div style="height: 280">
+						<img
+							src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}"
+							width="280" height="280">
 
-                                <div class="di2 fontcount"><img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_scrap} <img src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_comment} <img src="html.css/25.jpg" width="37" height="37" class="m10right"><span id="likecnt${status.count}">${list.board_like}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수&nbsp;&nbsp;<span id="f">${list.board_cnt}</span></div>
+						<div class="di2 fontcount">
+							<img src="html.css/25.jpg" width="37" height="37"
+								class="m10right">${list.board_scrap} <img
+								src="html.css/25.jpg" width="37" height="37" class="m10right">${list.board_comment}
+							<img src="html.css/25.jpg" width="37" height="37"
+								class="m10right"><span id="likecnt${status.count}">${list.board_like}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수&nbsp;&nbsp;<span
+								id="f">${list.board_cnt}</span>
+						</div>
+							${list.board_title}
+					</div>
+			</a>
+				<div class="info">
 
-                            </div>
-                        </a>
-                        <div class="info">
 
+					<div class="overfl">
 
-                            <div class="overfl">
+						<a href="#" class="a1">
+							<div class="memebrinfo"
+								style="background-image:url('<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}');">
+								<div>
+									<p class="memid">${list.member_id}</p>
 
-                                <a href="#" class="a1">
-                                <div class="memebrinfo" style="background-image:url('<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}');">
-                                    <div>
-                                        <p class="memid">${list.member_id}</p>
-                                        
-                                    </div>
-                                </div>
-                                    </a>
+								</div>
+							</div>
+						</a> <a style="position: absolute; right: 5px; top: 3px;" href="#"
+							class="like"><img src="#" width="30px" height="30px"></a> <a
+							style="position: absolute; right: 5px; top: 3px;" href="#"
+							class="like"><img src="#" width="30px" height="30px"></a>
+						<c:if test="${list.likeck==null}">
+							<a style="position: absolute; right: 35px; top: 3px"
+								onclick="liclick(${status.count})"> <img
+								class="heart${status.count}"
+								src="<%=request.getContextPath()%>/resources/images/heart1.png"
+								width="30px" height="30px"></a>
+						</c:if>
+						<c:if test="${list.likeck!=null}">
+							<a style="position: absolute; right: 35px; top: 3px"
+								onclick="liclick(${status.count})"> <img
+								class="heart${status.count}"
+								src="<%=request.getContextPath()%>/resources/images/heart2.jpg"
+								width="30px" height="30px"></a>
+						</c:if>
+						<p>${list.board_contents}</p>
 
-                                <a style="position: absolute;right:5px;top:3px;" href="#" class="like"><img src="#" width="30px" height="30px"></a>
-                                <a style="position: absolute;right:5px;top:3px;" href="#" class="like"><img src="#" width="30px" height="30px"></a>
-                                <c:if test="${list.likeck==null}">
-                                    <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
-                                   <img class ="heart${status.count}" src="<%=request.getContextPath()%>/resources/images/heart1.png" width="30px" height="30px"></a></c:if>
-                                <c:if test="${list.likeck!=null}">
-                                    <a style="position: absolute;right: 35px; top:3px" onclick="liclick(${status.count})">
-                                   <img class ="heart${status.count}" src="<%=request.getContextPath()%>/resources/images/heart2.jpg" width="30px" height="30px"></a></c:if>
-                                <p>${list.board_contents}</p>
+					</div>
+				</div></li>
+		</ul>
+		<ul>
+			<li class="ss"><input type="hidden"
+				class="likech${status.count}" value="${list.like_check}"></li>
 
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="ss"><input type="hidden" class="likech${status.count}" value="${list.like_check}"></li>
+			<li class="ss"><input type="hidden" class="bidx${status.count}"
+				value="${list.board_idx}"></li>
+		</ul>
 
-                    <li class="ss"><input type="hidden" class="bidx${status.count}" value="${list.board_idx}"></li>
-                </ul>
-
-            </c:forEach>
-        </div>
+	</c:forEach>
+</div>

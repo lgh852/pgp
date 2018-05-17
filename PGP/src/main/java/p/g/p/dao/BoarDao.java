@@ -6,6 +6,7 @@ import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
 import p.g.p.model.Category_Room;
 import p.g.p.model.Category_Space;
+import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Url_Tag;
 
 public interface BoarDao {
@@ -30,4 +31,6 @@ public interface BoarDao {
 	
 	public int tagdelete(Url_Tag tag);
 	
-}
+	public List<PhotoListmodel>boardsearch(PhotoListmodel listmodel);
+	
+	}

@@ -10,17 +10,22 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.BoarDao;
+import p.g.p.dao.PhotoleeDao;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
 import p.g.p.model.Category_Room;
 import p.g.p.model.Category_Space;
+import p.g.p.model.Like;
 import p.g.p.model.Member_info;
+import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Url_Tag;
 
 public class BoardService {
 
 	BoarDao dao;
-
+	PhotoleeDao photodao;
+	@Autowired
+	PhotoService service;
 	@Autowired
 	SqlSessionTemplate sessionTemplate;
 
@@ -173,31 +178,6 @@ public class BoardService {
 		dao = sessionTemplate.getMapper(BoarDao.class);
 		String tag_url =  dao.selectTagInfo(tag);
 
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-
-		System.out.println("확인!!!"+tag_url);
-		System.out.println("확인!!!"+tag_url);
-		
 		
 		if (tag_url!=null) {
 			return tag_url;
@@ -210,17 +190,7 @@ public class BoardService {
 	public String deletetag(Url_Tag tag) {
 	
 		dao = sessionTemplate.getMapper(BoarDao.class);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		System.out.println("이승기"+tag);
-		
+
 		int resultcnt = dao.tagdelete(tag);
 		String check ="";
 		
@@ -233,6 +203,36 @@ public class BoardService {
 		}
 		
 		return check;
+	}
+	
+	public List<PhotoListmodel> search(Like like,PhotoListmodel listmodel){
+		
+		dao = sessionTemplate.getMapper(BoarDao.class);
+		
+		List<PhotoListmodel> list = dao.boardsearch(listmodel);
+		System.out.println(list);
+		System.out.println(list);
+		System.out.println(list);
+		System.out.println(list);
+		System.out.println(list);
+		System.out.println(list);
+		if(list!=null) {
+				list = service.listlikeck(list, like);
+				System.out.println(list);
+				System.out.println(list);
+				System.out.println(list);
+				System.out.println(list);
+				System.out.println(list);
+				System.out.println(list);
+				
+				
+			}else {
+			list = null;	
+			}
+		
+		
+		
+		return list;
 	}
 
 }

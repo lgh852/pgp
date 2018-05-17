@@ -25,7 +25,7 @@
 		member_info.member_idx=board_comment.member_idx
 		where board_idx=#{board_idx}
 		order by
-		board_comment_regdate desc
+		board_comment_regdate desc;
 	</select>
 
 
