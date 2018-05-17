@@ -1,17 +1,18 @@
 $(document).ready(
 
-function() {
+		
+function likeclick(s) {
 
-	$('#btnLike').click(
-
-	function() {
-
-		var board_idx = $("#board_idx").val();
-		var member_id = $("#member_id").val();
+	var likcnts = $('#likecnt'+s).text();
+	var likecnt =parseInt(likcnts);
+	   
+	
+	   var board_idx = $("#board_idx").val();
+	   var member_id = $("#member_id").val();
 
 		$ajax({
 			type : 'GET',
-			url : '/p/like',
+			url : '/p/sidebar/like',
 			dataType : 'text',
 			data : {
 				board_idx : board_idx,
@@ -19,24 +20,34 @@ function() {
 			},
 
 			success : function(data) {
-
-				var like_img = '';
-
-				if (result.status == 404) {
-					like_img = "../resources/images/heart.jpg";
-				} else {
-					like_img = "../resources/images/emptyheart.png";
+				
+				if (data =='y') {
+					alert('좋아요!');
+					likecnt=likecnt+1;
+					$('#likecnt'+s).text(likecnt);
+				
+					$('.heart'+s).attr('src','/p/resources/images/heart2.jpg');
+				
+				} else if(data =='n') {
+					alert('좋취')
+					if(likecnt>0){
+						likecnt=likecnt-1;
+						$('#likecnt'+s).text(likecnt);	
+			
+						$('.heart'+s).attr('src','/p/resources/images/heart1.png');
+						
+					}
+					
+				}else{
+					alert('에러');
 				}
-
-				/*
-				 * if(result.status == 404){
-				 * $('img#like_iimg').attr('src','./img/empty_heart.png');
-				 * }else{ $('img#like_img').attr(;)
-				 */
+				
 			}
 
 		});
-	});
+		
+});
+	
 
 	$("#layerPopup").hide();
 
@@ -45,8 +56,9 @@ function() {
 		$("#scrap > a").blur();
 		$("#layerPopup").show();
 		$("#layerPopup a").focus();
-		return false;
+		/*return false;*/
 	});
+	
 	$("#layerPopup a").keydown(function(e) {
 		if (e.shiftKey && e.keyCode == 9) { // Shift + Tab 키를 의미합니다.
 			$("#scrap > a").focus();
@@ -56,10 +68,18 @@ function() {
 	});
 
 	$(function() {
+		
 		var $newScrapButton = $('#newScrapButton');
 		var $newScrapForm = $('#newScrapForm');
-		var $textInput = $('input:text');
-
+		
+		var $member_idx = $('#member_idx').val();
+ 		var $board_idx = $('#board_idx').val();
+		var $scrap_name = $('#newText').val();
+		
+		var $textInput = $('#newScrapForm input:text').val();
+		
+		alert($textInput);
+		
 		$newScrapButton.show();
 		$newScrapForm.hide();
 
@@ -79,6 +99,8 @@ function() {
 		$newScrapForm.on('submit', function(e) {
 			e.preventDefault();
 			var newText = $('input:text').val();
+			alert($newText);
+			
 			$('li:last').after('<li>' + '<a href ="#">' + newText + '</li>');
 
 			$newScrapForm.hide();
@@ -116,6 +138,7 @@ function() {
 				url : '/p/sidebar/sb_report',
 				dataType : 'text',
 				data : {
+<<<<<<< HEAD
 					board_idx : board_idx,
 					storyboard_idx : storyboard_idx,
 					member_idx : member_idx,
@@ -145,3 +168,39 @@ function() {
 	  
 	 
 });
+=======
+					
+					board_idx : board_idx,
+					storyboard_idx : storyboard_idx,
+					member_idx : member_idx,
+					report_contents : report_contents
+
+				},
+			
+				success : function(data) {
+				
+			
+				
+				if(data=='y'){
+					//실행
+					
+					alert('성공');
+					
+					 /* $("#report > a").focus();
+				      $("#reportPopupform").submit();
+				      $("#reportPopup").hide();*/
+					
+				}else{alert('실패');}
+				} 
+	  });
+	  
+	  });
+	
+	 
+		
+	  
+	 
+
+
+
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git

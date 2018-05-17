@@ -17,8 +17,17 @@
 	cursor: pointer;
 }
 
-.scrapp {
-	overflow: hidden;
+#reportPopup {
+	padding: 20px;
+	border: 4px solid #ddd;
+	position: absolute;
+	left: 500 px;
+	top: 1200px;
+	background: #fff;
+}
+
+#reportPopup button {
+	cursor: pointer;
 }
 
 #reportPopup {
@@ -115,26 +124,6 @@ $(document).ready(function(){
 
 
 
-
-<div class="a" id="likeArea">
-
-	<button type="button" id="btnLike">
-		<img
-			src="${ isLiked == true? './img/heart.jpg' : './img/empty_heart.png' }"
-			id="like_img" height="50px" width="50px">
-	</button>
-
-	<span id="like_count">${like_count}</span>
-
-
-</div>
-
-
-
-<img src="<%=request.getContextPath()%>/resources/images/pp.png"
-	width="400px" height="300px">
-
-
 <%-- 	<c:if test="${isExistsLikeData}">
 		<span id="like" style="color:red;">o</span>
 		</c:if>
@@ -170,8 +159,33 @@ $(document).ready(function(){
 		</c:forEach>
 	</table>
 </form>
+<<<<<<< HEAD
+=======
+
+${likeck}${likeck}
+<!-- 사이드바  -->
+
+<div id="likeArea">
+
+		<c:if test="${likeck==null}">
+			<a style="position: absolute; right: 600px; top: 800px"
+				onclick="likeclick(1)"> 
+				<img class="heart1"
+				src="<%=request.getContextPath()%>/resources/images/heart1.png"
+				width="50px" height="50px"></a>
+		</c:if>
+		
+		<c:if test="${likeck!=null}">
+			<a style="position: absolute; right: 600px; top: 800px"
+				onclick="likeclick(1)"> 
+				<img class="heart1"
+				src="<%=request.getContextPath()%>/resources/images/heart2.jpg"
+				width="50px" height="50px"></a>
+		</c:if>
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
 
 
+<<<<<<< HEAD
 <!-- 사이드바  -->
 
 <div id="like">
@@ -179,11 +193,22 @@ $(document).ready(function(){
 
 
 
+=======
+	 
+	<input type="hidden" id="board_idx" value="${board_idx}"> 
+	<input type="hidden" id="member_idx" value="${member_idx}">
+	
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
+
+
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
 
 
 
-
-
+<<<<<<< HEAD
 
 
 
@@ -198,6 +223,8 @@ $(document).ready(function(){
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
 <div id="scrap" class="scrapp">
 
 	<a href="#layerPopup">스크랩</a>
@@ -239,9 +266,17 @@ $(document).ready(function(){
 
 
 		<input type="hidden" id="storyboard_idx" value="${storyboard_idx}">
+<<<<<<< HEAD
 		<input type="hidden" id="board_idx" value="${board_idx}">
 		<input type="hidden" id="member_idx" value="${member_idx}"> 
 
+=======
+		<input type="hidden" id="board_idx" value="${board_idx}"> <input
+			type="hidden" id="member_idx" value="${member_idx}">
+
+
+<!-- 올려지는지좀 보ㅑㅈ -->
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
 
 	</div>
 </div>

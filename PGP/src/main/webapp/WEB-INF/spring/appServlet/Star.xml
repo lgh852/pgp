@@ -10,6 +10,7 @@
    	
    <beans:bean id="navershopping" class="p.g.p.service.NaverShoppingService"/>
    
+<<<<<<< HEAD
    <!-- 사이드바 Sb_like_service 빈 -->
 	<beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
 	
@@ -17,4 +18,15 @@
 	<beans:bean id="Sb_report_service" class="p.g.p.service.Sb_report_service"/>
    
    
+=======
+    <!-- 사이드바 Sb_like_service 빈 -->
+	<beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
+	
+	<!-- 사이드바 Sb_report_service 빈 -->
+	<beans:bean id="Sb_report_service" class="p.g.p.service.Sb_report_service"/>
+	
+	<!-- likeService -->
+	<beans:bean id="likeService" class="p.g.p.service.likeService"/>
+	
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
    </beans:beans>

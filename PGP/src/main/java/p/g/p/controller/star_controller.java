@@ -1,11 +1,18 @@
 package p.g.p.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import p.g.p.model.PhotoListmodel;
+import p.g.p.service.likeService;
+
 @Controller
 public class star_controller {
+	
+	@Autowired
+	likeService service;
 
 	@RequestMapping("/star/sidebar")
 	public String mypage(Model model) {
@@ -23,6 +30,24 @@ public class star_controller {
 		model.addAttribute("board_idx",board_idx);
 		model.addAttribute("storyboard_idx",storyboard_idx);
 		model.addAttribute("member_idx",member_idx);
+<<<<<<< HEAD
+=======
+		
+		PhotoListmodel likeck = service.mypagelike(board_idx);
+		if(likeck ==null) {
+			
+		}else {
+			model.addAttribute("likeck",likeck);
+			
+		}
+		System.out.println(likeck);
+		System.out.println(likeck);
+		System.out.println(likeck);
+		System.out.println(likeck);
+		
+			
+		
+>>>>>>> branch 'master' of https://github.com/lgh852/pgp.git
 		return view;
 		
 		
