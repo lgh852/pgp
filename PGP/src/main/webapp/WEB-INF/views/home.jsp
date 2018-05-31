@@ -220,6 +220,7 @@
 	</nav>
 	<main role="main" class="container">
 	<div class="row" style="margin-top: 30px">
+	
 	<jsp:include page="${page}" />
 	
 	</div>

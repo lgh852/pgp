@@ -26,7 +26,7 @@
                                     <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimgPhotoName}"  id="imgtagbox" height="450px" alt="First slide">
                                     <div style="position: absolute;left: 20px;bottom: 30px; color: white">
                                         <h4>신혼집 꾸미기</h4>
-                                        <h1>피아노를 좋아하는 사람</h1>
+                                        <h1></h1>
 
                                         <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
                                     </div>
