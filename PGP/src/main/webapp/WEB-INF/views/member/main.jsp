@@ -7,7 +7,10 @@
 
 </script>
 
+<style>
 
+
+</style>
 
 
 
@@ -23,31 +26,32 @@
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimgPhotoName}"  id="imgtagbox" height="450px" alt="First slide">
-                                    <div style="position: absolute;left: 20px;bottom: 30px; color: white">
+                                  <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(0).board_idx}"style="color: white">  <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(0).photo_name}"  id="imgtagbox" height="450px" alt="First slide">
+                                    <div style="position: absolute;left: 20px;bottom: 30px;">
                                         <h4>신혼집 꾸미기</h4>
                                         <h1></h1>
 
                                         <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
                                     </div>
+                                    </a>
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimgPhotoName}"  id="imgtagbox" height="450px" alt="Second slide">
-                                    <div style="position: absolute;left: 20px;bottom: 30px; color: white">
+                                   <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(1).board_idx}" style="color: white"><img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(1).photo_name}"  id="imgtagbox" height="450px" alt="Second slide">
+                                    <div style="position: absolute;left: 20px;bottom: 30px;">
                                         <h4>신혼집 꾸미기</h4>
                                         <h1>피아노를 좋아하는 사람</h1>
 
                                         <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
-                                    </div>
+                                    </div></a>
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimgPhotoName}"  id="imgtagbox" height="450px" alt="Third slide">
-                                    <div style="position: absolute;left: 20px;bottom: 30px; color: white">
+                                   <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(2).board_idx}" style="color: white"> <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(2).photo_name}"  id="imgtagbox" height="450px" alt="Third slide">
+                                    <div style="position: absolute;left: 20px;bottom: 30px; ">
                                         <h4>신혼집 꾸미기</h4>
                                         <h1>피아노를 좋아하는 사람</h1>
 
                                         <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
                         </div>
@@ -94,13 +98,15 @@
             </aside>
             <!-- /.blog-sidebar -->
             <div class="card-group ">
-                <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/hos.PNG" alt="Card image cap">
+               
+               	<div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <a href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space="><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/hos.PNG" alt="Card image cap"></a>
                     <div class="card-body">
                         <h5 class="card-title">평수필터</h5>
                         <p class="card-text"><small class="text-muted">평수별로 집 구경</small></p>
                     </div>
                 </div>
-                <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/ar.PNG" alt="Card image cap">
+                
+                <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <a href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space="><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/ar.PNG" alt="Card image cap"></a>
                     <div class="card-body">
                         <h5 class="card-title">공간필터</h5>
                         <p class="card-text"><small class="text-muted">공간별로 사진보기</small></p>
