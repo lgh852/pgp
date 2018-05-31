@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   
+      
+   <beans:bean id="navershopping" class="p.g.p.service.NaverShoppingService"/>
+   
+    <!-- 사이드바 Sb_like_service 빈 -->
+   <beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
+   
+   <!-- 사이드바 Sb_report_service 빈 -->
+   <beans:bean id="Sb_report_service" class="p.g.p.service.Sb_report_service"/>
+   
+   <!-- likeService -->
+   <beans:bean id="likeService" class="p.g.p.service.likeService"/>
+   
+   <!--사이드바 Sb_scrap_service빈  -->
+   <beans:bean id="Sb_scrap_service" class="p.g.p.service.Sb_scrap_service"/>
+   
+   <beans:bean id="Mg_manage_service" class="p.g.p.service.Mg_manage_service"/>
+   
+   </beans:beans>

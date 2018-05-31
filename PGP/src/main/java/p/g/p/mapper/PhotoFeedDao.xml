@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.PhotoFeedDao">
+
+
+<select id="selectPhotoFeed" resultType="p.g.p.model.Board_Photo">
+select * from board_photo 
+</select>
+
+	<!-- 삭제 버튼 누를시 글 그림 삭제   -->
+	<delete id="boardCommentDelete">
+	  select * from board_comment where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardPhotoDelete">
+	select * from board_photo where board_idx=#{board_idx};
+	</delete>
+	
+	<delete id="boardDelete">
+	select * from board where board_idx=#{board_idx};
+	</delete>
+
+
+
+
+
+
+
+</mapper>

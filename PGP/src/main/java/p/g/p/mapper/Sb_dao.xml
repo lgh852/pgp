@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.Sb_dao">
+
+<insert id="reportboard" parameterType="p.g.p.model.report">
+
+INSERT INTO
+pgp.report(
+report_contents,
+board_idx,
+member_idx,
+storyboard_idx
+)
+VALUES(
+#{report_contents},
+#{board_idx},
+#{member_idx},
+#{storyboard_idx}
+);
+
+
+</insert>
+
+<select id="selectlikeck" resultType="p.g.p.model.Like" parameterType="p.g.p.model.Like"> 
+
+SELECT * FROM pgp.like where member_idx = #{member_idx} and board_idx=#{board_idx};
+
+</select>
+
+<insert id="likeup" parameterType="p.g.p.model.Like">
+
+insert into pgp.like(member_idx,board_idx)
+values(#{member_idx},#{board_idx});
+
+
+</insert>
+ 
+<update id="likeUpdateUP" parameterType="p.g.p.model.Board">
+
+update pgp.board
+set board_like=board_like+1
+where board_idx=#{board_idx};
+
+</update>
+
+<update id="likeupdateDown" parameterType="p.g.p.model.Board">
+
+update pgp.board
+set board_like = board_like-1
+where board_idx = #{board_idx};
+
+</update>
+
+<delete id="deletelike" parameterType="p.g.p.model.Like">
+
+delete from pgp.like where member_idx = #{member_idx} and board_idx=#{board_idx};
+
+</delete>
+
+
+<select id="mypagelikeck" resultType="p.g.p.model.PhotoListmodel" parameterType="String">
+ 
+ select * from pgp.like where board_idx = #{board_idx};
+ 
+ </select>
+ 
+ 
+ <select id="ScrapFolderNameList" parameterType="int" resultType="p.g.p.model.scrapFN">
+ 
+ select *
+ from pgp.scrapfn
+ where member_idx=#{member_idx};
+ 
+ </select>
+ 
+ <insert id="insertFolderName" parameterType="p.g.p.model.scrapFN" >
+ 
+INSERT INTO pgp.scrapfn
+(
+scrap_name,
+member_idx
+)
+VALUES(
+#{scrap_name},
+#{member_idx}
+);
+ 
+ </insert>
+ 
+ <select id="selectscrapck" resultType="p.g.p.model.Scrap" 
+ parameterType="p.g.p.model.Scrap">
+ 
+ select * from pgp.scrap where member_idx=#{member_idx} and
+ board_idx=#{board_idx};
+ 
+ </select>
+ 
+ <insert id="InsertScrap" parameterType="p.g.p.model.Scrap">
+ 
+ insert into pgp.scrap
+ (
+ board_idx,
+ member_idx
+ )
+ values(
+ #{board_idx},
+ #{member_idx}
+ );
+ 
+ </insert>
+ 
+ <delete id="deleteScrapName">
+ 
+ delete from pgp.scrapfn
+ where scrap_name=#{scrap_name};
+ 
+ </delete>
+ 
+ <update id="updateScrapName" parameterType="p.g.p.model.scrapFN">
+ 
+ update pgp.scrapfn
+ set scrap_name=#{scrap_name}
+ where scrapFN_idx=#{scrapFN_idx};
+ 
+ </update>
+ 
+ 
+<select id="selectIdx" parameterType="p.g.p.model.scrapFN" resultType="p.g.p.model.scrapFN">
+
+SELECT *
+FROM pgp.scrapfn
+where scrapfn.scrap_name=#{scrap_name};
+
+</select>
+
+<update id="scrapCntUp" parameterType="p.g.p.model.Board">
+
+update pgp.board set board_scrap = board_scrap +1
+where board_idx = #{board_idx};
+
+</update>
+
+<delete id="deleteScrap">
+
+delete from pgp.scrap where board_idx = #{board_idx} and member_idx = #{member_idx};
+
+</delete>
+
+<update id="scrapCntDown" parameterType="p.g.p.model.Board">
+
+update pgp.board set board_scrap = board_scrap -1
+where board_idx = #{board_idx};
+
+</update>
+
+<select id="getScrapIdx" parameterType="p.g.p.model.scrapFN" resultType="int">
+
+select * from pgp.scrapfn where scrap_name = #{scrap_name} and
+member_idx=#{member_idx};
+
+</select>
+
+<select id="selectBoardInfo" parameterType="p.g.p.model.Board" resultType="p.g.p.model.Board">
+
+select * from
+pgp.board
+where board_idx=#{board_idx};
+
+</select>
+
+
+
+ 
+</mapper>

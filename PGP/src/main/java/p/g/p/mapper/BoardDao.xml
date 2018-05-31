@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.BoarDao">
+
+
+
+	<insert id="roomisnert" parameterType="p.g.p.model.Category_Room"
+		useGeneratedKeys="true" keyProperty="category_idx">
+		INSERT INTO pgp.category_room
+		(category_room)VALUES(#{category_room});
+	</insert>
+
+	<insert id="spaceisnert" parameterType="p.g.p.model.Category_Space"
+		useGeneratedKeys="true" keyProperty="category_idx">
+
+		INSERT INTO
+		PGP.category_space(category_space)VALUES(#{category_space});
+	</insert>
+
+	<insert id="photoinsert" parameterType="p.g.p.model.Board_Photo">
+		INSERT INTO
+		PGP.board_photo(photo_name,board_idx)VALUE
+		(#{photo_name},#{board_idx});
+	</insert>
+
+	<insert id="Boardinsert" parameterType="p.g.p.model.Board"
+		useGeneratedKeys="true" keyProperty="board_idx">
+
+		INSERT INTO pgp.board
+		(board_title,
+		board_contents,
+		member_idx,
+		category_idx,
+		category_idx2)
+		VALUES
+		(#{board_title},#{board_contents},#{member_idx},#{category_idx},#{category_idx2});
+	</insert>
+
+
+	<select id="boardPhoto" resultType="p.g.p.model.Board_Photo">
+
+		SELECT * FROM PGP.BOARD_PHOTO
+		WHERE BOARD_IDX = #{board_idx}
+
+	</select>
+	<select id="photoselect" resultType="p.g.p.model.Board_Photo">
+
+		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
+
+	</select>
+	<select id="photoTagformselect" resultType="p.g.p.model.Board_Photo">
+
+		SELECT * FROM PGP.BOARD_PHOTO WHERE BOARD_IDX = #{board_idx}
+
+	</select>
+	<insert id="taginsert" parameterType="p.g.p.model.Url_Tag" useGeneratedKeys="true" keyProperty="tag_idx">
+		INSERT INTO PGP.url_tag
+		(tag_url,tag_position_y,tag_position_x,board_idx,tag_url_img,tag_url_price,tag_url_title)
+		VALUES
+		(#{tag_url},#{tag_position_y},#{tag_position_x},#{board_idx},#{tag_url_img},#{tag_url_price},#{tag_url_title});
+	</insert>
+
+	<select id="tagnocount" resultType="int" parameterType="p.g.p.model.Url_Tag">
+
+		select count(*) from pgp.url_tag where board_idx = #{board_idx}
+	</select>
+
+	<select id="selectTagInfo" resultType="String" parameterType="p.g.p.model.Url_Tag">
+
+		SELECT tag_url FROM pgp.url_tag where board_idx = #{board_idx} and tag_idx = #{tag_idx};
+		
+	</select>
+
+	<delete id="tagdelete" parameterType="p.g.p.model.Url_Tag">
+	
+		delete from pgp.url_tag where tag_idx = #{tag_idx} and board_idx = #{board_idx};
+
+	</delete>
+	<select id="boardsearch" resultType="p.g.p.model.PhotoListmodel"
+		parameterType="p.g.p.model.PhotoListmodel">
+
+		<if test='choice !=null and choice.equals("1")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room
+			r on r.category_idx = b.category_idx LEFT
+			JOIN pgp.category_space s on
+			s.category_idx
+			= b.category_idx2 where
+			b.board_idx>1 and photo_name LIKE
+			CONCAT('%',#{search},'%')
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order by
+			board_idx;
+		</if>
+
+		<if test='choice !=null and choice.equals("2")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and member_id like CONCAT('%',#{search},'%')
+			<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_idx;
+		</if>
+		<if test='choice !=null and choice.equals("3")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_title like CONCAT('%',#{search},'%') 
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_idx;
+		</if>
+		<if test='choice !=null and choice.equals("4")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_contents like CONCAT('%',#{search},'%')
+			
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order
+			by board_idx;
+		
+		</if>
+		
+		<if test='choice !=null and choice.equals("5")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and photo_name LIKE
+			CONCAT('%',#{search},'%') or
+			member_id like CONCAT('%',#{search},'%') or board_title like
+			CONCAT('%',#{search},'%') or board_contents like
+			CONCAT('%',#{search},'%') 
+		
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by board_idx;
+		</if>
+
+
+
+	</select>
+	
+	
+	<select id="boardsearchcnt" resultType="p.g.p.model.PhotoListmodel"
+		parameterType="p.g.p.model.PhotoListmodel">
+
+		<if test='choice !=null and choice.equals("1")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room
+			r on r.category_idx = b.category_idx LEFT
+			JOIN pgp.category_space s on
+			s.category_idx
+			= b.category_idx2 where
+			b.board_idx>1 and photo_name LIKE
+			CONCAT('%',#{search},'%')
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order by
+			board_cnt;
+		</if>
+
+		<if test='choice !=null and choice.equals("2")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and member_id like CONCAT('%',#{search},'%') 
+			<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_cnt;
+		</if>
+		<if test='choice !=null and choice.equals("3")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_title like CONCAT('%',#{search},'%') 
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_cnt;
+		</if>
+		<if test='choice !=null and choice.equals("4")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_contents like CONCAT('%',#{search},'%')
+			
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order
+			by board_cnt;
+		
+		</if>
+		
+		<if test='choice !=null and choice.equals("5")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and photo_name LIKE
+			CONCAT('%',#{search},'%') or
+			member_id like CONCAT('%',#{search},'%') or board_title like
+			CONCAT('%',#{search},'%') or board_contents like
+			CONCAT('%',#{search},'%') 
+		
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by board_cnt;
+		</if>
+
+
+	</select>
+	
+<select id="boardsearchlike" resultType="p.g.p.model.PhotoListmodel"
+		parameterType="p.g.p.model.PhotoListmodel">
+
+		<if test='choice !=null and choice.equals("1")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room
+			r on r.category_idx = b.category_idx LEFT
+			JOIN pgp.category_space s on
+			s.category_idx
+			= b.category_idx2 where
+			b.board_idx>1 and photo_name LIKE
+			CONCAT('%',#{search},'%')
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order by
+			board_like;
+		</if>
+
+		<if test='choice !=null and choice.equals("2")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and member_id like CONCAT('%',#{search},'%') 
+			<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_like;
+		</if>
+		<if test='choice !=null and choice.equals("3")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_title like CONCAT('%',#{search},'%') 
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by
+			board_like;
+		</if>
+		<if test='choice !=null and choice.equals("4")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and board_contents like CONCAT('%',#{search},'%')
+			
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		 order
+			by board_like;
+		
+		</if>
+		
+		<if test='choice !=null and choice.equals("5")'>
+			SELECT
+			m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+			FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
+			b.member_idx
+			LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
+			LEFT JOIN
+			pgp.category_room r on r.category_idx = b.category_idx LEFT
+			JOIN
+			pgp.category_space s on s.category_idx = b.category_idx2 where
+			b.board_idx>1
+			and photo_name LIKE
+			CONCAT('%',#{search},'%') or
+			member_id like CONCAT('%',#{search},'%') or board_title like
+			CONCAT('%',#{search},'%') or board_contents like
+			CONCAT('%',#{search},'%') 
+		
+		<if test="!room.equals('')">
+			and category_room = #{room}
+		</if>
+		
+		<if test="!space.equals('')">
+			and category_space = #{space}
+		</if>
+		order by board_like;
+		</if>
+
+
+
+	</select>
+</mapper>

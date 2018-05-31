@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.FurnitureRankDao">
+
+<!--  조회수 순 -->
+<select id="orderByBoardCnt" resultType="p.g.p.model.Url_Tag">
+select * from url_tag order by tag_url_cnt desc;
+</select>
+
+<!-- 높은 가격순 -->
+<select id="orderByPriceDesc" resultType="p.g.p.model.Url_Tag">
+SELECT * FROM url_tag order by tag_url_price DESC;
+</select>
+
+<!-- 낮은 가격ㄱ 순  -->
+<select id="orderByPriceAsc" resultType="p.g.p.model.Url_Tag">
+SELECT * FROM url_tag order by tag_url_price ASC;
+</select>  
+
+<!-- 등록일 순  -->
+<select id="orderByRegDate" resultType="p.g.p.model.Join_Board_UrlTag">
+select * from url_tag,board where url_tag.board_idx=board.board_idx order by board_regdate desc;
+</select>
+
+
+
+
+
+
+
+
+</mapper>
