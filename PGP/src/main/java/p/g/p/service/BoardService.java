@@ -80,6 +80,10 @@ public class BoardService {
 			Board board, HttpSession session) throws IllegalStateException, IOException {
 		int result = 0;
 		// 사진업로드
+		System.out.println(photo);
+		System.out.println(room);
+		System.out.println(space);
+		System.out.println(board);
 		if (room.getCategory_room()!=null) {
 			int resultroom = insertroom(room);
 			// idx 가져와서 넣어줌 key 값으로
