@@ -3,77 +3,7 @@ $(document)
 
             function() {
 
-               $('.heart1')
-                     .click(
-                           function() {
-
-                              var likcnts = $('#likecnt').text();
-                              var likecnt = parseInt(likcnts);
-
-                              var board_idx = $("#board_idx").val();
-                              var member_idx = $("#member_idx").val();
-
-                              alert(board_idx);
-                              alert(member_idx);
-                              alert(likecnt);
-
-                              $
-                                    .ajax({
-                                       type : 'GET',
-                                       url : '/p/sidebar/like',
-                                       dataType : 'text',
-                                       data : {
-                                          board_idx : board_idx,
-                                          member_idx : member_idx,
-                                          board_like : likecnt
-                                       },
-
-                                       success : function(data) {
-
-                                          alert('되냐?');
-
-                                          if (data == 'y') {
-                                             alert('좋아요!');
-
-                                             likecnt = likecnt + 1;
-                                             $('#likecnt').text(
-                                                   likecnt);
-
-                                             $('.heart1')
-                                                   .attr(
-                                                         'src',
-                                                         '/p/resources/images/heart2.jpg');
-
-                                          } else if (data == 'n') {
-
-                                             alert('좋취');
-
-                                             if (likecnt > 0) {
-
-                                                likecnt = likecnt - 1;
-
-                                                $('#likecnt')
-                                                      .text(
-                                                            likecnt);
-
-                                                alert('dd');
-
-                                                $('.heart1')
-                                                      .attr(
-                                                            'src',
-                                                            '/p/resources/images/heart1.png');
-
-                                             }
-
-                                          } else {
-                                             alert('에러');
-                                          }
-
-                                       }
-
-                                    });
-
-                           });
+              
 
                /* 스크랩기능 */
 
@@ -348,10 +278,7 @@ function likeClick() {
    var board_idx = $("#board_idx").val();
    var member_idx = $("#member_idx").val();
 
-   alert(board_idx);
-   alert(member_idx);
-   alert(likecnt);
-
+  
    $.ajax({
       type : 'GET',
       url : '/p/sidebar/like',

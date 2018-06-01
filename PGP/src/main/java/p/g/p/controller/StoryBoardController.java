@@ -45,20 +45,18 @@ public class StoryBoardController {
 		
 		like.setMember_idx(member_idx);
 								
+		
 		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like); // 스토리보드
-																												// 리스트
+		
+		// 리스트
 		if(listStory==null) {
 			System.out.println("안다");
 		}
 		
 		model.addAttribute("listStory", listStory);
-		/*
-		 * List<Join_MemberInfo_StoryBoard> listStory =
-		 * storyboardservice.listLikeCk(member_storylist, like);
-		 * System.out.println(listStory + ">D>S>>D>S>D>S>D>SD>DS");
-		 * model.addAttribute("listStory", listStory);
-		 */
+		
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
+		
 		model.addAttribute("listStroyComment", listStroyComment);
 
 		return view;

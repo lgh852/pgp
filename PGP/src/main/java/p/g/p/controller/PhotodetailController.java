@@ -47,11 +47,15 @@ public class PhotodetailController {
 
 		String view = "home";
 		String page = "photo/photodetail.jsp";
+		
+		
 		Member_info member = (Member_info)session.getAttribute("user");
 	     model.addAttribute("member", member);
 	     scrap.setMember_idx(member.getMember_idx());
 	     like.setMember_idx(member.getMember_idx());
-		
+
+	     
+	     
 		model.addAttribute("page", page);
 		int board_cnt_view = 0;
 		 

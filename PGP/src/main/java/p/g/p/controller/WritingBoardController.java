@@ -53,7 +53,7 @@ public class WritingBoardController {
 		space.setCategory_space(category_space);
 		room.setCategory_room(category_room);
 		int resultCnt = serviec.BoardAllService(request, photo, room, space, board, session);
-
+		System.out.println("sss");
 		if (resultCnt > 0) {
 			// 성공
 			page = "board/boardPhotoPage.jsp";

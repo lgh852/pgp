@@ -53,14 +53,14 @@ $(document).ready(function() {
                     });
 
 	$('.like').click(function() {
-		alert('클릭')
+		
 		var likeck = '';
 		likeck = $('.likeck').val();
 		 var ss = $(".a").eq(2).val();
-         alert('value='+ss)
+      
 		if (likeck == '') {
 			// 증가 문
-			alert('if')
+		
 			
 		} else {
 			// 감소
@@ -72,7 +72,9 @@ $(document).ready(function() {
 
 
 	function liclick(s) {
-		
+			
+		var logck  =$('#logck').val();
+		if(logck!=0){
 		var likcnts = $('#likecnt'+s).text();
 		var likecnt =parseInt(likcnts);
 	
@@ -89,14 +91,14 @@ $(document).ready(function() {
 				},
 				success : function(data) {
 					if (data =='y') {
-						alert('좋아요!');
+			
 						likecnt=likecnt+1;
 						$('#likecnt'+s).text(likecnt);
 					
 						$('.heart'+s).attr('src','/p/resources/images/heart2.jpg');
 					
 					} else if(data =='n') {
-						alert('좋취')
+				
 						if(likecnt>0){
 							likecnt=likecnt-1;
 							$('#likecnt'+s).text(likecnt);	
@@ -111,6 +113,9 @@ $(document).ready(function() {
 
 				}
 			});
+		}else{
+			alert('로그인후 이용 부탁드립니다')
+		}
 		 
 		 
 		 

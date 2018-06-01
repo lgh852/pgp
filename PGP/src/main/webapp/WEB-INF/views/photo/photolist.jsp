@@ -42,7 +42,7 @@
     <div class="col-sm">
    <button class="btn dropdown-toggle" style="background-color: white;width: 150px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
      <p>공간</p>
-      <span style="text-align: center; color: blue;">
+      <span style="text-align: center; color: black; font-weight: 300px;">
          <c:choose>
          <c:when test="${room=='1'}">
                     원룸
@@ -181,7 +181,8 @@
     <div class="col-sm">
      <button class="btn dropdown-toggle" style="background-color: white;width: 150px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <p>평수</p>
-   <span style="text-align: center; color: blue;"> <c:choose>
+   <span style="text-align: center; color: black;"> <c:choose>
+               
                <c:when test="${space=='1'}">
                     10평 미만
                 </c:when>
@@ -238,16 +239,17 @@
         <!-- /.row -->
 <div>
 <div class="row" >
+<input type="hidden" value="">
         <c:forEach var="list" items="${list}" varStatus="status">
-    <div class="col-md-3 border" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="Card image cap">
+    <div class="col-md-3 border" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
        
 	<div class="row">
-  <div class="col-8"><img src="heart2.jpg" height="15px" alt="..." class="rounded"><span> ${list.board_scrap}</span><img src="heart2.jpg" height="15px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="heart2.jpg" height="15px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
+  <div class="col-8"><img src="<%=request.getContextPath()%>/resources/images/scrap.png" height="20px" alt="..." class="rounded"><span> ${list.board_scrap}</span><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="20px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="<%=request.getContextPath()%>/resources/images/mesage.png" height="20px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
   <div class="col-4"><small>조회수</small><span id="f">${list.board_cnt}</span></div>
         </div></div></a>
         
-  <div class="card-body" style="height: 150px ;">
+  <div class="card-body" style="width:300px;height: 150px ;">
    <div class="row no-gutters">
        
   <div class="col-12 col-sm-6 col-md-8">
@@ -255,19 +257,28 @@
   <h5 class="card-title"><img src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}" height="25px" alt="..." class="rounded-circle"><small> ${list.member_id}</small>
    </h5></div>
   
-  <div class="col-6 col-md-4"> <c:if test="${list.likeck==null}"> 
-     <a onclick="liclick(${status.count})"><img src="<%=request.getContextPath()%>/resources/images/heart1.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
-         
-         </c:if>
+  <div class="col-6 col-md-4" style="height: 35px;">
+   <c:if test="${list.likeck==null}"> 
+             
+      <a onclick="liclick(${status.count})">
+      
+
+      <img src="<%=request.getContextPath()%>/resources/images/heart.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
      
-     
+     </c:if>
      
      <c:if test="${list.likeck!=null}">
-                        
+                  
          
-      <a onclick="liclick(${status.count})"><img src="<%=request.getContextPath()%>/resources/images/heart2.jpg" height="25px" alt="..." class="rounded heart${status.count}"></a>
+      <a onclick="liclick(${status.count})">
+   
+        <img src="<%=request.getContextPath()%>/resources/images/heart2.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
+   
+     </c:if>
+      
      
-     </c:if><img src="heart2.jpg"height="25px"  alt="..." class="rounded"></div>
+     
+     <img src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded"></div>
 </div>
     <p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
   </div>

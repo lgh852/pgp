@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import p.g.p.dao.PhotoleeDao;
 import p.g.p.model.Like;
+import p.g.p.model.Member_info;
 import p.g.p.model.PhotoListmodel;
 
 @Controller
@@ -18,21 +19,29 @@ public class PhotoService {
    @Autowired
    SqlSessionTemplate sessionTemplate;
 
-   public List<PhotoListmodel> photolistview(Like like, PhotoListmodel photolist) {
+   public List<PhotoListmodel> photolistview(Like like, PhotoListmodel photolist,Member_info member) {
 
       dao = sessionTemplate.getMapper(PhotoleeDao.class);
       List<PhotoListmodel> list;
+      
       if (photolist.getAlignment().equals("board_cnt")) {
          // cnt꺼 실행
          list = dao.photolistcnt(photolist);
+         
       } else if (photolist.getAlignment().equals("board_like")) {
          // like 실행
          list = dao.photolistlike(photolist);
+         
       } else {
          // 일반 정렬
+    	  System.out.println("체크");
+    	  
          list = dao.photolist(photolist);
+         
       }
-
+      
+      if(member!=null) {
+    	  
       list = listlikeck(list, like);
 
       if (list != null) {
@@ -40,7 +49,11 @@ public class PhotoService {
       } else {
          list = null;
       }
+
+      }
+
       return list;
+      
    }
 
    public List<PhotoListmodel> listlikeck(List<PhotoListmodel> list, Like like) {
