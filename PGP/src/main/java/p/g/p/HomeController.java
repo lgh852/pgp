@@ -23,7 +23,12 @@ public class HomeController {
 	public String home(Model model,HttpSession session) {
 	
 		String page ="member/main.jsp";
-		String maxcntimgPhotoName = service.mainimg();
+		List<Board_Photo> list = service.mainimg();
+		if(list.size()>0) {
+		
+		model.addAttribute("maxcntimg",list);
+		
+		}
 		
 		List<Board_Photo> latelylist = (List<Board_Photo>)session.getAttribute("latelylist");
 		if(latelylist!=null) {
@@ -33,7 +38,6 @@ public class HomeController {
 			}
 		}
 		model.addAttribute("page",page);
-		model.addAttribute("maxcntimgPhotoName",maxcntimgPhotoName);
 	
 		
 		return "home";

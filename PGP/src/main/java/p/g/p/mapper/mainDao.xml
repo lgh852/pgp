@@ -3,10 +3,8 @@
 
 <mapper namespace="p.g.p.dao.MainPageDao">
 
-	<select id="maxcntimg" resultType="String">
-		select photo_name from pgp.board_photo where board_idx = (select board_idx
-		from pgp.board where board_cnt=(select max(board_cnt) from
-		pgp.board));
+	<select id="maxcntimg" resultType="p.g.p.model.Board_Photo">
+		 select p.photo_name,b.board_idx from pgp.board_photo p join pgp.board b where b.board_idx = p.board_idx order by b.board_cnt desc Limit 3;
 	</select>
 
 </mapper>

@@ -1,10 +1,12 @@
 package p.g.p.service;
 
-import org.apache.log4j.chainsaw.Main;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.MainPageDao;
+import p.g.p.model.Board_Photo;
 
 public class MainPageService {
 
@@ -14,17 +16,17 @@ public class MainPageService {
 	SqlSessionTemplate sessionTemplate;
 	
 	
-	public String mainimg() {
+	public List<Board_Photo> mainimg() {
 		
 		dao= sessionTemplate.getMapper(MainPageDao.class);
-		String cntmaxfileName = dao.maxcntimg();
-		if(cntmaxfileName!=null) {
+		List<Board_Photo> list = dao.maxcntimg();
+		if(list!=null) {
 			//실행성공 
 		}else {
 			//실행 실패
-			cntmaxfileName = null;
+			list = null;
 		}
-		return cntmaxfileName;
+		return list;
 	}
 
 }
