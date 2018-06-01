@@ -15,7 +15,7 @@ import p.g.p.model.StoryBoard;
 public class BoardPhotoUpLoad {
 
 	public void fileupload(HttpServletRequest request,HttpSession session,Board_Photo photo) throws IllegalStateException, IOException {
-		String uploadURI = "/resources/memberphoto";
+		String uploadURI = "/resources/BoardPhoto";
 		String dir = request.getSession().getServletContext().getRealPath(uploadURI);
 
 
