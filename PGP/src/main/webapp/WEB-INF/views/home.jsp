@@ -32,7 +32,7 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/kakao.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/storylike1234.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/storylike554.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport666.js"></script>
 <script type="text/javascript"

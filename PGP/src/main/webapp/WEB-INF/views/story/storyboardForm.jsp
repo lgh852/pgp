@@ -35,60 +35,58 @@
 	</h2>
 	<p class="lead" style="TEXT-ALIGN: CENTER;">함께 소통해보세요</p>
 </div>
-<div class="jumbotron" style="width: 100%">
 
-
-	
-</div>
-<form action="<%=request.getContextPath()%>/story/storyboardForm"
+<div class="card" style="width: 100%; background-color: #e9ecef;">
+	<form action="<%=request.getContextPath()%>/story/storyboardForm"
 		method="post" enctype="multipart/form-data"
 		style="width: 100%; position: relative;" name="form1">
-	
-        <div class="col-6 col-md-4" style="width:100%"> 
-         <div class="input-group mb-3 inputsize margincen" >
-			<textarea rows="6px" cols="100%" name="storyboard_contents"
-				class="storyTextarea"
-				onclick="if(document.form1.incontent.value != '1'){ this.value=''; document.form1.incontent.value = '1'}">
-         사진과 글을 공유해보세요.
-      </textarea>
-			<input type="hidden" name="incontent">
-		</div> 
+
+		<div class="card-body">
+			<h5 class="card-title">느그집 Story</h5>
+			<div>
+				<textarea rows="8"
+					style="resize: none; width: 100%; border: 1px solid #0000002e;"
+					name="storyboard_contents" class="storyTextarea"
+					placeholder="사진과 글을 공유해보세요(200자까지)	" maxlength="200"></textarea>
+			</div>
 		</div>
-		
-		
-        <div class="col-6 col-md-4"style="width:100% ;height:200px;float:left">
-        <!--파일등록 -->
-				
-					<div class="custom-file" style="width: 200px; height: 38px;">
-						<input type="file" class="custom-file-input fileboxsize"
-							id="inputGroupFile02" name="FileName"> <label
-							class="custom-file-label" for="inputGroupFile02">찾아보기</label>
-					</div>
-			
-            <div class="imgcenterLine">
-					<div id="imgboxSave">
-						<img id="imgPre" alt="pic" src="" height="100px" width="100px"
-							style="margin: 0 auto;">
-					</div>
-				</div>
 
-           </div>
-          
-        <div class="col-6 col-md-4"style="width:100%">  
-        <input type="submit" value="등록"
-						class="btn btn-lg btn-success float-right" role="button">
-						</div>
-     
-  
 
-		
+		<img style="margin-left: 20px; background-color: #e9ecef;" src=""
+			alt="" width="20%" height="200px" class="img-thumbnail rounded "
+			id="imgPre">
 
+		<div class="card-body">
+			<div class="custom-file" style="width: 200px; height: 38px;">
+				<input type="file" class="custom-file-input fileboxsize"
+					id="inputGroupFile02" name="FileName"> <label
+					class="custom-file-label" for="inputGroupFile02">찾아보기</label>
+			</div>
+
+
+			<input type="submit" value="등록"
+				class="btn btn-lg btn-success float-right" role="button">
+		</div>
 
 	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <c:forEach var="listStory" items="${listStory}" varStatus="status">
-	<div class="row featurette">
+<hr class="featurette-divider" style="width: 100%">
+	<div class="row featurette" style="width: 100%;">
 
 		<div class="col-md-7" style="width: 100%">
 
@@ -116,6 +114,7 @@
 			<span class="text-muted"> Date: <fmt:formatDate
 					pattern="yyyy년 MM월 dd일 HH:mm:ss"
 					value="${listStory.storyboard_regdate}" /></span>
+
 			<p class="lead">${listStory.storyboard_contents}</p>
 
 		</div>
@@ -125,7 +124,7 @@
 		<div class="col-md-5">
 			<img class="featurette-image img-fluid mx-auto"
 				data-src="<%=request.getContextPath()%>/resources/StoryPhoto/${listStory.storyboard_photo}"
-				alt="" style="width: 240px; height: 240px;"
+				alt="" style="width: 100%;height: 240px;margin-top: 75px;"
 				src="<%=request.getContextPath()%>/resources/StoryPhoto/${listStory.storyboard_photo}"
 				data-holder-rendered="true">
 		</div>
@@ -143,7 +142,7 @@
 		<c:if test="${listStory.likeck==null}">
 			<a onclick="likestoryClick(${status.count})"> <img
 				class="storylike_heart${status.count}"
-				src="<%=request.getContextPath()%>/resources/images/heart1.png"
+				src="<%=request.getContextPath()%>/resources/images/heart.png"
 				width="24px" height="24px"> <c:if
 					test="${listStory.storyboard_like==0}">
 					<input type="hidden" value="${listStory.storyboard_like}"
@@ -162,7 +161,7 @@
 		<c:if test="${listStory.likeck!=null}">
 			<a onclick="likestoryClick(${status.count})"> <img
 				class="storylike_heart${status.count}"
-				src="<%=request.getContextPath()%>/resources/images/heart2.jpg"
+				src="<%=request.getContextPath()%>/resources/images/heart2.png"
 				width="24px" height="24px"> <c:if
 					test="${listStory.storyboard_like!=0}">
 					<input type="hidden" value="${listStory.storyboard_like}"
@@ -224,7 +223,7 @@
 
 
 
-	<hr class="featurette-divider" style="width: 100%">
+	
 
 	<!-- 신고 눌렀을때  -->
 	<div class="modal fade" id="reportBtn${status.count}" tabindex="-1"
