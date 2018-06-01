@@ -30,8 +30,17 @@ public class PhotoService {
          list = dao.photolistlike(photolist);
       } else {
          // 일반 정렬
+    	  System.out.println("체크");
+    	  
          list = dao.photolist(photolist);
+         
       }
+      System.out.println(list);
+
+      System.out.println(list);
+      System.out.println(list);
+      System.out.println(list);
+      System.out.println(list);
 
       list = listlikeck(list, like);
 
