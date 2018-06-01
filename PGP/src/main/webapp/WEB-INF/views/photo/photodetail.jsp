@@ -4,6 +4,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+                     <meta http-equiv="X-UA-Compatible" content=&qquot;IE=edge />
+                     <meta name="viewport"
+                        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+		                     <script type='text/javascript'>
+ 
+    Kakao.init('63e0d0643d065b515683b9455c2f97b9');
+    
+    Kakao.Story.createShareButton({
+      container: '#kakaostory-share-button',
+      url: '<%=request.getContextPath()%>/mypage/mp_main',
+      text: '카카오 개발자 사이트로 놀러오세요! #개발자 #카카오 :)'
+    });
+  
+</script>
+		
+	
+                     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        
 <!doctype html>
 <script>
 function tagsclick(e) {
@@ -259,25 +277,8 @@ ul.list-group {
 
                   <div id="share_method" class="ui-content-share"
                      style="margin-top: 15px;">
-
-                     <meta http-equiv="X-UA-Compatible" content=&qquot;IE=edge />
-                     <meta name="viewport"
-                        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-
-                     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-                     <script src="/js/kakaolink.js"></script>
+             <script src="/js/kakaolink.js"></script>
                      <div id="kakaostory-share-button"></div>
-                     <script type='text/javascript'>
- 
-    Kakao.init('63e0d0643d065b515683b9455c2f97b9');
-    
-    Kakao.Story.createShareButton({
-      container: '#kakaostory-share-button',
-      url: '<%=request.getContextPath()%>/mypage/mp_main',
-      text: '카카오 개발자 사이트로 놀러오세요! #개발자 #카카오 :)'
-    });
-  
-</script>
 
                      <!--여기에 공유버튼들 추가하면 된다-->
 

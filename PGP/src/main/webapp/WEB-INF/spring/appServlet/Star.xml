@@ -24,4 +24,6 @@
    
    <beans:bean id="Mg_manage_service" class="p.g.p.service.Mg_manage_service"/>
    
+   <beans:bean id="Mg_faq_service" class="p.g.p.service.Mg_faq_service"/>
+   
    </beans:beans>

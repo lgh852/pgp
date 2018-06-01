@@ -20,7 +20,7 @@
 
 	<p class="text-left">
 		<button type="button"
-			onclick="location.href='<%=request.getContextPath()%>/mypage/mp_myphoto?member_id=${member.member_id}'"
+			onclick="location.href='<%=request.getContextPath()%>/manager/faqlist'"
 			class="btn btn-primary" data-toggle="button" aria-pressed="false">
 			FAQ 리스트 확인할래</button>
 	</p>

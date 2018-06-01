@@ -112,7 +112,7 @@
                         <p class="card-text"><small class="text-muted">공간별로 사진보기</small></p>
                     </div>
                 </div>
-               <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/furniture.PNG" alt="Card image cap">
+               <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <a href="<%=request.getContextPath()%>/furniture/furnitureRank"><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/furniture.PNG" alt="Card image cap"></a>
                      <div class="card-body">
                         <h5 class="card-title">가구랭킹</h5>
                         <p class="card-text"><small class="text-muted">가구 정보</small></p>

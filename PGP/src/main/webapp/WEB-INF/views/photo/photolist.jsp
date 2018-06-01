@@ -239,6 +239,7 @@
         <!-- /.row -->
 <div>
 <div class="row" >
+<input type="hidden" value="">
         <c:forEach var="list" items="${list}" varStatus="status">
     <div class="col-md-3 border" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
@@ -256,19 +257,28 @@
   <h5 class="card-title"><img src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}" height="25px" alt="..." class="rounded-circle"><small> ${list.member_id}</small>
    </h5></div>
   
-  <div class="col-6 col-md-4" style="height: 35px;"> <c:if test="${list.likeck==null}"> 
-     <a onclick="liclick(${status.count})"><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
-         
-         </c:if>
+  <div class="col-6 col-md-4" style="height: 35px;">
+   <c:if test="${list.likeck==null}"> 
+             
+      <a onclick="liclick(${status.count})">
+      
+
+      <img src="<%=request.getContextPath()%>/resources/images/heart.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
      
-     
+     </c:if>
      
      <c:if test="${list.likeck!=null}">
-                        
+                  
          
-      <a onclick="liclick(${status.count})"><img src="<%=request.getContextPath()%>/resources/images/heart2.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
+      <a onclick="liclick(${status.count})">
+   
+        <img src="<%=request.getContextPath()%>/resources/images/heart2.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
+   
+     </c:if>
+      
      
-     </c:if><img src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded"></div>
+     
+     <img src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded"></div>
 </div>
     <p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
   </div>

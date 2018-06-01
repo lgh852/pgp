@@ -26,20 +26,29 @@ public class PhotoListController {
 		String page = "photo/photolist.jsp";
 		model.addAttribute("page",page);
 		Member_info member = (Member_info)session.getAttribute("user");
-		if(member!=null) {
-			like.setMember_idx(member.getMember_idx());
+		//1번 
+			
+			//Like 체크 를 위해 
+			
+		
+			
 			System.out.println(photolist);
-			List<PhotoListmodel> list = service.photolistview(like,photolist);
+			
+			
+			
+			List<PhotoListmodel> list = service.photolistview(like,photolist,member);
 
+			
 		model.addAttribute("list",list);
 		model.addAttribute("Alignment",photolist.getAlignment());	//1.최신순 2.인기순 ,3 좋아요순 1 ==default 값 
 		model.addAttribute("room",photolist.getRoom()); //romm 0==default 값 모든 공간 
 		model.addAttribute("space",photolist.getSpace());//space =="";
+		model.addAttribute("member",member);
+		
 
 		
-		model.addAttribute("list",list);
-		
-		}
+	
 		return view;
+	
 	}
 }
