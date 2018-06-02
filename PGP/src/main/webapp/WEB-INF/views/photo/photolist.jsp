@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="container">
   <div class="row" style="text-align: center;">
     <div class="col-sm" >
@@ -239,13 +239,13 @@
         <!-- /.row -->
 <div>
 <div class="row" >
-<input type="hidden" value="">
+
         <c:forEach var="list" items="${list}" varStatus="status">
     <div class="col-md-3 border" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
        
 	<div class="row">
-  <div class="col-8"><img src="<%=request.getContextPath()%>/resources/images/scrap.png" height="20px" alt="..." class="rounded"><span> ${list.board_scrap}</span><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="20px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="<%=request.getContextPath()%>/resources/images/mesage.png" height="20px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
+  <div class="col-8"><img src="<%=request.getContextPath()%>/resources/images/scrap.png" height="20px" alt="..." class="rounded"><span id="scrapCnts${status.count}">${list.board_scrap}</span><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="20px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="<%=request.getContextPath()%>/resources/images/mesage.png" height="20px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
   <div class="col-4"><small>조회수</small><span id="f">${list.board_cnt}</span></div>
         </div></div></a>
         
@@ -278,12 +278,93 @@
       
      
      
-     <img src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded"></div>
+    <a onclick="scrapPopups(${status.count})" ><img src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded"></a></div>
 </div>
     <p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
   </div>
           <input type="hidden" class="likech${status.count}" value="${list.like_check}">
-
             <input type="hidden" class="bidx${status.count}" value="${list.board_idx}">
+                       <input type="hidden" id="board_idx${status.count}" value="${list.board_idx}"> 
+                           <input type="hidden" id="member_idx${status.count}" value="${list.member_idx}">
+                       
 </div>
        </c:forEach>
+			<input type="text" id="logcks" value="${member}"> 
+			
+	       
+      
+                          <div id="scrap" class="scrapArea">
+                        
+                        
+
+                       
+                        <div id="scrapPopup">
+                           
+
+                           <div id="inputScrapFolder">
+
+                              <input type="text" id="scrapFolderName"
+                                 placeholder="스크랩북 이름을 입력해줘잉" />
+                              <button type="button" id="add">추가</button>
+                              <input
+                              type="hidden" id="member_idx" value="${member.member_idx}">
+
+                              <button type="button" id="close">닫기</button>
+
+                           </div>
+
+
+
+                           
+                        </div>
+                     </div>
+                     <button type="button" class="btn btn-primary" >
+
+</button>
+   
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Scrap Folder</h5> 
+      </div>
+      <div class="modal-body">
+       <ul class="list-group scrapList" id="scrapli">
+
+                              <c:forEach var="scrapNameList" items="${scrapNameList}"
+                                 varStatus="status">
+                                 <li>
+                                    <button type="button"
+                                       class="scrapSuccess${status.count} list-group-item list-group-item-action active"
+                                       onclick="scrapButton(${status.count})">${scrapNameList.scrap_name}</button>
+                                 </li>
+
+                              </c:forEach>
+                           </ul>
+      </div>
+      	<input type="hidden" id="board_idx">
+         <input type="hidden" id="scrapCnt">       
+         <input type="hidden" id="ck">                
+      <div class="modal-footer">
+    <div class="row">
+  <div class="col">
+  <input type="hidden" class="listnumber" value="${fn:length(scrapNameList)}"> 
+    
+  <input type="text" class="input-group-text scrapFolderName" style="width: 400px; margin-left:30px ; margin-bottom: 10px"
+                                 placeholder="Scrap Folder Name를 입력해주세요" />
+                                 </div>
+                                 
+  <div class="w-100"></div>
+ <div class="col-4"></div>
+  <div class="col-8"> <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 10px;">Close</button>
+        <button type="button" class="btn btn-primary add" >추가</button></div>
+   
+</div>
+       
+     
+       
+      </div>
+    </div>
+  </div>
+</div>
+                     

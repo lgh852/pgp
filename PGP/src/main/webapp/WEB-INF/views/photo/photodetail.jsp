@@ -7,7 +7,7 @@
                      <meta http-equiv="X-UA-Compatible" content=&qquot;IE=edge />
                      <meta name="viewport"
                         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-		                     <script type='text/javascript'>
+                           <script type='text/javascript'>
  
     Kakao.init('63e0d0643d065b515683b9455c2f97b9');
     
@@ -18,8 +18,8 @@
     });
   
 </script>
-		
-	
+      
+   
                      <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
         
 <!doctype html>
@@ -251,7 +251,7 @@ ul.list-group {
 
                               <input type="text" id="scrapFolderName"
                                  placeholder="스크랩북 이름을 입력해줘잉" />
-                              <button type="button" id="add">추가</button>
+                              <button type="button" class="add">추가</button>
                               <input
                               type="hidden" id="member_idx" value="${memberIdx}">
 
@@ -261,7 +261,7 @@ ul.list-group {
 
 
 
-                           <input type="hidden" id="listnumber"
+                           <input type="hidden" class="listnumber"
                               value="${fn:length(scrapNameList)}"> <input
                               type="hidden" id="board_idx" value="${boardIdx}"> <input
                               type="hidden" id="member_idx" value="${memberIdx}"> <input
@@ -544,7 +544,10 @@ function tagsclick(e) {
             <li class="list-inline-item"><a href="#">Support</a></li>
          </ul>
       </footer>
+      
+      
    </div>
+   
 
 
    <script>
@@ -571,4 +574,3 @@ function tagsclick(e) {
     </script>
 </body>
 </html>
-

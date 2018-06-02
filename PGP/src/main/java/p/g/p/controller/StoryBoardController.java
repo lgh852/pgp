@@ -41,12 +41,9 @@ public class StoryBoardController {
 		
 		Member_info member = (Member_info) session.getAttribute("user");
 		
-		int member_idx = member.getMember_idx();
-		
-		like.setMember_idx(member_idx);
 								
 		
-		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like); // 스토리보드
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
 		
 		// 리스트
 		if(listStory==null) {
@@ -69,17 +66,23 @@ public class StoryBoardController {
 		String page = "story/storyboardForm.jsp";
 		model.addAttribute("page", page);
 		Member_info member = (Member_info) session.getAttribute("user");
-		int member_idx = member.getMember_idx();
-		storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+	
+		if(member != null) {
+			int member_idx = member.getMember_idx();
+			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+		}else {
+			int member_idx = 0;
+			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+		}
+			
 		int resultStoryCnt = storyboardservice.insertStroyboard(storyboard); // 스토리보드값, 멤버idx저장
-
 		int photoMaxIDX = storyboardservice.selectPhotoMaxIDX();
 		photoup.storyfileupload(request, session, storyboard, photoMaxIDX); // 사진등록
 		storyboard.setStoryboard_idx(photoMaxIDX);
-
 		int resultStoryCnt2 = storyboardservice.updateStroyboard(storyboard); // update로 사진 등록
 
-		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like); // 스토리보드
+		
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like, member); // 스토리보드
 		// 리스트로 출력
 		model.addAttribute("listStory", listStory);
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트

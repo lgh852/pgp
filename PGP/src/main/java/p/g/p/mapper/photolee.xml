@@ -7,7 +7,7 @@
 	<select id="photolistlike" resultType="p.g.p.model.PhotoListmodel"
 		parameterType="p.g.p.model.PhotoListmodel">
 		SELECT
-		m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+		m.member_id,m.member_photo,m.member_idx,b.board_scrap,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
 		FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
 		b.member_idx
 		LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
@@ -15,7 +15,7 @@
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
 		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
-		b.board_idx>0
+		b.board_idx>230
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
@@ -28,15 +28,15 @@
 	<select id="photolistcnt" resultType="p.g.p.model.PhotoListmodel"
 		parameterType="p.g.p.model.PhotoListmodel">
 		SELECT
-		m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+		m.member_id,m.member_photo,m.member_idx,b.board_scrap,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
 		FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
 		b.member_idx
 		LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
 		LEFT JOIN
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
-		JOIN
+		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
-		b.board_idx>0
+		b.board_idx>230
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
@@ -49,17 +49,16 @@
 	
 	<select id="photolist" resultType="p.g.p.model.PhotoListmodel"
 		parameterType="p.g.p.model.PhotoListmodel">
-
-		SELECT
-		m.member_id,m.member_photo,m.member_idx,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
+SELECT
+		m.member_id,m.member_photo,m.member_idx,b.board_scrap,b.board_idx,b.board_title,b.board_contents,p.photo_name,m.member_photo,b.board_cnt,b.board_comment,b.board_like,b.board_scrap,b.board_regdate,b.category_idx,b.category_idx2,r.category_room,s.category_space
 		FROM pgp.member_info m LEFT JOIN pgp.board b ON m.member_idx =
 		b.member_idx
 		LEFT JOIN pgp.board_photo p ON p.board_idx = b.board_idx
 		LEFT JOIN
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
-		JOIN
+		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
-		b.board_idx>0
+		b.board_idx>230
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>

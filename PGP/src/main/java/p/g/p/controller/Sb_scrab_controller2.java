@@ -25,6 +25,24 @@ public class Sb_scrab_controller2 {
    public String sbScrapInsert(Scrap scrap,HttpSession session,Board board,scrapFN scrapfn) {
       
       Member_info member = (Member_info) session.getAttribute("user");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      System.out.println("asdasdasd");
+      
       scrap.setMember_idx(scrap.getMember_idx());
       String ck = "q";
       	System.out.println("1");
@@ -93,20 +111,27 @@ public class Sb_scrab_controller2 {
    @ResponseBody
    public String sbScrapCheck(Scrap scrap,HttpSession session,Board board) {
       Member_info member = (Member_info) session.getAttribute("user");
-      scrap.setMember_idx(scrap.getMember_idx());
+    
+
+    
       String ch = "q";
       
-   
       
       if(member!=null) {
          
          int member_idx = member.getMember_idx();
+         
          scrap.setMember_idx(member_idx);
          
          Scrap scrapck = service.scrapck(scrap);
+         System.out.println(scrapck);
+         
       
       if(scrapck==null) {
+    	  
          return ch="y";
+         
+         
       }else {
          int r = service.DeleteScrap(scrap);
          if(r>0) {
@@ -125,7 +150,7 @@ public class Sb_scrab_controller2 {
       }
          
       }
-      
+      System.out.println(ch);
       
       return ch;
    }

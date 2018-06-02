@@ -73,8 +73,9 @@ $(document).ready(function() {
 
 	function liclick(s) {
 			
-		var logck  =$('#logck').val();
-		if(logck!=0){
+		var logcks=$('#logcks').val();
+		alert(logcks);
+		if(logcks!=''){
 		var likcnts = $('#likecnt'+s).text();
 		var likecnt =parseInt(likcnts);
 	
@@ -95,15 +96,15 @@ $(document).ready(function() {
 						likecnt=likecnt+1;
 						$('#likecnt'+s).text(likecnt);
 					
-						$('.heart'+s).attr('src','/p/resources/images/heart2.jpg');
-					
+						$('.heart'+s).attr('src','/p/resources/images/heart2.png');
+						
 					} else if(data =='n') {
 				
 						if(likecnt>0){
 							likecnt=likecnt-1;
 							$('#likecnt'+s).text(likecnt);	
 				
-							$('.heart'+s).attr('src','/p/resources/images/heart1.png');
+							$('.heart'+s).attr('src','/p/resources/images/heart.png');
 							
 						}
 						

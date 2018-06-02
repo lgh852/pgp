@@ -11,6 +11,7 @@ import p.g.p.dao.StoryBoardDao;
 import p.g.p.model.Join_MemberInfo_StoryBoard;
 import p.g.p.model.Join_MemberInfo_StoryBoardComment;
 import p.g.p.model.Like;
+import p.g.p.model.Member_info;
 import p.g.p.model.StoryBoard;
 import p.g.p.model.StoryBoard_Comment;
 import p.g.p.model.report;
@@ -37,15 +38,21 @@ public class StoryBoardService {
 	
 	
 	// 글 리스트 출력
-		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like) {
+		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like,Member_info member) {
 			dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
-			System.out.println(like);
-			System.out.println(like);
-			System.out.println(like);
-			List<Like> likelist = selecting(like);
-			System.out.println(likelist);
-			System.out.println(likelist);
-			System.out.println(likelist);
+			List<Like> likelist;
+			if(member!=null) {
+
+				int member_idx = member.getMember_idx();
+				like.setMember_idx(member_idx);
+				 likelist = selecting(like);
+				
+			}else {
+				int member_idx = 0;
+				like.setMember_idx(member_idx);
+				 likelist = selecting(like);
+			}
+	
 			
 		
 			List<Join_MemberInfo_StoryBoard> listStory = dao.select_join_MemberInfo_StoryBoard();

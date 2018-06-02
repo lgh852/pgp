@@ -14,15 +14,15 @@ $(document)
                 * $("#scrap > a").blur(); $("#scrapPopup").show();
                 * $("#scrapPopup a").focus(); return false; });
                 */
-
-               $("#add")
+              
+               $(".add")
                      .click(
                            function() {
-
+                        	alert('')
                               var scrapFolderName = $(
-                                    "#scrapFolderName").val();
+                                    ".scrapFolderName").val();
                               
-                              var c = $("#listnumber").val();
+                              var c = $(".listnumber").val();
                               
                               var member_idx = $("#member_idx").val();
                               alert(member_idx);
@@ -50,17 +50,17 @@ $(document)
                                              alert(c);
 
                                              $('.scrapList')
-                                                   .append(
-                                                         "<li><span><button type='button' class='list-group-item list-group-item-action active' onclick='scrapButton(c)'>"
+                                             .append(
+                                                   "<li><span><button type='button' class='list-group-item list-group-item-action active' onclick='scrapButton(c)'>"
 
-                                                               + scrapFolderName
-                                                               + "</button></span></li>");
+                                                         + scrapFolderName
+                                                         + "</button></span></li>");
 
-                                             $(
-                                                   '.scrapSuccess'
-                                                         + c)
-                                                   .text(
-                                                         scrapFolderName);
+                                       $(
+                                             '.scrapSuccess'
+                                                   + c)
+                                             .text(
+                                                   scrapFolderName);
 
                                           } else {
                                              alert('실패ㅠㅠㅠㅠㅠㅠㅠ');
@@ -154,7 +154,13 @@ function scrapButton(s) {
    alert(scrap_name_choice);
    alert()
    var scrapcnts = $('#scrapCnt').text();
+   if(scrapcnts==null||scrapcnts==''){
+	   	alert('ads');
+	   	alert($('#scrapCnt').val());
+	   	scrapcnts = $('#scrapCnt').val();
+	   }
    var scrapcnt = parseInt(scrapcnts);
+   
 
    $.ajax({
 
@@ -180,6 +186,9 @@ function scrapButton(s) {
             alert('스크랩성공!!!');
             scrapcnt = scrapcnt + 1;
             $('.count').text(scrapcnt);
+            var ss = $('#ck').val()
+            $('#scrapCnts'+ss).text(scrapcnt);
+            //저장
             alert('카운트업');
             $('#scrapid').removeClass('btn btn-outline-info').addClass(
                   'btn btn-info');
@@ -190,7 +199,7 @@ function scrapButton(s) {
 
             alert('스크랩해제한다!');
             scrapcnt = scrapcnt - 1;
-
+            $('.count').text(scrapcnt);
             $('.count').text(scrapcnt);
 
          } else {
@@ -244,7 +253,9 @@ function scrapPopup() {
          alert('함수 들어오냐');
 
          if (data == 'y') {
-
+        	
+        	 //안했으면 show
+        	 
             $("#scrap > a").blur();
             $("#scrapPopup").show();
             $("#scrapPopup a").focus();
@@ -300,6 +311,7 @@ function likeClick() {
             likecnt = likecnt + 1;
 
             $('.countcount').text(likecnt);
+            $('#ck').text(likecnt);
 
             alert('좋아요수 카운트 업업!!!');
 
@@ -331,3 +343,65 @@ function likeClick() {
    });
 
 }
+
+
+
+function scrapPopups(e) {
+
+	   var board_idx = $("#board_idx"+e).val();
+	   var member_idx = $("#member_idx"+e).val();
+	   var scrapcnts = $('#scrapCnts'+e).text();
+
+	   var scrapcnt = parseInt(scrapcnts);
+
+
+
+	   $.ajax({
+
+	      type : 'GET',
+	      url : '/p/sidebar/scrapCheck',
+	      dataType : 'text',
+	      data : {
+	         board_idx : board_idx,
+	         member_idx : member_idx,
+	         board_scrap : scrapcnt
+	      },
+
+	      success : function(data) {
+
+	         alert('함수 들어오냐');
+	      	alert(data);
+	         if (data == 'y') {
+	       
+	        	 //안했으면 show
+	            $("#exampleModal").modal('show')  
+	            $('#board_idx').val(board_idx);
+	            $('#scrapCnt').val(scrapcnts);
+	         
+	         } else if (data == 'n') {
+
+	            alert('스크랩해제><');
+	            scrapcnt = scrapcnt - 1;
+	            $('#scrapCnts'+e).text(scrapcnt);
+	            $('#scrapCnt'+e).text(scrapcnt);
+	            $('#board_idx').val(board_idx);
+	            $('#scrapCnt').val(scrapcnts);
+	            $('#ck').val(e);
+	            
+	            //몇번찌인지 저장
+	            
+	            //처리해야댐
+	            $('#scrapid').removeClass('btn btn-info').addClass(
+	                  'btn btn-outline-info');
+
+	            alert('스크랩 버튼 바뀜');
+
+	         } else {
+
+	            alert('로그인후 이용해주세요');
+
+	         }
+
+	      }
+	   });
+	}

@@ -22,7 +22,6 @@
 <script>
 	$(document).ready(function() {
 
-		alert('ss');
 
 		var url = window.location.href;
 		var urlArr = url.split('access_token');

@@ -20,13 +20,9 @@ $(document)
 						x++;
 					}
 					var number = latelyck.length;
-					alert('size' + size);
-
 					size1 = size - 1;
 					size2 = size - 2;
 					size3 = size - 3;
-					alert('사이즈 체크' + latelyck.length);
-
 					if (latelyck.length == 0) {
 
 						$('#latelybox').css('display', 'none');
