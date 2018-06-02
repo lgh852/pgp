@@ -3,15 +3,25 @@
 <!DOCTYPE html>
 
 <script>
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=APPID";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
+$(document).ready(function(){
+	function createLoginKakao(){
+		 var login_btn = "<a id='custom-login-btn' href='http://developers.kakao.com/logout'>"+
+		                "<img src='<%=request.getContextPath()%>
+	/resources/images/kakao.png' width='250'/>"
+									+ "</a>";
+							document.getElementById('kakao_btn_changed').innerHTML = login_btn;
+						}
+					})
+			(
+					function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id))
+							return;
+						js = d.createElement(s);
+						js.id = id;
+						js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=APPID";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
 
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -94,19 +104,19 @@
 
 <hr class="featurette-divider" style="width: 100%">
 <body class="text-center">
-	<form class="form-signin" style="margin: auto;"action="<%=request.getContextPath()%>/member/loginform"
-	method="post">
+	<form class="form-signin" style="margin: auto;"
+		action="<%=request.getContextPath()%>/member/loginform" method="post">
 		<img class="mb-4"
 			src="<%=request.getContextPath()%>/resources/images/home.png" alt=""
 			width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
-			type="text" id="inputEmail" class="form-control"  name="member_id"
+			type="text" id="inputEmail" class="form-control" name="member_id"
 			placeholder="Email address" required="" autofocus=""
 			style="width: 300px;"> <label for="inputPassword"
 			class="sr-only">Password</label> <input type="password"
-			id="inputPassword" class="form-control" placeholder="Password" name="member_pw"
-			required="">
+			id="inputPassword" class="form-control" placeholder="Password"
+			name="member_pw" required="">
 		<div class="checkbox mb-3">
 			<label> <input type="checkbox" value="remember-me">
 				Remember me
@@ -122,69 +132,37 @@
 
 </body>
 
-	
+
 
 <div class="my-3 p-3 bg-white rounded box-shadow" style="margin: auto">
-        <h6 class="border-bottom border-gray pb-2 mb-0">다른 계정으로 연동하기</h6>
-        <div class="media text-muted pt-3">
-          <div id="naverIdLogin"></div>
-        </div>
-        <div class="media text-muted pt-3" >
-         <a id="kakao-login-btn"></a> <a
-			href="http://developers.kakao.com/logout"></a>
-         
-        </div>
-        <div class="media text-muted pt-3">
-        <div id="fb-root"></div> <a
-			href="javascript:void(0);" onclick="fbLoginAction();"
-			style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none">
-				<img src="<%=request.getContextPath()%>/resources/images/face.png"
-				width="300px" height="50px">
+	<h6 class="border-bottom border-gray pb-2 mb-0">다른 계정으로 연동하기</h6>
+	<div class="media text-muted pt-3">
+		<!--네이버  -->
+		<div id="naverIdLogin"></div>
+		<!--페이스북 -->
+		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
+		<a href="javascript:void(0);" onclick="fbLoginAction();"> <img
+			src="<%=request.getContextPath()%>/resources/images/facebook.png"
+			width="45px" height="45px"
+			style="margin-left: 5px; margin-right: 5px">
 		</a>
-          <!-- <img data-src="" alt="32x32" class="mr-2 rounded" src="" data-holder-rendered="true" style="width: 32px; height: 32px;">
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          </p> -->
-        </div>
-     
-      </div>
+		<!--카카오  -->
+		<%-- 	<img
+			src="<%=request.getContextPath()%>/resources/images/kakao.png"width="45px" height="45px"> --%>
+		<a id="kakao-login-btn"></a> <a
+			href="http://developers.kakao.com/logout"></a>
 
-
-<%-- <div class="card"style="width: 400px;-webkit-margin-end: 100px;margin-top: 200px;margin-bottom: 80px;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><a id="kakao-login-btn"></a> <a
-			href="http://developers.kakao.com/logout"></a></li>
-		<li class="list-group-item"><div id="naverIdLogin"></div></li>
-		<li class="list-group-item"><div id="fb-root"></div> <a
-			href="javascript:void(0);" onclick="fbLoginAction();"
-			style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none">
-				<img src="<%=request.getContextPath()%>/resources/images/face.png"
-				width="300px" height="50px">
-		</a></li>
-  </ul>
+	</div>
 </div>
- --%>
- 
- 
- 
- 
-<%-- 
-<div class="card"
-	style="width: 400px; -webkit-margin-end: 100px; margin-left:;">
-	<ul class="list-group list-group-flush">
-		<li class="list-group-item"><a id="kakao-login-btn"></a> <a
-			href="http://developers.kakao.com/logout"></a></li>
-		<li class="list-group-item"><div id="naverIdLogin"></div></li>
-		<li class="list-group-item"><div id="fb-root"></div> <a
-			href="javascript:void(0);" onclick="fbLoginAction();"
-			style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none">
-				<img src="<%=request.getContextPath()%>/resources/images/face.png"
-				width="300px" height="50px">
-		</a></li>
 
-	</ul>
-</div> --%>
+
+
+
+
+
+
+
+
 
 
 

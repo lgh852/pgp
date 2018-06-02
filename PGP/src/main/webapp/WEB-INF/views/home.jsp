@@ -30,7 +30,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/star3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/members.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/kakao.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storylike554.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport3.js"></script>
