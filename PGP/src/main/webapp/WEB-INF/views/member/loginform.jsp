@@ -3,25 +3,16 @@
 <!DOCTYPE html>
 
 <script>
-$(document).ready(function(){
-	function createLoginKakao(){
-		 var login_btn = "<a id='custom-login-btn' href='http://developers.kakao.com/logout'>"+
-		                "<img src='<%=request.getContextPath()%>
-	/resources/images/kakao.png' width='250'/>"
-									+ "</a>";
-							document.getElementById('kakao_btn_changed').innerHTML = login_btn;
-						}
-					})
-			(
-					function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id))
-							return;
-						js = d.createElement(s);
-						js.id = id;
-						js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=APPID";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id))
+			return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=APPID";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -143,16 +134,15 @@ $(document).ready(function(){
 		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
 		<a href="javascript:void(0);" onclick="fbLoginAction();"> <img
 			src="<%=request.getContextPath()%>/resources/images/facebook.png"
-			width="45px" height="45px"
-			style="margin-left: 5px; margin-right: 5px">
+			width="45px" height="45px" style="margin-left:5px;margin-right:5px">
 		</a>
 		<!--카카오  -->
 		<%-- 	<img
 			src="<%=request.getContextPath()%>/resources/images/kakao.png"width="45px" height="45px"> --%>
-		<a id="kakao-login-btn"></a> <a
+<a id="kakao-login-btn"></a> <a
 			href="http://developers.kakao.com/logout"></a>
 
-	</div>
+</div>
 </div>
 
 
