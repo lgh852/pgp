@@ -184,7 +184,7 @@ public class StoryBoardController {
 	       if(resultCnt>0) {
 	         //성공
 	      ck = "y";
-	      
+	      //ss
 	      }else {
 	         
 	         ck = "n";   
