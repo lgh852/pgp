@@ -41,46 +41,36 @@ public class StoryBoardService {
 		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like,Member_info member) {
 			dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
 			List<Like> likelist;
+			int member_idx;
 			if(member!=null) {
 
-				int member_idx = member.getMember_idx();
+				 member_idx = member.getMember_idx();
 				like.setMember_idx(member_idx);
 				 likelist = selecting(like);
 				
-			}else {
-				int member_idx = 0;
+			}else{
+				
+				 member_idx = 0;
 				like.setMember_idx(member_idx);
 				 likelist = selecting(like);
 			}
-	
-			
+		
 		
 			List<Join_MemberInfo_StoryBoard> listStory = dao.select_join_MemberInfo_StoryBoard();
 			
 			
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);	
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			
 			if(likelist.size()>0) {
 				
 			for (int i = 0; i < listStory.size(); i++) {
-				System.out.println("asdasdasd"+listStory);
-				System.out.println("asdasdasd"+listStory);
+		
 				int photoidx = listStory.get(i).getStoryboard_idx();
-				System.out.println("2번쨰 ㅇㄴㅁㅇㅁㅇㄴㅁㄴ");
+			
 				for (int x = 0; x < likelist.size(); x++) {
-					System.out.println("3번째ㅁㄴㅇㄴㅇㅁㅁㄴ");
+				
 					int listidx = likelist.get(x).getStoryboard_idx();
-					System.out.println("4번째 ");
+	
 					if (photoidx == listidx) {
-						System.out.println("5번째");
+
 						listStory.get(i).setLikeck("ss");
 					}
 				}

@@ -23,7 +23,45 @@
 	resize: none;
 }
 </style>
+<script>
+$(document).ready(function () {
+var seck = $('#seck').val();
+  
 
+  
+	   $('#storyreg').submit(function(){
+		  
+		   if(seck==''){
+			   alert('로그인후 이용부탁드립니다');
+				window.location = "/p/member/loginform";
+			   return false;		
+			} 
+       });
+	   $('#cmments').submit(function() {
+		
+		   if(seck==''){
+			   alert('로그인후 이용부탁드립니다');
+				window.location = "/p/member/loginform";
+			   return false;		
+			} 
+		   
+	});
+	   $('#inputGroupFile02').click(function(){
+		   if(seck==''){
+			   alert('로그인후 이용부탁드립니다');
+			   event.preventDefault();
+				window.location = "/p/member/loginform";
+			 		
+			} 
+	   });
+	  
+	   
+		   
+	   
+})
+</script>
+<!--로그인 여부 체크를 위한 -->
+<input type="hidden" id="seck" value="${seck}">
 
 <div class="py-5 text-center" style="width: 100%">
 	<img class="d-block mx-auto mb-4"
@@ -39,7 +77,7 @@
 <div class="card" style="width: 100%; background-color: #e9ecef;">
 	<form action="<%=request.getContextPath()%>/story/storyboardForm"
 		method="post" enctype="multipart/form-data"
-		style="width: 100%; position: relative;" name="form1">
+		style="width: 100%; position: relative;" id="storyreg" name="form1">
 
 		<div class="card-body">
 			<h5 class="card-title">느그집 Story</h5>
@@ -175,7 +213,7 @@
 	<hr class="featurette-divider" style="width: 100%">
 	<!-- 댓글 쓰기 기능  -->
 	<div style="width: 100%">
-		<form action="storyboardComment" method="post" class="card p-2">
+		<form action="storyboardComment" id="cmments" method="post" class="card p-2">
 			<div class="input-group">
 				<input name="storyboard_comment_contents" type="text"
 					class="form-control"

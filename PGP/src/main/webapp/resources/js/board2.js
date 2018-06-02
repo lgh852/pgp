@@ -80,9 +80,9 @@ $(document).ready(
 						var tag4 = $('#tag4').val();
 						var tag5 = $('#tag5').val();
 						if (cnt <6) {
-							alert('확인');
+					
 							if (tag1=='') {
-								alert('성공1');
+							
 								$('.serchbox').css({
 									"display" : 'none'
 								})
@@ -96,7 +96,7 @@ $(document).ready(
 								 
 								cnt= cnt+1;
 							} else if (tag2=='') {
-								alert('성공2');
+							
 								$('.serchbox').css({
 									"display" : 'none'
 								})
@@ -110,7 +110,7 @@ $(document).ready(
 								ch2 =$('#tag2').val();	
 								cnt= cnt+1;
 							} else if (tag3=='') {
-								alert('성공3');
+							
 								$('.serchbox').css({
 									"display" : 'none'
 								})
@@ -123,7 +123,7 @@ $(document).ready(
 								ch3 =$('#tag3').val();	
 								cnt= cnt+1;
 							} else if (tag4=='') {
-								alert('성공4');
+								
 								$('.serchbox').css({
 									"display" : 'none'
 								})
@@ -136,7 +136,7 @@ $(document).ready(
 								ch4 =$('#tag4').val();	
 								cnt= cnt+1;
 							} else if (tag5=='') {
-								alert('성공5');
+							
 								$('.serchbox').css({
 									"display" : 'none'
 								})
@@ -166,7 +166,7 @@ $(document).ready(
 			});
 			// 삭제 버튼 클릭시
 			$('.tagdelete').click(function() {
-				alert('ddd');
+			
 				var tag_nos = $('.tagno').val();
 				board_idxs = $("#hidden_board_idx").val()
 				alert(tag_nos);
@@ -190,31 +190,31 @@ $(document).ready(
 							$("#link").val('');
 							
 							if(ch1==tag_nos){
-								alert('ss');
+							
 								$('.check1').css({
 									"display" : 'none'
 								})
 								$('#tag1').val('');
 							}if(ch2==tag_nos){
-								alert('ss');
+								
 								$('.check2').css({
 									"display" : 'none'
 								})
 								$('#tag2').val('');
 							}if(ch3==tag_nos){
-								alert('ss');
+							
 								$('.check3').css({
 									"display" : 'none'
 								})
 								$('#tag3').val('');
 							}if(ch4==tag_nos){
-								alert('ss');
+								
 								$('.check4').css({
 									"display" : 'none'
 								})
 								$('#tag4').val('');
 							}if(ch5==tag_nos){
-								alert('ss');
+						
 								$('.check5').css({
 									"display" : 'none'
 								})
@@ -272,8 +272,7 @@ $(document).ready(
 
 				var tag2 = $('#tag2').val();
 				board_idxs = $("#hidden_board_idx").val();
-				alert('tag2' + tag2);
-				alert('board_idxs' + board_idxs);
+			
 				$('.taginfo').css({
 					"top" : '200px',
 					"left" : '200px'
@@ -306,8 +305,7 @@ $(document).ready(
 
 				var tag3 = $('#tag3').val();
 				board_idxs = $("#hidden_board_idx").val();
-				alert('tag3' + tag3);
-				alert('board_idxs' + board_idxs);
+			
 				$('.taginfo').css({
 					"top" : '200px',
 					"left" : '200px'
@@ -340,8 +338,7 @@ $(document).ready(
 
 				var tag4 = $('#tag4').val();
 				board_idxs = $("#hidden_board_idx").val();
-				alert('tag4' + tag4);
-				alert('board_idxs' + board_idxs);
+			
 				$('.taginfo').css({
 					"top" : '200px',
 					"left" : '200px'
@@ -374,8 +371,7 @@ $(document).ready(
 
 				var tag5 = $('#tag5').val();
 				board_idxs = $("#hidden_board_idx").val();
-				alert('tag5' + tag5);
-				alert('board_idxs' + board_idxs);
+				
 				$('.taginfo').css({
 					"top" : '200px',
 					"left" : '200px'
