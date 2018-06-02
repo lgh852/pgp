@@ -17,6 +17,9 @@ $(document).ready(
 
 		function() {
 
+			
+			//로그인 안햇을시 submit 되지 않게 
+	
 			var upload = $('#inputStoryFile')[0], imgbox = document
 					.getElementById('imgbox'), state = $('#inputStoryFile');
 

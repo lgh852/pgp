@@ -40,8 +40,41 @@ public class StoryBoardController {
 		model.addAttribute("page", page);
 		
 		Member_info member = (Member_info) session.getAttribute("user");
-		
-								
+		if(member==null) {
+			model.addAttribute("seck",null);
+		}else {
+			System.out.println(member);
+
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			model.addAttribute("seck",member);
+					
+		}
 		
 		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
 		
@@ -50,6 +83,8 @@ public class StoryBoardController {
 			System.out.println("안다");
 		}
 		
+
+
 		model.addAttribute("listStory", listStory);
 		
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
@@ -87,7 +122,7 @@ public class StoryBoardController {
 		model.addAttribute("listStory", listStory);
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
 		model.addAttribute("listStroyComment", listStroyComment);
-
+		
 		if (resultStoryCnt > 0 && resultStoryCnt2 > 0) {
 			page = "redirect:storyboardForm";
 		}

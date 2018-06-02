@@ -1,5 +1,10 @@
 function likestoryClick(e) {
 
+	
+	var seck = $('#seck').val();
+
+	if(seck !=''){
+	
 	var likecnts = $('.likecnt' + e).val();
 	var likecnt = parseInt(likecnts);
 
@@ -54,5 +59,7 @@ function likestoryClick(e) {
 		}
 
 	});
-
+	}else{
+		alert('로그인후 이용해주세요')
+	}
 }
