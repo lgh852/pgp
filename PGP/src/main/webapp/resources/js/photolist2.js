@@ -53,14 +53,14 @@ $(document).ready(function() {
                     });
 
 	$('.like').click(function() {
-		alert('클릭')
+		
 		var likeck = '';
 		likeck = $('.likeck').val();
 		 var ss = $(".a").eq(2).val();
-         alert('value='+ss)
+      
 		if (likeck == '') {
 			// 증가 문
-			alert('if')
+		
 			
 		} else {
 			// 감소
@@ -72,7 +72,10 @@ $(document).ready(function() {
 
 
 	function liclick(s) {
-		
+			
+		var logcks=$('#logcks').val();
+		alert(logcks);
+		if(logcks!=''){
 		var likcnts = $('#likecnt'+s).text();
 		var likecnt =parseInt(likcnts);
 	
@@ -89,19 +92,19 @@ $(document).ready(function() {
 				},
 				success : function(data) {
 					if (data =='y') {
-						alert('좋아요!');
+			
 						likecnt=likecnt+1;
 						$('#likecnt'+s).text(likecnt);
 					
-						$('.heart'+s).attr('src','/p/resources/images/heart2.jpg');
-					
+						$('.heart'+s).attr('src','/p/resources/images/heart2.png');
+						
 					} else if(data =='n') {
-						alert('좋취')
+				
 						if(likecnt>0){
 							likecnt=likecnt-1;
 							$('#likecnt'+s).text(likecnt);	
 				
-							$('.heart'+s).attr('src','/p/resources/images/heart1.png');
+							$('.heart'+s).attr('src','/p/resources/images/heart.png');
 							
 						}
 						
@@ -111,6 +114,9 @@ $(document).ready(function() {
 
 				}
 			});
+		}else{
+			alert('로그인후 이용 부탁드립니다')
+		}
 		 
 		 
 		 

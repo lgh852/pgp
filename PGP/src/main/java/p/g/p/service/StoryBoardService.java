@@ -11,6 +11,7 @@ import p.g.p.dao.StoryBoardDao;
 import p.g.p.model.Join_MemberInfo_StoryBoard;
 import p.g.p.model.Join_MemberInfo_StoryBoardComment;
 import p.g.p.model.Like;
+import p.g.p.model.Member_info;
 import p.g.p.model.StoryBoard;
 import p.g.p.model.StoryBoard_Comment;
 import p.g.p.model.report;
@@ -37,43 +38,39 @@ public class StoryBoardService {
 	
 	
 	// 글 리스트 출력
-		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like) {
+		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like,Member_info member) {
 			dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
-			System.out.println(like);
-			System.out.println(like);
-			System.out.println(like);
-			List<Like> likelist = selecting(like);
-			System.out.println(likelist);
-			System.out.println(likelist);
-			System.out.println(likelist);
-			
+			List<Like> likelist;
+			int member_idx;
+			if(member!=null) {
+
+				 member_idx = member.getMember_idx();
+				like.setMember_idx(member_idx);
+				 likelist = selecting(like);
+				
+			}else{
+				
+				 member_idx = 0;
+				like.setMember_idx(member_idx);
+				 likelist = selecting(like);
+			}
+		
 		
 			List<Join_MemberInfo_StoryBoard> listStory = dao.select_join_MemberInfo_StoryBoard();
 			
 			
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);
-			System.out.println("story"+listStory);	
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			System.out.println("크기"+likelist.size());
-			
 			if(likelist.size()>0) {
 				
 			for (int i = 0; i < listStory.size(); i++) {
-				System.out.println("asdasdasd"+listStory);
-				System.out.println("asdasdasd"+listStory);
+		
 				int photoidx = listStory.get(i).getStoryboard_idx();
-				System.out.println("2번쨰 ㅇㄴㅁㅇㅁㅇㄴㅁㄴ");
+			
 				for (int x = 0; x < likelist.size(); x++) {
-					System.out.println("3번째ㅁㄴㅇㄴㅇㅁㅁㄴ");
+				
 					int listidx = likelist.get(x).getStoryboard_idx();
-					System.out.println("4번째 ");
+	
 					if (photoidx == listidx) {
-						System.out.println("5번째");
+
 						listStory.get(i).setLikeck("ss");
 					}
 				}

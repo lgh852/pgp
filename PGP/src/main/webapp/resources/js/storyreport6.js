@@ -6,8 +6,18 @@ $(document).ready(
 
 	 function reportClickBtn(e) {
 
+			
+			 if(typeof $('#seck').val()==""){
+				 alert('로그인후 이용해주세요');
+				 
+				 window.location = "/p/member/loginform";
+			
+			}else{
+				 
 			$("#report > a").blur();
+			
 			$("#reportPopupView"+e).show();
+			
 			$("#reportPopupView a").focus();
 
 			$("#closePopuppage"+e).click(function() {
@@ -42,7 +52,7 @@ $(document).ready(
 					}
 				});
 			});
-
+			 }
 		}
 
 

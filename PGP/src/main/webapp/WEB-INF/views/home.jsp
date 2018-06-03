@@ -24,17 +24,17 @@
 	src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/board2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/photolist1.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/list5.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star2.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/star1.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/star3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/members.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/kakao.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/storylike1234.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/storylike55.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport3.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/storyreport666.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/storyreport6.js"></script>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
 	charset="utf-8"></script>
@@ -100,7 +100,7 @@
 				class="container d-flex flex-column flex-md-row justify-content-between "
 				style="">
 				<div class="nav">
-					<input type=hidden value="${member_member_id}"> <a
+					<input type=hidden id="logck"value="${member_member_id}"> <a
 						class="nav-link disabled" href="<%=request.getContextPath()%>/"
 						style="font-size: 27px; font-weight: 700; color: black;">느그집</a>
 				</div>
@@ -154,9 +154,23 @@
 							href="<%=request.getContextPath()%>/member/memberform"
 							style="color: black;">회원가입</a></li>
 					</c:if>
-					<li class="nav-item"><a class="nav-link disabled"
+					
+					             <c:if test="${manager==null}">
+            <li class="nav-item"><a class="nav-link disabled"
 						href="<%=request.getContextPath()%>/manager/managerloginform"
 						style="color: black;">관리자</a></li>
+            </c:if>
+            
+             <c:if test="${manager!=null}">
+            <li class="nav-item"><a class="nav-link disabled"
+						href="<%=request.getContextPath()%>/manager/main"
+						style="color: black;">관리자</a></li>
+            
+            </c:if>
+            
+
+				
+						
 
 					<c:if test="${user!=null}">
 						<li class="nav-item"><a class="nav-link"

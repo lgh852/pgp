@@ -1,5 +1,10 @@
 function likestoryClick(e) {
 
+	
+	var seck = $('#seck').val();
+
+	if(seck !=''){
+	
 	var likecnts = $('.likecnt' + e).val();
 	var likecnt = parseInt(likecnts);
 
@@ -25,7 +30,7 @@ function likestoryClick(e) {
 				$('.likecnt' + e).val(likecnt);
 				$('.likeTEXT' + e).text("명이 좋아합니다♥");
 				$('.storylike_heart' + e).attr('src',
-						'/p/resources/images/heart2.jpg');
+						'/p/resources/images/heart2.png');
 			} else if (data == 'n') {
 
 				if (likecnt >= 0) {
@@ -46,7 +51,7 @@ function likestoryClick(e) {
 				}
 
 				$('.storylike_heart' + e).attr('src',
-						'/p/resources/images/heart1.png');
+						'/p/resources/images/heart.png');
 			} else {
 				alert('에러');
 			}
@@ -54,5 +59,7 @@ function likestoryClick(e) {
 		}
 
 	});
-
+	}else{
+		alert('로그인후 이용해주세요')
+	}
 }

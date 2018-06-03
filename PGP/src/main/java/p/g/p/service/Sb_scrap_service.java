@@ -167,10 +167,10 @@ public class Sb_scrap_service {
 
 
    public int getFnIdx(scrapFN scrapfn) {
-      
+      System.out.println("입력됨?");
       dao = sqlSessionTemplate.getMapper(Sb_dao.class);
       int idx = dao.getScrapIdx(scrapfn);
-      
+      System.out.println("insert(성공");
       return idx;
    }
    }

@@ -40,25 +40,55 @@ public class StoryBoardController {
 		model.addAttribute("page", page);
 		
 		Member_info member = (Member_info) session.getAttribute("user");
+		if(member==null) {
+			model.addAttribute("seck",null);
+		}else {
+			System.out.println(member);
+
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			System.out.println(member.getMember_idx());
+			model.addAttribute("seck",member);
+					
+		}
 		
-		int member_idx = member.getMember_idx();
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
 		
-		like.setMember_idx(member_idx);
-								
-		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like); // 스토리보드
-																												// 리스트
+		// 리스트
 		if(listStory==null) {
 			System.out.println("안다");
 		}
 		
+
+
 		model.addAttribute("listStory", listStory);
-		/*
-		 * List<Join_MemberInfo_StoryBoard> listStory =
-		 * storyboardservice.listLikeCk(member_storylist, like);
-		 * System.out.println(listStory + ">D>S>>D>S>D>S>D>SD>DS");
-		 * model.addAttribute("listStory", listStory);
-		 */
+		
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
+		
 		model.addAttribute("listStroyComment", listStroyComment);
 
 		return view;
@@ -71,22 +101,28 @@ public class StoryBoardController {
 		String page = "story/storyboardForm.jsp";
 		model.addAttribute("page", page);
 		Member_info member = (Member_info) session.getAttribute("user");
-		int member_idx = member.getMember_idx();
-		storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+	
+		if(member != null) {
+			int member_idx = member.getMember_idx();
+			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+		}else {
+			int member_idx = 0;
+			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+		}
+			
 		int resultStoryCnt = storyboardservice.insertStroyboard(storyboard); // 스토리보드값, 멤버idx저장
-
 		int photoMaxIDX = storyboardservice.selectPhotoMaxIDX();
 		photoup.storyfileupload(request, session, storyboard, photoMaxIDX); // 사진등록
 		storyboard.setStoryboard_idx(photoMaxIDX);
-
 		int resultStoryCnt2 = storyboardservice.updateStroyboard(storyboard); // update로 사진 등록
 
-		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like); // 스토리보드
+		
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like, member); // 스토리보드
 		// 리스트로 출력
 		model.addAttribute("listStory", listStory);
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
 		model.addAttribute("listStroyComment", listStroyComment);
-
+		
 		if (resultStoryCnt > 0 && resultStoryCnt2 > 0) {
 			page = "redirect:storyboardForm";
 		}
@@ -183,7 +219,7 @@ public class StoryBoardController {
 	       if(resultCnt>0) {
 	         //성공
 	      ck = "y";
-	      
+	      //ss
 	      }else {
 	         
 	         ck = "n";   

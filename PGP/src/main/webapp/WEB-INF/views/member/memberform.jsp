@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
+	<div class="py-5 text-center" style="margin:auto">
+        <img class="d-block mx-auto mb-4" src="<%=request.getContextPath()%>/resources/images/home.png"  alt="" width="72" height="72">
+        <h2>Checkout form</h2>
+        <p class="lead">회원가입을 하고 많은 정보를 공유하고 소통해보세요~</p>
+      </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   <form action="<%=request.getContextPath()%>/member/memberform" method="post" id="memberform">
         <div class="input-group mb-3">
             <div class="form-control">
