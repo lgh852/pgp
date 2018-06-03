@@ -23,6 +23,12 @@ public interface MemberDao {
 	public List<Board_Photo> selectLikePhoto(int member_idx);
 
 	public int kakaoinsert(Member_info member);
+    
+	//스크랩 최근 사진 가져오기 
+	public String LatestScrapPhoto(int member_idx);
+
+	//좋아요 최근 사진 가져오기 
+	public String LatestLikePhoto(int member_idx);
 	
 	
 }

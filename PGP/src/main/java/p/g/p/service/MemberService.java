@@ -120,5 +120,19 @@ public class MemberService {
 		return member;
 	}
 
+	public String selectScrapLatestPhoto(int member_idx) {
+		
+		dao = sqlSessionTemplate.getMapper(MemberDao.class);
+		String LatestScrapPhoto = dao.LatestScrapPhoto(member_idx);
+		
+		return LatestScrapPhoto;
+	}
+
+	public String selectLikeLatestPhoto(int member_idx) {
+		dao = sqlSessionTemplate.getMapper(MemberDao.class);
+		String LatestLikePhoto = dao.LatestLikePhoto(member_idx);
+		return LatestLikePhoto;
+	}
+
 
 }
