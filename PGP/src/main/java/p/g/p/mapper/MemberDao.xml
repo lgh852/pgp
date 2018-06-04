@@ -12,9 +12,9 @@
 		member_nickname,
 		member_birth,
 		member_phone,
-		member_intro)
+		member_intro,member_gender)
 		VALUES
-		(#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro});
+		(#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro},#{member_gender});
 	</insert>
 
 	<select id="loginSelect" resultType="p.g.p.model.Member_info">

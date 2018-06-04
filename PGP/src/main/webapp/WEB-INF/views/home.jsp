@@ -52,7 +52,7 @@
 	rel="stylesheet">
 <style>
 .fontcolor {
-	color: #878787;
+	color: /* #878787 */#f8f9fa;
 }
 </style>
 <style>
@@ -198,7 +198,7 @@
 			</div>
 		</div>
 		<div class="border-bottom"
-			style="background-color: white; border-bottom-color: #EAEAEA">
+			style="background-color: #000000; border-bottom-color: #EAEAEA">
 
 			<div
 				class="container d-flex flex-column flex-md-row justify-content-between"

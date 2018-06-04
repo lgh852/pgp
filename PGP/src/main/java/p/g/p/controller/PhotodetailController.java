@@ -82,10 +82,11 @@ public class PhotodetailController {
 		
 		//글제목내용
 		Board board=photodetailservice.boardSelectView(board_idx);
-		model.addAttribute("boardContents",board.getBoard_contents());
+		model.addAttribute("board",board);
+	/*	model.addAttribute("boardContents",board.getBoard_contents());
 		model.addAttribute("boardTitle",board.getBoard_title());
 		model.addAttribute("memberIdx",board.getMember_idx());
-		model.addAttribute("boardIdx",board.getBoard_idx());
+		model.addAttribute("boardIdx",board.getBoard_idx());*/
 		
 		//조회수 기준 인기사진 출력 
 		List<Join_board_boardphoto> popularPhotoList=photodetailservice.popluarphotoSelect();
@@ -193,10 +194,11 @@ public class PhotodetailController {
 		
 		//글 제목 내용 
 		Board board=photodetailservice.boardSelectView(board_idx);
-		model.addAttribute("boardContents",board.getBoard_contents());
+		model.addAttribute("board",board);
+	/*	model.addAttribute("boardContents",board.getBoard_contents());
 		model.addAttribute("boardTitle",board.getBoard_title());
 		model.addAttribute("memberIdx",board.getMember_idx());
-		model.addAttribute("boardIdx",board.getBoard_idx());
+		model.addAttribute("boardIdx",board.getBoard_idx());*/
 		//조회수 기준 인기사진 출력 
 		List<Join_board_boardphoto> popularPhotoList=photodetailservice.popluarphotoSelect();
 		model.addAttribute("popularPhotoList",popularPhotoList);

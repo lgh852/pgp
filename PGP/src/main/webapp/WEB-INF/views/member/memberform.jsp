@@ -117,10 +117,8 @@
 				<!--   <span style="display: block; height: 30px;">자기소개</span> -->
 				<textarea aria-label="Default"
 					aria-describedby="inputGroup-sizing-default" name="member_intro"
-					id="member_intro" placeholder="자기소개"
-					style="width: 100%; resize: none;" cols="40" rows="8">
-           
-            </textarea>
+					id="member_intro" placeholder="자기소개를 해주세요"
+					style="width: 100%; resize: none;" cols="40" rows="8"></textarea>
 
 			</div>
 		</div>

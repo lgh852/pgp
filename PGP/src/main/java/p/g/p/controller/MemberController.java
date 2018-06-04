@@ -40,14 +40,13 @@ public class MemberController {
 		String page ="member/member.jsp";
 		int resultCnt = service.memberInsert(member);
 		if(resultCnt==-1) {
-			model.addAttribute("msg","회원가입 실패");
+			model.addAttribute("msg","회원가입실패");
 			model.addAttribute("page",page);
 		}else if(resultCnt>0) {
-			model.addAttribute("msg","회원가입 성공");
+			model.addAttribute("msg","회원가입성공");
 			model.addAttribute("page",page);
 		}
 	
-		
 		return view;
 	}
 	

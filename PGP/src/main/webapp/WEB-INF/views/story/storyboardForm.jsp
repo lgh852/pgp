@@ -63,18 +63,19 @@ var seck = $('#seck').val();
 <!--로그인 여부 체크를 위한 -->
 <input type="hidden" id="seck" value="${seck}">
 
-<div class="py-5 text-center" style="width: 100%">
-	<img class="d-block mx-auto mb-4"
-		src="<%=request.getContextPath()%>/resources/images/home2.png" alt=""
-		width="72" height="72">
+<div class="py-5 text-center" style="width: 100%;    background-image: url(/p/resources/images/roompic6.jpg);color:white;">
+	
 	<h2>
 		느그집
-		<code style="font-weight: bolder;">STORY</code>
+		<code style="font-weight: bolder;color:#b36d13a8;">STORY</code>
 	</h2>
-	<p class="lead" style="TEXT-ALIGN: CENTER;">함께 소통해보세요</p>
+	<p class="lead" style="TEXT-ALIGN: CENTER;font-weight: bolder;">함께 소통해보세요</p>
 </div>
+<div  style="height:100px"></div>
 
-<div class="card" style="width: 100%; background-color: #e9ecef;">
+
+
+<div class="card" style="margin-top:  20px;width: 100%;background-color: #e9ecef;">
 	<form action="<%=request.getContextPath()%>/story/storyboardForm"
 		method="post" enctype="multipart/form-data"
 		style="width: 100%; position: relative;" id="storyreg" name="form1">
@@ -134,7 +135,7 @@ var seck = $('#seck').val();
 				<img
 					src="<%=request.getContextPath()%>/resources/memberphoto/${listStory.member_photo}"
 					width="50px" height="60px"
-					style="border-radius: 50%; padding: 3px;">아이디::${listStory.member_id}
+					style="border-radius: 50%; padding: 3px;">ID[${listStory.member_id}]
 
 				<!-- 신고기능 -->
 				<button type="button" style="" class="btn btn-outline-warning"
