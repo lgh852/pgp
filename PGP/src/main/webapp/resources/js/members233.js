@@ -93,7 +93,14 @@ $(document).ready(function() {
 			$('#phoneck').text('핸드폰 번호를 확인해주세요');
 			$('#phoneck').css('color', 'red');
 		} else {
-			$('#phoneck').text('핸드폰번호');
+			var phone2 = $('#phone2').val();
+			var phone3 = $('#phone3').val();
+			if(phone2.trim().length<3&&phone3.trim().length<3){
+				$('#phoneck').text('핸드폰 번호룰 확인해주세요');		
+			}else{
+		
+						
+			}
 		}
 	});
 	$('#phone3').focusout(function() {
