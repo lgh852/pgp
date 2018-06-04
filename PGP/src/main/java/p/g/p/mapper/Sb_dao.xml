@@ -110,10 +110,11 @@ VALUES(
  
  </insert>
  
- <delete id="deleteScrapName">
+ <delete id="deleteScrapName" parameterType="p.g.p.model.scrapFN">
  
  delete from pgp.scrapfn
- where scrap_name=#{scrap_name};
+ where scrap_name=#{scrap_name} 
+ and member_idx=#{member_idx};
  
  </delete>
  

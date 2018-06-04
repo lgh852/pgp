@@ -49,21 +49,7 @@
 
    </select>
 
-   <!-- 내가 올린 사진들 출력하기 -->
 
-   <select id="selectMyPhotoList" resultType="p.g.p.model.Join_board_boardphoto"
-      parameterType="int">
-
-      select
-      *
-      from
-      pgp.board_photo as a
-      join pgp.board as b
-      on a.board_idx = b.board_idx
-      where
-      b.member_idx=#{member_idx};
-
-   </select>
 
    <!-- 내가 등록한 댓글 출력하기 -->
    <select id="selectMyCommentList" resultType="p.g.p.model.Board_Comment"
@@ -86,6 +72,24 @@
    
    select board_idx from pgp.scrap where member_idx=#{member_idx} and 
    scrapFN_idx=#{scrapFN_idx};
+   
+   </select>
+   
+   
+     <!-- 내가 올린 사진들 출력하기 -->
+   <select id="myphotolist" resultType="p.g.p.model.PhotoListmodel"
+   parameterType="int">
+   
+      select
+      a.photo_name,b.board_title,b.board_contents,b.board_comment,
+      b.board_like,b.board_scrap,b.board_regdate
+      from
+      pgp.board_photo as a
+      join pgp.board as b
+      on a.board_idx = b.board_idx
+      where
+      b.member_idx=#{member_idx}
+      and b.board_idx>55;
    
    </select>
 

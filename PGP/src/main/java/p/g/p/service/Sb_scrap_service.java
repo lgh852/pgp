@@ -63,11 +63,16 @@ public class Sb_scrap_service {
    }
 
 
-   public int deleteScrapFolder(String scrap_name) {
+   public int deleteScrapFolder(String scrap_name,int member_idx) {
       
       dao=sqlSessionTemplate.getMapper(Sb_dao.class);
       
-      int c = dao.deleteScrapName(scrap_name);
+      System.out.println("삭제 서비스 들어오는지도 체크$$$$$$$"+scrap_name);
+      
+      int c = dao.deleteScrapName(scrap_name,member_idx);
+     
+      System.out.println("????????????");
+      
       
       if(c>0) {
          System.out.println("삭제 서비스 성공");

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import p.g.p.dao.Mp_dao;
 import p.g.p.model.Board;
 import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.Like;
+import p.g.p.model.Member_info;
+import p.g.p.model.PhotoListmodel;
 
 public class Mp_myphoto_service {
 
@@ -25,6 +28,15 @@ public class Mp_myphoto_service {
 
 		return list;
 
+	}
+
+	public List<PhotoListmodel> myPhotolistview(Like like,int member_idx) {
+		
+		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
+		
+		List<PhotoListmodel> list = dao.myphotolist(member_idx);
+		
+		return list;
 	}
 
 }

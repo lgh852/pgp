@@ -43,7 +43,7 @@ left:530px;
 <a href="#pop" 
 class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">설정</a>
 <div id="pop">
-<h1>스크랩북 정보 수정</h1><a href="<%=request.getContextPath()%>/sidebar/scrapdelete?scrap_name=${scrap_name}&member_id=${user.member_id}">삭제</a><br> 
+<h1>스크랩북 정보 수정</h1><a href="<%=request.getContextPath()%>/sidebar/scrapdelete?scrap_name=${scrap.scrap_name}&member_idx=${user.member_idx}">삭제</a><br> 
     <input type="text" id="name" placeholder=${scrap_name}>
     <button type="button" id="update">수정</button>
     <button type="button" id="close">닫기</button>

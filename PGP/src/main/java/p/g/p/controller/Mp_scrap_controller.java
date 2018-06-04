@@ -31,17 +31,21 @@ public class Mp_scrap_controller {
    @RequestMapping(value="/mypage/mp_scrap",method=RequestMethod.GET)
    public String mypageScrap(@RequestParam("member_id") String member_id, Model model,HttpSession session) {
       
-      /*List<Board_Photo> scrap = service.Mp_ScrapList(member_id);
-      
-      model.addAttribute("scrap",scrap);*/
+    
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
       
+      
+        //스크랩 폴더 명 리스트 보여주기 
         List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
       
         model.addAttribute("scrapNameList", scrapNameList);
+        
+        //스크랩 폴더명에 맞는 사진 
+        
       
+        
       
       String page = "mypage/mp_scrap.jsp";
       String view = "home";
@@ -84,15 +88,16 @@ public class Mp_scrap_controller {
    
    @RequestMapping(value="/sidebar/scrapdelete",method=RequestMethod.GET)
    public String ScrapDelete(@RequestParam("scrap_name")String scrap_name,
-         @RequestParam("member_id")String member_id,
+         @RequestParam("member_idx")int member_idx,
          Model model,HttpSession session) {
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
       
    
+      System.out.println("들어오긴 하는가$$$$$$$"+scrap_name);
       
-      int resultC = service2.deleteScrapFolder(scrap_name);
+      int resultC = service2.deleteScrapFolder(scrap_name,member_idx);
       
       System.out.println("귀찮앙"+scrap_name);
       
@@ -102,7 +107,7 @@ public class Mp_scrap_controller {
          System.out.println("멍청아!!!!!!!!");
       }
       
-      model.addAttribute("member_id",member_id);
+      model.addAttribute("member_id",member.getMember_id());
       
 
         List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
