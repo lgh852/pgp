@@ -65,7 +65,7 @@ var seck = $('#seck').val();
 
 <div class="py-5 text-center" style="width: 100%">
 	<img class="d-block mx-auto mb-4"
-		src="<%=request.getContextPath()%>/resources/images/house.png" alt=""
+		src="<%=request.getContextPath()%>/resources/images/home2.png" alt=""
 		width="72" height="72">
 	<h2>
 		느그집
