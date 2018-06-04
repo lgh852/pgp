@@ -49,6 +49,42 @@
 
 	</select>
 
+	<select id="LatestScrapPhoto" parameterType="int" resultType="String">
+
+		select board_photo.photo_name
+		from pgp.board_photo
+		where
+		board_photo.board_idx = (
+
+		select board_idx
+		from pgp.scrap
+		where
+		member_idx=#{member_idx}
+		order by scrap_idx desc limit 1
+
+		);
+
+
+	</select>
+
+	<select id="LatestLikePhoto" parameterType="int" resultType="String">
+
+		select board_photo.photo_name
+		from pgp.board_photo
+		where board_photo.board_idx = (
+
+		select board_idx
+		from pgp.like
+		where member_idx=#{member_idx}
+		order by like_idx desc limit 1
+		);
+
+
+
+
+	</select>
+
+
 	<select id="selectLikePhoto" parameterType="int"
 		resultType="p.g.p.model.Board_Photo">
 
@@ -57,13 +93,15 @@
 		from
 		pgp.member_info as a
 		join
-		pgp.like as b
+		pgp.like as
+		b
 		on a.member_idx=b.member_idx
 		join
 		pgp.board_photo as c
-		on b.board_idx = c.board_idx
+		on b.board_idx =
+		c.board_idx
 		where a.member_idx=#{member_idx};
 
-    </select>
+	</select>
 
 </mapper>

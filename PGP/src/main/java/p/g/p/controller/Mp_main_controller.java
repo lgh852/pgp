@@ -56,6 +56,15 @@ public class Mp_main_controller {
 		List<Join_board_boardphoto> boardLatestPhoto = service.selectLatestPhoto(member.getMember_idx());
 		model.addAttribute("boardLatestPhoto",boardLatestPhoto);
 		
+		//스크랩한 최근 사진 가져오쟈
+		String scrapLatestPhoto = service.selectScrapLatestPhoto(member.getMember_idx());
+		model.addAttribute("scrapLatestPhoto",scrapLatestPhoto);
+		
+		
+		//좋아요한 최근 사진 가져오쟈
+		String likeLatestPhoto = service.selectLikeLatestPhoto(member.getMember_idx());
+		model.addAttribute("likeLatestPhoto", likeLatestPhoto);
+		
 		
 		
 		return view;

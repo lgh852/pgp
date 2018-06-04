@@ -177,15 +177,15 @@
 							href="<%=request.getContextPath()%>/" id="logout"
 							style="color: black;">로그아웃</a></li>
 
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle"
+						<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"
 							href="<%=request.getContextPath()%>/mypage/mp_main"
 							id="navbarDropdownMenuLink" style="color: black;"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								마이페이지 </a>
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" href="#">모음</a> <a
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/mypage/mp_main">모음</a> <a
 									class="dropdown-item" href="#">사진</a> <a class="dropdown-item"
 									href="#">스토리</a> <a class="dropdown-item" href="#">좋아요</a> <a
 									class="dropdown-item" href="#">스크랩</a> <a class="dropdown-item"
