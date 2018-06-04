@@ -22,8 +22,6 @@
 			<label for="userId">아이디<span class="text-muted"></span> <span
 				id="useridck"></span></label> <input type="text" class="form-control"
 				id="userId" placeholder="" name="member_id">
-			<div class="invalid-feedback">Please enter a valid email
-				address for shipping updates.</div>
 		</div>
 
 		<div class="row">
@@ -37,7 +35,7 @@
 				<label for="userPw2">비밀번호 확인 <span id="userPwck2"></span></label> <input
 					type="text" class="form-control" name="userPw" id="userPw2"
 					placeholder="" value="" required="">
-				<div class="invalid-feedback">Valid last name is required.</div>
+				
 			</div>
 		</div>
 
