@@ -78,7 +78,7 @@ public class Mp_main_controller {
 		model.addAttribute("member",member);
 		
 		//좋아요 가져오쟈
-		List<Board_Photo> likeList = service.selectLikeList(member.getMember_idx());
+		List<Join_board_boardphoto> likeList = service.selectLikeList(member.getMember_idx());
 	    model.addAttribute("likeList", likeList);
 	    
 	    String view="home";
