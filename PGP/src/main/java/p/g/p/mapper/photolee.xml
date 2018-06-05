@@ -85,6 +85,7 @@ SELECT
 		and board_idx =
 		#{board_idx};
 	</select>
+	
 	<update id="likeupdatUp" parameterType="p.g.p.model.Like">
 		UPDATE
 

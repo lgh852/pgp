@@ -3,10 +3,7 @@
 
 <mapper namespace="p.g.p.dao.ManagerDao">
 
-   <!-- <insert id="insertMember" parameterType="p.g.p.model.Manager"> INSERT 
-      INTO pgp.member_info (member_id, member_pw, member_name, member_nickname, 
-      member_birth, member_phone, member_intro) VALUES (#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro}); 
-      </insert> -->
+
 
    <select id="loginSelect" resultType="p.g.p.model.Manager">
 

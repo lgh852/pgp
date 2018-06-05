@@ -148,7 +148,7 @@
               <div class="scrapPhoto" >
               <a href="<%=request.getContextPath() %>/mypage/mp_scrap?member_id=${member.member_id}">
               <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${scrapLatestPhoto}" class="img-fluid" alt="Responsive image" style="width:100%; height:100px; border-radius: 5px">
-            <div class="scrapbook" style="position: absolute; top:20%; margin-left: 75px; text-aligh:center; font-size:38px;  "> 
+            <div class="scrapbook" style="position: absolute; top:20%; margin-left: 55px; text-aligh:center; font-size:38px;  "> 
                 <span style="color: white">스크랩북</span></div>
                 </a>
               </div>
@@ -160,7 +160,7 @@
             <div class="likePhoto">
            <a href="<%=request.getContextPath() %>/mypage/mp_myLike">
            <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${likeLatestPhoto}" class="img-fluid" alt="Responsive image" style="width:100%; height:100px; border-radius: 5px">
-            <div class="scrapbook" style="position: absolute; top:62%; margin-left: 90px; text-aligh:center; font-size:38px;  "> 
+            <div class="scrapbook" style="position: absolute; top:62%; margin-left: 70px; text-aligh:center; font-size:38px;  "> 
                 <span style="color: white">좋아요</span></div>
                 </a>
                      </div>

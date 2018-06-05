@@ -60,7 +60,7 @@ public class PhotoService {
    }
 
    public List<PhotoListmodel> listlikeck(List<PhotoListmodel> list, Like like) {
-System.out.println(like);
+       System.out.println(like);
       List<Like> likelist = selectimg(like);
       	System.out.println("시붍애"+likelist);
       for (int i = 0; i < list.size(); i++) {

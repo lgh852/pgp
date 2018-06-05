@@ -39,45 +39,21 @@ public class StoryBoardController {
 		String page = "story/storyboardForm.jsp";
 		model.addAttribute("page", page);
 		
+		System.out.println("1");
+		
+		
 		Member_info member = (Member_info) session.getAttribute("user");
+		
 		if(member==null) {
 			model.addAttribute("seck",null);
 		}else {
-			System.out.println(member);
-
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			model.addAttribute("seck",member);
+			System.out.println("2"+member);
+            model.addAttribute("seck",member);
 					
 		}
 		
 		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
-		
+		System.out.println("3");
 		// 리스트
 		if(listStory==null) {
 			System.out.println("안다");
@@ -89,6 +65,7 @@ public class StoryBoardController {
 		
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
 		
+		System.out.println("4");
 		model.addAttribute("listStroyComment", listStroyComment);
 
 		return view;
