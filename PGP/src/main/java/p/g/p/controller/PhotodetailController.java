@@ -51,8 +51,8 @@ public class PhotodetailController {
 		
 		Member_info member = (Member_info)session.getAttribute("user");
 	     model.addAttribute("member", member);
-	     scrap.setMember_idx(member.getMember_idx());
-	     like.setMember_idx(member.getMember_idx());
+/*	     scrap.setMember_idx(member.getMember_idx());*/
+	     like.setMember_idx(member.getMember_idx());	
 
 	     
 	     

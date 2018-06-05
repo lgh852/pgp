@@ -176,7 +176,7 @@ ul.list-group {
 
 								<input type="hidden" id="storyboard_idx"
 									value="${storyboard_idx}"> <input type="hidden"
-									id="board_idx" value="${board.boardIdx}"> <input
+									id="board_idx" value="${board.board_idx}"> <input
 									type="hidden" id="member_idx" value="${member.member_idx}">
 
 
@@ -253,7 +253,7 @@ ul.list-group {
 											placeholder="스크랩북 이름을 입력해줘잉" />
 										<button type="button" class="add">추가</button>
 										<input type="hidden" id="member_idx"
-											value="${board.memberIdx}">
+											value="${board.member_idx}">
 
 										<button type="button" id="close">닫기</button>
 
@@ -263,10 +263,10 @@ ul.list-group {
 
 									<input type="hidden" class="listnumber"
 										value="${fn:length(scrapNameList)}"> <input
-										type="hidden" id="board_idx" value="${board.boardIdx}">
-									<input type="hidden" id="member_idx" value="${board.memberIdx}">
-									<input type="hidden" id="scrap_idx"
-										value="${scrapInfo.scrap_idx}">
+										type="hidden" id="board_idx" value="${board.board_idx}">
+									<input type="hidden" id="member_idx"
+										value="${board.member_idx}"> <input type="hidden"
+										id="scrap_idx" value="${scrapInfo.scrap_idx}">
 								</div>
 							</div>
 						</div>
@@ -414,27 +414,56 @@ function tagsclick(e) {
 </style>
 
 
+
+
+
+
+
+
 			<div class="col-md-8 order-md-1">
 
 				<!-- 사진 및 태그   -->
-				<div class="imgcenter">
 
-					<div class="text-center">
-						<img
-							src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
-							class="rounded" alt="" id="imgtagbox" height="450px"
-							width="450px">
-					</div>
-					<c:forEach items="${urlList}" var="urlList" varStatus="status">
-						<div id="viewbox${status.count}" class="check viewbox"
-							style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
-							<a href="#" data-toggle="modal"
-								data-target=#tagurlbox${status.count}>x</a> <input type="hidden"
-								id="url${status.count}" value="${urlList.tag_url}">
+
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="imgcenter">
+							<img class="rounded"
+								src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
+								alt="" id="imgtagbox" height="140" width="140">
+							<h2 style="text-align: center;">[ ${board.board_title} ]</h2>
+							<p>${board.board_contents}</p>
+							<p>
+								<span style="font-weight: bold">조회수 : ${board_cnt_view}
+									&nbsp &nbsp 댓글 수 : ${commentCnt}</span>
+
+								<!--수정 및 삭제   -->
+								<span> <c:if test="${board.member_idx==user.member_idx}">
+										<!-- 신고기능 -->
+										<a role="button" style="" class="btn btn-success"
+											href="<%=request.getContextPath()%>/photo/updatePhotodetail?board_idx=${board.board_idx}">수정
+										</a>
+										<!-- 삭제기능 -->
+										<a class="btn btn-danger"
+											href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.board_idx}"
+											role="button">삭제 </a>
+									</c:if>
+								</span>
+							</p>
+
+
+							<c:forEach items="${urlList}" var="urlList" varStatus="status">
+								<div id="viewbox${status.count}" class="check viewbox"
+									style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
+									<a href="#" data-toggle="modal"
+										data-target=#tagurlbox${status.count}>x</a> <input
+										type="hidden" id="url${status.count}"
+										value="${urlList.tag_url}">
+								</div>
+							</c:forEach>
 						</div>
-					</c:forEach>
+					</div>
 				</div>
-
 				<c:forEach items="${urlList}" var="urlList" varStatus="status">
 					<div class="modal fade" id="tagurlbox${status.count}" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
@@ -464,37 +493,8 @@ function tagsclick(e) {
 					</div>
 				</c:forEach>
 
-				<!--수정 및 삭제   -->
+
 				<div>
-					<h4 class="featurette-heading">
-
-						<c:if test="${board.memberIdx==user.member_idx}">
-							<!-- 신고기능 -->
-							<a type="button" style="" class=" btn btn-outline-success"
-								href="<%=request.getContextPath()%>/photo/updatePhotodetail?board_idx=${board.boardIdx}"
-								role="button">수정 </a>
-							<!-- 삭제기능 -->
-							<a class="btn btn-danger"
-								href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.boardIdx}"
-								role="button">삭제 </a>
-						</c:if>
-
-
-					</h4>
-					<span class="text-muted"> Date: <fmt:formatDate
-							pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${board.board_regdate}" /></span>
-
-
-
-
-					<div>
-						${board.boardTitle}
-						<hr>
-						${board.boardContents}<br>
-					</div>
-
-					<p style="font-weight: bold">조회수 : ${board_cnt_view} &nbsp
-						&nbsp 댓글 수 : ${commentCnt}</p>
 
 					<!--  댓글 쓰기 기능 -->
 					<div style="width: 100%">
@@ -553,6 +553,12 @@ function tagsclick(e) {
 
 					<div style="height: 50px"></div>
 				</div>
+
+
+
+
+
+
 			</div>
 		</div>
 

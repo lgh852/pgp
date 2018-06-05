@@ -18,7 +18,7 @@ public class PhotofeedAllDeleteController {
 		System.out.println("욕데게ㅔ게게리절트 !===>"+resultCnt);
 		String page = "../";
 		if (resultCnt > 0) {
-			page="redirect:photofeed";
+			page="redirect:photoList?Alignment=board_idx&room=&space=";
 		}
 		
 		
