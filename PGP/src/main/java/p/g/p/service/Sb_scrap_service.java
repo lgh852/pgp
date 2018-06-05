@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.Sb_dao;
 import p.g.p.model.Board;
+import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Scrap;
 import p.g.p.model.scrapFN;
 
@@ -110,14 +111,36 @@ public class Sb_scrap_service {
    }
 
 
-   public Scrap scrapck(Scrap scrap) {
+   public List<PhotoListmodel>Listscrapck(List<PhotoListmodel> list,Scrap scrap) {
+	   
+	      dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+	      List<Scrap> scrapck = dao.selectscrapckList(scrap);
+	      
+	   for(int i = 0; i<list.size();i++) {
+	   	
+		   	int board_idx = list.get(i).getBoard_idx();
+	   			System.out.println("list board_idx"+board_idx);
+	   		for(int x = 0;x<scrapck.size();x++) {
+	   			int board_idxs = scrapck.get(x).getBoard_idx();
+	   			System.out.println("scrapck"+board_idxs);
+	   			if(board_idxs==board_idx) {
+	   				System.out.println("성고오오오옹");
+	   				list.get(i).setScrapck("s");
+	   			}
+	   		}
+	   	}
+	 
       
-      dao = sqlSessionTemplate.getMapper(Sb_dao.class);
-      scrap = dao.selectscrapck(scrap);
-      
-      return scrap;
+      return list;
    }
 
+   public Scrap scrapck(Scrap scrap) {
+	      
+	      dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+	      scrap = dao.selectscrapck(scrap);
+	      
+	      return scrap;
+	   }
 
    public int scrapCountUp(Board board) {
       

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import p.g.p.model.Like;
 import p.g.p.model.Member_info;
@@ -33,6 +35,7 @@ public class PhotoListController {
 		String page = "photo/photolist.jsp";
 		model.addAttribute("page",page);
 		Member_info member = (Member_info)session.getAttribute("user");
+		
 		System.out.println(member);
 		//1번 
 	
@@ -40,37 +43,69 @@ public class PhotoListController {
 			
 	    	
 			System.out.println(photolist);
+			
+			
+			
 			//스크랩 목록
+			List<PhotoListmodel> list = service.photolistview(like,photolist,member);
+			
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			System.out.println(list);
+			
 			if(member!=null) {
+				
 				 scrap.setMember_idx(member.getMember_idx());
-					
+			
 				List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
-			     model.addAttribute("scrapNameList", scrapNameList);
+			       model.addAttribute("scrapNameList", scrapNameList);
+			     
 			     //스크랩 체크
 			     
-			     Scrap scrapck = service2.scrapck(scrap);
-			     model.addAttribute("scrapck", scrapck);
-			    System.out.println(scrapNameList);
-			    System.out.println(scrapNameList);
-			    System.out.println(scrapNameList);
-			    System.out.println(scrapNameList);
+			     list= service2.Listscrapck(list,scrap);
+			    System.out.println(list);
+
 			    
 				
 			}
 		      
 			
-			List<PhotoListmodel> list = service.photolistview(like,photolist,member);
+			
+			
 			
 		model.addAttribute("list",list);
 		model.addAttribute("Alignment",photolist.getAlignment());	//1.최신순 2.인기순 ,3 좋아요순 1 ==default 값 
 		model.addAttribute("room",photolist.getRoom()); //romm 0==default 값 모든 공간 
 		model.addAttribute("space",photolist.getSpace());//space =="";
 		model.addAttribute("member",member);
-		System.out.println(member);
-		System.out.println(member);System.out.println(member);
+		
+
 		
 	
 		return view;
 	
 	}
+	
+	@RequestMapping("/photo/photoListdwon")
+
+	public 	@ResponseBody String photolistdown(	@RequestBody String bno) {
+		
+
+		
+		return "Stringss";
+	}
+	
+	
+	
 }

@@ -129,6 +129,12 @@
    
    
    
+   <select id="tagcksmember" parameterType="p.g.p.model.Board" resultType="String">
+   
+   select board_idx from pgp.board where member_idx =#{member_idx} and board_idx = #{board_idx}	
+   
+   </select>
+   
    
    
 </mapper>

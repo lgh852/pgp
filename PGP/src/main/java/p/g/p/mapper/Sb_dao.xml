@@ -95,6 +95,12 @@ VALUES(
  board_idx=#{board_idx};
  
  </select>
+  <select id="selectscrapckList" resultType="p.g.p.model.Scrap" 
+ parameterType="p.g.p.model.Scrap">
+ 
+ select * from pgp.scrap;
+ 
+ </select>
  
  <insert id="InsertScrap" parameterType="p.g.p.model.Scrap">
  

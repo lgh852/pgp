@@ -3,7 +3,7 @@ $(document)
 
             function() {
 
-              
+              var listnum;
 
                /* 스크랩기능 */
 
@@ -18,16 +18,13 @@ $(document)
                $(".add")
                      .click(
                            function() {
-
-                              alert('추가 들어오나?');
-                        	   
+                        	alert('')
                               var scrapFolderName = $(
                                     ".scrapFolderName").val();
                               
                               var c = $(".listnumber").val();
                               
                               var member_idx = $("#member_idx").val();
-                             
                               alert(member_idx);
 
                               $.ajax({
@@ -45,7 +42,7 @@ $(document)
 
                                           alert('들어오나?');
                                           if (data == 'y') {
-                                             
+                                             member_idx
                                              alert('스브랩북 추가는 성공ㅎㅎㅎㅎ');
 
                                              c = ++c;
@@ -64,9 +61,6 @@ $(document)
                                                    + c)
                                              .text(
                                                    scrapFolderName);
-                                       
-                                     
-                                       
 
                                           } else {
                                              alert('실패ㅠㅠㅠㅠㅠㅠㅠ');
@@ -158,13 +152,16 @@ function scrapButton(s) {
 
    var scrap_name_choice = $(".scrapSuccess"+s).text();
    alert(scrap_name_choice);
-   alert()
+   
+   var scrapcntss = $('#scrapCnts'+listnum).text();
    var scrapcnts = $('#scrapCnt').text();
    if(scrapcnts==null||scrapcnts==''){
 	   	alert('ads');
 	   	alert($('#scrapCnt').val());
+	   	
 	   	scrapcnts = $('#scrapCnt').val();
 	   }
+   
    var scrapcnt = parseInt(scrapcnts);
    
 
@@ -190,16 +187,26 @@ function scrapButton(s) {
          if (data == 'y') {
 
             alert('스크랩성공!!!');
+            
             scrapcnt = scrapcnt + 1;
+            scrapcntss =scrapcntss +1;
             $('.count').text(scrapcnt);
+            
             var ss = $('#ck').val()
-            $('#scrapCnts'+ss).text(scrapcnt);
+            $('#scrapCnts'+listnum).text(scrapcntss);
+            $('.scrapckss'+listnum).attr('src','/p/resources/images/scrap2.png')
+            
             //저장
             alert('카운트업');
+            
             $('#scrapid').removeClass('btn btn-outline-info').addClass(
                   'btn btn-info');
+            $('#scrapCnts'+s).text(scrapcnt);
             alert('스크랩 버튼 바뀜');
+            
+            
             $("#scrapPopup").hide();
+            
 
          } else if (data == 'n') {
 
@@ -274,7 +281,7 @@ function scrapPopup() {
             $('.count').text(scrapcnt);
             $('#scrapid').removeClass('btn btn-info').addClass(
                   'btn btn-outline-info');
-
+            $('#scrapCnts'+s).text(scrapcnt);
             alert('스크랩 버튼 바뀜');
 
          } else {
@@ -308,7 +315,6 @@ function likeClick() {
 
       success : function(data) {
 
-         alert('좋아요 함수 들어오냐?');
 
          if (data == 'y') {
 
@@ -323,7 +329,7 @@ function likeClick() {
 
             $('#likeid').removeClass('btn btn-outline-danger').addClass(
                   'btn btn-danger');
-
+            
          } else if (data == 'n') {
 
             alert('좋취');
@@ -383,16 +389,21 @@ function scrapPopups(e) {
 	            $("#exampleModal").modal('show')  
 	            $('#board_idx').val(board_idx);
 	            $('#scrapCnt').val(scrapcnts);
-	         
+	            listnum = e;
 	         } else if (data == 'n') {
 
 	            alert('스크랩해제><');
 	            scrapcnt = scrapcnt - 1;
-	            $('#scrapCnts'+e).text(scrapcnt);
+	            
+	         
+	            
 	            $('#scrapCnt'+e).text(scrapcnt);
 	            $('#board_idx').val(board_idx);
 	            $('#scrapCnt').val(scrapcnts);
 	            $('#ck').val(e);
+	            $('#scrapCnts'+e).text(scrapcnt);
+	            $('.scrapckss'+e).attr('src','/p/resources/images/scrap.png')
+	            
 	            
 	            //몇번찌인지 저장
 	            

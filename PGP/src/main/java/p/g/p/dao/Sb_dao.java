@@ -56,6 +56,8 @@ public interface Sb_dao {
 
    //스크랩 되어 있나 일단 확인해야 하지 ㅠㅠ
    public Scrap selectscrapck(Scrap scrap);
+   //스크랩 되어 있나 일단 확인해야 하지 ㅠㅠList
+   public List<Scrap> selectscrapckList(Scrap scrap);
 
    //스크랩 수 증가
    public int scrapCntUp(Board board);
