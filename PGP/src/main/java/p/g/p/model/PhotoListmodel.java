@@ -39,6 +39,7 @@ public class PhotoListmodel {
 	private String space;
 	private String search;
 	private String choice;
+	private String scrapck;
 	public PhotoListmodel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,7 +50,7 @@ public class PhotoListmodel {
 			String member_id, String member_pw, String member_name, String member_nickname, String member_birth,
 			String member_phone, String member_intro, String member_gender, MultipartFile photofile,
 			String member_photo, int like_idx, int like_check, String likeck, String alignment, String room,
-			String space, String search, String choice) {
+			String space, String search, String choice, String scrapck) {
 		super();
 		this.board_idx = board_idx;
 		this.board_title = board_title;
@@ -85,6 +86,7 @@ public class PhotoListmodel {
 		this.space = space;
 		this.search = search;
 		this.choice = choice;
+		this.scrapck = scrapck;
 	}
 	@Override
 	public String toString() {
@@ -98,7 +100,8 @@ public class PhotoListmodel {
 				+ ", member_birth=" + member_birth + ", member_phone=" + member_phone + ", member_intro=" + member_intro
 				+ ", member_gender=" + member_gender + ", photofile=" + photofile + ", member_photo=" + member_photo
 				+ ", like_idx=" + like_idx + ", like_check=" + like_check + ", likeck=" + likeck + ", Alignment="
-				+ Alignment + ", room=" + room + ", space=" + space + ", search=" + search + ", choice=" + choice + "]";
+				+ Alignment + ", room=" + room + ", space=" + space + ", search=" + search + ", choice=" + choice
+				+ ", scrapck=" + scrapck + "]";
 	}
 	public int getBoard_idx() {
 		return board_idx;
@@ -304,6 +307,11 @@ public class PhotoListmodel {
 	public void setChoice(String choice) {
 		this.choice = choice;
 	}
-	
+	public String getScrapck() {
+		return scrapck;
+	}
+	public void setScrapck(String scrapck) {
+		this.scrapck = scrapck;
+	}
 	
 }

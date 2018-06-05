@@ -56,13 +56,26 @@ public class WritingBoardController {
 		System.out.println("sss");
 		if (resultCnt > 0) {
 			// 성공
-			page = "board/boardPhotoPage.jsp";
-			view = "home";
+		//	page = "board/boardPhotoPage.jsp";
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			System.out.println("깐따삐아");
+			
 			model.addAttribute("page", page);
-
+			view ="redirect:../photo/photodetail?board_idx="+photo.getBoard_idx();
 			// 사진을 보여눌 select 문
 			board.getBoard_idx();
 			List<Board_Photo> listPhoto = serviec.photoSelect(board);
+		
 			// 사진 정보 전달
 			model.addAttribute("listPhoto",listPhoto);
 		} else {

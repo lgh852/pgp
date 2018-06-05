@@ -140,7 +140,8 @@ ul.list-group {
 </head>
 
 <body class="bg-light">
-
+   <a class="btn btn-primary" href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${board.board_idx}" role="button">페이지</a>
+                  
 	<div class="container">
 		<div class="py-5 text-center"></div>
 

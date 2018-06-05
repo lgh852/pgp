@@ -23,7 +23,6 @@ import p.g.p.model.Shopping;
 public class NaverShoppingService {
 	private static String clientID = "fRAgrdQQv66rzySCi3kM";
 	private static String clientSecret = "fVwZY5Dk1Y";
-
 	// display ==> 몇개 출력
 	// start==>몇번쨰부터 (item)
 	public List<Shopping> searchShopping(String keyword, int display, int start) {

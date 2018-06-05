@@ -4,6 +4,7 @@ import java.util.List;
 
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.Url_Tag;
@@ -35,6 +36,7 @@ public interface PhotoDao {
    
    //보드 정보 뽑아올 리스트 
    public List<Board> selectByBoardIdx(int board_idx);
+public String tagcksmember(Board boardboard);
   
    
 }

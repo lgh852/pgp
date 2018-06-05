@@ -41,7 +41,15 @@ public class PhotodetailController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String detail(@RequestParam(value = "del", defaultValue = "default") String del, Model model,
 	         HttpSession session, @RequestParam(value = "board_idx", defaultValue = "0") int board_idx,Board boardboard,Scrap scrap,Like like,	Board_Photo photo){
-
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
+		System.out.println("asdasdasdas");
 		
 		System.out.println("뭐야!!!!!!!!!!!!!!!!!!!!"+board_idx);
 
@@ -51,11 +59,9 @@ public class PhotodetailController {
 		
 		Member_info member = (Member_info)session.getAttribute("user");
 	     model.addAttribute("member", member);
-/*	     scrap.setMember_idx(member.getMember_idx());*/
+	     scrap.setMember_idx(member.getMember_idx());
 	     like.setMember_idx(member.getMember_idx());	
 
-	     
-	     
 		model.addAttribute("page", page);
 		int board_cnt_view = 0;
 		 
@@ -111,6 +117,18 @@ public class PhotodetailController {
 		photo.setBoard_idx(board_idx);
 		photo.setPhoto_name(photoName);
 		
+		if(member!=null) {
+			boardboard.setMember_idx(member.getMember_idx());
+		}
+		String tagckss= photodetailservice.tagcks(boardboard);
+			if(tagckss!=null) {
+				//태그 정보 저장 
+				//수정가능 
+				model.addAttribute("tagckss",tagckss);
+				
+			}else {
+				
+			}
 		int sessionck=0;
 		List<Board_Photo> latelylist = (List<Board_Photo>) session.getAttribute("latelylist");
 		if (latelylist != null) {

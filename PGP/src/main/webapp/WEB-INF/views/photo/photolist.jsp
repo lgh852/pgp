@@ -176,7 +176,16 @@
                     10평대
                 </c:when>
 						<c:when test="${space=='3'}">
-                 20평대
+						
+						
+						asdasd
+						
+						
+                 20평대  
+                 
+                 
+                 
+                 
                 </c:when>
 						<c:when test="${space=='4'}">
                     30평대
@@ -215,12 +224,91 @@
 </div>
 
 
-</div>
-
 <!-- /.row -->
 <div>
+<div class="row" >
+
+        <c:forEach var="list" items="${list}" varStatus="status">
+
+    <div class="col-md-3 border listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
+        
+       
 	<div class="row">
 
+  <div class="col-8"><img src="<%=request.getContextPath()%>/resources/images/scrap.png" height="20px" alt="..." class="rounded"><span id="scrapCnts${status.count}">${list.board_scrap}</span><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="20px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="<%=request.getContextPath()%>/resources/images/mesage.png" height="20px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
+
+  <div class="col-4"><small>조회수</small><span id="f">${list.board_cnt}</span></div>
+
+        </div></div></a>
+        
+  <div class="card-body" style="width:300px;height: 150px ;">
+
+   <div class="row no-gutters">
+       
+  <div class="col-12 col-sm-6 col-md-8">
+  
+  <h5 class="card-title"><img src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}" height="25px" alt="..." class="rounded-circle"><small> ${list.member_id}</small>
+
+   </h5></div>
+  
+  <div class="col-6 col-md-4" style="height: 35px;">
+   <c:if test="${list.likeck==null}"> 
+             
+      <a onclick="liclick(${status.count})">
+      
+      <img src="<%=request.getContextPath()%>/resources/images/heart.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
+     
+     </c:if>
+     
+     <c:if test="${list.likeck!=null}">
+                  
+         
+      <a onclick="liclick(${status.count})">
+   
+        <img src="<%=request.getContextPath()%>/resources/images/heart2.png" height="25px" alt="..." class="rounded heart${status.count}"></a>
+     
+     </c:if>
+     
+
+    
+    
+    <a onclick="scrapPopups(${status.count})" >
+    <c:if test="${list.scrapck==null}">
+    <img class="scrapckss${status.count}"src="<%=request.getContextPath()%>/resources/images/scrap.png"height="25px"  alt="..." class="rounded">
+    </c:if>
+    <c:if test="${list.scrapck!=nulll}">
+
+<img class="scrapckss${status.count}" src="<%=request.getContextPath()%>/resources/images/scrap2.png"height="25px"  alt="..." class="rounded">
+   
+    </c:if>
+    
+    </a></div>
+
+
+
+
+
+
+
+
+</div>
+ 
+    <p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
+
+  </div>
+  
+          <input type="hidden" class="likech${status.count}" value="${list.like_check}">
+            <input type="hidden" class="bidx${status.count}" value="${list.board_idx}">
+                       <input type="hidden" id="board_idx${status.count}" value="${list.board_idx}"> 
+                           <input type="hidden" id="member_idx${status.count}" value="${list.member_idx}">
+                       
+</div>
+       </c:forEach>
+			<input type="text" id="logcks" value="${member}"> 
+                          <div id="scrap" class="scrapArea">                    
+                     
+                        <div id="scrapPopup">
+        
 		<c:forEach var="list" items="${list}" varStatus="status">
 			<div class="col-md-3 border"
 				style="margin-top: 10px; margin-bottom: 10px">
@@ -228,6 +316,7 @@
 					href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}"
 					style="text-decoration: none; color: black"><div class="card"
 						style="width: 16rem;">
+						
 						<img class="card-img-top" height="190px"
 							src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}"
 							alt="이미지가 없습니다">
@@ -303,6 +392,112 @@
 		</c:forEach>
 		<input type="text" id="logcks" value="${member}">
 
+
+      </div>
+      	<input type="hidden" id="board_idx">
+         <input type="hidden" id="scrapCnt">       
+         <input type="hidden" id="ck">                
+      <div class="modal-footer">
+    <div class="row">
+  <div class="col">
+  <input type="hidden" class="listnumber" value="${fn:length(scrapNameList)}"> 
+    
+  <input type="text" class="input-group-text scrapFolderName" style="width: 400px; margin-left:30px ; margin-bottom: 10px"
+                                 placeholder="Scrap Folder Name를 입력해주세요" />
+                                 </div>                             
+  <div class="w-100"></div>
+ <div class="col-4"></div>
+  <div class="col-8"> <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 10px;">Close</button>
+        <button type="button" class="btn btn-primary add" >추가</button></div>
+   
+</div>
+       
+     
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+$(document).ready(function(){
+	 var lastScrollTop = 0;
+	    var easeEffect = 'easeInQuint';
+
+
+
+	      $(window).scroll(function(){
+	       
+	            //창의 상단 스크롤 위치 
+	          var currentScrollTop = $(window).scrollTop();
+
+	           if( currentScrollTop - lastScrollTop  ){
+	                if ($(window).scrollTop()>= ($(document).height() - $(window).height())){
+	        	
+	                		//현재 뽑고 있는 list으  last 요소를 찾아서 data-bno 의 값을 가져옴
+	                	var lastbno = $(".listBno:last").attr("data-bno");
+	                	$.ajax({
+	                        type : 'post',  // 요청 method 방식
+	                        url : 'photoListdwon',// 요청할 서버의 url
+	                        headers : {
+	                            "Content-Type" : "application/json",
+	                            "X-HTTP-Method-Override" : "POST"
+	                        },
+	                        dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
+	                        data : JSON.stringify({ // 서버로 보낼 데이터 명시
+	                            bno : lastbno
+	                        }),
+	                        success : function(data){
+	                        	alert(data);
+	                        }//success
+	                    });// ajax
+				
+				
+	                }else{
+	                    //큽
+	                    alert('지워야댐')
+	                    
+
+	                }
+
+	                console.log("down-scroll");
+	                
+	               
+	           }else{
+	                console.log("up-scroll");          
+	                
+	               alert('up');
+
+	           }
+
+
+	      
+	      });
+	     
+	     /*$(window).scroll(function () {
+					//스크롤 최초 이벤트 발생 )
+	            
+				
+	            var top = $(window).scrollTop();
+	           /* alert(top);
+	            alert("sssss"+$(document).height());
+	            alert('aa'+$(window).height());
+	            var heig = $(document).height();
+	            var sheig = $(document).height();
+	       
+
+	            var ms = heig-sheig;
+	         
+			if(top>=ms){
+	            alert('카트라이더')
+				
+				
+			}
+			})	*/
+			
+		});
+	        
+</script> -->
 
 
 		<div id="scrap" class="scrapArea">

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import p.g.p.dao.PhotoDao;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 
@@ -139,31 +140,17 @@ public class PhotodetailService {
 		return -1;
 
 	}
-	// public String listPage(HttpServletRequest request)
-	/*
-	 * public String listPage(HttpServletRequest request) { dao2 =
-	 * sqlSessionTemplate.getMapper(PhotoDetailPageDao.class); PhotoDetailPageMaker
-	 * pageMaker= new PhotoDetailPageMaker(); String pagenum =
-	 * request.getParameter("pagenum"); String contetnum =
-	 * request.getParameter("contentnum"); int cpagenum= Integer.parseInt(pagenum);
-	 * int ccontentnum=Integer.parseInt(contetnum);
-	 * 
-	 * pageMaker.setTotalcount(dao2.testcount()); //전체 게시글 개수를 지정한다
-	 * pageMaker.setPagenum(cpagenum-1); // 현재 페이지를 페이지 객체에 지정한다 -1을 해야 쿼리에서 사용할 수
-	 * 있다 pageMaker.setContentnum(ccontentnum);//한 페이지에 몇개씩 게시슬을 보여줄지 지정한다
-	 * pageMaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현재 페이지 ㅂ번호를 통해서 지정
-	 * pageMaker.setLastblock(pageMaker.getTotalcount());// 마지막 블록 번호를 전체 게시글 수를 통해
-	 * 정함
-	 * 
-	 * pageMaker.prevnext(cpagenum);//현재 페이지 번호로 화살표를 나타낼지 정함
-	 * pageMaker.setStartPage(pageMaker.getCurrentblock());// 시작 페이지를 페이지 블ㄹ록 번호로 정함
-	 * pageMaker.setEndPage(pageMaker.getLastblock(),pageMaker.getCurrentblock());
-	 * //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정함
-	 * 
-	 * List<PhotoDetailPageMaker> testlist= new ArrayList<>(); testlist=
-	 * dao2.testlist(pageMaker.getPagenum()*10,pageMaker.getContentnum());
-	 * request.setAttribute("list",testlist);
-	 * request.setAttribute("page",pageMaker); return "list"; }
-	 */
+
+
+	public String tagcks(Board boardboard) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		String tagcks= dao.tagcksmember(boardboard);
+			if(tagcks!=null) {
+			
+			}else {
+				tagcks = null;
+			}
+		return tagcks;
+	}
 
 }
