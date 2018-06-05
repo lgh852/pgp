@@ -101,12 +101,14 @@ VALUES(
  insert into pgp.scrap
  (
  board_idx,
- member_idx
- )
+ member_idx,
+ scrapFN_idx
+)
  values(
  #{board_idx},
- #{member_idx}
- );
+ #{member_idx},
+ #{scrapFN_idx}
+);
  
  </insert>
  

@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     <main role="main" class="container">
 	
 <!--마이페이지 스크랩북 상위 섹션-->
         
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
+        style="border:solid 1px; border-color:#dcdcdc;">
       
     
             <div class="scrap_book" style=" height: 80px;">
                 <h1 class="jumbotron-heading">스크랩북</h1>
             </div>
           
-            <div class="my_info" style=" height:40px; margin-top: 20px;">
+            <div class="my_info" style=" height:100px; ">
                 
                 
                 
@@ -25,12 +26,12 @@
      
               <div class="image" style="float:left;">         
               <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}" 
-              width="50px" height="50px" >
+              width="100px" height="100px" >
               </div>
                 
                  
-          <div class="user_name" style="float:left; margin-left:20px;">
-          <p class="font-weight-bold" style="font-size: 20px;">${member.member_id}</p>
+          <div class="user_name" style="float:left; margin-left:60px;">
+          <p class="font-weight-bold" style="font-size: 50px;">${member.member_id}</p>
                 </div>
                 
     </div>
@@ -42,36 +43,14 @@
             
             </div><!--아이디랑 사진정보-->
             
-            <div class="folder_nav" style="height: 60px; margin-top: 30px;">
-            
-          
-                <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">폴더</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">모두</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">사진</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">스토리</a>
-  </li>
-</ul>
-            
-            </div>
-            
-            
-            
-       
+
       
       </div>
         
         
         
         <!--각각 스크랩북들-->
-        <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light" style="margin-top:30px;">
         <div class="container">
 
           <div class="row container">
@@ -80,37 +59,112 @@
               <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                   
-                  <div class="scrap_book_add" style="border-style:dashed border-color:gray; height: 226px; ">
+                  <div class="scrap_book_add" style="border-style:dashed; border-color:gray; height: 226px; ">
           
-                      <div class="scrap_book_name" style="height:30px; margin-top:90px; padding-left: 100px;">
-                      +폴더 추가
+                     <a href="#">
+                     <div id="scrapaddimage" style="position:absolute; top:42%; left:10%;">
+                     <img src="<%=request.getContextPath() %>/resources/images/addbutton.png"></div>
+                     
+                      <div class="scrap_book_name" data-toggle="modal" data-target="#addScrapFolder"
+                      style="position:absolute; top:35%;; left:26%; font-size:40px; color:#01A9DB;  ">
+                      
+                                                폴더추가
+                     
                       </div>
-              </div>
-            </div>
-              </div>
+                      </a>
+                      
+                          </div>
+                        </div>
+                           </div> <!-- 스크랩북 추가하기 -->
+                      
+                   
+
+              <!-- 스크랩북 리스트 -->
+             
+              <c:forEach var="photonameList" items="${photonameList}">
               
-              
-             <c:forEach var="scrapNameList" items="${scrapNameList}" varStatus="status">
-            <div class="col-md-4">
+              <div class="col-md-4">
               <div class="card mb-4 box-shadow">
+              
                 <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" 
-                src="#" >
+                src="<%=request.getContextPath()%>/resources/BoardPhoto/${photonameList}" >
+                
+                </div></div>
+             </c:forEach>
              
              
-             <div class="scarpfoldername">
+              <c:forEach var="scrapNameList" items="${scrapNameList}" varStatus="status">
+              
+              <div class="scarpfoldername" style="">
              
             <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList.scrap_name}">${scrapNameList.scrap_name}</a>
               
               </div>
+              
             
-            </div>
-            </div>
+              
+              </c:forEach>
             
-            </c:forEach>
-          
+            
+          	
           </div>
         </div>
       </div>
+      
+      
+      
+       <!-- 스크랩북 폴더 추가 모달 -->
+                     <div class="modal fade" id="addScrapFolder" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">스크랩북을 선택하세요</h5>
+					</div>
+					<div class="modal-body">
+						<ul class="list-group scrapList" id="scrapli" style="list-style:none;'">
+
+							<c:forEach var="scrapNameList" items="${scrapNameList}"
+								varStatus="status">
+								<li>
+									<button type="button"
+										class="scrapSuccess${status.count} list-group-item list-group-item-action active btn-xs"
+										onclick="scrapButton(${status.count})">${scrapNameList.scrap_name}</button>
+								</li>
+
+							</c:forEach>
+						</ul>
+					</div>
+					<input type="hidden" id="board_idx"> <input type="hidden"
+						id="scrapCnt"> <input type="hidden" id="ck">
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col">
+								<input type="hidden" class="listnumber"
+									value="${fn:length(scrapNameList)}"> <input type="text"
+									class="input-group-text scrapFolderName"
+									style="width: 400px; margin-left: 30px; margin-bottom: 10px"
+									placeholder="추가할 스크랩 폴더명을 입력해주세요 " />
+									<input type="hidden" id="member_idx" value="${member.member_idx}"/>
+							</div>
+
+							<div class="w-100"></div>
+							<div class="col-4"></div>
+							<div class="col-8">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal" style="margin-right: 10px;">닫기</button>
+								<button type="button" class="btn btn-primary add">추가</button>
+							</div>
+
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+                            
         
         
 </main>

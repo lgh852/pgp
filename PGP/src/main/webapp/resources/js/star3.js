@@ -18,13 +18,16 @@ $(document)
                $(".add")
                      .click(
                            function() {
-                        	alert('')
+
+                              alert('추가 들어오나?');
+                        	   
                               var scrapFolderName = $(
                                     ".scrapFolderName").val();
                               
                               var c = $(".listnumber").val();
                               
                               var member_idx = $("#member_idx").val();
+                             
                               alert(member_idx);
 
                               $.ajax({
@@ -42,7 +45,7 @@ $(document)
 
                                           alert('들어오나?');
                                           if (data == 'y') {
-                                             member_idx
+                                             
                                              alert('스브랩북 추가는 성공ㅎㅎㅎㅎ');
 
                                              c = ++c;
@@ -61,6 +64,9 @@ $(document)
                                                    + c)
                                              .text(
                                                    scrapFolderName);
+                                       
+                                     
+                                       
 
                                           } else {
                                              alert('실패ㅠㅠㅠㅠㅠㅠㅠ');

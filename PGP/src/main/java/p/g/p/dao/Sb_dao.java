@@ -46,7 +46,7 @@ public interface Sb_dao {
    public int InsertScrap(Scrap scrap);
 
    //스크랩 폴더명 삭제하기 
-   public int deleteScrapName(String scrap_name, int member_idx);
+   public int deleteScrapName(scrapFN scrapfn);
 
    //스크랩 폴더명 수정하기
    public int updateScrapName(scrapFN fn);

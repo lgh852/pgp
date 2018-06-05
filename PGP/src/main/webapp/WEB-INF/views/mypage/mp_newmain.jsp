@@ -76,6 +76,7 @@
         </div>
         
         
+        
         <!--사진 과 사이드(스크랩,좋아요) 섹션-->
         <div class="blog_contents" style="margin-top:10px;">
         <div class="row">
@@ -113,11 +114,12 @@
                     
                     <c:forEach var="photo" items="${boardLatestPhoto}" >
                     
+               
                         <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        
+                         <a href="<%=request.getContextPath() %>/photo/photodetail?board_idx=${photo.board_idx}">
                         <img class="card-img-top"  style="height: 225px; width: 100%; display: block;" 
-                        src="<%=request.getContextPath()%>/resources/BoardPhoto/${photo.photo_name}" data-holder-rendered="true">
+                        src="<%=request.getContextPath()%>/resources/BoardPhoto/${photo.photo_name}" data-holder-rendered="true"></a>
                         </div>
                     </div>
                     

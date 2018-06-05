@@ -63,13 +63,12 @@ public class Sb_scrap_service {
    }
 
 
-   public int deleteScrapFolder(String scrap_name,int member_idx) {
+   public int deleteScrapFolder(scrapFN scrapfn) {
       
       dao=sqlSessionTemplate.getMapper(Sb_dao.class);
+     
       
-      System.out.println("삭제 서비스 들어오는지도 체크$$$$$$$"+scrap_name);
-      
-      int c = dao.deleteScrapName(scrap_name,member_idx);
+      int c = dao.deleteScrapName(scrapfn);
      
       System.out.println("????????????");
       
@@ -175,9 +174,12 @@ public class Sb_scrap_service {
       System.out.println("입력됨?");
       dao = sqlSessionTemplate.getMapper(Sb_dao.class);
       int idx = dao.getScrapIdx(scrapfn);
-      System.out.println("insert(성공");
+      System.out.println("insert(성공"+idx);
       return idx;
    }
+
+
+
    }
    
 

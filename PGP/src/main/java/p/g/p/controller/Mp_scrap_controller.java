@@ -1,5 +1,6 @@
 package p.g.p.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import p.g.p.model.Board_Photo;
+import p.g.p.model.Join_Scrap_scrapFN;
 import p.g.p.model.Member_info;
 import p.g.p.model.Scrap;
 import p.g.p.model.scrapFN;
@@ -29,7 +31,8 @@ public class Mp_scrap_controller {
    
    
    @RequestMapping(value="/mypage/mp_scrap",method=RequestMethod.GET)
-   public String mypageScrap(@RequestParam("member_id") String member_id, Model model,HttpSession session) {
+   public String mypageScrap(@RequestParam("member_id") String member_id, Model model,
+		   Join_Scrap_scrapFN scrap,HttpSession session) {
       
     
       
@@ -42,11 +45,51 @@ public class Mp_scrap_controller {
       
         model.addAttribute("scrapNameList", scrapNameList);
         
-        //스크랩 폴더명에 맞는 사진 
         
+        //일단 scrapFN_idx 검색해오쟈
+        List<Integer> scrapfnidx = service.selectscrapfnidx(member.getMember_idx());
+        
+
+        
+        //반복 횟수 (스크랩 폴더 갯수 )가져오쟈
+        int c = service.countFnIdx(member.getMember_idx());
       
         
+        scrap.setMember_idx(member.getMember_idx());
+        
+        List<Integer> boardIdxList = new ArrayList<Integer>(); 
+        
+        
+        
+        for(int i=0;i<c;i++) {
+        	
+        scrap.setScrapFN_idx(scrapfnidx.get(i));
+        
+       
+        
+        int boardidx = service.selectScrapboardidx(scrap);
+        
+        
+        boardIdxList.add(boardidx);
+        
+        }
+        
+       
+        //board_idx를 통해서 photo_name가져오기 
+        List<String> photonameList = new ArrayList<String>();
+        
+        for(int i=0;i<c;i++) {
+        	
+        	String photoname = service.selectPhotoName(boardIdxList.get(i));
+        	
+        	photonameList.add(photoname);
+        	
+        }
+        
       
+        model.addAttribute("photonameList", photonameList);
+        
+       
       String page = "mypage/mp_scrap.jsp";
       String view = "home";
       model.addAttribute("page", page);
@@ -55,9 +98,12 @@ public class Mp_scrap_controller {
       
    }
    
+   //스크랩 디테일이얌 스크랩 폴더에 각각 들어갔을 때
    @RequestMapping(value="/sidebar/scrapdetail")
-   public String ScrapDetail(@RequestParam("scrap_name")String scrap_name,Model model,HttpSession session) {
-      Member_info member = (Member_info)session.getAttribute("user");
+   public String ScrapDetail(@RequestParam("scrap_name")String scrap_name,Model model,
+		   HttpSession session,Scrap scrap2) {
+      
+	   Member_info member = (Member_info)session.getAttribute("user");
       
       model.addAttribute("member", member);
       
@@ -66,15 +112,17 @@ public class Mp_scrap_controller {
       
       model.addAttribute("scrap", scrap);
       
-      System.out.println("스크랩디테일 scrapfn_idx있냐"+scrap);
+   
       
-      //각 스크랩 폴더에 맞는 board_idx가져오기  
-      List<String> s = service.selectBoardIdx(scrap);
+      scrap2.setMember_idx(scrap.getMember_idx());
+      scrap2.setScrapFN_idx(scrap.getScrapFN_idx());
       
-      System.out.println("됐나모르겠따"+s);
+    
+      //각각 스크랩 폴더에 들어갔을 떄 출력되는 사진 리스트
+      List<Join_Scrap_scrapFN> scrapPhotoList = service.selectScrapPhotoList(scrap2);
       
-      //폴더에 있는 photo경로 갖고 오기 위한 리스트
-      List<String> photoName = service.selectPhotoName(s);
+      model.addAttribute("scrapPhotoList",scrapPhotoList);
+      
       
       
       
@@ -88,18 +136,16 @@ public class Mp_scrap_controller {
    
    @RequestMapping(value="/sidebar/scrapdelete",method=RequestMethod.GET)
    public String ScrapDelete(@RequestParam("scrap_name")String scrap_name,
-         @RequestParam("member_idx")int member_idx,
+         @RequestParam("member_idx")int member_idx,scrapFN scrapfn,
          Model model,HttpSession session) {
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
       
-   
-      System.out.println("들어오긴 하는가$$$$$$$"+scrap_name);
       
-      int resultC = service2.deleteScrapFolder(scrap_name,member_idx);
+      int resultC = service2.deleteScrapFolder(scrapfn);
       
-      System.out.println("귀찮앙"+scrap_name);
+     
       
       if(resultC>0) {
          System.out.println("폴더를 삭제하지 ");

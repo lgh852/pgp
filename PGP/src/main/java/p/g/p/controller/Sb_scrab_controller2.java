@@ -25,24 +25,7 @@ public class Sb_scrab_controller2 {
    public String sbScrapInsert(Scrap scrap,HttpSession session,Board board,scrapFN scrapfn) {
       
       Member_info member = (Member_info) session.getAttribute("user");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      System.out.println("asdasdasd");
-      
+    
       scrap.setMember_idx(scrap.getMember_idx());
       String ck = "q";
       	System.out.println("1");
@@ -56,8 +39,13 @@ public class Sb_scrab_controller2 {
          if(scrapck==null) {
         	 System.out.println("4");
             System.out.println("scrapfn확인해보쟈"+scrapfn);
+           
             int idx = service.getFnIdx(scrapfn);
+            
+            System.out.println("이게무슨일이ㅑㅇ"+idx);
+            
             scrap.setScrapFN_idx(idx);
+           
             System.out.println("scrap확인해보쟈"+scrap);
             
             int result = service.insertScrap(scrap);
