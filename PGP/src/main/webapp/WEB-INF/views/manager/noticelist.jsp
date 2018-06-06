@@ -3,30 +3,58 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
-
+  <div class="row" style="margin-top: 30px;width: 100%">
+     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="border:solid 1px; border-color:white;width: 100%;
+     background-image:url('<%=request.getContextPath()%>/resources/images/backgroundnotice.jpg');background-size:100%100%">
+            <div class="faq_head " style=" height:120px;margin: 10px">
+                  <p  style="font-weight:bold;font-size: 50px; color: white">느그집 관련 공지사항 </p>
+             </div>
+        
+          
+   
+      </div>
+      </div>
+        
+<!--FAQ 리스트-->
+        
+     
 <c:forEach var="notice" items="${notices}">
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">공지사항 제목</th>
-      <th scope="col">공지사항 내용</th>
-      <th scope="col">등록날짜</th>
-      <th scope="col">삭제</th>
-      <th scope="col">수정</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="${pageContext.request.contextPath}/manager/noticeview?notice_idx=${notice.notice_idx}">${notice.notice_title}</a></td>
-      <td>${notice.notice_contents}</td>
-      <td><fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd hh:mm"/></td>
+<div class="faq_list" style="margin-top:30px; width:100%;height: 100%">
+        
+        <article class="questions-item border-top border-bottom">
+          
+            
+            <div class="title" style="text-align: center;margin: 10" >
+                   <p class=".text-dark" style="font-weight:bold;font-size: 30px">${notice.notice_title}</p>
+            </div>
+            
+            <div class="contents" style="margin-top:10px;margin-left: 40px; margin-right: 40px; text-align: center;">
+           <p class="questions-item__content text-caption-1" style="font-weight: 500">${notice.notice_contents}</p>
+
+            </div>
+         
+          
+            
+            
+            
+                <div class="row" style="margin-bottom: 30px;">
+                   
+                 
+  <div class="col-12 col-md-8"></div>
+  <div class="col-6 col-md-4" style="text-align: right;font-weight: 600">작성일&emsp;<span style="margin: 0 10"><fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd"/></span></div>
+
+            </div>
+      
+        </article>  
+
+        </div>
+
+
       <td><a href="<%=request.getContextPath()%>/manager/noticedelete?notice_idx=${notice.notice_idx}">삭제</a></td>
       <td><a href="<%=request.getContextPath()%>/manager/noticeupdate?notice_idx=${notice.notice_idx}">수정</a></td>
       
-    </tr>
-   </tbody>
-</table>
+
 
 </c:forEach>
 
