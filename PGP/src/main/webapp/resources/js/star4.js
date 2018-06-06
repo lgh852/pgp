@@ -18,10 +18,10 @@ $(document)
                $(".add")
                      .click(
                            function() {
-                        	alert('')
+                        
                               var scrapFolderName = $(
                                     ".scrapFolderName").val();
-                              
+                              alert(scrapFolderName)
                               var c = $(".listnumber").val();
                               
                               var member_idx = $("#member_idx").val();
@@ -42,7 +42,7 @@ $(document)
 
                                           alert('들어오나?');
                                           if (data == 'y') {
-                                             member_idx
+                               
                                              alert('스브랩북 추가는 성공ㅎㅎㅎㅎ');
 
                                              c = ++c;
@@ -51,7 +51,7 @@ $(document)
 
                                              $('.scrapList')
                                              .append(
-                                                   "<li><span><button type='button' class='list-group-item list-group-item-action active' onclick='scrapButton(c)'>"
+                                                   '<li><span><button type="button" class="list-group-item list-group-item-action active" onclick="scrapButton("'+c+'")">'
 
                                                          + scrapFolderName
                                                          + "</button></span></li>");
@@ -153,7 +153,7 @@ function scrapButton(s) {
    var scrap_name_choice = $(".scrapSuccess"+s).text();
    alert(scrap_name_choice);
    
-   var scrapcntss = $('#scrapCnts'+listnum).text();
+   var scrapcntString = $('#scrapCnts'+listnum).text();
    var scrapcnts = $('#scrapCnt').text();
    if(scrapcnts==null||scrapcnts==''){
 	   	alert('ads');
@@ -162,6 +162,7 @@ function scrapButton(s) {
 	   	scrapcnts = $('#scrapCnt').val();
 	   }
    
+   var scrapcntss = parseInt(scrapcntString);
    var scrapcnt = parseInt(scrapcnts);
    
 

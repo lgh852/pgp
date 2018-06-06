@@ -24,13 +24,18 @@ public class BoardSearchController {
 	@RequestMapping(value = "/board/boardserach", method = RequestMethod.POST)
 	public String boardserch(Model model, PhotoListmodel photoListmodel, Like like, HttpSession session) {
 
-		String page = "board/boardserach.jsp";
+		String page = "photo/photolist.jsp";
 
 		String ck = photoListmodel.getSearch();
+		
 		if (ck != null) {
 
 			Member_info member = (Member_info) session.getAttribute("user");
-			like.setMember_idx(member.getMember_idx());	
+			if(member!=null) {
+				like.setMember_idx(member.getMember_idx());	
+					
+			}
+			
 			List<PhotoListmodel> list = service.search(like, photoListmodel);
 			model.addAttribute("list", list);
 
@@ -51,6 +56,7 @@ public class BoardSearchController {
 
 	@RequestMapping(value = "/board/boardserach", method = RequestMethod.GET)
 	public String boardserchAlignment(Model model, PhotoListmodel photoListmodel, Like like, HttpSession session) {
+		
 		String search = photoListmodel.getSearch();
 		String choice = photoListmodel.getChoice();
 		String room = photoListmodel.getRoom();

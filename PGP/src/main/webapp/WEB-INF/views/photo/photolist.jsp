@@ -304,8 +304,8 @@
                        
 </div>
        </c:forEach>
-			<input type="text" id="logcks" value="${member}"> 
-                          <div id="scrap" class="scrapArea">                    
+			<input type="hidden" id="logcks" value="${member}"> 
+                          <div id="scrap" class="scrapArea" style="display:none;">                    
                      
                         <div id="scrapPopup">
         
@@ -385,8 +385,8 @@
 					value="${list.like_check}"> <input type="hidden"
 					class="bidx${status.count}" value="${list.board_idx}"> <input
 					type="hidden" id="board_idx${status.count}"
-					value="${list.board_idx}"> <input type="hidden"
-					id="member_idx${status.count}" value="${list.member_idx}">
+					value="${list.board_idx}"> 
+					<input type="hidden"id="member_idx" value="${list.member_idx}">
 
 			</div>
 		</c:forEach>
@@ -394,10 +394,10 @@
 
 
       </div>
-      	<input type="hidden" id="board_idx">
+    <!--   	<input type="hidden" id="board_idx">
          <input type="hidden" id="scrapCnt">       
-         <input type="hidden" id="ck">                
-      <div class="modal-footer">
+         <input type="hidden" id="ck">         -->        
+     <%--  <div class="modal-footer">
     <div class="row">
   <div class="col">
   <input type="hidden" class="listnumber" value="${fn:length(scrapNameList)}"> 
@@ -414,7 +414,7 @@
        
      
        
-      </div>
+      </div> --%>
     </div>
   </div>
 </div>
@@ -500,32 +500,8 @@ $(document).ready(function(){
 </script> -->
 
 
-		<div id="scrap" class="scrapArea">
-
-
-
-
-			<div id="scrapPopup">
-
-
-				<div id="inputScrapFolder">
-
-					<input type="text" id="scrapFolderName"
-						placeholder="스크랩북 이름을 입력해줘잉" />
-					<button type="button" id="add">추가</button>
-					<input type="hidden" id="member_idx" value="${member.member_idx}">
-
-					<button type="button" id="close">닫기</button>
-
-				</div>
-
-
-
-
-			</div>
-		</div>
-		<button type="button" class="btn btn-primary"></button>
-
+		
+	
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -547,13 +523,16 @@ $(document).ready(function(){
 							</c:forEach>
 						</ul>
 					</div>
-					<input type="hidden" id="board_idx"> <input type="hidden"
+					<input type="hidden" id="board_idx"> 
+					<input type="hidden"
 						id="scrapCnt"> <input type="hidden" id="ck">
+					
 					<div class="modal-footer">
 						<div class="row">
 							<div class="col">
 								<input type="hidden" class="listnumber"
-									value="${fn:length(scrapNameList)}"> <input type="text"
+									value="${fn:length(scrapNameList)}"
+								> <input type="text"
 									class="input-group-text scrapFolderName"
 									style="width: 400px; margin-left: 30px; margin-bottom: 10px"
 									placeholder="Scrap Folder Name를 입력해주세요" />
