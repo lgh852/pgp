@@ -140,180 +140,15 @@ ul.list-group {
 </head>
 
 <body class="bg-light">
-   <a class="btn btn-primary" href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${board.board_idx}" role="button">페이지</a>
-                  
+	<a class="btn btn-primary"
+		href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${board.board_idx}"
+		role="button">페이지</a>
+
 	<div class="container">
 		<div class="py-5 text-center"></div>
 
 		<div class="row">
-			<div class="col-md-4 order-md-2 mb-4"
-				style="border: 1px solid; border-radius: 4px; border-color: slategray; height: 400px;">
-				<div class="contents">
-					<h4 class="d-flex justify-content-between align-items-center mb-3"
-						style="padding-top: 15px;">
-						<span class="text-muted">카테고리</span>
 
-						<div id="report" style="z-index: 30">
-
-							<a onclick="reportPopup();"><span
-								class="badge badge-secondary badge-pill">신고</span></a>
-							<div id="reportPopup">
-
-								<div class="report_reason">
-									<select class="reason" id="report_contents">
-										<option selected value="0">주제와 맞지 않음</option>
-										<option selected value="1">정보가 부정확함</option>
-										<option selected value="2">지나친 광고성 게시물</option>
-										<option selected value="3">도배 및 중복 게시물</option>
-										<option selected value="4">저작권 침해가 우려됨</option>
-										<option selected value="5">욕설/비방이 심함</option>
-										<option selected value="6">외설적인 게시물</option>
-									</select>
-								</div>
-
-								<button type="button" id="report_submit">신고당해랏</button>
-								<button type="button" id="closeeeee">닫기</button>
-
-
-								<input type="hidden" id="storyboard_idx"
-									value="${storyboard_idx}"> <input type="hidden"
-									id="board_idx" value="${board.board_idx}"> <input
-									type="hidden" id="member_idx" value="${member.member_idx}">
-
-
-							</div>
-						</div>
-					</h4>
-
-
-
-					<div class="buttons" style="z-index: 30">
-						<div
-							style="height: 60px; width: 100%; text-align: center; margin-top: 20px;">
-
-							<div id="like" class="likeArea">
-								<a onclick="likeClick();"> <c:if test="${likecheck==null}">
-
-										<div id="likeid" class="btn btn-outline-danger "
-											style="float: left; width: 46%; height: 45px; padding-top: 10px;">
-											좋아요 <span class="countcount" id=likecnt
-												style="padding-left: 20px;">${boardInfo.board_like}</span>
-										</div>
-
-									</c:if> <c:if test="${likecheck!=null}">
-
-										<div id="likeid" class="btn btn-danger "
-											style="float: left; width: 46%; height: 45px; padding-top: 10px;">
-											좋아요 <span class="countcount" id=likecnt
-												style="padding-left: 20px;">${boardInfo.board_like}</span>
-										</div>
-
-									</c:if>
-								</a> <input type="hidden" id="board_idx" value="${board_idx}">
-								<input type="hidden" id="member_idx" value="${member_idx}">
-
-							</div>
-
-							<div id="scrap" class="scrapArea">
-								<a onclick="scrapPopup();"> <c:if test="${scrapck==null}">
-										<div id="scrapid" class="btn btn-outline-info"
-											style="display: inline-block; margin-left: 20px; width: 46%; height: 45px; padding-top: 10px">
-											스크랩 <span class="count" id="scrapCnt"
-												style="padding-left: 20px;">${boardInfo.board_scrap}</span>
-										</div>
-									</c:if> <c:if test="${scrapck!=null}">
-										<div id="scrapid" class="btn btn-info"
-											style="display: inline-block; margin-left: 20px; width: 46%; height: 45px; padding-top: 10px">
-											스크랩 <span class="count" id="scrapCnt"
-												style="padding-left: 20px;">${boardInfo.board_scrap}</span>
-										</div>
-									</c:if>
-
-								</a>
-								<div id="scrapPopup">
-									<ul class="list-group scrapList" id="scrapli">
-
-										<c:forEach var="scrapNameList" items="${scrapNameList}"
-											varStatus="status">
-											<li>
-												<button type="button"
-													class="scrapSuccess${status.count} list-group-item list-group-item-action active"
-													onclick="scrapButton(${status.count})">${scrapNameList.scrap_name}</button>
-											</li>
-
-										</c:forEach>
-									</ul>
-
-									<div id="inputScrapFolder">
-
-										<input type="text" id="scrapFolderName"
-											placeholder="스크랩북 이름을 입력해줘잉" />
-										<button type="button" class="add">추가</button>
-										<input type="hidden" id="member_idx"
-											value="${board.member_idx}">
-
-										<button type="button" id="close">닫기</button>
-
-									</div>
-
-
-
-									<input type="hidden" class="listnumber"
-										value="${fn:length(scrapNameList)}"> <input
-										type="hidden" id="board_idx" value="${board.board_idx}">
-									<input type="hidden" id="member_idx"
-										value="${board.member_idx}"> <input type="hidden"
-										id="scrap_idx" value="${scrapInfo.scrap_idx}">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="sharing_info">
-						<div class="label" style="padding-top: 10px;">공유하기</div>
-
-
-						<div id="share_method" class="ui-content-share"
-							style="margin-top: 15px;">
-							<script src="/js/kakaolink.js"></script>
-							<div id="kakaostory-share-button"></div>
-
-							<!--여기에 공유버튼들 추가하면 된다-->
-
-						</div>
-					</div>
-				</div>
-				<!--공유하기 까지 div-->
-
-
-				<div class="wrap"
-					style="margin-top: 40px; border-top: 1px solid; border-top-color: slategray;">
-
-					<a href="<%=request.getContextPath()%>/mypage/mp_main">
-
-						<div class="profile_image" style="float: left; padding-top: 20px;">
-
-							<img
-								src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
-								class="rounded-circle" width="50px" height="60px"
-								style="margin-left: 20px; margin-top: 10px;">
-						</div>
-
-						<div class="id"
-							style="display: inline-block; padding-left: 70px; text-align: center; height: 60px; margin-top: 20px;">
-							<h4 class="display-4">${member.member_id}</h4>
-						</div>
-
-
-					</a>
-
-
-				</div>
-
-
-
-			</div>
-			<!-- 여기가 사이드 바 닫히는 div-->
 
 
 
@@ -408,6 +243,16 @@ function tagsclick(e) {
 	color: #f8f9fa;
 	background-color: #007bff;
 }
+/* .col-md-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 70%;
+}
+.col-md-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 30%;
+} */
 </style>
 			<div class="row featurette" style="width: 100%; margin: auto;">
 				<div class="col-md-7">
@@ -541,23 +386,21 @@ function tagsclick(e) {
 						</div>
 						<div style="height: 50px"></div>
 					</div>
-
-
-
-
-
 				</div>
+
+
+				<!-- 사이드바  -->
 				<div class="col-md-5">
-					<div class="col-lg-4" style="position: fixed;border: solid #00000024;border-radius: 20px;margin-top: 120px;padding-top: 20px;">
+					<div class="col-lg-4"
+						style="/* position: fixed; */ border: solid #00000024; border-radius: 20px;margin-left:10px; margin-top: 120px; padding-top: 20px;">
 						<a href="<%=request.getContextPath()%>/mypage/mp_main"> <img
 							class="rounded-circle"
 							src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
-							alt="<%=request.getContextPath()%>/resources/images/user.png"
+							alt="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
 							width="140" height="140">
 							<h2 style="color: #00000066;">ID: ${member.member_id}</h2></a> <a
 							onclick="reportPopup();" class="btn btn-warning" role="button"
 							style="border-radius: 40px; padding: auto;">신고</a>
-
 						<p>
 						<div class="buttons" style="z-index: 30">
 							<div

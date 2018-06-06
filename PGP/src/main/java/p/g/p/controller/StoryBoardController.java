@@ -43,35 +43,7 @@ public class StoryBoardController {
 		if(member==null) {
 			model.addAttribute("seck",null);
 		}else {
-			System.out.println(member);
-
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
-			System.out.println(member.getMember_idx());
+			
 			model.addAttribute("seck",member);
 					
 		}
