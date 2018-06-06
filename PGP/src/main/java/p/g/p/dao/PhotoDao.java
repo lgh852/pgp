@@ -4,13 +4,15 @@ import java.util.List;
 
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
-import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
+import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.Url_Tag;
 
 public interface PhotoDao {
 
+	public Join_Board_MemberInfo selectJoin_Board_Member(int board_idx);
+	
    public int insertComment(Board_Comment board_comment);
    public List<Join_BoardComment_MemberInfo> selectCommentAll(int board_idx);
    public int deleteComment(int board_comment_idx);

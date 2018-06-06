@@ -4,6 +4,11 @@
 <mapper namespace="p.g.p.dao.PhotoDao">
 
 
+
+	<select id="selectJoin_Board_Member" parameterType="p.g.p.model.Join_Board_MemberInfo" resultType="p.g.p.model.Join_Board_MemberInfo">
+	 select * from board, member_info where board.member_idx=member_info.member_idx and board_idx=#{board_idx};
+	</select>
+
    <insert id="insertComment" parameterType="p.g.p.model.Board_Comment">
       insert into
       board_comment(board_comment_contents,member_idx,board_idx)

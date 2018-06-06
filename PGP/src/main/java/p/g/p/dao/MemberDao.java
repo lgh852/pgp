@@ -20,7 +20,7 @@ public interface MemberDao {
 	public List<Join_board_boardphoto> LatestPhoto(int member_idx);
 
 	//좋아요 누른 사진 가져오기
-	public List<Board_Photo> selectLikePhoto(int member_idx);
+	public List<Join_board_boardphoto> selectLikePhoto(int member_idx);
 
 	public int kakaoinsert(Member_info member);
     

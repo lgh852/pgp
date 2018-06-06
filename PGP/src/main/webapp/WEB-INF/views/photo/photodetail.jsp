@@ -140,9 +140,6 @@ ul.list-group {
 </head>
 
 <body class="bg-light">
-	<a class="btn btn-primary"
-		href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${board.board_idx}"
-		role="button">페이지</a>
 
 	<div class="container">
 		<div class="py-5 text-center"></div>
@@ -253,12 +250,16 @@ function tagsclick(e) {
     flex: 0 0 41.666667%;
     max-width: 30%;
 } */
+.col-lg-4 {
+	flex: 0 0 33.333333%;
+	max-width: 100%;
+}
 </style>
 			<div class="row featurette" style="width: 100%; margin: auto;">
 				<div class="col-md-7">
 					<h2 class="featurette-heading" style="text-align: center">[
 						${board.board_title} ]</h2>
-					<div style="text-align: right">ID:</div>
+					<div style="text-align: right">ID:${boardMemberinfo.member_id}</div>
 					&nbsp &nbsp &nbsp
 					<div style="text-align: right">
 						<span class="text-muted"> Date: <fmt:formatDate
@@ -267,20 +268,8 @@ function tagsclick(e) {
 
 
 					<p class="lead">${board.board_contents}</p>
-					<div style="font-weight: bold; text-align: right;">
-						조회수 : ${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt} <span
-							class="text-muted"> <c:if
-								test="${board.member_idx==user.member_idx}">
-								<!-- 수정기능 -->
-								<a role="button" style="" class="btn btn-success"
-									href="<%=request.getContextPath()%>/photo/updatePhotodetail?board_idx=${board.board_idx}">수정
-								</a>
-								<!-- 삭제기능 -->
-								<a class="btn btn-danger"
-									href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.board_idx}"
-									role="button">삭제 </a>
-							</c:if></span>
-					</div>
+					<div style="font-weight: bold; text-align: right;">조회수 :
+						${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</div>
 
 
 
@@ -370,37 +359,93 @@ function tagsclick(e) {
 								</ul>
 							</form>
 						</div>
-						<!--  카테고리 추천사진 -->
-						<p style="font-weight: bold">카테고리 추천 사진</p>
-						<div class="list-group-item list-group-item-secondary"
-							style="height: 250px;">
-							<table>
-								<c:forEach var="popular" items="${popularPhotoList}">
-									<div style="padding: 20px 25px 20px; float: left;">
-										<img
-											src="<%=request.getContextPath()%>/resources/BoardPhoto/${popular.photo_name}"
-											width="160px" height="160px"> <br>
-									</div>
-								</c:forEach>
-							</table>
-						</div>
-						<div style="height: 50px"></div>
 					</div>
+					<!--  카테고리 추천사진 -->
+					<div class="mb-3"></div>
+					<p style="font-weight: bold">카테고리 추천 사진</p>
+
+
+					<div class="row">
+						<c:forEach var="popular" items="${popularPhotoList}">
+							<div class="col-sm-4" style="text-align: center;">
+								<img
+									src="<%=request.getContextPath()%>/resources/BoardPhoto/${popular.photo_name}"
+									alt="" width="140px" height="160px">
+							</div>
+						</c:forEach>
+
+
+					</div>
+					<div class="mb-3"></div>
+
 				</div>
+
 
 
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="/* position: fixed; */ border: solid #00000024; border-radius: 20px;margin-left:10px; margin-top: 120px; padding-top: 20px;">
+						style="border: solid #00000024; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px;">
 						<a href="<%=request.getContextPath()%>/mypage/mp_main"> <img
 							class="rounded-circle"
 							src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
-							alt="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
-							width="140" height="140">
-							<h2 style="color: #00000066;">ID: ${member.member_id}</h2></a> <a
-							onclick="reportPopup();" class="btn btn-warning" role="button"
-							style="border-radius: 40px; padding: auto;">신고</a>
+							alt="" width="140" height="140">
+							<h2 style="color: #00000066;">ID:
+								${boardMemberinfo.member_id}</h2></a>
+
+						<div style="text-align: center;">
+							<!-- <a onclick="reportPopup();" class="btn btn-warning" role="button"
+								style="border-radius: 40px; padding: auto; color: white;">신고</a> -->
+
+							
+								<a onclick="reportPopup();" class="btn btn-warning"
+									role="button"
+									style="border-radius: 40px; padding: auto; color: white;">신고</a>
+								<div id="reportPopup">
+									<div class="report_reason">
+										<select class="reason" id="report_contents">
+											<option selected value="0">주제와 맞지 않음</option>
+											<option selected value="1">정보가 부정확함</option>
+											<option selected value="2">지나친 광고성 게시물</option>
+											<option selected value="3">도배 및 중복 게시물</option>
+											<option selected value="4">저작권 침해가 우려됨</option>
+											<option selected value="5">욕설/비방이 심함</option>
+											<option selected value="6">외설적인 게시물</option>
+										</select>
+									</div>
+									<button type="button" id="report_submit">신고당해랏</button>
+									<button type="button" id="closeeeee">닫기</button>
+									<input type="hidden" id="storyboard_idx"
+										value="${storyboard_idx}"> <input type="hidden"
+										id="board_idx" value="${board.board_idx}"> <input
+										type="hidden" id="member_idx" value="${member.member_idx}">
+								</div>
+						
+
+
+
+
+
+							<span class="text-muted"> <c:if
+									test="${board.member_idx==user.member_idx}">
+									<!-- 수정기능 -->
+									<a role="button" style="border-radius: 40px; padding: auto;"
+										class="btn btn-success"
+										href="<%=request.getContextPath()%>/photo/updatePhotodetail?board_idx=${board.board_idx}">수정
+									</a>
+									<!-- 삭제기능 -->
+									<a class="btn btn-danger"
+										style="border-radius: 40px; padding: auto;"
+										href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.board_idx}"
+										role="button">삭제 </a>
+									<!-- 태그 달기 -->
+									<a class="btn btn-info"
+										style="border-radius: 40px; padding: auto;"
+										href="<%=request.getContextPath()%>/board/boardPhtoTagForm?board_idx=${board.board_idx}"
+										role="button">태그</a>
+								</c:if></span>
+						</div>
+
 						<p>
 						<div class="buttons" style="z-index: 30">
 							<div
@@ -507,10 +552,6 @@ function tagsclick(e) {
 						</div>
 
 
-						<p>
-							<a class="btn btn-secondary" href="#" role="button">View
-								details »</a>
-						</p>
 
 
 
@@ -522,35 +563,21 @@ function tagsclick(e) {
 			</div>
 
 
-
-			<hr class="featurette-divider" style="width: 100%">
-
-
-
-
-
-
-
-
-
-
-
-
-
 		</div>
 	</div>
-
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<p class="mb-1">&copy; 2017-2018 Company Name</p>
-		<ul class="list-inline">
-			<li class="list-inline-item"><a href="#">Privacy</a></li>
-			<li class="list-inline-item"><a href="#">Terms</a></li>
-			<li class="list-inline-item"><a href="#">Support</a></li>
-		</ul>
+	<footer class="my-5 pt-5 text-muted text-center text-small"
+		style="width: 100%;">
+		<hr class="featurette-divider" style="width: 100%">
+		<p class="mb-1">&copy; Playground 느그집</p>
+		<!-- <ul class="list-inline">
+					<li class="list-inline-item"><a href="#">Privacy</a></li>
+					<li class="list-inline-item"><a href="#">Terms</a></li>
+					<li class="list-inline-item"><a href="#">Support</a></li>
+				</ul> -->
 	</footer>
 
 
-	</div>
+
 
 
 

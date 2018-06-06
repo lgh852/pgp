@@ -77,30 +77,37 @@
                         </div>
                            </div> <!-- 스크랩북 추가하기 -->
                       
+           <%--                <p>${photonameList[status.index]}
+              </p>
+              <p> ${scrapNameList[status.index].scrap_name}
+             </p> --%>
                    
 
               <!-- 스크랩북 리스트 -->
              
-              <c:forEach var="photonameList" items="${photonameList}">
+              <c:forEach varStatus="status" items="${photonameList}">
               
-              <div class="col-md-4">
+             
+              
+             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
               
                 <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" 
-                src="<%=request.getContextPath()%>/resources/BoardPhoto/${photonameList}" >
-                
-                </div></div>
-             </c:forEach>
-             
-             
-              <c:forEach var="scrapNameList" items="${scrapNameList}" varStatus="status">
+                src="<%=request.getContextPath()%>/resources/BoardPhoto/${photonameList[status.index]}" >
               
-              <div class="scarpfoldername" style="">
+           <div class="scarpfoldername" style="font-size:60px; position: absolute; top: 60px; left:70px; font-color:white;">
              
-            <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList.scrap_name}">${scrapNameList.scrap_name}</a>
+            <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList[status.index].scrap_name}">
+            
+                <span class="name" style="color:white">${scrapNameList[status.index].scrap_name}</span></a>
               
               </div>
+           
               
+              
+                
+                </div>
+              </div>
             
               
               </c:forEach>

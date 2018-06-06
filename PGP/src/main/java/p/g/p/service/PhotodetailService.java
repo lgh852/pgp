@@ -1,9 +1,6 @@
 package p.g.p.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import p.g.p.dao.PhotoDao;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
-import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
+import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 
 public class PhotodetailService {
@@ -22,6 +19,12 @@ public class PhotodetailService {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
+	public Join_Board_MemberInfo selectJoin_Board_Member(int board_idx) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		Join_Board_MemberInfo boardMemberinfo=dao.selectJoin_Board_Member(board_idx);
+		return boardMemberinfo;
+	}
+	
 	public int ListInsertComment(Board_Comment board_comment) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		System.out.println("댓글 성공" + board_comment);

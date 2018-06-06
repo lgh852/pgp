@@ -71,10 +71,10 @@ public class MemberService {
 		return LatestPhoto;
 	}
 
-	public List<Board_Photo> selectLikeList(int member_idx) {
+	public List<Join_board_boardphoto> selectLikeList(int member_idx) {
 
 		dao = sqlSessionTemplate.getMapper(MemberDao.class);
-		List<Board_Photo> LikeList = dao.selectLikePhoto(member_idx);
+		List<Join_board_boardphoto> LikeList = dao.selectLikePhoto(member_idx);
 		
 		return LikeList;
 	}

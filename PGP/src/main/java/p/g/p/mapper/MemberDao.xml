@@ -86,10 +86,10 @@
 
 
 	<select id="selectLikePhoto" parameterType="int"
-		resultType="p.g.p.model.Board_Photo">
+		resultType="p.g.p.model.Join_board_boardphoto">
 
 
-		select c.photo_name
+		select c.photo_name,d.board_idx
 		from
 		pgp.member_info as a
 		join
@@ -100,6 +100,9 @@
 		pgp.board_photo as c
 		on b.board_idx =
 		c.board_idx
+		join 
+		pgp.board as d
+		on c.board_idx = d.board_idx
 		where a.member_idx=#{member_idx};
 
 	</select>

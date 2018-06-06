@@ -45,7 +45,7 @@ public class StoryBoardService {
 			if(member!=null) {
 
 				 member_idx = member.getMember_idx();
-				like.setMember_idx(member_idx);
+				 like.setMember_idx(member_idx);
 				 likelist = selecting(like);
 				
 			}else{

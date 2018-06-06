@@ -51,13 +51,13 @@
 
 	<ul class="nav justify-content-center nav-tabs"
 		style="text-align: center; padding-top: 30px;">
-		<li class="nav-item"><a class="nav-link active" href="#">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<li class="nav-item"><a class="nav-link " href="#">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" href="#">
 		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link" 
+		<li class="nav-item"><a class="nav-link active" 
 		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">
 		좋아요</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
@@ -75,12 +75,41 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="album py-5 bg-light" style="margin-top:30px;">
+        
+   <div class="container">
+
+        <div class="row container">
+
+
 <c:forEach var="likephoto" items="${likeList}">
 
+    <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+
+<a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${likephoto.board_idx}">
 <img src="<%=request.getContextPath()%>/resources/BoardPhoto/
-${likephoto.photo_name}" width="200px" height="200px">
+${likephoto.photo_name}" width="100%" height="200px">
+</a>
+
+</div></div>
 
 </c:forEach>
+
+
+</div></div></div>
 
 
  

@@ -56,7 +56,9 @@ $(document)
 							$('#latelybox')
 									.append(
 											'<div id ="twoimg"style="width: 130px;height: 130px;border: 1px solid black; margin: 0 auto; margin-top: 10px"><img width="128"height="128" id="imgtwo"></div>')
-							$('#imgone').attr(
+						
+											
+											$('#imgone').attr(
 									'src',
 									'/p/resources/BoardPhoto/'
 											+ latelyck[size2]);
