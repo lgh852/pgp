@@ -24,11 +24,15 @@ public class Mg_faq_controller {
    
 
    @RequestMapping(value="/manager/faqlist")
-   public String faqList(Model model) {
+   public String faqList(Model model,HttpSession session) {
       
       List<Faq> faq = service.getFaqList();
       
       model.addAttribute("faq",faq);
+      
+      
+      Manager manager = (Manager)session.getAttribute("manager");
+      model.addAttribute("manager", manager);
       
       String page="manager/faqlist.jsp";
       String view="home";

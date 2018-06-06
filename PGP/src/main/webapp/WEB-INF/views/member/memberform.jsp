@@ -19,8 +19,9 @@
 		id="memberform">
 
 		<div class="mb-3">
-			<label for="userId">아이디<span class="text-muted"></span> <span
-				id="useridck"></span></label> <input type="text" class="form-control"
+			<label for="userId">아이디<span class="text-muted"></span> 
+			<span id="useridck"></span></label> 
+			<input type="text" class="form-control"
 				id="userId" placeholder="" name="member_id">
 		</div>
 
