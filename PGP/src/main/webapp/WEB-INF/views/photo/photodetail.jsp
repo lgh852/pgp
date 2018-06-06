@@ -365,13 +365,18 @@ function tagsclick(e) {
 					<p style="font-weight: bold">카테고리 추천 사진</p>
 
 
-					<div class="row">
+					<div class="row"style="
+    border:  solid 1px #0000001a;
+    border-radius: 10px;
+    ">
 						<c:forEach var="popular" items="${popularPhotoList}">
-							<div class="col-sm-4" style="text-align: center;">
+							<div class="col-sm-4" style="text-align: center;padding: 3px;">
+							<a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${popular.board_idx}">
 								<img
 									src="<%=request.getContextPath()%>/resources/BoardPhoto/${popular.photo_name}"
 									alt="" width="140px" height="160px">
-							</div>
+							
+							</a></div>
 						</c:forEach>
 
 
@@ -385,17 +390,16 @@ function tagsclick(e) {
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="border: solid #00000024; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px;">
-						<a href="<%=request.getContextPath()%>/mypage/mp_main"> <img
+						style="border: solid #0000001a; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px;">
+						<a href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}"> <img
 							class="rounded-circle"
-							src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
+							src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
 							alt="" width="140" height="140">
 							<h2 style="color: #00000066;">ID:
 								${boardMemberinfo.member_id}</h2></a>
 
 						<div style="text-align: center;">
-							<!-- <a onclick="reportPopup();" class="btn btn-warning" role="button"
-								style="border-radius: 40px; padding: auto; color: white;">신고</a> -->
+						
 
 							
 								<a onclick="reportPopup();" class="btn btn-warning"

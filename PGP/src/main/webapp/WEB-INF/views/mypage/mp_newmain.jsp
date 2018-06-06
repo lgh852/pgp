@@ -18,7 +18,7 @@
       
     </div>
     <div class="col">
-      <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}" 
+      <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member_photo}" 
        width="140" height="140" style="border-top-width: 100px; margin-top: 30px;">
     </div>
   </div>
@@ -28,14 +28,14 @@
       <div class="container">
      <div class="col " style="height: 100px">
           <div class="user_name" style="height: 60px; font-size: 20px; text-align: left; padding-top: 30px;">
-          <p class="font-weight-bold" style="font-size: 50px;">${member.member_id}</p></div></div>
+          <p class="font-weight-bold" style="font-size: 50px;">${member_id}</p></div></div>
     <div class="col " style="height: 100px">
           
         <div class="user-set" style="margin-top: 10px;">
         
         <button type="button" class="btn btn-sm btn-outline-secondary"  data-toggle="button" aria-pressed="false"
 				style="width: 100px; font-size: 20px; text-align: right;border-color:none;"
-				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_update?member_id=${member.member_id}'">
+				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_update?member_id=${member_id}'">
 				<img src="<%=request.getContextPath()%>/resources/images/setbutton.png"
 					width="20px" height="20px">&nbsp 설정</button>
         
@@ -56,18 +56,18 @@
 		style="text-align: center; padding-top: 30px;">
 		<li class="nav-item"><a class="nav-link active" href="#">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
-			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
+			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" href="#">
 		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" 
-		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">
+		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member_idx}">
 		좋아요</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
-			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_id=${member.member_id}">스크랩</a>
+			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_id=${member_id}">스크랩</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
-			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}">댓글</a>
+			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member_id}">댓글</a>
 		</li>
 	</ul>
 
@@ -100,7 +100,7 @@
     </div>
     <div class="col-4">
         <a
-           href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">
+           href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member_idx}">
            <p class="view_all" style="text-align: right;margin-right: 18px; "> 전체보기</p></a>
      </div>
   </div>
@@ -146,7 +146,7 @@
           <div class="p-3 mb-3 bg-light rounded" style="height:150px;">
               
               <div class="scrapPhoto" >
-              <a href="<%=request.getContextPath() %>/mypage/mp_scrap?member_id=${member.member_id}">
+              <a href="<%=request.getContextPath() %>/mypage/mp_scrap?member_id=${member_id}">
               <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${scrapLatestPhoto}" class="img-fluid" alt="Responsive image" style="width:100%; height:100px; border-radius: 5px">
             <div class="scrapbook" style="position: absolute; top:20%; margin-left: 55px; text-aligh:center; font-size:38px;  "> 
                 <span style="color: white">스크랩북</span></div>

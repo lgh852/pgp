@@ -70,7 +70,7 @@
 
    <!--조회수 기준으로 카테고리 인기 사진 출력 -->
    <select id="popluarphotoSelect" resultType="p.g.p.model.Join_board_boardphoto">
-      select photo_name
+      select *
       from board,board_photo where
       board.board_idx=board_photo.board_idx
       order by board_cnt desc limit 3
