@@ -96,8 +96,20 @@ public class LoginController {
 	@ResponseBody
 	public String naverLogin(Member_info member, HttpSession session) {
 		// 비교 서비스
+		System.out.println("dddddds");
+		System.out.println("dddddds");
+		System.out.println("dddddds");
+		System.out.println("dddddds");
+		System.out.println("member");
+		System.out.println(member);
 		Member_info members = service.kakaock(member);
-
+		System.out.println("zzzzzzzzzzzzzzzz0");
+		System.out.println(member);
+		System.out.println(member);
+		System.out.println(member);
+		System.out.println(member);
+		System.out.println(member);
+		
 		String ck = "y";
 
 		if (members != null) {

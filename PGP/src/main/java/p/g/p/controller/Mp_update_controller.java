@@ -20,88 +20,111 @@ import p.g.p.service.Mp_update_service;
 @RequestMapping("/mypage/mp_update")
 
 public class Mp_update_controller {
-	
+
 	@Autowired
 	private Mp_update_service service;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public String mypageUpdateForm(@RequestParam("member_id") String member_id, Model model,
-			Member_info member) {
+	public String mypageUpdateForm(@RequestParam("member_idx") String member_idx, Model model, Member_info member) {
 		String page = "";
-		String view ="";
+		String view = "";
+		String phone1="";
+		String phone2="";
+		String phone3="";
+		member = service.Mp_update_select(member_idx);
+		if (member != null) {
+			if(member.getMember_phone()!=null) {
+				 phone1 = member.getMember_phone().substring(0, 3);
+				 phone2 = member.getMember_phone().substring(3, 7);
+				 phone3 = member.getMember_phone().substring(7, 11);
+			}
+			if(member.getMember_birth()!=null) {
+				
 		
-		member = service.Mp_update_select(member_id);
-		if(member!=null) {
-			
-			String sphone =member.getMember_phone().substring(0,2);
-			String aphone =member.getMember_phone().substring(3,6);
-			String zphone =member.getMember_phone().substring(7, 10);
+			System.out.println(member.getMember_birth());
+			String birth = member.getMember_birth();
+			if (birth != null) {
+				String[] births = birth.split("-");
+				if (births.length > 1) {
+					for (int i = 0; i < births.length; i++) {
+						System.out.println(births[i]);
+					}
+					String year = births[0];
+					String month = births[1];
+					String day = births[2];
+					model.addAttribute("year", year);
+					model.addAttribute("month", month);
+					model.addAttribute("day", day);
+				}
+
+			}
+			}
 			model.addAttribute("member", member);
-			
-			model.addAttribute("sphone", sphone);
-			model.addAttribute("aphone", aphone);
-			model.addAttribute("zphone", zphone);
-			
-			String sbirth =member.getMember_birth().substring(0,member.getMember_birth().indexOf("년",0));
-			String abirth =member.getMember_birth().substring(0,member.getMember_birth().indexOf("월",4));
-			
 
+			model.addAttribute("phone1", phone1);
+			model.addAttribute("phone2", phone2);
+			model.addAttribute("phone3", phone3);
 
-			
-			
 			page = "mypage/mp_update_form.jsp";
 			view = "home";
-				
-		}else {
-			
-			//값이 없을때 
+
+		} else {
+
+			// 값이 없을때
 		}
-		
+
 		model.addAttribute("page", page);
 
 		return view;
-		
+
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String mypageUpdate(@RequestParam("member_id") String member_id,Member_info member,HttpServletRequest request,Model model) throws IllegalStateException, IOException {
-		
+	public String mypageUpdate(Member_info member, HttpServletRequest request, Model model,
+			@RequestParam("year") String year, @RequestParam("month") String month, @RequestParam("day") String day,
+			@RequestParam("phone1") String phone1, @RequestParam("phone2") String phone2,
+			@RequestParam("phone3") String phone3) throws IllegalStateException, IOException {
+		System.out.println(day);
+		System.out.println(month);
+		System.out.println(year);
+		System.out.println(phone1);
+		System.out.println(phone2);
+		System.out.println(phone3);
 	
-        System.out.println(member);
+		if (member != null) { // 값이 있으면 update 실행
+			member.setMember_phone(phone1 + phone2 + phone3);
+			member.setMember_birth(year + "-" + month + "-" + day);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
 		
-		if(member!=null) { //값이 있으면 
+			
 			int resultCnt = service.Mp_update(member, request);
+
+			System.out.println(resultCnt);
+			if (resultCnt > 0) {
+				System.out.println("정상적으로 실행");
+
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		System.out.println(resultCnt);
-		if(resultCnt>0) {
-			System.out.println("정상적으로 실행");
-			
-			member = service.Mp_update_select(member_id);
-			
-			model.addAttribute("member",member);
-		
-		}else {
-			System.out.println("비어있는 값이 있습니다.");
+
+			} else {
+				System.out.println("비어있는 값이 있습니다.");
+			}
 		}
-		}
-	    
+
 		String page = "mypage/mp_update.jsp";
 		String view = "home";
 		model.addAttribute("page", page);
 
 		return view;
-		
-		
-		
+
 	}
-	
-	
+
 }

@@ -58,6 +58,8 @@
 				alert(name);
 				var profileImage = naverLogin.user.getProfileImage();
 				var birthday = naverLogin.user.getBirthday();
+				alert(profileImage)
+				alert(birthday)
 				$.ajax({
 
 					type : 'GET',

@@ -24,7 +24,7 @@ public class Mp_main_controller {
 	MemberService service;
 	
 	@RequestMapping("/mypage/mp_main")
-	public String mypage(HttpSession session, Model model,Board board,@RequestParam(value = "member_idx", defaultValue = "0")int member_idx,@RequestParam(value = "member_photo", defaultValue = "0")String member_photo,@RequestParam(value = "member_id", defaultValue = "0")String member_id) {
+	public String mypage(HttpSession session, Model model,Board board) {
 		
 		String view = "home";
 		
@@ -32,15 +32,11 @@ public class Mp_main_controller {
 		
 		model.addAttribute("page",page);
 		
-		/*Member_info member = (Member_info)session.getAttribute("user");
+		Member_info member = (Member_info)session.getAttribute("user");
 		System.out.println(member);
 		model.addAttribute("member",member);
-		*/
-		
-		model.addAttribute("member_photo",member_photo);
-		model.addAttribute("member_idx",member_idx);
-		model.addAttribute("member_id",member_id);
-	
+		int member_idx= member.getMember_idx();
+
 		
 		
 		

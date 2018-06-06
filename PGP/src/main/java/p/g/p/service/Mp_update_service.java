@@ -20,22 +20,32 @@ public class Mp_update_service {
 	@Autowired
 	private Mp_file_service service;
 	
-	public Member_info Mp_update_select(String member_id) {
+	public Member_info Mp_update_select(String member_idx) {
 		
 		Member_info member;
 		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
-		member = dao.selectById(member_id);
+		member = dao.selectByIdx(member_idx);
 		return member;
+		
+		
 	}
 	
 	public int Mp_update(Member_info member,HttpServletRequest request) throws IllegalStateException, IOException {
-		
-		service.memberPhotoUpload(member, request);
+		if(member.getMember_photo()!=null) {
+			//새로운 사진값이 있을 경우에만w
+			service.memberPhotoUpload(member, request);
+		}
+
 		
 	    dao = sqlSessionTemplate.getMapper(Mp_dao.class);
         
-        int resultCnt = dao.updateById(member);
-		
+        int resultCnt = dao.updatemember(member);
+		if(resultCnt>0) {
+			//성공
+		}else {
+			//실패 
+			resultCnt=-1;
+		}
 	
 		
 		

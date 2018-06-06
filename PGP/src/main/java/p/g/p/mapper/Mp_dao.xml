@@ -11,15 +11,22 @@
 		MEMBER_ID = #{ID}
 
 	</select>
+	<select id="selectByIdx" resultType="p.g.p.model.Member_info">
+
+		SELECT * FROM MEMBER_INFO
+		WHERE
+		MEMBER_IDX = #{IDX}
+
+	</select>
 
 	<!-- 설정 클릭하면 수정할 수 있도록 -->
 
-	<update id="updateById" parameterType="p.g.p.model.Member_info">
+	<update id="updatemember" parameterType="p.g.p.model.Member_info">
 
 		UPDATE `pgp`.`member_info`
 		SET
+		member_pw=#{member_pw},
 		member_nickname=#{member_nickname},
-		member_gender=#{member_gender},
 		member_phone=#{member_phone},
 		member_birth=#{member_birth},
 		member_photo=#{member_photo},

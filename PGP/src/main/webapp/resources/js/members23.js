@@ -119,19 +119,19 @@ $(document).ready(function() {
 
 	for (var i = year - 100; i <= year; i++) {
 
-		$('#year').append('<option>' + i + '년' + '</option>');
+		$('#year').append('<option value='+i+'>' + i + '년' + '</option>');
 	}
 	;
 
 	for (var i = 1; i <= 12; i++) {
 
-		$('#month').append('<option>' + i + '월' + '</option>');
+		$('#month').append('<option value='+i+'>' + i + '월' + '</option>');
 	}
 	;
 
 	for (var i = 1; i <= 31; i++) {
 
-		$('#day').append('<option>' + i + '일' + '</option>');
+		$('#day').append('<option value='+i+'>' + i + '일' + '</option>');
 	}
 	;
 	$('#memberform').submit(function() {

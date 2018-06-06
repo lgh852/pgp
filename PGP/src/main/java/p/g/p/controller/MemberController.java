@@ -33,7 +33,7 @@ public class MemberController {
 		
 		member.setMember_phone(phone1+phone2+phone3);
 		
-		member.setMember_birth(year+month+day);
+		member.setMember_birth(year+"-"+month+"-"+day);
 		
 		System.out.println(member);
 		String view = "home";

@@ -107,4 +107,18 @@
 
 	</select>
 
+
+	<insert id="kakaoinsert" parameterType="p.g.p.model.Member_info">
+		INSERT INTO
+		pgp.member_info
+		(member_id,
+		member_pw,
+		member_name,
+		member_phone,
+		member_birth,
+		member_gender)
+		VALUES
+		(#{member_id},#{member_pw},#{member_phone},
+		#{member_name},#{member_gender},#{member_birth});
+	</insert>
 </mapper>

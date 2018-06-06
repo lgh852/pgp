@@ -30,12 +30,11 @@
 
 	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 식별자 -->
-		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<beans:property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
 
-		<beans:property name="jdbcUrl"
+		  <beans:property name="jdbcUrl"
 
-			value="jdbc:mysql://localhost/pgp?allowMultiQueries=true" />
-
+         value="jdbc:mysql://localhost/pgp?allowMultiQueries=true&amp;serverTimezone=UTC" />
 		<beans:property name="user" value="bit" />
 
 		<beans:property name="password" value="bit" />

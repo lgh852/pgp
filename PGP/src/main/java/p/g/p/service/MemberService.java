@@ -82,6 +82,7 @@ public class MemberService {
 		dao = sqlSessionTemplate.getMapper(MemberDao.class);
 		Member_info memberck = dao.loginSelect(member.getMember_id());
 		int cks =0;
+		System.out.println("쳌");
 		if(memberck!=null) {
 			//아이디 있음
 			//memberck 값이 존재
@@ -96,8 +97,24 @@ public class MemberService {
 			System.out.println("체크"+memberck);
 			
 		}else {
+			System.out.println("쳌스초콘");
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			System.out.println(member);
+			member.setMember_phone("");
 			memberck = null;
 			cks = dao.kakaoinsert(member);
+			System.out.println(cks);
+			System.out.println(cks);
+			System.out.println(cks);
+			System.out.println(cks);
+			System.out.println(cks);
+			
 			//회원가입 가능 
 			//insert 성공시 1 값		
 	

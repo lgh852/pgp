@@ -13,11 +13,13 @@ import p.g.p.model.scrapFN;
 
 public interface Mp_dao {
    
-   public Member_info selectById(String member_id);
+   public Member_info selectById(String member_idx);
    
-    public int updateById(Member_info member);
+    public int updatemember(Member_info member);
     
-   
+    public Member_info selectByIdx(String member_idx);
+    
+    
     public List<Join_board_boardphoto> selectMyPhotoList(int member_idx);
 
     public List<Board_Comment> selectMyCommentList(String member_id);
