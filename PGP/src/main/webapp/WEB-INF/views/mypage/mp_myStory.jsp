@@ -58,7 +58,7 @@
 
 	<ul class="nav justify-content-center nav-tabs"
 		style="text-align: center; padding-top: 30px;">
-		<li class="nav-item"><a class="nav-link " href="#">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<li class="nav-item"><a class="nav-link " href="<%=request.getContextPath()%>/mypage/mp_newmain">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

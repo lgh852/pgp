@@ -31,7 +31,7 @@ public class Mp_scrap_controller {
    
    
    @RequestMapping(value="/mypage/mp_scrap",method=RequestMethod.GET)
-   public String mypageScrap(@RequestParam("member_id") String member_id, Model model,
+   public String mypageScrap(Model model,
 		   Join_Scrap_scrapFN scrap,HttpSession session) {
       
     
@@ -93,8 +93,13 @@ public class Mp_scrap_controller {
         for(int i=0;i<c;i++) {
         	
         	String photoname = service.selectPhotoName(boardIdxList.get(i));
-        	
-        	photonameList.add(photoname);
+        	if(photoname!=null) {
+        		photonameList.add(photoname);
+            		
+        	}else {
+        		photonameList.add(".");
+                		
+        	}
         	
         }
         
