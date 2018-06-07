@@ -58,13 +58,13 @@
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link" href="#">
+		<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage/mp_myStory">
 		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" 
 		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">
 		좋아요</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
-			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_id=${member.member_id}">스크랩</a>
+			href="<%=request.getContextPath()%>/mypage/mp_scrap">스크랩</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}">댓글</a>

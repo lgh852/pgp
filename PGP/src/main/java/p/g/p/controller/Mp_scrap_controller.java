@@ -31,37 +31,29 @@ public class Mp_scrap_controller {
    
    
    @RequestMapping(value="/mypage/mp_scrap",method=RequestMethod.GET)
-   public String mypageScrap(@RequestParam("member_id") String member_id, Model model,
+   public String mypageScrap(Model model,
 		   Join_Scrap_scrapFN scrap,HttpSession session) {
       
     
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
-      	System.out.println(member);
-      	System.out.println(member);System.out.println(member);System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-        //스크랩 폴더 명 리스트 보여주기 
+      
+        
+        
+      	//스크랩 폴더 명 리스트 보여주기 
         List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
-        System.out.println(scrapNameList);
-        System.out.println(scrapNameList);
-        System.out.println(scrapNameList);
-        System.out.println("asdas"+scrapNameList);
+        
         model.addAttribute("scrapNameList", scrapNameList);
+        
         
         
         //일단 scrapFN_idx 검색해오쟈
         List<Integer> scrapfnidx = service.selectscrapfnidx(member.getMember_idx());
         System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx); System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
+       
         
 
-        
         //반복 횟수 (스크랩 폴더 갯수 )가져오쟈
         int c = service.countFnIdx(member.getMember_idx());
       
@@ -71,17 +63,26 @@ public class Mp_scrap_controller {
         List<Integer> boardIdxList = new ArrayList<Integer>(); 
         
         
-        
         for(int i=0;i<c;i++) {
         	
         scrap.setScrapFN_idx(scrapfnidx.get(i));
         
-       
+        System.out.println("scrap있냐화기어마러"+scrap);
         
-        int boardidx = service.selectScrapboardidx(scrap);
+        int boardidxcheck = service.boardIdxCheck(scrap);
         
-        
-        boardIdxList.add(boardidx);
+        if(boardidxcheck>0) {
+        	
+        	 int boardidx = service.selectScrapboardidx(scrap);
+             
+             boardIdxList.add(boardidx);
+        	
+        }else{ //스크랩 폴더에 스크랩 된 게시물이 하나도 없는 것이 있음 
+        	
+        	int boardidx = 0;
+        	boardIdxList.add(boardidx);
+        	
+        }
         
         }
         
@@ -93,7 +94,13 @@ public class Mp_scrap_controller {
         	
         	String photoname = service.selectPhotoName(boardIdxList.get(i));
         	
-        	photonameList.add(photoname);
+        	if(photoname!=null) {
+        		photonameList.add(photoname);
+            		
+        	}else {
+        		photonameList.add("nothing");
+                		
+        	}
         	
         }
         
@@ -152,6 +159,7 @@ public class Mp_scrap_controller {
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
+      
       
       
       int resultC = service2.deleteScrapFolder(scrapfn);

@@ -53,6 +53,8 @@ public int countFnIdx(int member_idx) {
 public int selectScrapboardidx(Join_Scrap_scrapFN scrap) {
 
 	dao = sqlSessionTemplate.getMapper(Mp_dao.class);
+
+	
 	int result = dao.selectScrapBoardIdx(scrap);
 	
 	return result;
@@ -65,6 +67,21 @@ public String selectPhotoName(Integer integer) {
 	String r = dao.selectPhotoName(integer);
 	
 	return r;
+}
+
+
+public int boardIdxCheck(Join_Scrap_scrapFN scrap) {
+	
+	dao = sqlSessionTemplate.getMapper(Mp_dao.class);
+	int idxcheck = dao.boardidxCheck(scrap);
+	
+	if (idxcheck>0) {
+		//board_idx가 있는것이지
+	}else {
+		idxcheck = 0;
+	}
+	
+	return idxcheck;
 }
 
 

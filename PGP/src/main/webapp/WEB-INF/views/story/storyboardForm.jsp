@@ -61,7 +61,9 @@ var seck = $('#seck').val();
 })
 </script>
 <!--로그인 여부 체크를 위한 -->
-<input type="hidden" id="seck" value="${seck}">
+
+
+<input type="hidden" id="seck" value="${seck.member_idx}">
 
 <div class="py-5 text-center" style="width: 100%;    background-image: url(/p/resources/images/roompic6.jpg);color:white;">
 	

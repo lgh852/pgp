@@ -33,6 +33,7 @@ public class Mp_update_controller {
 		String phone3="";
 		member = service.Mp_update_select(member_idx);
 		if (member != null) {
+			
 			if(member.getMember_phone()!=null) {
 				 phone1 = member.getMember_phone().substring(0, 3);
 				 phone2 = member.getMember_phone().substring(3, 7);
@@ -94,16 +95,7 @@ public class Mp_update_controller {
 		if (member != null) { // 값이 있으면 update 실행
 			member.setMember_phone(phone1 + phone2 + phone3);
 			member.setMember_birth(year + "-" + month + "-" + day);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
+			
 		
 			
 			int resultCnt = service.Mp_update(member, request);

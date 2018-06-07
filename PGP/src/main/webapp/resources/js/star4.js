@@ -5,16 +5,10 @@ $(document)
 
               var listnum;
 
-               /* 스크랩기능 */
+               /*스크랩 폴더 추가*/
 
                $("#scrapPopup").hide();
-               /*
-                * $("#scrap > a").click(function() {
-                * 
-                * $("#scrap > a").blur(); $("#scrapPopup").show();
-                * $("#scrapPopup a").focus(); return false; });
-                */
-              
+               
                $(".add")
                      .click(
                            function() {
@@ -26,6 +20,10 @@ $(document)
                               
                               var member_idx = $("#member_idx").val();
                               alert(member_idx);
+                              
+                              var scrapbookcheck;
+                              
+                          
 
                               $.ajax({
 
