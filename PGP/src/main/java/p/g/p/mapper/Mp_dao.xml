@@ -47,7 +47,8 @@
 
 
 		SELECT
-		a.member_id,b.board_comment_contents,b.board_comment_regdate
+		a.member_id,b.board_comment_contents,b.board_comment_regdate,
+		b.board_idx,b.board_comment_idx
 		from
 		pgp.member_info as a
 		join pgp.board_comment as b

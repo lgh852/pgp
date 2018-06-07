@@ -15,7 +15,7 @@
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
 		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
-		b.board_idx>230
+		b.board_idx>50
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>
@@ -58,7 +58,7 @@ SELECT
 		pgp.category_room r on r.category_idx = b.category_idx LEFT
 		JOIN 
 		pgp.category_space s on s.category_idx = b.category_idx2 where
-			b.board_idx>230
+			b.board_idx>50
 		<if test="!room.equals('')">
 			and category_room = #{room}
 		</if>

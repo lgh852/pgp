@@ -20,7 +20,7 @@
      
 <c:forEach var="notice" items="${notices}">
 
-<div class="faq_list" style="margin-top:30px; width:100%;height: 100%">
+<div class="notice_list" style="margin-top:30px; width:100%;height: 100%">
         
         <article class="questions-item border-top border-bottom">
           
@@ -49,11 +49,27 @@
         </article>  
 
         </div>
+        
+        
+        
+        <c:if test="${manager != null}">
+
+				<div class="button_set"
+					style="margin-top: 10px; margin-bottom: 10px; padding-left: 1000px;">
+					<a
+						href="<%=request.getContextPath()%>/manager/noticeupdate?notice_idx=${notice.notice_idx}">
+						<button type="button" class="btn btn-warning">수정</button>
+					</a> <a
+						href="<%=request.getContextPath()%>/manager/noticedelete?notice_idx=${notice.notice_idx}">
+						<button type="button" class="btn btn-success">삭제</button>
+					</a>
+
+				</div>
 
 
-      <td><a href="<%=request.getContextPath()%>/manager/noticedelete?notice_idx=${notice.notice_idx}">삭제</a></td>
-      <td><a href="<%=request.getContextPath()%>/manager/noticeupdate?notice_idx=${notice.notice_idx}">수정</a></td>
-      
+			</c:if>
+        
+        
 
 
 </c:forEach>
