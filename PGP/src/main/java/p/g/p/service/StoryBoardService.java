@@ -75,38 +75,31 @@ public class StoryBoardService {
 				System.out.println("서비스6"+likelist.size());
 				
 			for (int i = 0; i < listStory.size(); i++) {
-				System.out.println("서비스7");
+				
 		
 				int photoidx = listStory.get(i).getStoryboard_idx();
-				System.out.println("서비스8");
+				
 				
 				for (int x = 0; x < likelist.size(); x++) {
-					System.out.println("서비스9"+likelist.size());
 					
-					System.out.println("서비스999999999999"+likelist.get(x));
-					
+			
 					int listidx = likelist.get(x).getStoryboard_idx();
 					
 					System.out.println("서비스10"+listidx);
 					if (photoidx == listidx) {
-						System.out.println("서비스11");
+						
 						listStory.get(i).setLikeck("ss");
-						System.out.println("서비스12");
+						
 					}
 				}
 			}
 			
 			}else {
 				  
-				System.out.println(likelist);
-				System.out.println(likelist);
-				System.out.println(likelist);
-				System.out.println(likelist);
-				System.out.println(likelist);
-				System.out.println(likelist);
-				System.out.println(likelist);
+				
 				likelist = null;
 			}
+			
 			
 			System.out.println("서비스13"+listStory);
 			return listStory;
