@@ -43,10 +43,7 @@
 
 	<!-- 내가 등록한 댓글 출력하기 -->
 	<select id="selectMyCommentList" resultType="p.g.p.model.Board_Comment"
-		parameterType="String">
-
-
-
+		parameterType="p.g.p.model.Member_info">
 		SELECT
 		a.member_id,b.board_comment_contents,b.board_comment_regdate,
 		b.board_idx,b.board_comment_idx
@@ -55,7 +52,7 @@
 		join
 		pgp.board_comment as b
 		where
-		a.member_id=#{member_id};
+		a.member_idx=#{member_idx};
 
 
 	</select>
@@ -72,7 +69,7 @@
 
 	<!-- 내가 올린 사진들 출력하기 -->
 	<select id="myphotolist" resultType="p.g.p.model.PhotoListmodel"
-		parameterType="int">
+		parameterType="p.g.p.model.Member_info">
 
 		select
 		a.photo_name,b.board_title,b.board_contents,b.board_comment,b.board_idx,

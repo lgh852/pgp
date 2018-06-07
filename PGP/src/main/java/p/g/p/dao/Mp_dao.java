@@ -22,10 +22,10 @@ public interface Mp_dao {
     
     public List<Join_board_boardphoto> selectMyPhotoList(int member_idx);
 
-    public List<Board_Comment> selectMyCommentList(String member_id);
+    public List<Board_Comment> selectMyCommentList(Member_info member);
 
     //나의 사진만 보여쥑 
-	public List<PhotoListmodel> myphotolist(int member_idx);
+	public List<PhotoListmodel> myphotolist(Member_info member);
  
 	//마이페이지 스크랩 폴더에 맞는 사진 리스트 보여주기 다시
 	public List<Join_Scrap_scrapFN> selectScrapPhotoList(Scrap scrap2);

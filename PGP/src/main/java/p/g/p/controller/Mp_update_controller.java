@@ -60,14 +60,14 @@ public class Mp_update_controller {
 
 			}
 			}
+			
+			page = "mypage/mp_update_form.jsp";
+			view = "home";
 			model.addAttribute("member", member);
 
 			model.addAttribute("phone1", phone1);
 			model.addAttribute("phone2", phone2);
 			model.addAttribute("phone3", phone3);
-
-			page = "mypage/mp_update_form.jsp";
-			view = "home";
 
 		} else {
 

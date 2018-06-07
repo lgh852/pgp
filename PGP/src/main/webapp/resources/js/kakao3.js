@@ -14,9 +14,7 @@ $(document).ready(function() {
             success : function(res) {
                var jsonval = JSON.parse(JSON.stringify(res));
 
-            /*   alert(jsonval.kakao_account.email);
-               alert(jsonval.properties.thumbnail_image);
-               alert(jsonval.properties.nickname);*/
+          
                var date = new Date();
                 var year = date.getFullYear();
                 var month = date.getMonth()+1
@@ -31,8 +29,7 @@ $(document).ready(function() {
                 var todays = year+"-"+month+"-"+day;
                 alert(todays);
                 var today = String(todays);
-                // 내부 서버로 데이터를 넘겨 세션을 만들어준다. 내부서버에는 해당 데이터들을 받아 처리할
-               // controller 필요.
+               
                $.ajax({
                   type : "POST",
                   data : {

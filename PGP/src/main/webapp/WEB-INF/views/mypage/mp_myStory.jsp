@@ -58,20 +58,20 @@
 
 	<ul class="nav justify-content-center nav-tabs"
 		style="text-align: center; padding-top: 30px;">
-		<li class="nav-item"><a class="nav-link " href="<%=request.getContextPath()%>/mypage/mp_newmain">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link"
+	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${member.member_idx}">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link active" href="#">
+		<li class="nav-item "><a class="nav-link active" href="#">
 		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" 
 		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">
 		좋아요</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link"
-			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_id=${member.member_id}">스크랩</a>
+			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_idx=${member.member_idx}">스크랩</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link "
-			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_id=${member.member_id}">댓글</a>
+		<li class="nav-item"><a class="nav-link"
+			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_idx=${member.member_idx}">댓글</a>
 		</li>
 	</ul>
 

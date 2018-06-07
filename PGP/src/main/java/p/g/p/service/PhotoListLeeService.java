@@ -1,9 +1,15 @@
 package p.g.p.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.PhotoleeDao;
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Like;
 
 public class PhotoListLeeService {
@@ -75,4 +81,38 @@ public class PhotoListLeeService {
 		return reslut;
 	}
 
+	public void latestlist(HttpSession session, List<Board_Photo> latelylist, String photoName, Board_Photo photo) {
+int sessionck = 0;
+		
+		if (latelylist != null) {
+
+			for (int i = 0; i < latelylist.size(); i++) {
+				String listck = latelylist.get(i).getPhoto_name();
+				System.out.println("현재 비교할 값이지롱" + listck);
+				if (listck != null && photoName.equals(listck)) {
+					// 값이 있고 기존리스트에 동일한 값이 있으면 생성안함
+					sessionck = +1;
+				} else {
+
+				}
+
+			}
+			if (sessionck == 0) {
+
+				latelylist.add(latelylist.size(), photo);
+
+			}
+			session.setAttribute("latelylist", latelylist);
+
+		}
+
+		else {
+			latelylist = new ArrayList<Board_Photo>();
+			latelylist.add(0, photo);
+			session.setAttribute("latelylist", latelylist);
+		}
+		
+	}
+
+	
 }

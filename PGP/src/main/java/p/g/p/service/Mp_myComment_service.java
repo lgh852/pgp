@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.Mp_dao;
 import p.g.p.model.Board_Comment;
+import p.g.p.model.Member_info;
 
 public class Mp_myComment_service {
 	
@@ -15,11 +16,11 @@ public class Mp_myComment_service {
 	
 	private Mp_dao dao;
 	
-	public List<Board_Comment> Mp_myCommentList(String member_id){
+	public List<Board_Comment> Mp_myCommentList(Member_info member){
 		
 		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
 		
-		List<Board_Comment> list = dao.selectMyCommentList(member_id);
+		List<Board_Comment> list = dao.selectMyCommentList(member);
 		
 		
 		

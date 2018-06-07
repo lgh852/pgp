@@ -14,13 +14,13 @@ import p.g.p.model.Member_info;
 import p.g.p.service.ManagerService;
 
 @Controller
-@RequestMapping(value="/manager/managerloginform")
+@RequestMapping()
 public class ManagerController {
 	
 	@Autowired
-	ManagerService service;
+	ManagerService mangerservice;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/manager/managerloginform",method = RequestMethod.GET)
 	public String loginform(Model model) {
 
 		String page = "manager/managerloginform.jsp";
@@ -31,12 +31,12 @@ public class ManagerController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value="/manager/managerloginform",method = RequestMethod.POST)
 	public String login(@RequestParam("manager_id")String id,
 			@RequestParam("manager_pw")String pw,Model model,Manager manager,HttpSession session) {
 		
 		String view ="home";
-		manager = service.loginService(manager,id,pw);
+		manager = mangerservice.loginService(manager,id,pw);
 		if(manager!=null) {
 			//null아니면 성공
 			session.setAttribute("manager",manager);
@@ -46,6 +46,7 @@ public class ManagerController {
 		}else {
 
 			model.addAttribute("msg","관리자 로그인 실패 ㅠㅠ");
+			//에러페이지 내누셈 
 		}
 		
 		

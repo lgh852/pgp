@@ -30,11 +30,11 @@ public class Mp_myphoto_service {
 
 	}
 
-	public List<PhotoListmodel> myPhotolistview(Like like,int member_idx) {
+	public List<PhotoListmodel> myPhotolistview(Member_info member) {
 		
 		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
 		
-		List<PhotoListmodel> list = dao.myphotolist(member_idx);
+		List<PhotoListmodel> list = dao.myphotolist(member);
 		
 		return list;
 	}

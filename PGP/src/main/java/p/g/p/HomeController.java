@@ -24,6 +24,7 @@ public class HomeController {
 	
 		String page ="member/main.jsp";
 		List<Board_Photo> list = service.mainimg();
+		
 		if(list.size()>0) {
 		
 		model.addAttribute("maxcntimg",list);

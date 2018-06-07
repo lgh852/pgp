@@ -47,7 +47,7 @@ public class StoryBoardController {
 		if(member==null) {
 			model.addAttribute("seck",null);
 		}else {
-			
+			like.setMember_idx(member.getMember_idx());
 			model.addAttribute("seck",member);
 			System.out.println("2 member가 있다면 나와라"+member);
           

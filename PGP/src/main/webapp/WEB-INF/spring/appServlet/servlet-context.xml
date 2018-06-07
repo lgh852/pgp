@@ -131,6 +131,8 @@
  	
  	<beans:bean id="mainpage" class="p.g.p.service.MainPageService"/>
  	
+ 	<beans:bean id="mpmypages" class="p.g.p.service.Mp_MyPageList"/>
+ 	
 	<context:component-scan base-package="p.g.p" />
 	
 
