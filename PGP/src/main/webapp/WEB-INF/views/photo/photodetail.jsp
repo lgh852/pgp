@@ -275,11 +275,11 @@ function tagsclick(e) {
 
 					<div class="imgcenter">
 						<div id="imgbox" class="border"
-							style="max-width: 100%; width: 700px; margin: 0 auto;">
+							style="max-width: 100%; width: 602px; margin: 0 auto;">
 							<img width="100%" height="100%" id="imgtagbox"
 								src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
 								alt=""
-								style="max-height: 600px; min-height: 600px; margin: 0 auto;"
+								style="max-height: 600px; min-height: 600px; margin: 0 auto;width:600px"
 								class="border-0 img-thumbnail">
 						</div>
 

@@ -1,5 +1,7 @@
 package p.g.p.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Member_info;
+import p.g.p.service.MainPageService;
 import p.g.p.service.MemberService;
 
 @Controller
 public class LoginController {
 	@Autowired
 	MemberService service;
+	@Autowired
+	MainPageService service2;
 
 	@RequestMapping(value = "/member/loginform", method = RequestMethod.GET)
 	public String loginform(Model model) {
@@ -33,8 +39,22 @@ public class LoginController {
 	public String login(@RequestParam("member_id") String id, @RequestParam("member_pw") String pw, Model model,
 			HttpSession session) {
 
-		String page = "member/login.jsp";
+		/* String page = "member/login.jsp"; */
+		String page = "member/main.jsp";
 		String view = "home";
+		// homecontroller  - 여기부터 
+		List<Board_Photo> list = service2.mainimg();
+		if (list.size() > 0) {
+			model.addAttribute("maxcntimg", list);
+		}
+
+		List<Board_Photo> latelylist = (List<Board_Photo>) session.getAttribute("latelylist");
+		if (latelylist != null) {
+			for (int i = 0; i < latelylist.size(); i++) {
+				model.addAttribute("latelylist", latelylist);
+			}
+		}
+		// ^^ 여기까지 homecontroller
 
 		Member_info member = service.loginService(id, pw);
 		System.out.println(member);
@@ -56,12 +76,6 @@ public class LoginController {
 	@ResponseBody
 	public String kakaologin(Member_info member, HttpSession session) {
 		// 비교 서비스
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
 		Member_info members = service.kakaock(member);
 		String ck = "y";
 
@@ -96,20 +110,9 @@ public class LoginController {
 	@ResponseBody
 	public String naverLogin(Member_info member, HttpSession session) {
 		// 비교 서비스
-		System.out.println("dddddds");
-		System.out.println("dddddds");
-		System.out.println("dddddds");
-		System.out.println("dddddds");
-		System.out.println("member");
-		System.out.println(member);
+
 		Member_info members = service.kakaock(member);
-		System.out.println("zzzzzzzzzzzzzzzz0");
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		System.out.println(member);
-		
+
 		String ck = "y";
 
 		if (members != null) {

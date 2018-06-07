@@ -3,7 +3,10 @@
 
 <mapper namespace="p.g.p.dao.MemberDao">
 
-   <insert id="insertMember" parameterType="p.g.p.model.Member_info">
+
+
+  <insert id="insertMember" parameterType="p.g.p.model.Member_info">
+
       INSERT INTO
       pgp.member_info
       (member_id,
@@ -121,4 +124,6 @@
       (#{member_id},#{member_pw},#{member_phone},
       #{member_name},#{member_gender},#{member_birth});
    </insert>
+
+
 </mapper>

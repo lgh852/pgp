@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+   pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <script>
 
 
@@ -93,13 +93,13 @@
     <span class="sr-only">Next</span>
   </a>
                     </div>
-			
+         
                 </div>
             </aside>
             <!-- /.blog-sidebar -->
             <div class="card-group ">
                
-               	<div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <a href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space="><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/hos.PNG" alt="Card image cap"></a>
+                  <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> <a href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space="><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/hos.PNG" alt="Card image cap"></a>
                     <div class="card-body">
                         <h5 class="card-title">평수필터</h5>
                         <p class="card-text"><small class="text-muted">평수별로 집 구경</small></p>
@@ -147,23 +147,23 @@
 
  <div style="width: 130px;height: 30px;  margin: 0 auto;text-align: center"><span>최근 본 게시물</span></div>
     <div id ="oneimg"style="width: 130px;height: 130px;border: 1px solid black; margin: 0 auto; margin-top: 10px"><img id="imgone" width="128"height="128"></div>
- 	 -
+     -
 </div>
-	<input type="hidden" id="photoname1">		
-	<input type="hidden" id="photoname2">		
-	<input type="hidden" id="photoname3">		
-	<input type="hidden" id="latelyck">
-	<input type="hidden" value="${fn:length(latelylist)}" id="rowmin">		
-	<input type="hidden" value="${fn:length(latelylist)}" id="listsize">
+   <input type="hidden" id="photoname1">      
+   <input type="hidden" id="photoname2">      
+   <input type="hidden" id="photoname3">      
+   <input type="hidden" id="latelyck">
+   <input type="hidden" value="${fn:length(latelylist)}" id="rowmin">      
+   <input type="hidden" value="${fn:length(latelylist)}" id="listsize">
 
 
 ${latelylist}
     <c:forEach var="latelylist" items="${latelylist}" varStatus="status">
 
-		<input type="hidden" id="latelyck${status.count}" value="${latelylist.photo_name}">
-	
-	</c:forEach>
-	
+      <input type="hidden" id="latelyck${status.count}" value="${latelylist.photo_name}">
+   
+   </c:forEach>
+   
 
 
 
@@ -175,21 +175,20 @@ ${latelylist}
 
  <div style="width: 130px;height: 30px;  margin: 0 auto;text-align: center"><span>최근 본 게시물</span></div>
     <div id ="oneimg"style="width: 130px;height: 130px;border: 1px solid black; margin: 0 auto; margin-top: 10px"><img id="imgone" width="128"height="128"></div>
- 	 -
+     -
 </div>
-	<input type="hidden" id="photoname1">		
-	<input type="hidden" id="photoname2">		
-	<input type="hidden" id="photoname3">		
-	<input type="hidden" id="latelyck">
-	<input type="hidden" value="${fn:length(latelylist)}" id="rowmin">		
-	<input type="hidden" value="${fn:length(latelylist)}" id="listsize">
+   <input type="hidden" id="photoname1">      
+   <input type="hidden" id="photoname2">      
+   <input type="hidden" id="photoname3">      
+   <input type="hidden" id="latelyck">
+   <input type="hidden" value="${fn:length(latelylist)}" id="rowmin">      
+   <input type="hidden" value="${fn:length(latelylist)}" id="listsize">
 
 
 ${latelylist}
     <c:forEach var="latelylist" items="${latelylist}" varStatus="status">
 
-		<input type="hidden" id="latelyck${status.count}" value="${latelylist.photo_name}">
-	
-	</c:forEach>
-	
-
+      <input type="hidden" id="latelyck${status.count}" value="${latelylist.photo_name}">
+   
+   </c:forEach>
+   
