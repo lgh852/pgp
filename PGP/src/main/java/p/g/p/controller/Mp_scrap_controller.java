@@ -67,11 +67,22 @@ public class Mp_scrap_controller {
         	
         scrap.setScrapFN_idx(scrapfnidx.get(i));
         
-
-        int boardidx = service.selectScrapboardidx(scrap);
+        System.out.println("scrap있냐화기어마러"+scrap);
         
+        int boardidxcheck = service.boardIdxCheck(scrap);
         
-        boardIdxList.add(boardidx);
+        if(boardidxcheck>0) {
+        	
+        	 int boardidx = service.selectScrapboardidx(scrap);
+             
+             boardIdxList.add(boardidx);
+        	
+        }else{ //스크랩 폴더에 스크랩 된 게시물이 하나도 없는 것이 있음 
+        	
+        	int boardidx = 0;
+        	boardIdxList.add(boardidx);
+        	
+        }
         
         }
         
@@ -82,11 +93,12 @@ public class Mp_scrap_controller {
         for(int i=0;i<c;i++) {
         	
         	String photoname = service.selectPhotoName(boardIdxList.get(i));
+        	
         	if(photoname!=null) {
         		photonameList.add(photoname);
             		
         	}else {
-        		photonameList.add(".");
+        		photonameList.add("nothing");
                 		
         	}
         	
@@ -147,6 +159,7 @@ public class Mp_scrap_controller {
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
+      
       
       
       int resultC = service2.deleteScrapFolder(scrapfn);

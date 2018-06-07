@@ -43,4 +43,7 @@ public interface Mp_dao {
 
 	//photo_name 리스트 가져오기 
 	public String selectPhotoName(Integer integer);
+
+	//스크랩 폴더는 만들었는데 스크랩 된 게시글이 있나 없나 확인
+	public int boardidxCheck(Join_Scrap_scrapFN scrap);
 }

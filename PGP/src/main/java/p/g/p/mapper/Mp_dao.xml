@@ -23,7 +23,8 @@
 
 	<update id="updatemember" parameterType="p.g.p.model.Member_info">
 
-		UPDATE `pgp`.`member_info`
+		UPDATE
+		`pgp`.`member_info`
 		SET
 		member_pw=#{member_pw},
 		member_nickname=#{member_nickname},
@@ -51,7 +52,8 @@
 		b.board_idx,b.board_comment_idx
 		from
 		pgp.member_info as a
-		join pgp.board_comment as b
+		join
+		pgp.board_comment as b
 		where
 		a.member_id=#{member_id};
 
@@ -108,15 +110,15 @@
 
 	</select>
 
-	<select id="selectscrpafnidx" resultType="int"
-		parameterType="int">
+	<select id="selectscrpafnidx" resultType="int" parameterType="int">
 
 		select scrapFN_idx from pgp.scrapfn where member_idx=#{member_idx};
 	</select>
 
 	<select id="countFnIdx" resultType="int" parameterType="int">
 
-		select count(scrapFN_idx)
+		select
+		count(scrapFN_idx)
 		from pgp.scrapfn where member_idx=#{member_idx};
 
 	</select>
@@ -125,17 +127,26 @@
 		parameterType="p.g.p.model.Join_Scrap_scrapFN">
 
 		select board_idx
-		from scrap where member_idx=#{member_idx} and scrapFN_idx=#{scrapFN_idx}
-		order by board_idx desc limit 1;
+		from scrap where
+		member_idx=#{member_idx} and scrapFN_idx=#{scrapFN_idx}
+		order by
+		board_idx desc limit 1;
 
-    </select>
-    
-    <select id="selectPhotoName" resultType="String"
-    parameterType="int">
-    
-        select photo_name from board_photo 
-        where board_idx=#{integer};
-    
-    </select>
+	</select>
+
+	<select id="selectPhotoName" resultType="String" parameterType="int">
+
+		select photo_name from board_photo
+		where board_idx=#{integer};
+
+	</select>
+
+	<select id="boardidxCheck" resultType="int" parameterType="p.g.p.model.Join_Scrap_scrapFN">
+
+		select count(board_idx) from scrap
+		where scrapFN_idx =#{scrapFN_idx} and member_idx=#{member_idx};
+
+
+	</select>
 
 </mapper>
