@@ -39,7 +39,7 @@ public class StoryBoardController {
 		String page = "story/storyboardForm.jsp";
 		model.addAttribute("page", page);
 		
-		System.out.println("1");
+		System.out.println("1"+like);
 		
 		
 		Member_info member = (Member_info) session.getAttribute("user");
@@ -49,13 +49,13 @@ public class StoryBoardController {
 		}else {
 			
 			model.addAttribute("seck",member);
-			System.out.println("2"+member);
-            model.addAttribute("seck",member);
+			System.out.println("2 member가 있다면 나와라"+member);
+          
 					
 		}
-		
-		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
 		System.out.println("3");
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member); // 스토리보드
+		System.out.println("4 룰루"+like);
 		// 리스트
 		if(listStory==null) {
 			System.out.println("안다");
@@ -67,7 +67,7 @@ public class StoryBoardController {
 		
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
 		
-		System.out.println("4");
+		System.out.println("5");
 		model.addAttribute("listStroyComment", listStroyComment);
 
 		return view;
@@ -78,15 +78,22 @@ public class StoryBoardController {
 			Like like) throws IllegalStateException, IOException {
 		String view = "home";
 		String page = "story/storyboardForm.jsp";
+		System.out.println(storyboard);
+		System.out.println(storyboard);
+		System.out.println(storyboard);
+		
 		model.addAttribute("page", page);
 		Member_info member = (Member_info) session.getAttribute("user");
+	System.out.println(member);
 	
 		if(member != null) {
 			int member_idx = member.getMember_idx();
 			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+			System.out.println(storyboard);
 		}else {
 			int member_idx = 0;
 			storyboard.setMember_idx(member_idx); // 세션값통해 memberidx값 받아서 저장
+			System.out.println(storyboard);
 		}
 			
 		int resultStoryCnt = storyboardservice.insertStroyboard(storyboard); // 스토리보드값, 멤버idx저장
