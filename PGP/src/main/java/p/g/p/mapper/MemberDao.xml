@@ -3,122 +3,123 @@
 
 <mapper namespace="p.g.p.dao.MemberDao">
 
-	<insert id="insertMember" parameterType="p.g.p.model.Member_info">
-		INSERT INTO
-		pgp.member_info
-		(member_id,
-		member_pw,
-		member_name,
-		member_nickname,
-		member_birth,
-		member_phone,
-		member_intro,member_gender)
-		VALUES
-		(#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro},#{member_gender});
-	</insert>
+  <insert id="insertMember" parameterType="p.g.p.model.Member_info">
+      INSERT INTO
+      pgp.member_info
+      (member_id,
+      member_pw,
+      member_name,
+      member_nickname,
+      member_birth,
+      member_phone,
+      member_intro,member_gender)
+      VALUES
+      (#{member_id},#{member_pw},#{member_name},#{member_nickname},#{member_birth},#{member_phone},#{member_intro},#{member_gender});
+   </insert>
 
-	<select id="loginSelect" resultType="p.g.p.model.Member_info">
+   <select id="loginSelect" resultType="p.g.p.model.Member_info">
 
-		select * from
-		pgp.member_info where member_id = #{id};
-	</select>
-
-
-	<select id="countPhoto" parameterType="p.g.p.model.Board"
-		resultType="int">
-
-		select count(board.board_idx) from pgp.board where
-		member_idx=#{member_idx};
-
-	</select>
-
-	<select id="LatestPhoto" parameterType="int"
-		resultType="p.g.p.model.Join_board_boardphoto">
-
-		select
-		*
-		from
-		pgp.board_photo as a
-		join pgp.board as b
-		on
-		a.board_idx = b.board_idx
-		where
-		b.member_idx=#{member_idx}
-		order by
-		b.board_idx desc limit 3 ;
-
-	</select>
-
-	<select id="LatestScrapPhoto" parameterType="int" resultType="String">
-
-		select board_photo.photo_name
-		from pgp.board_photo
-		where
-		board_photo.board_idx = (
-
-		select board_idx
-		from pgp.scrap
-		where
-		member_idx=#{member_idx}
-		order by scrap_idx desc limit 1
-
-		);
+      select * from
+      pgp.member_info where member_id = #{id};
+   </select>
 
 
-	</select>
+   <select id="countPhoto" parameterType="p.g.p.model.Board"
+      resultType="int">
 
-	<select id="LatestLikePhoto" parameterType="int" resultType="String">
+      select count(board.board_idx) from pgp.board where
+      member_idx=#{member_idx};
 
-		select board_photo.photo_name
-		from pgp.board_photo
-		where board_photo.board_idx = (
+   </select>
 
-		select board_idx
-		from pgp.like
-		where member_idx=#{member_idx}
-		order by like_idx desc limit 1
-		);
+   <select id="LatestPhoto" parameterType="int"
+      resultType="p.g.p.model.Join_board_boardphoto">
 
+      select
+      *
+      from
+      pgp.board_photo as a
+      join pgp.board as b
+      on
+      a.board_idx = b.board_idx
+      where
+      b.member_idx=#{member_idx}
+      order by
+      b.board_idx desc limit 3 ;
 
+   </select>
 
+   <select id="LatestScrapPhoto" parameterType="int" resultType="String">
 
-	</select>
+      select board_photo.photo_name
+      from pgp.board_photo
+      where
+      board_photo.board_idx = (
 
+      select board_idx
+      from pgp.scrap
+      where
+      member_idx=#{member_idx}
+      order by scrap_idx desc limit 1
 
-	<select id="selectLikePhoto" parameterType="int"
-		resultType="p.g.p.model.Join_board_boardphoto">
-
-
-		select c.photo_name,d.board_idx
-		from
-		pgp.member_info as a
-		join
-		pgp.like as
-		b
-		on a.member_idx=b.member_idx
-		join
-		pgp.board_photo as c
-		on b.board_idx =
-		c.board_idx
-		join 
-		pgp.board as d
-		on c.board_idx = d.board_idx
-		where a.member_idx=#{member_idx};
-
-	</select>
+      );
 
 
-	<insert id="kakaoinsert" parameterType="p.g.p.model.Member_info">
-		INSERT INTO
-		pgp.member_info
-		(member_id,
-		member_pw,
-		member_name,
-		member_phone,
-		member_birth,
-		member_gender)
-		VALUES
-		(#{member_id},#{member_pw},#{member_phone},
-		#{member_name},#{member_gender},#{member_birth});
-	</insert>
+   </select>
+
+   <select id="LatestLikePhoto" parameterType="int" resultType="String">
+
+      select board_photo.photo_name
+      from pgp.board_photo
+      where board_photo.board_idx = (
+
+      select board_idx
+      from pgp.like
+      where member_idx=#{member_idx}
+      order by like_idx desc limit 1
+      );
+
+
+
+
+   </select>
+
+
+   <select id="selectLikePhoto" parameterType="int"
+      resultType="p.g.p.model.Join_board_boardphoto">
+
+
+      select c.photo_name,d.board_idx
+      from
+      pgp.member_info as a
+      join
+      pgp.like as
+      b
+      on a.member_idx=b.member_idx
+      join
+      pgp.board_photo as c
+      on b.board_idx =
+      c.board_idx
+      join 
+      pgp.board as d
+      on c.board_idx = d.board_idx
+      where a.member_idx=#{member_idx};
+
+   </select>
+
+
+   <insert id="kakaoinsert" parameterType="p.g.p.model.Member_info">
+      INSERT INTO
+      pgp.member_info
+      (member_id,
+      member_pw,
+      member_name,
+      member_phone,
+      member_birth,
+      member_gender)
+      VALUES
+      (#{member_id},#{member_pw},#{member_phone},
+      #{member_name},#{member_gender},#{member_birth});
+   </insert>
+
 </mapper>
