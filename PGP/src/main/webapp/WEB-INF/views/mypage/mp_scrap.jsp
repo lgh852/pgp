@@ -75,13 +75,8 @@
                       
                           </div>
                         </div>
-                           </div> <!-- 스크랩북 추가하기 -->
-                      
-           <%--                <p>${photonameList[status.index]}
-              </p>
-              <p> ${scrapNameList[status.index].scrap_name}
-             </p> --%>
-                   
+                           </div> 
+               
 
               <!-- 스크랩북 리스트 -->
              

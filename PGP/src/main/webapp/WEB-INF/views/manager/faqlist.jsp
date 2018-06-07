@@ -11,8 +11,8 @@
 	<div
 		class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
 		style="border:solid 1px; border-color:white;width: 100%;
-     background-image:url('<%=request.getContextPath()%>/resources/images/f.jpg');background-size:100%100%">
-		<div class="faq_head " style="height: 120px; margin: 10px">
+     background-image:url('<%=request.getContextPath()%>/resources/images/g.jpg');background-size:100%100%">
+		<div class="faq_head " style="height: 80px; margin: 10px">
 			<p style="font-weight: bold; font-size: 50px; color: white">느그집
 				관련 FAQ</p>
 		</div>

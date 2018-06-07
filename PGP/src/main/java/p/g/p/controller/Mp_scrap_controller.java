@@ -38,7 +38,8 @@ public class Mp_scrap_controller {
       
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
-      	System.out.println(member);
+      
+      System.out.println(member);
       	System.out.println(member);System.out.println(member);System.out.println(member);System.out.println(member);
       	System.out.println(member);System.out.println(member);
       	System.out.println(member);System.out.println(member);

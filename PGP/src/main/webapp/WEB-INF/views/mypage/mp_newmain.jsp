@@ -58,7 +58,7 @@
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
 		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<li class="nav-item"><a class="nav-link" href="#">
+		<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage/mp_myStory?member_idx=${member.member_idx}">
 		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<li class="nav-item"><a class="nav-link" 
 		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">

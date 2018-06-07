@@ -12,14 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import p.g.p.model.Board;
 import p.g.p.model.Join_Board_MemberInfo;
+import p.g.p.model.Join_MemberInfo_StoryBoard;
 import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.Like;
 import p.g.p.model.Member_info;
 import p.g.p.service.MemberService;
+import p.g.p.service.StoryBoardService;
 
 @Controller
 public class Mp_main_controller {
 
-	
+	@Autowired
+	StoryBoardService storyboardservice;
 	@Autowired
 	MemberService service;
 	
@@ -90,6 +94,26 @@ public class Mp_main_controller {
 	    String page="mypage/mp_myLike.jsp";
 	    
 	    model.addAttribute("page", page);
+		
+		return view;
+	}
+	
+	
+	//mp_myStory
+	@RequestMapping("/mypage/mp_myStory")
+	public String myStoryPage(HttpSession session, Model model,Like like) {
+		
+		Member_info member = (Member_info)session.getAttribute("user");
+		model.addAttribute("member",member);
+		
+		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member);
+		model.addAttribute("listStory", listStory);
+		
+		
+		String view = "home";
+		String page = "mypage/mp_myStory.jsp";
+		model.addAttribute("page", page);
+		
 		
 		return view;
 	}
