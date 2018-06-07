@@ -41,6 +41,9 @@ public class StoryBoardService {
 		public List<Join_MemberInfo_StoryBoard> select_join_MemberInfo_StoryBoard(Like like,Member_info member) {
 			dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
 			List<Like> likelist;
+			
+	
+			System.out.println();
 			int member_idx;
 			if(member!=null) {
 
@@ -53,8 +56,8 @@ public class StoryBoardService {
 				 member_idx = 0;
 				like.setMember_idx(member_idx);
 				 likelist = selecting(like);
+				
 			}
-		
 		
 			List<Join_MemberInfo_StoryBoard> listStory = dao.select_join_MemberInfo_StoryBoard();
 			
@@ -68,7 +71,6 @@ public class StoryBoardService {
 				for (int x = 0; x < likelist.size(); x++) {
 				
 					int listidx = likelist.get(x).getStoryboard_idx();
-	
 					if (photoidx == listidx) {
 
 						listStory.get(i).setLikeck("ss");

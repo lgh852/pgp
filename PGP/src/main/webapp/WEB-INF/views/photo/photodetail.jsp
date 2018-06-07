@@ -142,7 +142,7 @@ ul.list-group {
 <body class="bg-light">
 
 	<div class="container">
-		<div class="py-5 text-center"></div>
+		<!-- 	<div class="py-5 text-center"></div> -->
 
 		<div class="row">
 
@@ -271,15 +271,14 @@ function tagsclick(e) {
 					<div style="font-weight: bold; text-align: right;">조회수 :
 						${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</div>
 
-
-
-					<div class="imgcenter">
+					<div class="imgcenter"
+						style="border: solid 15px #c39d331f; border-radius: 20px;">
 						<div id="imgbox" class="border"
 							style="max-width: 100%; width: 602px; margin: 0 auto;">
 							<img width="100%" height="100%" id="imgtagbox"
 								src="<%=request.getContextPath()%>/resources/BoardPhoto/${photoName}"
 								alt=""
-								style="max-height: 600px; min-height: 600px; margin: 0 auto;width:600px"
+								style="max-height: 600px; min-height: 600px; margin: 0 auto; width: 600px"
 								class="border-0 img-thumbnail">
 						</div>
 
@@ -323,7 +322,7 @@ function tagsclick(e) {
 						</c:forEach>
 					</div>
 					<!--사진까지 ^^^^ -->
-
+					<div class="mb-3"></div>
 					<div>
 						<!--  댓글 쓰기 기능 -->
 						<div style="width: 100%">
@@ -365,18 +364,18 @@ function tagsclick(e) {
 					<p style="font-weight: bold">카테고리 추천 사진</p>
 
 
-					<div class="row"style="
-    border:  solid 1px #0000001a;
-    border-radius: 10px;
-    ">
+					<div class="row"
+						style="border: solid 1px #0000001a; border-radius: 10px; width: 100%; margin: auto;">
 						<c:forEach var="popular" items="${popularPhotoList}">
-							<div class="col-sm-4" style="text-align: center;padding: 3px;">
-							<a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${popular.board_idx}">
-								<img
+							<div class="col-sm-4" style="text-align: center; padding: 3px;">
+								<a
+									href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${popular.board_idx}">
+									<img
 									src="<%=request.getContextPath()%>/resources/BoardPhoto/${popular.photo_name}"
 									alt="" width="140px" height="160px">
-							
-							</a></div>
+
+								</a>
+							</div>
 						</c:forEach>
 
 
@@ -390,41 +389,42 @@ function tagsclick(e) {
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="border: solid #0000001a; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px;">
-						<a href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}"> <img
-							class="rounded-circle"
+						style="border: solid #0000001a; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top: 200px;">
+						<a
+							href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}">
+							<img class="rounded-circle"
 							src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
 							alt="" width="140" height="140">
 							<h2 style="color: #00000066;">ID:
-								${boardMemberinfo.member_id}</h2></a>
+								${boardMemberinfo.member_id}</h2>
+						</a>
 
 						<div style="text-align: center;">
-						
 
-							
-								<a onclick="reportPopup();" class="btn btn-warning"
-									role="button"
-									style="border-radius: 40px; padding: auto; color: white;">신고</a>
-								<div id="reportPopup">
-									<div class="report_reason">
-										<select class="reason" id="report_contents">
-											<option selected value="0">주제와 맞지 않음</option>
-											<option selected value="1">정보가 부정확함</option>
-											<option selected value="2">지나친 광고성 게시물</option>
-											<option selected value="3">도배 및 중복 게시물</option>
-											<option selected value="4">저작권 침해가 우려됨</option>
-											<option selected value="5">욕설/비방이 심함</option>
-											<option selected value="6">외설적인 게시물</option>
-										</select>
-									</div>
-									<button type="button" id="report_submit">신고당해랏</button>
-									<button type="button" id="closeeeee">닫기</button>
-									<input type="hidden" id="storyboard_idx"
-										value="${storyboard_idx}"> <input type="hidden"
-										id="board_idx" value="${board.board_idx}"> <input
-										type="hidden" id="member_idx" value="${member.member_idx}">
+
+
+							<a onclick="reportPopup();" class="btn btn-warning" role="button"
+								style="border-radius: 40px; padding: auto; color: white;">신고</a>
+							<div id="reportPopup">
+								<div class="report_reason">
+									<select class="reason" id="report_contents">
+										<option selected value="0">주제와 맞지 않음</option>
+										<option selected value="1">정보가 부정확함</option>
+										<option selected value="2">지나친 광고성 게시물</option>
+										<option selected value="3">도배 및 중복 게시물</option>
+										<option selected value="4">저작권 침해가 우려됨</option>
+										<option selected value="5">욕설/비방이 심함</option>
+										<option selected value="6">외설적인 게시물</option>
+									</select>
 								</div>
-						
+								<button type="button" id="report_submit">신고당해랏</button>
+								<button type="button" id="closeeeee">닫기</button>
+								<input type="hidden" id="storyboard_idx"
+									value="${storyboard_idx}"> <input type="hidden"
+									id="board_idx" value="${board.board_idx}"> <input
+									type="hidden" id="member_idx" value="${member.member_idx}">
+							</div>
+
 
 
 
