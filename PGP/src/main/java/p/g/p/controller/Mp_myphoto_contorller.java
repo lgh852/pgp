@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import p.g.p.model.Board;
-import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.Like;
 import p.g.p.model.Member_info;
 import p.g.p.model.PhotoListmodel;
 import p.g.p.service.Mp_myphoto_service;
-import p.g.p.service.PhotoService;
+import p.g.p.service.Mp_update_service;
 
 
 
@@ -27,16 +25,21 @@ public class Mp_myphoto_contorller {
 	
 	@Autowired
 	private Mp_myphoto_service service;
-	
-	
+	@Autowired
+	private Mp_update_service selectservice;
+		
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String mypageMyphoto(Model model,
 			HttpSession session,Like like,@RequestParam("member_idx")int member_idx) {
+	
 		
-	    Member_info member = (Member_info)session.getAttribute("user");
+		String member_idxs = String.valueOf(member_idx);
+	
+	    Member_info member = selectservice.Mp_update_select(member_idxs);	
 		
 		model.addAttribute("member", member);
+		
 		
 		
 		

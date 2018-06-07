@@ -40,10 +40,6 @@ public class Mp_main_controller {
 		System.out.println(member);
 		model.addAttribute("member",member);
 		int member_idx= member.getMember_idx();
-
-		
-		
-		
 		
 		//사진 갯수 
 		int photo_count = service.countPhoto(member_idx);
@@ -103,7 +99,7 @@ public class Mp_main_controller {
 	@RequestMapping("/mypage/mp_myStory")
 	public String myStoryPage(HttpSession session, Model model,Like like) {
 		
-		Member_info member = (Member_info)session.getAttribute("user");
+		
 		model.addAttribute("member",member);
 		
 		List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,member);
