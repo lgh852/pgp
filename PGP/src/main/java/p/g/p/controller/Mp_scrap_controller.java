@@ -39,30 +39,21 @@ public class Mp_scrap_controller {
       Member_info member = (Member_info)session.getAttribute("user");
       model.addAttribute("member", member);
       
-      System.out.println(member);
-      	System.out.println(member);System.out.println(member);System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-      	System.out.println(member);System.out.println(member);
-        //스크랩 폴더 명 리스트 보여주기 
+        
+        
+      	//스크랩 폴더 명 리스트 보여주기 
         List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
-        System.out.println(scrapNameList);
-        System.out.println(scrapNameList);
-        System.out.println(scrapNameList);
-        System.out.println("asdas"+scrapNameList);
+        
         model.addAttribute("scrapNameList", scrapNameList);
+        
         
         
         //일단 scrapFN_idx 검색해오쟈
         List<Integer> scrapfnidx = service.selectscrapfnidx(member.getMember_idx());
         System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx); System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
-        System.out.println("3"+scrapfnidx);
+       
         
 
-        
         //반복 횟수 (스크랩 폴더 갯수 )가져오쟈
         int c = service.countFnIdx(member.getMember_idx());
       
@@ -72,13 +63,11 @@ public class Mp_scrap_controller {
         List<Integer> boardIdxList = new ArrayList<Integer>(); 
         
         
-        
         for(int i=0;i<c;i++) {
         	
         scrap.setScrapFN_idx(scrapfnidx.get(i));
         
-       
-        
+
         int boardidx = service.selectScrapboardidx(scrap);
         
         

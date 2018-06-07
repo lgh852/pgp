@@ -10,7 +10,7 @@
         style="border:solid 1px; border-color:#dcdcdc;">
       
     
-            <div class="scrap_book" style=" height: 80px;">
+            <div class="scrap_book"  id="scrap_book" style=" height: 80px;">
                 <h1 class="jumbotron-heading">스크랩북</h1>
             </div>
           
