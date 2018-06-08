@@ -110,79 +110,60 @@
 	</div>
 </header>
 <header class="blog-header py-3">
-	<div class="row">
+	<div class="row" style="margin: auto; width: 1400px;">
 		<div class="col-md-8"></div>
 		<div class="col-md-4">
 			<!--form 지워야함   -->
-				<form method="post"
-					action="<%=request.getContextPath()%>/board/boardserach"
-					id="serachform" class="form-inline mt-2 mt-md-0">
-					<!-- <ul style="list-style: none;">
-						<li class="nav-item dropdown" style="text-decoration: none;">
-							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
-							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> 검색
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
-									검색</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
+			<form method="post"
+				action="<%=request.getContextPath()%>/board/boardserach"
+				id="serachform" class="form-inline mt-2 mt-md-0">
+
+				<div style="margin-left: 40px;">
+
+					<ul id="searchlist" class="list-group "
+						style="width: 120px; display: none;">
+						<li class="list-group-item listli" style="position: relative">
+							<div style="position: absolute; bottom: 3px;"
+								onclick="choicesearch(1)"id="srtitle1">사진 검색</div>
 						</li>
+						<li class="list-group-item listli" style="position: relative">
+							<div style="position: absolute; bottom: 3px;"
+								onclick="choicesearch(2)"id="srtitle2">작성자 검색</div>
+						</li>
+						<li class="list-group-item listli" style="position: relative">
+							<div style="position: absolute; bottom: 3px;"
+								onclick="choicesearch(3)"id="srtitle3">제목 검색</div>
+						</li>
+						<li class="list-group-item listli" style="position: relative">
+							<div style="position: absolute; bottom: 3px;"
+								onclick="choicesearch(4)"id="srtitle4">내용 검색</div>
+						</li>
+						<li class="list-group-item listli" style="position: relative">
+							<div style="position: absolute; bottom: 3px;"
+								onclick="choicesearch(5)"id="srtitle5">전체 검색</div>
+						</li>
+
 					</ul>
- -->
-					<div style="margin-left: 40px;">
-
-
-						<ul id="searchlist" class="list-group "
-							style="width: 120px; display: none;">
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(1)">사진 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(2)">작성자 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(3)">제목 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(4)">내용 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(5)">전체 검색</div>
-							</li>
-
-						</ul>
 
 
 
-						<div id="serachs" style="display: none;">
+					<div id="serachs" style="display: none;">
 
-							<input id="inputserach" class="form-control mr-sm-2" type="text"
-								name="search" placeholder="" aria-label="Search"
-								style="height: 31px; width: 170px;">
-							<button class="btn btn-outline-secondary my-2 my-sm-0"
-								type="submit"
-								style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
-							<input type="hidden" name="choice" id="sear"> <input
-								type="hidden" name="Alignment" value="board_idx"> <input
-								type="hidden" name="room"> <input type="hidden"
-								name="space">
-
-						</div>
+						<input id="inputserach" class="form-control mr-sm-2" type="text"
+							name="search" placeholder="" aria-label="Search"
+							style="height: 31px; width: 170px;">
+						<button class="btn btn-outline-secondary my-2 my-sm-0"
+							type="submit"
+							style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
+						<input type="hidden" name="choice" id="sear"> <input
+							type="hidden" name="Alignment" value="board_idx"> <input
+							type="hidden" name="room"> <input type="hidden"
+							name="space">
 
 					</div>
-				</form>
+
+				</div>
+			</form>
 		</div>
 		<!--d여기까지  -->
 	</div>
@@ -190,86 +171,10 @@
 </header>
 
 <header class="blog-header py-3">
-	<div class="row">
-		<div class="col-md-8">
-			<!--form 지워야함   -->
-			<div>
-				<form method="post"
-					action="<%=request.getContextPath()%>/board/boardserach"
-					id="serachform" class="form-inline mt-2 mt-md-0">
-					<!-- <ul style="list-style: none;">
-						<li class="nav-item dropdown" style="text-decoration: none;">
-							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
-							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> 검색
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
-									검색</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-						</li>
-					</ul>
- -->
-					<div>
-
-
-						<ul id="searchlist" class="list-group "
-							style="width: 120px; display: none;">
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(1)">사진 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(2)">작성자 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(3)">제목 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(4)">내용 검색</div>
-							</li>
-							<li class="list-group-item listli" style="position: relative">
-								<div style="position: absolute; bottom: 3px;"
-									onclick="choicesearch(5)">전체 검색</div>
-							</li>
-
-						</ul>
-
-
-
-						<div id="serachs" style="display: none;">
-
-							<input id="inputserach" class="form-control mr-sm-2" type="text"
-								name="search" placeholder="" aria-label="Search"
-								style="height: 31px;">
-							<button class="btn btn-outline-secondary my-2 my-sm-0"
-								type="submit"
-								style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
-							<input type="hidden" name="choice" id="sear"> <input
-								type="hidden" name="Alignment" value="board_idx"> <input
-								type="hidden" name="room"> <input type="hidden"
-								name="space">
-
-						</div>
-
-					</div>
-				</form>
-			</div>
-			<!--d여기까지  -->
-		</div>
+	<div class="row" style="margin: auto; width: 1400px;">
+		<div class="col-md-8"></div>
 		<div class="col-md-4">
 			<ul class="nav">
-
-
 				<ul style="list-style: none;">
 					<li class="nav-item dropdown" style="text-decoration: none;">
 						<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
@@ -282,8 +187,7 @@
 								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
 								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
 								검색</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"></a>
+							
 						</div>
 					</li>
 				</ul>
