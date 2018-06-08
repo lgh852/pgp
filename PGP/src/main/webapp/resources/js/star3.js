@@ -15,15 +15,20 @@ $(document)
                         
                               var scrapFolderName = $(
                                     ".scrapFolderName").val();
-                              alert(scrapFolderName)
+                            
                               var c = $(".listnumber").val();
                               
                               var member_idx = $("#member_idx").val();
-                              alert(member_idx);
+                           
                               
                               var scrapbookcheck;
                               
+                              if( $("#scrap_book").text() != null){
+                            	 var scrapbookcheck = $("#scrap_book").text();
+                              }
                           
+                             
+                              
 
                               $.ajax({
 
@@ -63,6 +68,19 @@ $(document)
                                           } else {
                                              alert('실패ㅠㅠㅠㅠㅠㅠㅠ');
                                           }
+                                          
+                                          if(scrapbookcheck =='스크랩북'){
+                                        	  
+                                        	  alert('if문에는 들어오나?');
+                                        	  
+                                        	 $('.scrapemtyimage').append(' <img class="card-img-top" alt="스크랩 폴더가 비어있어요!" id="scrapemtyimage("'+c+'")" style="height: 225px; width: 100%; display: block;">' )
+                                        	   alert('잘모르겠당');
+                                        	 $('#scrapemtyimage'+s).attr('src','/p/resources/images/empty-glass.png');
+                                        	 
+                                        	 alert('dddddddddddd');
+                                        	  
+                                          }
+                                          
                                        }
                                     });
 

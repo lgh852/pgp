@@ -10,8 +10,8 @@
         style="border:solid 1px; border-color:#dcdcdc;">
       
     
-            <div class="scrap_book"  id="scrap_book" style=" height: 80px;">
-                <h1 class="jumbotron-heading">스크랩북</h1>
+            <div class="scrap_book" style=" height: 80px;">
+                <h1 class="jumbotron-heading" id="scrap_book">스크랩북</h1>
             </div>
           
             <div class="my_info" style=" height:100px; ">
@@ -90,8 +90,10 @@
               
               <c:if test="${photonameList[status.index] == 'nothing'}">
               
-               <img class="card-img-top" alt="스크랩 폴더가 비어있어요!" style="height: 225px; width: 100%; display: block;" 
+              <div class="scrapemptyimage">
+               <img class="card-img-top" alt="스크랩 폴더가 비어있어요!" id="scrapemtyimage${status.count}" style="height: 225px; width: 100%; display: block;" 
                 src="<%=request.getContextPath()%>/resources/images/empty-glass.png" >
+              </div>
               
            <div class="scarpfoldername" style="font-size:60px; position: absolute; top: 60px; left:100px; font-color:white;">
              
