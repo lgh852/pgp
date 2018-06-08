@@ -7,4 +7,24 @@
 		 select p.photo_name,b.board_idx from pgp.board_photo p join pgp.board b where b.board_idx = p.board_idx order by b.board_cnt desc Limit 3;
 	</select>
 
+
+	<select id="selecttitle" resultType="p.g.p.model.Board" parameterType="int">
+	
+	SELECT board_title,member_idx FROM pgp.board where board_idx =#{board_idx};
+	
+	</select>
+	<select id="selecttitles" resultType="p.g.p.model.Board" parameterType="int">
+	
+	SELECT board_title,member_idx FROM pgp.board where board_idx =#{board_idx};
+	
+	</select>
+	
+	
+	<select id="selectuserid" resultType="p.g.p.model.Member_info" parameterType="int">
+	SELECT member_id FROM pgp.member_info where member_idx=#{member_idx}	
+	</select>
+	<select id="selectuserids" resultType="p.g.p.model.Member_info" parameterType="int">
+	SELECT member_id FROM pgp.member_info where member_idx=#{member_idx}	
+	</select>
+	
 </mapper>

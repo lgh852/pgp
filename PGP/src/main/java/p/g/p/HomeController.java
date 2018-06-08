@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
+import p.g.p.model.Member_info;
 import p.g.p.service.MainPageService;
 
 @Controller
@@ -25,18 +27,41 @@ public class HomeController {
 		String page ="member/main.jsp";
 		List<Board_Photo> list = service.mainimg();
 		
-		if(list.size()>0) {
-		
-		model.addAttribute("maxcntimg",list);
-		
-		}
-		
-		List<Board_Photo> latelylist = (List<Board_Photo>)session.getAttribute("latelylist");
-		if(latelylist!=null) {
-			for(int i =0;i<latelylist.size();i++) {
-		
-				model.addAttribute("latelylist",latelylist);
+		if(list!=null) {
+
+			if(list.size()>0) {
+			
+			model.addAttribute("maxcntimg",list);
+			
 			}
+			
+			List<Board_Photo> latelylist = (List<Board_Photo>)session.getAttribute("latelylist");
+			
+			if(latelylist!=null) {
+			
+				for(int i =0;i<latelylist.size();i++) {
+					System.out.println("체크");
+					model.addAttribute("latelylist",latelylist);
+				
+				}
+				
+			}
+			
+			
+			List<Board> board = service.imgusertitle(list);
+
+			
+			model.addAttribute("board",board);
+			System.out.println("ㅇㅇㅇ");
+				if(board!=null) {
+					
+			List<Member_info> memberlist = service.imguserid(board);
+		
+				model.addAttribute("memberlist",memberlist);
+			}
+		}else {
+			
+			
 		}
 		model.addAttribute("page",page);
 	

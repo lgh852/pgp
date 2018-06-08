@@ -87,33 +87,14 @@ public class MemberService {
 			//아이디 있음
 			//memberck 값이 존재
 			//아이디 있으면 0;
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
-			System.out.println("체크"+memberck);
+	
 			
 		}else {
-			System.out.println("쳌스초콘");
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
+
 			member.setMember_phone("");
 			memberck = null;
 			cks = dao.kakaoinsert(member);
-			System.out.println(cks);
-			System.out.println(cks);
-			System.out.println(cks);
-			System.out.println(cks);
-			System.out.println(cks);
+	
 			
 			//회원가입 가능 
 			//insert 성공시 1 값		
