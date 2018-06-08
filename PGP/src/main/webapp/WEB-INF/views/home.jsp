@@ -102,7 +102,7 @@
 			<a class="blog-header-logo text-dark"
 				href="<%=request.getContextPath()%>/"
 				style="text-decoration: none; font-size: 27px; font-weight: 700; color: black;">
-			느그집</a>
+				느그집</a>
 		</div>
 		<div class="col-4 d-flex justify-content-end align-items-center">
 
@@ -110,45 +110,213 @@
 	</div>
 </header>
 <header class="blog-header py-3">
-<div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4">
-        	<ul class="nav">
-        <a class="text-muted" href="#"> <svg
-					xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-					viewBox="0 0 24 24" fill="none" stroke="currentColor"
-					stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-					class="mx-3" style="color: black;">
-					<circle cx="10.5" cy="10.5" r="7.5"></circle>
-					<line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<!--form 지워야함   -->
+				<form method="post"
+					action="<%=request.getContextPath()%>/board/boardserach"
+					id="serachform" class="form-inline mt-2 mt-md-0">
+					<!-- <ul style="list-style: none;">
+						<li class="nav-item dropdown" style="text-decoration: none;">
+							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
+							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> 검색
+						</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
+									검색</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</li>
+					</ul>
+ -->
+					<div style="margin-left: 40px;">
 
-			</a>
 
-			<c:if test="${user==null}">
-				<a class="btn btn-sm btn-outline-secondary"
-					href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
-				<a class="btn btn-sm btn-outline-secondary"
-					href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
-			</c:if>
-			<c:if test="${manager==null&&user==null}">
-				<a class="btn btn-sm btn-outline-secondary"
-					href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
-			</c:if>
-			<c:if test="${manager!=null}">
-				<a class="btn btn-sm btn-outline-secondary"
-					href="<%=request.getContextPath()%>/manager/main">관리자</a>
-			</c:if>
-			<c:if test="${user!=null}">
-				<a class="btn btn-sm btn-outline-secondary" id="logout"
-					href="<%=request.getContextPath()%>/">로그아웃</a>
-				
-			
-					<li class="nav-item dropdown" style="list-style: none"><a
-						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+						<ul id="searchlist" class="list-group "
+							style="width: 120px; display: none;">
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(1)">사진 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(2)">작성자 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(3)">제목 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(4)">내용 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(5)">전체 검색</div>
+							</li>
+
+						</ul>
+
+
+
+						<div id="serachs" style="display: none;">
+
+							<input id="inputserach" class="form-control mr-sm-2" type="text"
+								name="search" placeholder="" aria-label="Search"
+								style="height: 31px; width: 170px;">
+							<button class="btn btn-outline-secondary my-2 my-sm-0"
+								type="submit"
+								style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
+							<input type="hidden" name="choice" id="sear"> <input
+								type="hidden" name="Alignment" value="board_idx"> <input
+								type="hidden" name="room"> <input type="hidden"
+								name="space">
+
+						</div>
+
+					</div>
+				</form>
+		</div>
+		<!--d여기까지  -->
+	</div>
+	</div>
+</header>
+
+<header class="blog-header py-3">
+	<div class="row">
+		<div class="col-md-8">
+			<!--form 지워야함   -->
+			<div>
+				<form method="post"
+					action="<%=request.getContextPath()%>/board/boardserach"
+					id="serachform" class="form-inline mt-2 mt-md-0">
+					<!-- <ul style="list-style: none;">
+						<li class="nav-item dropdown" style="text-decoration: none;">
+							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
+							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> 검색
+						</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
+									검색</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</li>
+					</ul>
+ -->
+					<div>
+
+
+						<ul id="searchlist" class="list-group "
+							style="width: 120px; display: none;">
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(1)">사진 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(2)">작성자 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(3)">제목 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(4)">내용 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(5)">전체 검색</div>
+							</li>
+
+						</ul>
+
+
+
+						<div id="serachs" style="display: none;">
+
+							<input id="inputserach" class="form-control mr-sm-2" type="text"
+								name="search" placeholder="" aria-label="Search"
+								style="height: 31px;">
+							<button class="btn btn-outline-secondary my-2 my-sm-0"
+								type="submit"
+								style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
+							<input type="hidden" name="choice" id="sear"> <input
+								type="hidden" name="Alignment" value="board_idx"> <input
+								type="hidden" name="room"> <input type="hidden"
+								name="space">
+
+						</div>
+
+					</div>
+				</form>
+			</div>
+			<!--d여기까지  -->
+		</div>
+		<div class="col-md-4">
+			<ul class="nav">
+
+
+				<ul style="list-style: none;">
+					<li class="nav-item dropdown" style="text-decoration: none;">
+						<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
+						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> 검색 </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
+								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
+								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
+								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
+								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
+								검색</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#"></a>
+						</div>
+					</li>
+				</ul>
+
+				<c:if test="${user==null}">
+					<a class="btn btn-sm btn-outline-secondary"
+						href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
+					<a class="btn btn-sm btn-outline-secondary"
+						href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
+				</c:if>
+				<c:if test="${manager==null&&user==null}">
+					<a class="btn btn-sm btn-outline-secondary"
+						href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
+				</c:if>
+				<c:if test="${manager!=null}">
+					<a class="btn btn-sm btn-outline-secondary"
+						href="<%=request.getContextPath()%>/manager/main">관리자</a>
+				</c:if>
+				<c:if test="${user!=null}">
+					<a class="btn btn-sm btn-outline-secondary" id="logout"
+						style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
+
+
+					<li class="nav-item dropdown"
+						style="height: 31px; list-style: none;">
+						<!--<a class="nav-link">  --> <a
+						class="dropdown-toggle btn btn-sm btn-outline-secondary"
+						id="navbarDropdownMenuLink"
 						href="<%=request.getContextPath()%>/mypage/mp_main"
-						id="navbarDropdownMenuLink" style="color: black;"
+						id="navbarDropdownMenuLink" style="text-decoration: none;"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							마이페이지 </a>
+
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item"
@@ -157,12 +325,13 @@
 								href="#">스토리</a> <a class="dropdown-item" href="#">좋아요</a> <a
 								class="dropdown-item" href="#">스크랩</a> <a class="dropdown-item"
 								href="#">댓글</a>
-						</div></li>
-				
-			</c:if>
-        </ul>
-        </div>
-      </div>
+						</div>
+					</li>
+
+				</c:if>
+			</ul>
+		</div>
+	</div>
 
 </header>
 
