@@ -11,7 +11,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>home</title>
-<!--  -->
+<!-- r글씨체 -->
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Stylish" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
@@ -93,15 +94,26 @@
 .text-muted {
 	color: white !important;
 }
+
+#homeName{
+font-family: 'Gamja Flower', cursive;
+text-decoration: none;
+}
+div>nav>a{
+/* font-size: 25px; */
+
+}
+
+
 </style>
 </head>
 <header class="blog-header py-3">
 	<div class="row flex-nowrap justify-content-between align-items-center">
 		<div class="col-4 pt-1"></div>
 		<div class="col-4 text-center">
-			<a class="blog-header-logo text-dark"
+			<a class="blog-header-logo text-dark" id="homeName"
 				href="<%=request.getContextPath()%>/"
-				style="text-decoration: none; font-size: 27px; font-weight: 700; color: black;">
+				style="text-decoration: none; font-size: 50px; font-weight: 700; color: black;font-family: 'Gamja Flower', cursive;">
 				느그집</a>
 		</div>
 		<div class="col-4 d-flex justify-content-end align-items-center">
@@ -240,23 +252,23 @@
 </header>
 
 
-
-<div class="nav-scroller py-1 mb-2"
+<!-- <div class="nav-scroller py-1 mb-2" -->
+<div class="nav-scroller  "
 	style="background-color: #000000; border-bottom-color: #EAEAEA">
 	<nav class="nav d-flex justify-content-between"
 		style="width: 1100px; margin: auto;">
 		<!-- style="width: 1100px; margin: auto;" -->
-		<a class="p-2 text-muted"
+		<a class="p-2 text-muted" style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">사진</a>
-		<a class="p-2 text-muted"
+		<a class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/furniture/furnitureRank">가구랭킹</a>
-		<a class="p-2 text-muted"
+		<a class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a> <a
-			class="p-2 text-muted"
+			class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/story/storyboardForm">스토리</a> <a
-			class="p-2 text-muted"
+			class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/manager/faqlist">FAQ</a> <a
-			class="p-2 text-muted"
+			class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a>
 
 	</nav>
