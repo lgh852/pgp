@@ -107,6 +107,9 @@ div>nav>a{
 
 </style>
 </head>
+<body style="
+    padding-top: 0px;
+">
 <header class="blog-header py-3">
 	<div class="row flex-nowrap justify-content-between align-items-center">
 		<div class="col-4 pt-1"></div>
@@ -120,8 +123,8 @@ div>nav>a{
 
 		</div>
 	</div>
-</header>
-<header class="blog-header py-3">
+	
+	<!--e두번쨰   -->
 	<div class="row" style="margin: auto; width: 1400px;">
 		<div class="col-md-8"></div>
 		<div class="col-md-4">
@@ -177,12 +180,12 @@ div>nav>a{
 				</div>
 			</form>
 		</div>
-		<!--d여기까지  -->
+	
 	</div>
-	</div>
-</header>
-
-<header class="blog-header py-3">
+	<!--d여기까지  -->	
+	<div class="mb-3"></div>
+	
+	<!--세번째  -->
 	<div class="row" style="margin: auto; width: 1400px;">
 		<div class="col-md-8"></div>
 		<div class="col-md-4">
@@ -248,7 +251,9 @@ div>nav>a{
 			</ul>
 		</div>
 	</div>
-
+	<!--세번쨰 여기까지  -->
+	
+	
 </header>
 
 
