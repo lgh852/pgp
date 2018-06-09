@@ -92,8 +92,8 @@
         
         
             
-      </div>  <!--margin auto-->      
-      
+      </div>    
+      <!--margin auto-->    
       <script>
       	$(document).ready(function(){
       		$('.note-editor').css('width','100%')
