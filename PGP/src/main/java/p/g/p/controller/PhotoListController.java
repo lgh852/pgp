@@ -2,7 +2,6 @@ package p.g.p.controller;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +26,7 @@ import p.g.p.model.Like;
 import p.g.p.model.Member_info;
 import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Scrap;
+import p.g.p.model.Url_Tag;
 import p.g.p.model.scrapFN;
 import p.g.p.service.BoardPhotoUpLoad;
 import p.g.p.service.PhotoDetailUpdateService;
@@ -296,6 +295,7 @@ public class PhotoListController {
 		
 		
 		String tagckss = photodetailservice.tagcks(boardboard);
+		
 		if (tagckss != null) {
 			// 태그 정보 저장
 			// 수정가능
@@ -307,7 +307,10 @@ public class PhotoListController {
 			
 			
 		}
-		
+		// url 태그
+	      List<Url_Tag> urlList = photodetailservice.selectUrl(board_idx);
+	   
+	      model.addAttribute("urlList",urlList);
 		photo.setBoard_idx(board_idx);
 		photo.setPhoto_name(photoName);
 
@@ -327,6 +330,7 @@ public class PhotoListController {
 	public String detailComment(Model model, Board_Comment bc,
 			@RequestParam("board_comment_contents") String board_comment_contents, HttpSession session,
 			@RequestParam(value = "board_idx", defaultValue = "0") int board_idx) {
+		
 		String view = "home";
 		Member_info member = (Member_info) session.getAttribute("user");
 		int member_idx = member.getMember_idx();
@@ -372,7 +376,14 @@ public class PhotoListController {
 		// 조회수 기준 인기사진 출력
 		List<Join_board_boardphoto> popularPhotoList = photodetailservice.popluarphotoSelect();
 		model.addAttribute("popularPhotoList", popularPhotoList);
-
+		
+		// url 태그
+	      List<Url_Tag> urlList = photodetailservice.selectUrl(board_idx);
+	      
+	     
+	      model.addAttribute("urlList", urlList);
+		
+		
 		return view;
 
 	}

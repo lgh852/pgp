@@ -38,7 +38,8 @@ public interface PhotoDao {
    
    //보드 정보 뽑아올 리스트 
    public List<Board> selectByBoardIdx(int board_idx);
-public String tagcksmember(Board boardboard);
+   
+   public String tagcksmember(Board boardboard);
   
    
 }

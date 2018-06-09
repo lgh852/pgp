@@ -11,6 +11,7 @@ import p.g.p.model.Board_Comment;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.Url_Tag;
 
 public class PhotodetailService {
 
@@ -155,5 +156,11 @@ public class PhotodetailService {
 			}
 		return tagcks;
 	}
+
+	public List<Url_Tag> selectUrl(int board_idx) {
+	      dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+	      List<Url_Tag> list = dao.selectUrl(board_idx);
+	      return list;
+	   }
 
 }
