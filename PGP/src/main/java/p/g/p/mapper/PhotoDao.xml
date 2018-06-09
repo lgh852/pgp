@@ -41,7 +41,7 @@
    </delete>
 
    <!-- 댓글 수 -->
-   <select id="commentTotalCnt" resultType="int">
+   <select id="commentTotalCnt" resultType="int" >
       select count(*) from
       board_comment where board_idx=#{board_idx}
    </select>
