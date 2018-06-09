@@ -292,6 +292,8 @@ function tagsclick(e) {
 							</div>
 						</c:forEach>
 
+
+
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
 							<div class="modal fade" id="tagurlbox${status.count}"
 								tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
