@@ -1,8 +1,10 @@
 package p.g.p.model;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
-public class Board_Photo {
+public class Board_Photo  {
 
 	private int photo_idx;
 	private String photo_name;

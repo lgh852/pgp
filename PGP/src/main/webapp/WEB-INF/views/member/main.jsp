@@ -28,29 +28,29 @@
                                 <div class="carousel-item active">
                                   <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(0).board_idx}"style="color: white">  <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(0).photo_name}"  id="imgtagbox" height="450px" alt="First slide">
                                     <div style="position: absolute;left: 20px;bottom: 30px;">
-                                        <h4>신혼집 꾸미기</h4>
+                                        <h4>${board.get(0).board_title}</h4>
                                         <h1></h1>
-
-                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
+																												
+                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">${memberlist.get(0).member_id}</span>
                                     </div>
                                     </a>
                                 </div>
                                 <div class="carousel-item">
                                    <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(1).board_idx}" style="color: white"><img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(1).photo_name}"  id="imgtagbox" height="450px" alt="Second slide">
                                     <div style="position: absolute;left: 20px;bottom: 30px;">
-                                        <h4>신혼집 꾸미기</h4>
-                                        <h1>피아노를 좋아하는 사람</h1>
+                                        <h4>${board.get(1).board_title}</h4>
+                                        <h1></h1>
 
-                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
+                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">${memberlist.get(1).member_id}</span>
                                     </div></a>
                                 </div>
                                 <div class="carousel-item">
                                    <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(2).board_idx}" style="color: white"> <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(2).photo_name}"  id="imgtagbox" height="450px" alt="Third slide">
                                     <div style="position: absolute;left: 20px;bottom: 30px; ">
-                                        <h4>신혼집 꾸미기</h4>
-                                        <h1>피아노를 좋아하는 사람</h1>
+                                        <h4>${board.get(2).board_title}</h4>
+                                        <h1></h1>
 
-                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">아이디</span>
+                                        <span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"height="25px" class="rounded-circle">${memberlist.get(2).member_id}</span>
                                     </div></a>
                                 </div>
                             </div>
