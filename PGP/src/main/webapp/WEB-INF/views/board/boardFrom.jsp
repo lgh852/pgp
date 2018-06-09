@@ -4,10 +4,10 @@
 <div style="margin: 0 auto;width: 100%">
             <div class="imgcenter">    
            <div id="imgbox" class="border" style="max-width: 100%;width: 700px;margin: 0 auto;">    
-         <img width="100%" height="100%" id="imgPre" src="%EC%A7%91.jpg" alt="..." style=" max-height: 600px;min-height: 600px;margin: 0 auto;"  class="border-0 img-thumbnail">
+         <img width="100%" height="100%" id="imgPre" src="%EC%A7%91.jpg" alt="" style=" max-height: 600px;min-height: 600px;margin: 0 auto;"  class="border-0 img-thumbnail">
             </div>
         </div>
-        <div style="max-width: 100%;width: 700px;margin: 0 auto">ㄹ
+        <div style="max-width: 100%;width: 700px;margin: 0 auto">
         <form action="<%=request.getContextPath()%>/board/boardFrom"
    method="post" enctype="multipart/form-data">
         <div class="container">
@@ -65,7 +65,7 @@
   <input type="text"  name="board_title" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 </div>
             <div >
-          <textarea s  id="summernote" name="board_contents"></textarea>-->
+          <textarea   id="summernote" name="board_contents"></textarea>
       </div>
     
          <div class="container">
