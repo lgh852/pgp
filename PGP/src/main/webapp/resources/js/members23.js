@@ -56,9 +56,11 @@ $(document).ready(function() {
 				$('#userPwck2').text('비밀번호가 일치하지 않습니다');
 			} else {
 				$('#userPwck2').text('비밀번호 확인');
+				$('#userPwck2').css('color', 'blue');
 			}
 		} else {
 			$('#userPwck2').text('비밀번호 확인');
+			$('#userPwck2').css('color', 'blue');
 		}
 
 	});
@@ -138,6 +140,7 @@ $(document).ready(function() {
 
 		var id = $('#userId').val();
 		var userPw = $('#userPw').val();
+		var userPw2 = $('#userPw2').val();
 		var userName = $('#userName').val();
 		var userNickName = $('#userNickName').val();
 		var year = $('#year').val();
@@ -148,6 +151,7 @@ $(document).ready(function() {
 
 		if (id.trim().length < 8) {
 
+			
 			alert('8자 이상 입력해주세요');
 
 			return false;
@@ -155,6 +159,8 @@ $(document).ready(function() {
 		}
 		if (userPw.trim().length < 8) {
 
+			
+			
 			alert('비밀번호 8자 이상 입력해주세요');
 
 			return false;

@@ -68,7 +68,6 @@ public class PhotoListController {
 		String view = "";
 		String page = "";
 
-		
 		Member_info member = (Member_info)session.getAttribute("user");
 			List<PhotoListmodel> list = photoervice.photolistview(like,photolist,member);
 			if(list!=null) {
@@ -308,9 +307,9 @@ public class PhotoListController {
 			
 		}
 		// url 태그
-	      List<Url_Tag> urlList = photodetailservice.selectUrl(board_idx);
+	    List<Url_Tag> urlList = photodetailservice.selectUrl(board_idx);
 	   
-	      model.addAttribute("urlList",urlList);
+	    model.addAttribute("urlList",urlList);
 		photo.setBoard_idx(board_idx);
 		photo.setPhoto_name(photoName);
 

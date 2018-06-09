@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script>
 	function reclick() {
 
@@ -77,7 +78,7 @@
 <div class="imgcenter" style="margin: 0 auto">
 
 	<div id="imgbox" class="border"
-		style="max-width: 100%; width: 700px; margin: 0 auto;">
+		style="max-width: 100%; width: 600px; margin: 0 auto;">
 
 		<img width="100%" height="100%" id="imgtagbox"
 			src="<%=request.getContextPath()%>/resources/BoardPhoto/${photo.photo_name}"
@@ -103,35 +104,60 @@
 		<input type="hidden" id="hidden_board_idx" value="${board_idx}"
 			name="board_idx">
 	</div>
-	<div class="taginfo none">
-		<p class="inner">
-			<a class="t_url"></a>
-		</p>
-		<button class="reinfo" onclick='reclick()'>취소</button>
-		<button class="tagdelete">삭제</button>
-		<input type="hidden" class="tagno">
+
+	<div id="viewbox" class="check1 none" data-toggle="modal" data-target="#exampleModal">
+
+		<a href="#" class="aclick1 " data-toggle="modal" data-target="#exampleModal">+</a>
 	</div>
 
-	<div id="viewbox" class="check1 none">
-
-		<a href="#" class="aclick1 ">+</a>
-	</div>
-	<div id="viewbox" class="check2 none">
+	<div id="viewbox" class="check2 none" data-toggle="modal" data-target="#exampleModal" style="left: ${urlList.get(0).tag_position_x}px; top: ${urlList.get(0).tag_position_y}px;position: absolute ">
 		<a href='#' class='aclick2'>+</a>
 	</div>
-	<div id="viewbox" class="check3 none">
+	
+	<div id="viewbox" class="check3 none"data-toggle="modal" data-target="#exampleModal" >
 		<a href='#' class='aclick3'>+</a>
 	</div>
-	<div id="viewbox" class="check4 none">
+	<div id="viewbox" class="check4 none" data-toggle="modal" data-target="#exampleModal">
 		<a href='#' class='aclick4'>+</a>
 	</div>
-	<div id="viewbox" class="check5 none">
+	<div id="viewbox" class="check5 none" data-toggle="modal" data-target="#exampleModal">
 		<a href='#' class='aclick5'>+</a>
 	</div>
 	<input type="hidden" id="tag1"> <input type="hidden" id="tag2">
 	<input type="hidden" id="tag3"> <input type="hidden" id="tag4">
 	<input type="hidden" id="tag5">
-
+	
+	
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+ 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <a class="t_url"></a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-secondary tagdelete">삭제</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 </div>
 
+<script>
+	$(document).ready(function(){
+
+		var tagsd = $('.sss').val();
+		
+		alert(tagsd);
+		
+		
+	})
+
+</script>

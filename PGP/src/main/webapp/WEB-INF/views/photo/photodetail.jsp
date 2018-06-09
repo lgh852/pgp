@@ -281,7 +281,35 @@ function tagsclick(e) {
 								style="max-height: 600px; min-height: 600px; margin: 0 auto; width: 600px"
 								class="border-0 img-thumbnail">
 						</div>
-
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			${urlList}
+			
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
 							<div id="viewbox${status.count}" class="check viewbox"
 								style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">

@@ -79,6 +79,13 @@ $(document).ready(
 						var tag3 = $('#tag3').val();
 						var tag4 = $('#tag4').val();
 						var tag5 = $('#tag5').val();
+						alert(cnt)
+						alert(cnt)
+						alert(cnt)
+						alert(cnt)
+						alert(cnt)
+						alert(cnt)
+						
 						if (cnt <6) {
 					
 							if (tag1=='') {
@@ -106,7 +113,6 @@ $(document).ready(
 								}).show()
 								$("#link").val('');
 								$('#tag2').val(data);
-								
 								ch2 =$('#tag2').val();	
 								cnt= cnt+1;
 							} else if (tag3=='') {
@@ -149,12 +155,15 @@ $(document).ready(
 								ch5 =$('#tag5').val();	
 								cnt= cnt+1;
 							} if (data == '55') {
+								alert('체크1')
+								
 								alert('태그를 더이상 생성할수 없습니다 ')
 								$('.serchbox').css({
 									"display" : 'none'
 								})
 							} 
 						} else {
+						alert('김하영용용용')
 							alert('태그를 더이상 생성할수 없습니다.')
 							$('.serchbox').css({
 								"display" : 'none'
@@ -251,7 +260,7 @@ $(document).ready(
 					data : {
 						tag_idx : tag1,
 						board_idx : board_idxs
-					},
+					},	
 					success : function(data) {
 						alert(data);
 						if (data == 'null') {

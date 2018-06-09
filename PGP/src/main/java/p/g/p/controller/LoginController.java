@@ -1,5 +1,6 @@
 package p.g.p.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
 import p.g.p.model.Member_info;
 import p.g.p.service.MainPageService;
@@ -135,7 +137,6 @@ public class LoginController {
 	@ResponseBody
 	public String facebookLogin(Member_info member, HttpSession session) {
 		Member_info members = service.kakaock(member);
-
 		String ck = "y";
 
 		if (members != null) {
