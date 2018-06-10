@@ -84,7 +84,7 @@
 
 
 
-
+<c:if test="${likeList != null}">
 
 
 <div class="album py-5 bg-light" style="margin-top:30px;">
@@ -110,6 +110,20 @@ ${likephoto.photo_name}" width="100%" height="200px">
 
 
 </div></div></div>
+</c:if>
+
+
+<!-- 좋아요 한적 없을 때 --> 
+
+
+<c:if test="${likeList == null}">
+
+
+<h1>아직 좋아한 콘텐츠가 없습니다.
+마음에 드는 콘텐츠를 발견하면 좋아요를 눌러보세요!</h1>
+
+
+</c:if>
 
 
  

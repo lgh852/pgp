@@ -17,10 +17,28 @@
     <div class="col">
       
     </div>
+    
+    <!-- 만약 나의 프로필 사진이 설정되어 있지 않다면! 기본사진이 나온다 -->
+    <c:if test="${member.member_photo ==null}">
+    <div class="col">
+      <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/images/smilephoto.png" 
+       width="140" height="140" style="border-top-width: 100px; margin-top: 30px;">
+    </div>
+    
+    </c:if>
+    
+    
+    <c:if test="${member.member_photo !=null}">
     <div class="col">
       <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}" 
        width="140" height="140" style="border-top-width: 100px; margin-top: 30px;">
     </div>
+    </c:if>
+  
+  
+  
+  
+  
   </div>
         </div>
 
@@ -54,18 +72,18 @@
 
 	<ul class="nav justify-content-center nav-tabs"
 		style="text-align: center; padding-top: 30px;">
-	<li class="nav-item"><a class="nav-link active" href="#">모음</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<li class="nav-item"><a class="nav-link active" href="#">모음</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
-		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage/mp_myStory?member_idx=${member.member_idx}">
-		스토리</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		스토리</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<li class="nav-item"><a class="nav-link" 
 		href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">
-		좋아요</a></li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		좋아요</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_scrap?member_idx=${member.member_idx}">스크랩</a>
-		</li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<li class="nav-item"><a class="nav-link"
 			href="<%=request.getContextPath()%>/mypage/mp_myComment?member_idx=${member.member_idx}">댓글</a>
 		</li>
@@ -129,6 +147,29 @@
                     </div>
                 </div>
                 </c:if>
+                
+                
+                 <!-- 만약 업로드한 사진이 하나도 없다면!  -->
+                <c:if test="${ck=='n'}"> 
+                
+                <div class="scrap_book_add" style="border-style:dashed; border-color:gray; height: 226px; border-width: 1px;">
+          
+                     <a href="<%=request.getContextPath()%>/board/boardFrom">
+                     
+                     <div class="addphoto">
+                     
+                     
+                    <h3 style="margin-top:80px; padding-left:190px;">첫 번째 사진을 올려보세요!</h3>  
+                     </div>
+                     
+                      </a>
+                      
+                          </div>
+                
+                
+                
+                </c:if>
+                
                        
                        </div>
                  
@@ -143,6 +184,7 @@
             <aside class="col-md-4 blog-sidebar">
                  <div class="sidebar_topmargin" style="margin-top: 33px;">
           
+          <c:if test="${scrapLatestPhoto !=null}">
           <div class="p-3 mb-3 bg-light rounded" style="height:150px;">
               
               <div class="scrapPhoto" >
@@ -154,8 +196,32 @@
               </div>
               
          </div>
+         </c:if>
+         
+       <!--   스크랩한 사진이 하나도 없다면 -->
+         <c:if test="${scrapLatestPhoto ==null}">
+         <div class="p-3 mb-3 bg-light rounded" style="height:100px;">
+              
+               <div class="scrapPhoto" >
+                <a href="<%=request.getContextPath() %>/mypage/mp_scrap?member_id=${member.member_id}" style="text-decoration: none;">
+              
+            <div class="scrapbook" style="font-size:20px; border-style: dashed; border-color:gray; heigth:80px; border-width: 1px;"> 
+                <div style="color: cornflowerblue; padding-top: 20px; padding-left:110px; padding-bottom: 20px;">스&nbsp;크&nbsp;랩&nbsp;북
+                </div></div> 
+                </a>
+             
+              </div>
+           
+              
+         </div>
+         
+         </c:if>
+         
+         
+         
+            <c:if  test="${likeLatestPhoto !=null}">
             
-            <div class="p-3 mb-3 bg-light rounded" style="height:150px;">
+            <div class="p-3 mb-3 bg-light rounded" style="height:100px;">
             
             <div class="likePhoto">
            <a href="<%=request.getContextPath() %>/mypage/mp_myLike">
@@ -166,6 +232,33 @@
                      </div>
                
           </div>
+                
+                </c:if>
+                
+                <!-- 좋아요 누른 사진이 하나도 없다면 !  -->
+                <c:if test="${likeLatestPhoto ==null}">
+                
+                      <div class="p-3 mb-3 bg-light rounded" style="height:100px;">
+            
+            <div class="likePhoto">
+           
+           <a href="<%=request.getContextPath() %>/mypage/mp_myLike" style="text-decoration: none;">
+           <div class="scrapbook" style="font-size:20px; border-style: dashed; border-color:gray; heigth:80px; border-width: 1px;"> 
+                <div style="color: cornflowerblue; padding-top: 20px; padding-left:120px; padding-bottom: 20px;">좋&nbsp;아&nbsp;요
+                </div></div> 
+                
+                
+                </a>
+               
+                     </div>
+               
+          </div>
+          </c:if>
+                
+                
+                
+                
+                
                 </div>
             </aside>
             </div>

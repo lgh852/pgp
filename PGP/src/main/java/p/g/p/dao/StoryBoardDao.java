@@ -5,6 +5,7 @@ import java.util.List;
 import p.g.p.model.Join_MemberInfo_StoryBoard;
 import p.g.p.model.Join_MemberInfo_StoryBoardComment;
 import p.g.p.model.Like;
+import p.g.p.model.Member_info;
 import p.g.p.model.StoryBoard;
 import p.g.p.model.StoryBoard_Comment;
 import p.g.p.model.report;
@@ -35,4 +36,7 @@ public interface StoryBoardDao {
 	public List<Like> selecting(Like like);
 
 	public int reportboard(report report); // 스토리 신고
+	
+	//마이페이지 스토리 
+	public List<Join_MemberInfo_StoryBoard> selectMpStory(Member_info member);
 }

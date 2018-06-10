@@ -45,14 +45,14 @@
 	<select id="selectMyCommentList" resultType="p.g.p.model.Board_Comment"
 		parameterType="p.g.p.model.Member_info">
 		SELECT
-		a.member_id,b.board_comment_contents,b.board_comment_regdate,
-		b.board_idx,b.board_comment_idx
+		*
 		from
 		pgp.member_info as a
 		join
 		pgp.board_comment as b
+		on a.member_idx = b.member_idx
 		where
-		a.member_idx=#{member_idx};
+		b.member_idx=#{member_idx};
 
 
 	</select>

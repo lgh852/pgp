@@ -12,7 +12,8 @@
 		values(#{storyboard_contents},#{member_idx});
 	</insert>
 	<update id="updateStroyboard" parameterType="p.g.p.model.StoryBoard">
-		update pgp.storyboard set storyboard_photo=#{storyboard_photo} where
+		update
+		pgp.storyboard set storyboard_photo=#{storyboard_photo} where
 		storyboard_idx=#{storyboard_idx};
 	</update>
 
@@ -20,8 +21,8 @@
 	<!-- 스토리보드 & 멤버정보 리스트 -->
 	<select id="select_join_MemberInfo_StoryBoard" resultType="p.g.p.model.Join_MemberInfo_StoryBoard">
 		select * from pgp.storyboard, member_info where
-		member_info.member_idx=pgp.storyboard.member_idx order by
-		storyboard_regdate desc;
+		member_info.member_idx=pgp.storyboard.member_idx
+
 	</select>
 
 
@@ -57,12 +58,12 @@
 		delete from
 		storyboard_comment where storyboard_idx=#{storyboard_idx};
 	</delete>
-   <!-- 스토리 좋아요 전체 삭제 -->
-   <delete id="deleteAllLike" parameterType="p.g.p.model.Like">
-      delete from pgp.like
-      where
-      storyboard_idx=#{storyboard_idx};
-   </delete>
+	<!-- 스토리 좋아요 전체 삭제 -->
+	<delete id="deleteAllLike" parameterType="p.g.p.model.Like">
+		delete from pgp.like
+		where
+		storyboard_idx=#{storyboard_idx};
+	</delete>
 	<!-- 스토리 댓글 삭제 -->
 	<delete id="deleteStoryComment" parameterType="p.g.p.model.StoryBoard_Comment">
 		delete from
@@ -124,10 +125,25 @@
 	<insert id="reportboard" parameterType="p.g.p.model.report">
 
 		INSERT INTO
-		pgp.report(	report_contents,member_idx,storyboard_idx)
+		pgp.report(
+		report_contents,member_idx,storyboard_idx)
 		VALUES(#{report_contents},#{member_idx},#{storyboard_idx});
 
 	</insert>
+
+
+	<select id="selectMpStory" resultType="p.g.p.model.Join_MemberInfo_StoryBoard">
+
+
+		select * from
+		pgp.member_info as a
+		join
+		pgp.storyboard as b
+		on a.member_idx = b.member_idx
+		where a.member_idx=#{member_idx};
+	
+	</select>
+
 
 </mapper>
 

@@ -18,6 +18,8 @@ public class Mp_myComment_service {
 	
 	public List<Board_Comment> Mp_myCommentList(Member_info member){
 		
+		System.out.println("서비스에서 member를 확인해볼게"+member);
+		
 		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
 		
 		List<Board_Comment> list = dao.selectMyCommentList(member);

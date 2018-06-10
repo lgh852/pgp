@@ -12,6 +12,7 @@ public class Mp_MyPageList {
 	Mp_update_service services;
 
 	public Member_info userck(HttpSession session, Member_info member) {
+		
 		if(member!=null&&member.getMember_idx()>0) {
 			System.out.println("1");
 			String member_idx = String.valueOf(member.getMember_idx());

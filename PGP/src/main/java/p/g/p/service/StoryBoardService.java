@@ -254,6 +254,79 @@ public class StoryBoardService {
 	      
 	      return result;
 	   }
+
+	
+	//마이페이지 스토리 가져오기 위해 
+	public List<Join_MemberInfo_StoryBoard> selectMpStory(Like like, Member_info member) {
+		
+		dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
+		System.out.println("서비스 dao맵핑 되냐");
+		List<Like> likelist;
+		
+
+		System.out.println();
+		int member_idx;
+		
+		if(member!=null) {
+			System.out.println("서비스 멤버 쪽으로 들어옴????");
+			 member_idx = member.getMember_idx();
+			 System.out.println("서비스 2");
+			 like.setMember_idx(member_idx);
+			 System.out.println("서비스 3");
+			 likelist = selecting(like);
+			 System.out.println("서비스 4"+likelist);
+			
+		}else{
+			
+			 member_idx = 0; 
+			
+			 like.setMember_idx(member_idx);
+			
+			 likelist = selecting(like);
+			
+		}
+	
+		System.out.println("서비스 4adfsafadfadfadff"+likelist);
+	
+		List<Join_MemberInfo_StoryBoard> listStory = dao.selectMpStory(member);
+		
+		 System.out.println("서비스 5"+listStory);
+		
+		
+		if(likelist.size()>0) {
+			
+			System.out.println("서비스6"+likelist.size());
+			
+		for (int i = 0; i < listStory.size(); i++) {
+			
+	
+			int photoidx = listStory.get(i).getStoryboard_idx();
+			
+			
+			for (int x = 0; x < likelist.size(); x++) {
+				
+		
+				int listidx = likelist.get(x).getStoryboard_idx();
+				
+				System.out.println("서비스10"+listidx);
+				if (photoidx == listidx) {
+					
+					listStory.get(i).setLikeck("ss");
+					
+				}
+			}
+		}
+		
+		}else {
+			  
+			
+			likelist = null;
+		}
+		
+		
+		System.out.println("서비스13"+listStory);
+		return listStory;
+	}
 	
 
 

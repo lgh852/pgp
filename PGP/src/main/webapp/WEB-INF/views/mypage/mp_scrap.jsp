@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+   
     <main role="main" class="container">
 	
 <!--마이페이지 스크랩북 상위 섹션-->
@@ -80,21 +81,27 @@
 
               <!-- 스크랩북 리스트 -->
              
+             
+             
+             
+             
               <c:forEach varStatus="status" items="${photonameList}">
               
              
               
              <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-4 box-shadow ">
               
+             
+          
+               
               
               <c:if test="${photonameList[status.index] == 'nothing'}">
               
-              <div class="scrapemptyimage">
                <img class="card-img-top" alt="스크랩 폴더가 비어있어요!" id="scrapemtyimage${status.count}" style="height: 225px; width: 100%; display: block;" 
                 src="<%=request.getContextPath()%>/resources/images/empty-glass.png" >
-              </div>
-              
+          
+          
            <div class="scarpfoldername" style="font-size:60px; position: absolute; top: 60px; left:100px; font-color:white;">
              
             <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList[status.index].scrap_name}">
@@ -106,7 +113,7 @@
               
               
               </c:if> 
-              
+                 
               
               
               <c:if test="${photonameList[status.index] != 'nothing'}">
@@ -131,9 +138,23 @@
             
               
               </c:forEach>
-            
-            
-          	
+          
+          
+          
+          <div class="col-md-4">
+              <div class="card mb-4 box-shadow ">
+              <div class="scrapemtyimage"></div>
+              
+              <div class="scarpfoldernameadd" style="font-size:60px; position: absolute; top: 60px; left:100px; font-color:black;">
+              
+              
+              
+              </div>
+              
+              
+              </div>
+              </div>
+          
           </div>
         </div>
       </div>

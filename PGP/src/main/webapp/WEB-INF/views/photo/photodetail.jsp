@@ -281,35 +281,12 @@ function tagsclick(e) {
 								style="max-height: 600px; min-height: 600px; margin: 0 auto; width: 600px"
 								class="border-0 img-thumbnail">
 						</div>
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			${urlList}
-			
+						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
+						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
+						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
+						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
+						${urlList} ${urlList} ${urlList} ${urlList}
+
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
 							<div id="viewbox${status.count}" class="check viewbox"
 								style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
@@ -433,9 +410,10 @@ function tagsclick(e) {
 
 
 
-							<a onclick="reportPopup();" class="btn btn-warning" role="button"
+							<a class="btn btn-warning" role="button" data-toggle="modal"
+								data-target="#reportBtn"
 								style="border-radius: 40px; padding: auto; color: white;">신고</a>
-							<div id="reportPopup">
+							<%-- <div id="reportPopup">
 								<div class="report_reason">
 									<select class="reason" id="report_contents">
 										<option selected value="0">주제와 맞지 않음</option>
@@ -453,8 +431,53 @@ function tagsclick(e) {
 									value="${storyboard_idx}"> <input type="hidden"
 									id="board_idx" value="${board.board_idx}"> <input
 									type="hidden" id="member_idx" value="${member.member_idx}">
-							</div>
+							</div> --%>
 
+
+
+							<!-- 신고 눌렀을때  -->
+							<div class="modal fade" id="reportBtn" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">신고</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<!--신고내용  -->
+											<div id="reportPopupView" class="reportPopupView">
+												<div class="report_reason">
+													<select class="reason" id="report_contents"
+														name="report_contents" style="width: 100%;">
+														<option selected value="0">주제와 맞지 않음</option>
+														<option selected value="1">정보가 부정확함</option>
+														<option selected value="2">지나친 광고성 게시물</option>
+														<option selected value="3">도배 및 중복 게시물</option>
+														<option selected value="4">저작권 침해가 우려됨</option>
+														<option selected value="5">욕설/비방이 심함</option>
+														<option selected value="6">외설적인 게시물</option>
+													</select>
+												</div>
+												 <input type="hidden"
+													id="board_idx" value="${board.board_idx}"> <input
+													type="hidden" id="member_idx" value="${member.member_idx}">
+
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal" id="closePopuppage">취소</button>
+											<button type="button" class="btn btn-warning"
+												id="submitReportpage">신고하기</button>
+										</div>
+									</div>
+								</div>
+							</div>
 
 
 
@@ -486,7 +509,8 @@ function tagsclick(e) {
 								style="height: 60px; width: 100%; text-align: center; margin-top: 20px;">
 
 								<div id="like" class="likeArea">
-									<a onclick="likeClick();"> <c:if test="${likecheck==null}">
+									<a onclick="likeClick();">
+									 <c:if test="${likecheck==null}">
 
 											<div id="likeid" class="btn btn-outline-danger "
 												style="float: left; width: 46%; height: 45px; padding-top: 10px;">
@@ -494,7 +518,8 @@ function tagsclick(e) {
 													style="padding-left: 20px;">${boardInfo.board_like}</span>
 											</div>
 
-										</c:if> <c:if test="${likecheck!=null}">
+										</c:if> 
+										<c:if test="${likecheck!=null}">
 
 											<div id="likeid" class="btn btn-danger "
 												style="float: left; width: 46%; height: 45px; padding-top: 10px;">
@@ -511,6 +536,7 @@ function tagsclick(e) {
 								<div id="scrap" class="scrapArea">
 									<a onclick="scrapPopup();"> <c:if test="${scrapck==null}">
 											<div id="scrapid" class="btn btn-outline-info"
+												data-toggle="modal" data-target="#addScrapFolder"
 												style="display: inline-block; margin-left: 20px; width: 46%; height: 45px; padding-top: 10px">
 												스크랩 <span class="count" id="scrapCnt"
 													style="padding-left: 20px;">${boardInfo.board_scrap}</span>
@@ -524,44 +550,81 @@ function tagsclick(e) {
 										</c:if>
 
 									</a>
-									<div id="scrapPopup">
-										<ul class="list-group scrapList" id="scrapli">
+
+
+
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+						<!-- 스크랩북 폴더 추가 모달 -->
+						<div class="modal fade" id="addScrapFolder" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">스크랩북을
+											선택하세요</h5>
+									</div>
+									<div class="modal-body">
+										<ul class="list-group scrapList" id="scrapli"
+											style="list-style: none;'">
 
 											<c:forEach var="scrapNameList" items="${scrapNameList}"
 												varStatus="status">
 												<li>
 													<button type="button"
-														class="scrapSuccess${status.count} list-group-item list-group-item-action active"
+														class="scrapSuccess${status.count} list-group-item list-group-item-action active btn-xs"
 														onclick="scrapButton(${status.count})">${scrapNameList.scrap_name}</button>
 												</li>
 
 											</c:forEach>
 										</ul>
+									</div>
+									<input type="hidden" id="board_idx"> <input
+										type="hidden" id="scrapCnt"> <input type="hidden"
+										id="ck">
+									<div class="modal-footer">
+										<div class="row">
+											<div class="col">
+												<input type="hidden" class="listnumber"
+													value="${fn:length(scrapNameList)}"> <input
+													type="text" class="input-group-text scrapFolderName"
+													style="width: 400px; margin-left: 30px; margin-bottom: 10px"
+													placeholder="추가할 스크랩 폴더명을 입력해주세요 " /> <input type="hidden"
+													id="member_idx" value="${member.member_idx}" />
+											</div>
 
-										<div id="inputScrapFolder">
-
-											<input type="text" id="scrapFolderName"
-												placeholder="스크랩북 이름을 입력해줘잉" />
-											<button type="button" class="add">추가</button>
-											<input type="hidden" id="member_idx"
-												value="${board.member_idx}">
-
-											<button type="button" id="close">닫기</button>
+											<div class="w-100"></div>
+											<div class="col-4"></div>
+											<div class="col-8">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal" style="margin-right: 10px;">닫기</button>
+												<button type="button" class="btn btn-primary add">추가</button>
+											</div>
 
 										</div>
 
 
 
-										<input type="hidden" class="listnumber"
-											value="${fn:length(scrapNameList)}"> <input
-											type="hidden" id="board_idx" value="${board.board_idx}">
-										<input type="hidden" id="member_idx"
-											value="${board.member_idx}"> <input type="hidden"
-											id="scrap_idx" value="${scrapInfo.scrap_idx}">
 									</div>
 								</div>
 							</div>
 						</div>
+
+
+
+
+
+
+
+
 
 						<div class="sharing_info">
 							<div class="label" style="padding-top: 10px;">

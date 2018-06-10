@@ -177,7 +177,7 @@ function scrapButton(s) {
    
    alert(scrapcnt);
   
-   if($('#scrapCnts'+listnum).text()!=''){
+   if($('#scrapCnts'+listnum).text() !='undefined'){
    
    var scrapcntString = $('#scrapCnts'+listnum).text();
    alert(1);

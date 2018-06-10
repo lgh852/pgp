@@ -71,6 +71,7 @@ public class Mp_main_controller {
 
 				ck = "n";
 			}
+			
 			// 사진들 가져오쟈
 			List<Join_board_boardphoto> boardLatestPhoto = service.selectLatestPhoto(member_idx);
 			if (boardLatestPhoto != null) {
@@ -94,11 +95,15 @@ public class Mp_main_controller {
 			} else {
 				likeLatestPhoto = null;
 			}
+			
+			model.addAttribute("member", member);
 		} else {
 
 			// 실패 뷰값 주삼
 			// 실패
 		}
+		
+		    //
 
 		model.addAttribute("page", page);
 		model.addAttribute("ck", ck);
@@ -144,18 +149,26 @@ public class Mp_main_controller {
 	public String myStoryPage(HttpSession session, Model model, Like like, Member_info member) {
 		String view = "";
 		String page = "";
+		
+		System.out.println("111111111"+member);
 
 		member = pagelistservice.userck(session, member);
+		
+		System.out.println("222222222"+member);
+
 		if (member != null) {
-			List<Join_MemberInfo_StoryBoard> listStory = storyboardservice.select_join_MemberInfo_StoryBoard(like,
-					member);
+			
+			
+			List<Join_MemberInfo_StoryBoard> mpListStory = storyboardservice.selectMpStory(like,member);
+			
 			view = "home";
 			page = "mypage/mp_myStory.jsp";
-			if (listStory != null) {
+			
+			if (mpListStory != null) {
 
-				model.addAttribute("listStory", listStory);
+				model.addAttribute("listStory", mpListStory);
 			} else {
-				listStory = null;
+				mpListStory = null;
 			}
 			model.addAttribute("member", member);
 		} else {
@@ -174,16 +187,27 @@ public class Mp_main_controller {
 		String page = "";
 
 		String view = "";
+		
 		member = pagelistservice.userck(session, member);
+		
+		System.out.println("멤버정보 왜 이거들어오냐?"+member);
+		
 		if (member != null) {
 			page = "mypage/mp_myComment.jsp";
 			view = "home";
+			
 			List<Board_Comment> myComment = commentservice.Mp_myCommentList(member);
+			System.out.println("아니왜죠"+myComment);
+			
 			if (myComment != null) {
 
+				System.out.println("adjf"+myComment);
 				model.addAttribute("myComment", myComment);
+				System.out.println("adfadfadfadfadf");
 			} else {
 				myComment = null;
+				System.out.println("여기로 들어와야 하는데?0?");
+				model.addAttribute("myComment", myComment);
 			}
 			model.addAttribute("member",member);
 		} else {
