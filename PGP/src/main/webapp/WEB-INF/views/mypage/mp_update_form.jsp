@@ -16,7 +16,7 @@
 	<hr class="featurette-divider" style="width: 100%">
 	<form class="needs-validation"
 		action="<%=request.getContextPath()%>/mypage/mp_update" method="post"
-		id="changemember"  enctype="multipart/form-data">
+		id="changemember" enctype="multipart/form-data">
 
 		<div class="mb-3">
 			<label for="userId">아이디<span class="text-muted"></span> <span
@@ -27,21 +27,23 @@
 
 
 		<div class="mb-3">
-			<label for="userId">현재 사용중인 비밀번호<span id="member_pwmsg"></span>
-				<span id="useridck"></span></label> <input type="text" class="form-control"
-				id="member_passpword" name="member_pw">
+			<label for="member_passpword">현재 사용중인 비밀번호<span
+				id="member_pwmsg"></span> <span id="useridck"></span></label> <input
+				type="text" class="form-control" id="member_password"
+				name="member_pw">
 		</div>
 		<input type="hidden" id="pw" value="${member.member_pw}">
 
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<label for="userPw">변경하실 비밀번호<span id="userPwck"></span></label> <input
-					type="text" class="form-control" name="userPw1" id="changePw1">
+				<label for="userPw">변경하실 비밀번호<span id="userPwck"></span>
+				</label> <input type="text" class="form-control" name="userPw1"
+					id="changePw1">
 				<div class="invalid-feedback">Valid first name is required.</div>
 			</div>
 			<div class="col-md-6 mb-3">
-				<label for="userPw2">변경하실 비밀번호 확인 <span id="userPwck2"></span></label>
-				<input type="text" class="form-control" name="userPw2"
+				<label for="userPw2">변경하실 비밀번호 확인 <span id="userPwck2"></span>
+				</label> <input type="text" class="form-control" name="userPw2"
 					id="changePw2">
 
 			</div>
@@ -109,8 +111,8 @@
 			</div>
 		</div>
 		<div class="mb-3"></div>
-		
-		
+
+
 		<label>프로필 사진</label>
 		<div class="input-group mb-3">
 			<div class="custom-file">
@@ -124,7 +126,7 @@
 		</div>
 
 		<div class="mb-3"></div>
-		
+
 		<div class="mb-3">
 			<label for="firstName">자기소개</label>
 			<div class="form-control">
@@ -182,7 +184,7 @@
 				$('#changemember').submit(
 						function() {
 
-							var userPw = $('#member_passpword').val();
+							var userPw = $('#member_password').val();
 
 							var userName = $('#userName').val();
 
@@ -194,39 +196,38 @@
 
 							var changepw1 = $('#changePw1').val();
 							var changepw2 = $('#changePw2').val();
-							alert(changepw1);
-							alert(changepw2);
+
 							var pw = $('#pw').val();//현재 비밀번호값 
-							alert('현재의값' + pw)
-							alert('입력한 값' + userPw)
+
 							if (changepw1.trim().length > 1
 									&& changepw2.trim().length > 1) {
 								//변경할 비밀번호에 값이 존재할 경우 
 								//넘어갈 member_pw에 값에 새로 입력한 pw 의 값을 넣어줌 
-								alert(1)
+
 								if (pw == userPw) {
-									//현재 비밀번호와 새로 입력한 비밀번호 값이 동일할경우 
-									alert(2)
+									//현재 비밀번호와 새로 입력한 현재 비밀번호 값이 동일할경우 
+
 									//현재 비밀번호 값에 changepw1인 변경할 비밀번호값을 넣어줌 
 									if (changepw1 == changepw2
-											&& member_pw.trim().length >= 8) {
-										$('#member_pw').val(changepw1)
-										alert(3)
+											&& changepw1.trim().length >= 8) {
+										$('#member_password').val(changepw1)
+
 									} else {
-										alert(" 비밀번호를 확인해주세요")
+
+										/* 비번 확인  */
 										return false;
 
 									}
 
 								} else {
 
-									alert("현재 비밀번호가 일치하지 않습니다")
+									/* 현재 비번 일치 안함  */
 									return false;
 								}
 
 							} else {
 								//존재하지 않을 경우 
-								$('#member_pw').val(pw);
+								$('#member_password').val(pw);
 							}
 
 							if (userNickName.trim().length < 1) {
@@ -255,70 +256,64 @@
 
 						})
 
-				//변경 비밀번호 체크
-				$('#member_passpword').focusout(
+				//현재 사용중 비번 체크 
+				$('#member_password').focusout(
 						function() {
 
-							var member_pw = $('#member_passpword').val();
-
-							alert(member_pw.trim().length)
+							var member_pw = $('#member_password').val();
+							var pw = $('#pw').val();//현재 비밀번호값 
 							if (member_pw.trim().length <= 0) {
-								alert(1)
 								$('#member_pwmsg').text('')
 								$('#member_pwmsg').css('color', 'black');
 							} else if (member_pw.trim().length > 0
 									&& member_pw.trim().length < 8) {
 								// 값이 있음 
-								alert(2)
-								$('#member_pwmsg').text('8자리 이상 입력해주세요')
+								$('#member_pwmsg').text('8자리 이상 입력해주세요.')
 								$('#member_pwmsg').css('color', 'red');
-							} else {
-								alert(3)
-								$('#member_pwmsg').text('')
-								$('#member_pwmsg').css('color', 'black');
+							} else if (pw == member_pw) {
+								$('#member_pwmsg').text('비밀번호 확인 완료.')
+								$('#member_pwmsg').css('color', 'blue');
+							}
+
+							else if (pw != member_pw) {
+								$('#member_pwmsg').text('비밀번호를 다시 확인해주세요.')
+								$('#member_pwmsg').css('color', 'red');
 							}
 
 						})
 				$('#changePw1').focusout(function() {
-					var pw2 = $('#changePw1').val();
-					var pw = $('#changePw2').val();
-					if (pw2.trim().length < 8) {
-						$('#userPwck').text('필수정보입니다');
+					var pw = $('#changePw1').val();
+					var pw2 = $('#changePw2').val();
+					if (pw.trim().length < 8) {
+						$('#userPwck').text('8자리 이상 입력해주세요.');
 						$('#userPwck').css('color', 'red');
-						if (pw2 != pw) {
-							$('#userPwck').text('일치하지 않습니다');
-						} else {
-							$('#userPwck').text('확인');
-							$('#userPwck2').text('확인');
-							$('#userPwck').css('color', 'blue');
-						}
-					} else {
-						$('#userPwck').text('8자리이상');
-						$('#userPwck').css('color', 'red');
+						
+					} else if(pw.trim().length >= 8 && pw==pw2){
+						$('#userPwck2').text('비밀번호 확인 완료.');
+						$('#userPwck2').css('color', 'blue');
+					}else{
+						$('#userPwck').text('');
+						$('#userPwck').css('color', 'black');
+						$('#userPwck2').text('비밀번호가 일치하지 않습니다');
+						$('#userPwck2').css('color', 'red');
+						
 					}
 
 				});
 
 				$('#changePw2').focusout(function() {
-					var pw2 = $('#changePw1').val();
-					var pw = $('#changePw2').val();
-					if (pw.trim().length > 8) {
-						$('#userPwck2').text('필수정보입니다');
+					var pw = $('#changePw1').val();
+					var pw2 = $('#changePw2').val();
+					 if(pw2.trim().length<8){
+						$('#userPwck2').text('8자리 이상 입력해주세요.');
 						$('#userPwck2').css('color', 'red');
-						if (pw2 != pw) {
-							$('#userPwck2').text('일치하지 않습니다');
-
-						} else {
-							$('#userPwck2').text('확인');
-							$('#userPwck').text('확인');
-							$('#userPwck2').css('color', 'blue');
-
-							$('#userPwck1').css('color', 'blue');
-
-						}
-					} else {
-						$('#userPwck2').text('8자리이상');
+					}else if(pw2.trim().length >= 8 && pw==pw2){
+						$('#userPwck2').text('비밀번호 확인 완료.');
+						$('#userPwck2').css('color', 'blue');
+					}else{
+						$('#userPwck2').text('비밀번호가 일치하지 않습니다');
 						$('#userPwck2').css('color', 'red');
+						
 					}
 
 				});
