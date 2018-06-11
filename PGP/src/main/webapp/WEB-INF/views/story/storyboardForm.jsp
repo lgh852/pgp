@@ -373,7 +373,7 @@ var seck = $('#seck').val();
 			alert('값을 입력해주세요')
 		}
 	};
-		
+		//asdasdasd
 	function deletestrorycomment(e) {
 		
 		var storyboard_comment_idx = e;
