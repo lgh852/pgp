@@ -4,7 +4,7 @@ $(document).ready(
 				
 		
 			    /*사이드바에서 신고*/
-				$("#submitReportpage").click(function() {
+				$("#submitReportpage").on("click",function() {
 
 					alert('신고 들어오냠');
 					
