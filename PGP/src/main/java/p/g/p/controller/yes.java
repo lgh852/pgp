@@ -1,6 +1,5 @@
 package p.g.p.controller;
 
-public class yes {
-	////////////////////////////////////////////////////////////////////
-
+public class yes{
+	//djaklfjkdaljf;alk
 }
