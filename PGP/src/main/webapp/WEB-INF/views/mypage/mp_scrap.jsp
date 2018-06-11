@@ -23,6 +23,8 @@
     <div class="col col-lg-2">
      
     </div>
+    
+    <c:if test="${member.member_photo !=null}">
     <div class="col-md-auto">
      
               <div class="image" style="float:left;">         
@@ -36,6 +38,26 @@
                 </div>
                 
     </div>
+    </c:if>
+    
+    
+    <c:if test="${member.member_photo ==null}">
+     <div class="col-md-auto">
+     
+              <div class="image" style="float:left;">         
+              <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/images/smilephoto.png" 
+              width="100px" height="100px" >
+              </div>
+                
+                 
+          <div class="user_name" style="float:left; margin-left:60px;">
+          <p class="font-weight-bold" style="font-size: 50px;">${member.member_id}</p>
+                </div>
+                
+    </div>
+     </c:if>
+    
+    
     <div class="col col-lg-2">
 
     </div>

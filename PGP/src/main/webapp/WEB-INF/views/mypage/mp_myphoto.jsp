@@ -5,7 +5,9 @@
  <main role="main" class="container">
  
  
- <div class="row" style="margin-top: 30px">
+  <!-- user_info -->
+        
+        <div class="row" style="margin-top: 30px">
         <div class="row container border" style="background-image:url('<%=request.getContextPath()%>/resources/images/newhouse.jpg')">
         <div class="col-4  " style="height: 200px;">
             <div class="row">
@@ -15,10 +17,28 @@
     <div class="col">
       
     </div>
+    
+    <!-- 만약 나의 프로필 사진이 설정되어 있지 않다면! 기본사진이 나온다 -->
+    <c:if test="${member.member_photo ==null}">
+    <div class="col">
+      <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/images/smilephoto.png" 
+       width="140" height="140" style="border-top-width: 100px; margin-top: 30px;">
+    </div>
+    
+    </c:if>
+    
+    
+    <c:if test="${member.member_photo !=null}">
     <div class="col">
       <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}" 
        width="140" height="140" style="border-top-width: 100px; margin-top: 30px;">
     </div>
+    </c:if>
+  
+  
+  
+  
+  
   </div>
         </div>
 
@@ -33,7 +53,7 @@
         
         <button type="button" class="btn btn-sm btn-outline-secondary"  data-toggle="button" aria-pressed="false"
 				style="width: 100px; font-size: 20px; text-align: right;border-color:none;"
-				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_update?member_id=${member.member_id}'">
+				onclick="location.href='<%=request.getContextPath()%>/mypage/mp_update?member_idx=${member.member_idx}'">
 				<img src="<%=request.getContextPath()%>/resources/images/setbutton.png"
 					width="20px" height="20px">&nbsp 설정</button>
         
@@ -44,7 +64,6 @@
 
  </div>
 	</div>
-        
            <!-- 마이페이지 메뉴 nav-->
     
     <div class="menu_nav">
