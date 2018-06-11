@@ -129,7 +129,7 @@
    SELECT *
    FROM pgp.board
    where board_idx=#{board_idx};
-   
+        
    </select>
    
       
