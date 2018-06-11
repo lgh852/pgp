@@ -23,19 +23,20 @@
 <script src="<%=request.getContextPath()%>/resources/js/offcanvas.js"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/board3.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/board2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/list5.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star1.js"></script>
+
 <script src="<%=request.getContextPath()%>/resources/js/members23.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storylike55.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport3.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/storyreport5.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/storyreport6.js"></script>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
 	charset="utf-8"></script>

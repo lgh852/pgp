@@ -9,7 +9,7 @@
 	 select * from board, member_info where board.member_idx=member_info.member_idx and board_idx=#{board_idx};
 	</select>
 
-   <insert id="insertComment" parameterType="p.g.p.model.Board_Comment">
+   <insert id="insertComment" parameterType="p.g.p.model.Board_Comment" useGeneratedKeys="true" keyProperty="board_comment_idx">
       insert into
       board_comment(board_comment_contents,member_idx,board_idx)
       values(#{board_comment_contents},#{member_idx},#{board_idx})
@@ -31,7 +31,7 @@
       where
       board_idx=#{board_idx}
       order by
-      board_comment_regdate desc
+      board_comment_regdate asc;
    </select>
 
 

@@ -259,7 +259,7 @@ function tagsclick(e) {
 				<div class="col-md-7">
 					<h2 class="featurette-heading" style="text-align: center">[
 						${board.board_title} ]</h2>
-					<div style="text-align: right">ID:${boardMemberinfo.member_id}</div>
+					<div id style="text-align: right">ID:${boardMemberinfo.member_id}</div>
 					&nbsp &nbsp &nbsp
 					<div style="text-align: right">
 						<span class="text-muted"> Date: <fmt:formatDate
@@ -281,11 +281,7 @@ function tagsclick(e) {
 								style="max-height: 600px; min-height: 600px; margin: 0 auto; width: 600px"
 								class="border-0 img-thumbnail">
 						</div>
-						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
-						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
-						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
-						${urlList} ${urlList} ${urlList} ${urlList} ${urlList} ${urlList}
-						${urlList} ${urlList} ${urlList} ${urlList}
+			
 
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
 							<div id="viewbox${status.count}" class="check viewbox"
@@ -333,37 +329,38 @@ function tagsclick(e) {
 					<div>
 						<!--  댓글 쓰기 기능 -->
 						<div style="width: 100%">
-							<form method="post" class="card p-2">
+						
 								<div class="input-group">
 									<input name="board_comment_contents" type="text"
-										class="form-control" placeholder="댓글을 입력해보세요.">
+										class="form-control" placeholder="댓글을 입력해보세요." id="replytext">
 
 									<div class="input-group-append">
-										<button type="submit" class="btn btn-secondary">send</button>
+										<button type="button" id="replybutton" class="btn btn-secondary">send</button>
 									</div>
 								</div>
 
 								<!--댓글 리스트  -->
-								<ul class="list-group mb-3" style="width: 100%">
-									<c:forEach var="c1" items="${Commentlist}">
+								<ul class="list-group mb-3" style="width: 100%" id="commentlist">
+									<c:forEach var="c1" items="${Commentlist}" >
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed"
-											style="width: 100%">
+											style="width: 100%" id="ck${c1.board_comment_idx}">
 											<div>
 												<h6 class="my-0">${c1.board_comment_contents}</h6>
-												<small class="text-muted">ID:${c1.member_id} &nbsp
+												<small class="text" style="color:black">ID:${c1.member_id} &nbsp
 													&nbsp<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 														value="${c1.board_comment_regdate}" />
 												</small>
 											</div> <span class="text-muted"><c:if
 													test="${c1.member_id==user.member_id}">
-													<td width="50px"><a
-														href="<%=request.getContextPath()%>/photo/photoCommentDelete?board_comment_idx=${c1.board_comment_idx}&board_idx=${c1.board_idx}">삭제</a></td>
+													<td width="50px"><a href="#" onclick="delectcomment(${c1.board_comment_idx})"
+														>삭제</a></td>
+														<!--href="<%=request.getContextPath()%>/photo/photoCommentDelete?board_comment_idx=${c1.board_comment_idx}&board_idx=${c1.board_idx}"-->
 												</c:if></span>
 										</li>
 									</c:forEach>
 								</ul>
-							</form>
+					
 						</div>
 					</div>
 					<!--  카테고리 추천사진 -->
@@ -464,7 +461,8 @@ function tagsclick(e) {
 													</select>
 												</div>
 												 <input type="hidden"
-													id="board_idx" value="${board.board_idx}"> <input
+													id="board_idx" value="${board.board_idx}">
+													<input type="hidden" id="member_id" value="${member.member_id}"> <input
 													type="hidden" id="member_idx" value="${member.member_idx}">
 
 											</div>
@@ -618,14 +616,6 @@ function tagsclick(e) {
 							</div>
 						</div>
 
-
-
-
-
-
-
-
-
 						<div class="sharing_info">
 							<div class="label" style="padding-top: 10px;">
 								공유하기 <img
@@ -679,7 +669,138 @@ function tagsclick(e) {
 
 
 	<script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
+    $(document).ready(function(){
+		alert('asdas');
+    	
+		
+		$('#replybutton').click(function(){
+			var Now = new Date();
+
+			var NowTime = Now.getFullYear();
+
+			NowTime += '년 ' + Now.getMonth();
+
+			NowTime += '월 ' + Now.getDate();
+
+			NowTime += '일 ' + Now.getHours();
+
+			NowTime += ':' + Now.getMinutes();
+
+			NowTime += ':' + Now.getSeconds();
+
+			alert(NowTime);			
+			var board_comment_contents = $('#replytext').val();
+			
+    		if(board_comment_contents==''){
+    			//값이 없을시 
+    			alert('내용을 입력해주세요');
+    		}else{
+				//값이 존재할시 
+				var member_idx = $('#member_idx').val();
+				var board_idx = $('#board_idx').val();
+				alert('내용이다잉'+board_comment_contents);
+				
+				alert(member_idx);alert(board_idx);
+				
+				if(member_idx==''){
+    					//로그인후 이용해주세요 
+    					
+    					
+    					alert('로그인후 이용 해주세요')
+    					
+						
+    				}else{
+    					
+    					alert('들어옴다 ')
+    					
+    					$.ajax({
+    						type : 'GET',
+    						url : '/p/photo/comment',
+    						dataType : 'text',
+    						data : {
+
+    							board_comment_contents:board_comment_contents,
+    							member_idx:member_idx,
+    							board_idx:board_idx
+    							
+    						},success : function(data) {
+    							
+    						var html;
+    						var member_id =$('#member_id').val();
+    						alert('asdasdasdasdasd'+data)
+    						
+    						
+    						
+    							if(data>0){
+    								alert('성공');
+    								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="ck'+data+'"><div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:'+member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px"><a href="/p/photo/photoCommentDelete?board_comment_idx='+data+'&amp;board_idx='+board_idx+'">삭제</a></td></li>';
+    			
+    								$('#commentlist').append(html);
+    							}
+    						}
+    						});
+    					
+    					
+    				}
+				
+    			alert(board_comment_contents);
+    	    }
+    	});
+    	
+    	
+    	
+    	
+    	
+    });
+       
+    function delectcomment(e) {
+	
+    	
+    	
+    	
+	
+		var board_comment_idx = e;
+		alert(board_comment_idx)
+		
+		if(board_comment_idx!=null){
+			//있으면
+			
+			alert(board_comment_idx)
+			$.ajax({
+				type : 'GET',
+				url : '/p/photo/photoCommentDelete',
+				dataType : 'text',
+				data : {
+					board_comment_idx:board_comment_idx,
+				},
+				success : function(data) {
+					
+				if(data!=null){
+					//성공
+					alert('성공');
+					$('#ck'+board_comment_idx).remove();
+				}else{
+					//실패
+					alert('다시한번 시도해주세요')
+				}
+					
+					
+					}
+		 		});
+		}else{
+			//없으면 
+			
+			alert('확인후 이용 부탁드립니다')
+			
+			
+		}
+		
+	
+	}
+      
+    
+    
+      
       (function() {
         'use strict';
 
@@ -699,6 +820,9 @@ function tagsclick(e) {
           });
         }, false);
       })();
+      
+      
+      
     </script>
 </body>
 </html>

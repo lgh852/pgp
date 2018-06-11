@@ -57,18 +57,7 @@ public class WritingBoardController {
 		if (resultCnt > 0) {
 			// 성공
 		//	page = "board/boardPhotoPage.jsp";
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
-			System.out.println("깐따삐아");
+	
 			
 			model.addAttribute("page", page);
 			view ="redirect:../photo/photodetail?board_idx="+photo.getBoard_idx();

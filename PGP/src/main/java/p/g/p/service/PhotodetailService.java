@@ -29,7 +29,9 @@ public class PhotodetailService {
 	public int ListInsertComment(Board_Comment board_comment) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		System.out.println("댓글 성공" + board_comment);
+		
 		int resultCnt = dao.insertComment(board_comment);
+		
 		if (resultCnt > 0) {
 			System.out.println("댓글성공");
 		} else {
@@ -49,6 +51,7 @@ public class PhotodetailService {
 	public int ListdeleteComment(int board_comment_idx) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		int resultCnt = dao.deleteComment(board_comment_idx);
+		
 		if (resultCnt < 0) {
 			resultCnt = -1;
 		}

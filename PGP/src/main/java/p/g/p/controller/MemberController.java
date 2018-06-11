@@ -34,10 +34,15 @@ public class MemberController {
 		member.setMember_phone(phone1+phone2+phone3);
 		
 		member.setMember_birth(year+"-"+month+"-"+day);
-		
+ 
 		System.out.println(member);
 		String view = "home";
 		String page ="member/member.jsp";
+		
+		
+		//암호화  
+		
+		
 		
 		int resultCnt = service.memberInsert(member);
 		if(resultCnt==-1) {

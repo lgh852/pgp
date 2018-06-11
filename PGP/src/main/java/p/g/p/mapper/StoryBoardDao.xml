@@ -21,13 +21,13 @@
 	<!-- 스토리보드 & 멤버정보 리스트 -->
 	<select id="select_join_MemberInfo_StoryBoard" resultType="p.g.p.model.Join_MemberInfo_StoryBoard">
 		select * from pgp.storyboard, member_info where
-		member_info.member_idx=pgp.storyboard.member_idx
+		member_info.member_idx=pgp.storyboard.member_idx   
 
 	</select>
 
 
 	<!-- 스토리보드 댓글 -->
-	<insert id="insertStoryComment" parameterType="p.g.p.model.StoryBoard_Comment">
+	<insert id="insertStoryComment" parameterType="p.g.p.model.StoryBoard_Comment" useGeneratedKeys="true" keyProperty="storyboard_comment_idx">
 		insert into
 		storyboard_comment(storyboard_idx,storyboard_comment_contents,member_idx)
 		values(#{storyboard_idx},#{storyboard_comment_contents},#{member_idx})
@@ -44,7 +44,7 @@
 		parameterType="p.g.p.model.Join_MemberInfo_StoryBoardComment">
 		select * from storyboard_comment,member_info where
 		member_info.member_idx=storyboard_comment.member_idx order by
-		storyboard_comment_regdate desc;
+		storyboard_comment_regdate asc;
 	</select>
 
 	<!-- 스토리 보드 삭제 -->

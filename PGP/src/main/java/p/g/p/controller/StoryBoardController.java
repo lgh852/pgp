@@ -116,25 +116,55 @@ public class StoryBoardController {
 	}
 
 	// 댓글 리스트
-	@RequestMapping(value = "story/storyboardComment", method = RequestMethod.POST)
+	/*@RequestMapping(value = "story/storyboardComment", method = RequestMethod.POST)
 	public String storyComment(HttpSession session, Model model, StoryBoard_Comment storyboardComment) {
 		Member_info member = (Member_info) session.getAttribute("user");
+	
 		int member_idx = member.getMember_idx();
-		storyboardComment.setMember_idx(member_idx); // 댓글쓸때 사용하기위해 세션값통해 아이디번호 저장
+		
+		storyboardComment.setMember_idx(member_idx);	// 댓글쓸때 사용하기위해 세션값통해 아이디번호 저장
 		storyboardservice.insertStoryComment(storyboardComment); // 댓글쓰기
 		String page = "redirect:storyboardForm";
 		return page;
-	}
+	}*/
+	@RequestMapping(value="story/storyboardComment")
+	@ResponseBody
+	public String storyComment(StoryBoard_Comment storyboardComment,HttpSession session) {
+		String getStoryboard_comment_idx = "";
+		System.out.println(storyboardComment);
+		int result  = storyboardservice.insertStoryComment(storyboardComment);		
+			if(result>0) {
+				System.out.println("성곤");
+				getStoryboard_comment_idx = String.valueOf(storyboardComment.getStoryboard_comment_idx());
+			}else {
+				
+			}
 
+		return getStoryboard_comment_idx;
+		
+	}
+	
+	
 	// 댓글만 삭제
-	@RequestMapping(value = "story/storyboardCommentDelete", method = RequestMethod.GET)
+/*	@RequestMapping(value = "story/storyboardCommentDelete", method = RequestMethod.GET)
 	public String storyCommentDelete(StoryBoard_Comment storyboardComment) {
 		int storyboard_comment_idx = storyboardComment.getStoryboard_comment_idx();
 		storyboardservice.deleteStoryComment(storyboard_comment_idx); // 댓글 삭제
 		String page = "redirect:storyboardForm";
 		return page;
 	}
-
+*/	@RequestMapping(value = "story/storyboardCommentDelete")
+	@ResponseBody
+	public String storyCommentDelete(StoryBoard_Comment storyboardComment) {
+		System.out.println(storyboardComment);
+	int result = storyboardservice.deleteStoryComment(storyboardComment.getStoryboard_comment_idx()); // 댓글 삭제
+		if(result>0) {
+			
+		}else {
+			
+		}
+	return "";
+}
 	// 스토리 보드 삭제
 	@RequestMapping(value = "story/storyboardDelete", method = RequestMethod.GET)
 	public String storyDelete(StoryBoard_Comment storyboardComment) {

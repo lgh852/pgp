@@ -41,6 +41,13 @@ public class MemberService {
 
 		dao = sqlSessionTemplate.getMapper(MemberDao.class);
 		Member_info member = dao.loginSelect(id);
+		
+		
+		
+		//1.. 암호 해제?  비교 
+		
+		//2.. 방금 들어온갑 암호화해서 비교 
+		
 		if (member != null && member.getMember_pw().equals(pw)) {
 			// 로그인성공
 

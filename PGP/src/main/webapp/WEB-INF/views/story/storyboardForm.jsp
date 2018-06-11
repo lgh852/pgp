@@ -64,6 +64,7 @@ var seck = $('#seck').val();
 
 
 <input type="hidden" id="seck" value="${seck.member_idx}">
+<input type="hidden" id="member_id" value="${seck.member_id}">
 
 <div class="py-5 text-center" style="width: 100%;    background-image: url(/p/resources/images/roompic6.jpg);color:white;">
 	
@@ -115,16 +116,6 @@ var seck = $('#seck').val();
 
 
 
-
-
-
-
-
-
-
-
-
-
 <c:forEach var="listStory" items="${listStory}" varStatus="status">
 <hr class="featurette-divider" style="width: 100%">
 	<div class="row featurette" style="width: 100%;">
@@ -147,7 +138,8 @@ var seck = $('#seck').val();
 				<c:if test="${listStory.member_idx==user.member_idx}">
 					<a class="btn btn-outline-danger"
 						href="<%=request.getContextPath()%>/story/storyboardDelete?storyboard_idx=${listStory.storyboard_idx}"
-						role="button">삭제</a>
+						
+						role="button" >삭제</a>
 				</c:if>
 
 
@@ -216,15 +208,14 @@ var seck = $('#seck').val();
 	<hr class="featurette-divider" style="width: 100%">
 	<!-- 댓글 쓰기 기능  -->
 	<div style="width: 100%">
-		<form action="storyboardComment" id="cmments" method="post" class="card p-2">
 			<div class="input-group">
 				<input name="storyboard_comment_contents" type="text"
 					class="form-control"
-					placeholder="${listStory.storyboard_idx} 게시판: 댓글을 입력해보세요.">
+					placeholder="${listStory.storyboard_idx} 게시판: 댓글을 입력해보세요." id="commenttext${listStory.storyboard_idx}">
 				<input type="hidden" value="${listStory.storyboard_idx}"
-					name="storyboard_idx">
+					name="storyboard_idx" >
 				<div class="input-group-append">
-					<button type="submit" class="btn btn-secondary">send</button>
+					<button  class="btn btn-secondary" onclick='storycomment(${listStory.storyboard_idx})'>send</button>
 				</div>
 			</div>
 
@@ -234,32 +225,31 @@ var seck = $('#seck').val();
 			<!--댓글 리스트  -->
 
 
-			<ul class="list-group mb-3" style="width: 100%">
+			<ul class="list-group mb-3" style="width: 100%" id="comlists" >
 				<c:forEach var="listStroyComment" items="${listStroyComment}">
 					<c:if
 						test="${listStroyComment.storyboard_idx==listStory.storyboard_idx}">
 
-						<li
+						<li id="storycomments${listStroyComment.storyboard_comment_idx}"
 							class="list-group-item d-flex justify-content-between lh-condensed"
 							style="width: 100%">
 							<div>
 								<h6 class="my-0">${listStroyComment.storyboard_comment_contents}</h6>
-								<small class="text-muted">ID:${listStroyComment.member_id}
+								<small class="text" style="color:black">ID:${listStroyComment.member_id}
 									&nbsp &nbsp <fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 										value="${listStroyComment.storyboard_comment_regdate}" />
 
 								</small>
-							</div> <span class="text-muted"> <c:if
+							</div> <span class="text" > <c:if
 									test="${listStroyComment.member_idx==user.member_idx}">
-									<a
-										href="<%=request.getContextPath()%>/story/storyboardCommentDelete?storyboard_comment_idx=${listStroyComment.storyboard_comment_idx}">삭제</a>
+									<a href="#"onclick="deletestrorycomment(${listStroyComment.storyboard_comment_idx})">삭제</a>
 
 								</c:if></span>
 						</li>
 					</c:if>
 				</c:forEach>
 			</ul>
-		</form>
+		
 	</div>
 
 
@@ -312,3 +302,104 @@ var seck = $('#seck').val();
 
 
 </c:forEach>
+
+
+<script>
+	$(document).ready(function() {
+		/* $('#storycomment').click(){
+			alert('asd');
+		} */
+		
+	
+	})
+	function storycomment(e){
+			
+		var storyboard_idx = e;
+		var storyboard_comment_contents = $('#commenttext'+e).val();
+		var member_idx = $('#seck').val();
+		
+		alert(storyboard_idx);
+		alert(storyboard_comment_contents);
+		alert(member_idx);
+		if(storyboard_comment_contents!=''){
+			alert('값있음')
+			if(member_idx!=''){
+				$.ajax({
+					type : 'GET',
+					url : '/p/story/storyboardComment',
+					dataType : 'text',
+					data : {
+
+						storyboard_idx:storyboard_idx,
+						storyboard_comment_contents:storyboard_comment_contents,
+						member_idx:member_idx
+						
+					},success : function(data) {
+						var Now = new Date();
+						alert(data)
+						var NowTime = Now.getFullYear();
+
+						NowTime += '년 ' + Now.getMonth();
+
+						NowTime += '월 ' + Now.getDate();
+
+						NowTime += '일 ' + Now.getHours();
+
+						NowTime += ':' + Now.getMinutes();
+
+						NowTime += ':' + Now.getSeconds();
+	
+						var member_id = $('#member_id').val();
+						
+						var html = '<li class="list-group-item d-flex justify-content-between lh-condensed"';
+							html +='style="width: 100%">';
+							html +='<div><h6 class="my-0">'+storyboard_comment_contents+'</h6>';
+							html +='<small class="text-muted">ID:';
+							html +=member_id+'&nbsp &nbsp'+NowTime+'</small></div>';
+							html +='<span class="text-muted">';
+							html +='<a href="#" onclick="deletestrorycomment('+data+')">삭제</a>';
+							html +='</span></li>';
+							$('#comlists').append(html);
+				
+							alert(html);
+					}
+					});
+				
+			}else{
+				//로그인후
+				alert('로그인후 이용해주세요');
+			}
+		}else{
+			alert('값을 입력해주세요')
+		}
+	};
+		
+	function deletestrorycomment(e) {
+		
+		var storyboard_comment_idx = e;
+			
+		alert(storyboard_comment_idx);
+		if(storyboard_comment_idx!=null){
+			//있으면
+		$.ajax({
+				type : 'GET',
+				url : '/p/story/storyboardCommentDelete',
+				dataType : 'text',
+				data : {
+					storyboard_comment_idx:storyboard_comment_idx
+				},success : function(data) {
+					$('#storycomments'+e).remove();
+					
+				}
+	
+		})
+		
+				
+		}else{
+			alert('확인해주세요')
+		}
+	}
+
+	
+	
+</script>

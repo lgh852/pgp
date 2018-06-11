@@ -44,19 +44,7 @@ public class LoginController {
 		/* String page = "member/login.jsp"; */
 		String page = "member/main.jsp";
 		String view = "home";
-		// homecontroller  - 여기부터 
-		List<Board_Photo> list = service2.mainimg();
-		if (list.size() > 0) {
-			model.addAttribute("maxcntimg", list);
-		}
-
-		List<Board_Photo> latelylist = (List<Board_Photo>) session.getAttribute("latelylist");
-		if (latelylist != null) {
-			for (int i = 0; i < latelylist.size(); i++) {
-				model.addAttribute("latelylist", latelylist);
-			}
-		}
-		// ^^ 여기까지 homecontroller
+	
 
 		Member_info member = service.loginService(id, pw);
 		System.out.println(member);

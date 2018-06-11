@@ -112,6 +112,11 @@ public class StoryBoardService {
 	public int insertStoryComment(StoryBoard_Comment storyboardComment) {
 		dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
 		int resultCommentCnt = dao.insertStoryComment(storyboardComment);
+		if(resultCommentCnt>0) {
+			
+		}else {
+			resultCommentCnt = -2;
+		}
 		return resultCommentCnt;
 	}
 
@@ -176,6 +181,12 @@ public class StoryBoardService {
 	public int deleteStoryComment(int storyboard_comment_idx) {
 		dao = sqlSessionTemplate.getMapper(StoryBoardDao.class);
 		int delStoryComment = dao.deleteStoryComment(storyboard_comment_idx);
+		if(delStoryComment>0) {
+			
+		}else {
+			
+			delStoryComment = -1;
+		}
 		return delStoryComment;
 	}
 	

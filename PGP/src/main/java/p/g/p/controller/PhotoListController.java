@@ -27,6 +27,7 @@ import p.g.p.model.Member_info;
 import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Scrap;
 import p.g.p.model.Url_Tag;
+import p.g.p.model.report;
 import p.g.p.model.scrapFN;
 import p.g.p.service.BoardPhotoUpLoad;
 import p.g.p.service.PhotoDetailUpdateService;
@@ -325,7 +326,7 @@ public class PhotoListController {
 	}
 
 	// 댓글 쓰기 (insert)
-	@RequestMapping(value = "photo/photodetail",method = RequestMethod.POST)
+	/*@RequestMapping(value = "photo/photodetail",method = RequestMethod.POST)
 	public String detailComment(Model model, Board_Comment bc,
 			@RequestParam("board_comment_contents") String board_comment_contents, HttpSession session,
 			@RequestParam(value = "board_idx", defaultValue = "0") int board_idx) {
@@ -385,6 +386,24 @@ public class PhotoListController {
 		
 		return view;
 
+	}*/
+	@RequestMapping("/photo/comment")
+	@ResponseBody
+	public String commentinset(Board_Comment board_comment) {
+		System.out.println(board_comment);
+		int result = photodetailservice.ListInsertComment(board_comment);
+
+		String idx = "";
+		if(result>0) {
+						
+			idx = String.valueOf(board_comment.getMember_idx());
+			
+			}else {
+				idx = "";
+			}
+		
+		
+		return idx;
 	}
 	
 	@RequestMapping("photo/photofeedAllDelete")
@@ -451,11 +470,11 @@ public class PhotoListController {
 		return page;
 
 	}
-	@RequestMapping("photo/photoCommentDelete")
+	/*@RequestMapping("photo/photoCommentDelete")
 	public String CommentDelete(@RequestParam(value = "board_idx") int board_idx,
 			@RequestParam(value = "board_comment_idx") int board_comment_idx) {
 
-		int resultCnt = photodetailservice.ListdeleteComment(board_comment_idx);
+	
 		String del = "del_success";
 		String page = "";
 		if (resultCnt > 0) {
@@ -465,5 +484,23 @@ public class PhotoListController {
 			//에러 페이지 내나 
 		}
 		return page;
+	}*/
+	
+	
+	@RequestMapping("photo/photoCommentDelete")
+	@ResponseBody
+	public String CommentDelete(Board_Comment comment) {
+		int resultCnt = photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
+		if(resultCnt>0) {
+		
+		//성공
+			
+		}else {
+			//성공 안함
+			
+			
+		}
+		
+		return "";
 	}
 }
