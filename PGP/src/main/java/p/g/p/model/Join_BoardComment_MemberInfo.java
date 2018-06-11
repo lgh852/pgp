@@ -9,8 +9,17 @@ public class Join_BoardComment_MemberInfo {
 	private Date board_comment_regdate;
 	private int member_idx;
 	private int board_idx;
+	private int regroup; // 그룹
+	private int reparent; // 부모
+	private int redepth; // 깊이
+	private int reorder; // 순서
+	public Join_BoardComment_MemberInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Join_BoardComment_MemberInfo(String member_id, int board_comment_idx, String board_comment_contents,
-			Date board_comment_regdate, int member_idx, int board_idx) {
+			Date board_comment_regdate, int member_idx, int board_idx, int regroup, int reparent, int redepth,
+			int reorder) {
 		super();
 		this.member_id = member_id;
 		this.board_comment_idx = board_comment_idx;
@@ -18,16 +27,17 @@ public class Join_BoardComment_MemberInfo {
 		this.board_comment_regdate = board_comment_regdate;
 		this.member_idx = member_idx;
 		this.board_idx = board_idx;
-	}
-	public Join_BoardComment_MemberInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.regroup = regroup;
+		this.reparent = reparent;
+		this.redepth = redepth;
+		this.reorder = reorder;
 	}
 	@Override
 	public String toString() {
 		return "Join_BoardComment_MemberInfo [member_id=" + member_id + ", board_comment_idx=" + board_comment_idx
 				+ ", board_comment_contents=" + board_comment_contents + ", board_comment_regdate="
-				+ board_comment_regdate + ", member_idx=" + member_idx + ", board_idx=" + board_idx + "]";
+				+ board_comment_regdate + ", member_idx=" + member_idx + ", board_idx=" + board_idx + ", regroup="
+				+ regroup + ", reparent=" + reparent + ", redepth=" + redepth + ", reorder=" + reorder + "]";
 	}
 	public String getMember_id() {
 		return member_id;
@@ -65,8 +75,30 @@ public class Join_BoardComment_MemberInfo {
 	public void setBoard_idx(int board_idx) {
 		this.board_idx = board_idx;
 	}
-	
-	
+	public int getRegroup() {
+		return regroup;
+	}
+	public void setRegroup(int regroup) {
+		this.regroup = regroup;
+	}
+	public int getReparent() {
+		return reparent;
+	}
+	public void setReparent(int reparent) {
+		this.reparent = reparent;
+	}
+	public int getRedepth() {
+		return redepth;
+	}
+	public void setRedepth(int redepth) {
+		this.redepth = redepth;
+	}
+	public int getReorder() {
+		return reorder;
+	}
+	public void setReorder(int reorder) {
+		this.reorder = reorder;
+	}
 	
 	
 }

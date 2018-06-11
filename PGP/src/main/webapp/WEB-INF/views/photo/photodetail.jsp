@@ -4,25 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<meta http-equiv="X-UA-Compatible" content=&qquot;IE=edge />
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-<script type='text/javascript'>
- 
-    Kakao.init('63e0d0643d065b515683b9455c2f97b9');
-    
-    Kakao.Story.createShareButton({
-      container: '#kakaostory-share-button',
-      url: '<%=request.getContextPath()%>/mypage/mp_main',
-      text: '카카오 개발자 사이트로 놀러오세요! #개발자 #카카오 :)'
-    });
-  
-</script>
 
 
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<!doctype html>
 <script>
 function tagsclick(e) {
       
@@ -342,6 +326,7 @@ function tagsclick(e) {
 								<!--댓글 리스트  -->
 								<ul class="list-group mb-3" style="width: 100%" id="commentlist">
 									<c:forEach var="c1" items="${Commentlist}" >
+						
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed"
 											style="width: 100%" id="ck${c1.board_comment_idx}">
@@ -356,8 +341,26 @@ function tagsclick(e) {
 													<td width="50px"><a href="#" onclick="delectcomment(${c1.board_comment_idx})"
 														>삭제</a></td>
 														<!--href="<%=request.getContextPath()%>/photo/photoCommentDelete?board_comment_idx=${c1.board_comment_idx}&board_idx=${c1.board_idx}"-->
+												
+												<button class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})">답글</button>
+				
 												</c:if></span>
 										</li>
+							
+								
+								<div class="re_reple" id="re_commentbox${c1.board_comment_idx}" style="display: none; margin-top: 5px;">
+					<form id="re_commentForm${repleList.reple_idx }" style="display: inline-block;">
+			 
+							<input type="hidden" id="regroup${c1.board_comment_idx}" value="${c1.regroup}">
+								<input type="hidden"  id="board_comment_idx${c1.board_comment_idx}"value="${c1.board_comment_idx}">
+								<input type="hidden" id="redepth${c1.board_comment_idx}" value="${c1.redepth}">
+								<input type="hidden" id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
+								<input type="hidden" id="reparent${c1.board_comment_idx}" value="${c1.reparent}">
+								
+						<input type="text" class="border border-secondary rounded" id="re_commenttext${c1.board_comment_idx}" style="width:100%;">
+					</form>
+						<button id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})">저장</button>
+					</div>
 									</c:forEach>
 								</ul>
 					
@@ -733,8 +736,11 @@ function tagsclick(e) {
     						
     							if(data>0){
     								alert('성공');
-    								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="ck'+data+'"><div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:'+member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px"><a href="/p/photo/photoCommentDelete?board_comment_idx='+data+'&amp;board_idx='+board_idx+'">삭제</a></td></li>';
-    			
+    								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="ck'+data+'">';      
+    								html+='<div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:';
+    								html+= +member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px">';
+    								html+='<a href="#" onclick="delectcomment('+data+')">삭제</a>'+'<button class="ml-3" onclick="re_comment('+data+')">답글</button>'+'</td></li>';
+    								
     								$('#commentlist').append(html);
     							}
     						}
@@ -754,10 +760,6 @@ function tagsclick(e) {
     });
        
     function delectcomment(e) {
-	
-    	
-    	
-    	
 	
 		var board_comment_idx = e;
 		alert(board_comment_idx)
@@ -820,6 +822,70 @@ function tagsclick(e) {
           });
         }, false);
       })();
+      
+      
+      //대댓글 
+      
+      function re_commentshow(e) {
+    	  alert(e);
+    	  var board_comment_idx = e;
+    	  var member_idx = $('#member_idx').val();
+    	  if ($('#re_commentbox'+board_comment_idx).css('display') == 'none') {
+    			alert('성공');
+    		  $('.re_reple').hide();
+    			$('#re_commentbox'+board_comment_idx).show();
+    		} else {
+    			$('#re_commentbox'+board_comment_idx).hide();
+    		}
+	}
+      
+      function re_commentSave(e) {
+    	  var board_comment_idx = e;
+    	  var member_idx = $('#member_idx').val();
+    	  var board_idx =$('#board_idx').val();
+			var regroup = $('#regroup'+e).val();
+			var redepth = $('#redepth'+e).val();
+			var reorder = $('#reorder'+e).val();
+			var reparent = $('#reparent'+e).val();
+			var board_comment_contents = $('#re_commenttext'+e).val();
+			
+			alert('board_comment_idx'+e);
+			alert('member_idx'+member_idx);
+			alert('board_idx'+board_idx);
+			alert('regroup'+regroup);
+			alert('redepth'+redepth);
+			alert('reorder'+reorder);
+			alert('reparent'+reparent);
+			alert('board_comment_contents'+board_comment_contents);
+			
+	    	  $.ajax({
+	    			type : 'GET',
+	    			url : '/p/photo/re_commentInsert',
+	    			dataType : 'text',
+	    			data : {
+	    				board_comment_idx:board_comment_idx,
+	    				member_idx:member_idx,
+	    				board_idx:board_idx,
+	    				regroup:regroup,
+	    				redepth:redepth,
+	    				reorder:reorder,
+	    				reparent:reparent,
+	    				board_comment_contents:board_comment_contents
+	    				
+	    			},
+	    			success : function(data) {
+	    				
+	    				location.reload();
+	    				
+	    			},
+	    			error : function(jqXHR, textStatus, errorThrown) {
+	    				alert("에러 발생  \n" + textStatus + " : " + errorThrown);
+	    				self.close();
+	    			}
+	    		});
+			
+	}
+      
       
       
       

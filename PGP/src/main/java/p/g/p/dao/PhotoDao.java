@@ -42,4 +42,25 @@ public interface PhotoDao {
    public String tagcksmember(Board boardboard);
   
    
+   
+   
+   
+   
+   
+   //////////////////////////////////////////////////////////
+   
+// 첫댓글 저장시 그룹값 증가
+   public int maxSelect();
+   
+   //대댓글 
+   public int re_repleInsert(Board_Comment board_comment);
+   
+   public Board_Comment selectByIdx(int idx );
+   
+	// 마지막에 추가된 댓글 찾기
+	int maxIdx();
+	
+	// 대댓글 저장시 댓글의 순서 변경
+	int reorderPlus(Board_Comment board_comment);
+   
 }

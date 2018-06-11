@@ -29,8 +29,14 @@ public class PhotodetailService {
 	public int ListInsertComment(Board_Comment board_comment) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		System.out.println("댓글 성공" + board_comment);
+		int group = maxRegroup();
+		System.out.println("2");
 		
+		System.out.println("1");
+		board_comment.setRegroup(group);
+		System.out.println("2");
 		int resultCnt = dao.insertComment(board_comment);
+		System.out.println("3");
 		
 		if (resultCnt > 0) {
 			System.out.println("댓글성공");
@@ -39,6 +45,17 @@ public class PhotodetailService {
 		}
 		return resultCnt;
 	}
+	
+	//댓글 초기값 
+	public int maxRegroup() {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		int max = dao.maxSelect();
+
+		return max;
+	}
+	
+	
+	
 
 	public List<Join_BoardComment_MemberInfo> ListselectCommentAll(int board_idx) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
@@ -165,5 +182,24 @@ public class PhotodetailService {
 	      List<Url_Tag> list = dao.selectUrl(board_idx);
 	      return list;
 	   }
+
+	public int  re_repleInsert(Board_Comment board_comment) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		
+		int result = dao.re_repleInsert(board_comment);
+		
+		if (result > 0) {
+			System.out.println(1);
+			int idx = dao.maxIdx();
+			board_comment = dao.selectByIdx(idx);
+			
+			System.out.println("reple : " + board_comment);
+			
+			dao.reorderPlus(board_comment);
+			System.out.println(3);
+		}
+		return result;
+		
+	}
 
 }

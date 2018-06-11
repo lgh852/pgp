@@ -11,8 +11,8 @@
 
    <insert id="insertComment" parameterType="p.g.p.model.Board_Comment" useGeneratedKeys="true" keyProperty="board_comment_idx">
       insert into
-      board_comment(board_comment_contents,member_idx,board_idx)
-      values(#{board_comment_contents},#{member_idx},#{board_idx})
+      board_comment(regroup,board_comment_contents,member_idx,board_idx)
+      values(#{regroup},#{board_comment_contents},#{member_idx},#{board_idx})
    </insert>
 
 
@@ -140,6 +140,36 @@
    
    </select>
    
+   
+   
+   <!-- 첫댓글 저장시 그룹값 증가 -->
+	<select id="maxSelect" resultType="int">
+		select max(regroup)+1
+		from pgp.board_comment
+	</select>
+   
+	<!-- 대댓글 입력 -->
+	<insert id="re_repleInsert" parameterType="p.g.p.model.Board_Comment">
+		insert into pgp.board_comment (regroup ,reparent, redepth, reorder, board_comment_contents,member_idx,board_idx)
+		values ( #{regroup}, #{reparent}, #{redepth}+1 , #{reorder}+1, #{board_comment_contents},#{member_idx},#{board_idx} )
+	</insert>
+   
+   <select id="selectByIdx" resultType="p.g.p.model.Board_Comment" parameterType="int">
+		select *
+		from pgp.board_comment
+		where board_comment_idx = #{board_comment_idx} 
+	</select>
+	
+	<select id="maxIdx" resultType="int">
+		select max(board_comment_idx)
+		from pgp.board_comment;
+	</select>
+   
+   <!-- 대댓글 저장시 댓글의 순서 변경 -->
+	<update id="reorderPlus" parameterType="p.g.p.model.Board_Comment">
+		update pgp.board_comment set reorder = reorder+1
+		where reorder > #{reorder} or reorder = #{reorder} and regroup=#{regroup} and board_comment_idx not in(#{board_comment_idx})
+	</update>
    
    
 </mapper>

@@ -232,6 +232,8 @@ public class PhotoListController {
 
 		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
 		model.addAttribute("Commentlist", Commentlist);
+		
+		
 		//String 형 변수에 담은거 다 고쳐라 
 		
 		//String 형 변수에 담은거 다 고쳐라 
@@ -405,7 +407,17 @@ public class PhotoListController {
 		
 		return idx;
 	}
+	@RequestMapping("photo/re_commentInsert")
+	@ResponseBody
+	public String re_commentInsert(Board_Comment board_comment) {
 	
+		
+		System.out.println("대댓글 : " + board_comment);
+		photodetailservice.re_repleInsert(board_comment);
+
+		return "cody/repleOk";
+		
+	}
 	@RequestMapping("photo/photofeedAllDelete")
 	public String feedAllDelete(@RequestParam(value = "board_idx") int board_idx) {
 		int resultCnt = photodetailservice.AllDelete(board_idx);
@@ -424,6 +436,9 @@ public class PhotoListController {
 		
 		
 	}
+	
+	
+	
 	@RequestMapping(value = "photo/updatePhotodetail",method = RequestMethod.GET)
 	public String UpdateDetail(Model model, @RequestParam(value = "board_idx", defaultValue = "0") int board_idx) {
 		String view = "home";
