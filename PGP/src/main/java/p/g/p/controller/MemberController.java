@@ -38,6 +38,7 @@ public class MemberController {
 		System.out.println(member);
 		String view = "home";
 		String page ="member/member.jsp";
+		
 		int resultCnt = service.memberInsert(member);
 		if(resultCnt==-1) {
 			model.addAttribute("msg","회원가입실패");

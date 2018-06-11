@@ -19,15 +19,17 @@
 $(document).ready(
 
 		function() {
+
+		
 			var cnt=0;
 			var tag_position__x;
 			var tag_position__y;
 			var board_idxs;
-			var ch1;
-			var ch2;
-			var ch3;
-			var ch4;
-			var ch5;
+			var ch1 = $('#tag1').val();
+			var ch2 = $('#tag2').val();
+			var ch3 = $('#tag3').val();
+			var ch4 = $('#tag4').val();
+			var ch5 = $('#tag5').val();
 			
 			$("#shopping").click(
 					function() {
@@ -42,11 +44,14 @@ $(document).ready(
 				tag_position__x = event.offsetX;
 				tag_position__y = event.offsetY;
 				// alert('x'+x+'y'+y)
+				if(cnt<6){
+				
 				$('.serchbox').css({
 					"top" : tag_position__y,
 					"left" : tag_position__x
 				}).show()
-
+				
+				}
 			});
 
 			// 버튼 클릭시 아작스 처리 tag 저장
@@ -79,12 +84,7 @@ $(document).ready(
 						var tag3 = $('#tag3').val();
 						var tag4 = $('#tag4').val();
 						var tag5 = $('#tag5').val();
-						alert(cnt)
-						alert(cnt)
-						alert(cnt)
-						alert(cnt)
-						alert(cnt)
-						alert(cnt)
+				
 						
 						if (cnt <6) {
 					
@@ -197,6 +197,8 @@ $(document).ready(
 							$('.t_url').text('');
 							$('.tagno').val('');
 							$("#link").val('');
+							$('.Modal').hide();
+							$('.fade').hide();
 							
 							if(ch1==tag_nos){
 							

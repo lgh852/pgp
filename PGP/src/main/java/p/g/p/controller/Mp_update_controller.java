@@ -85,12 +85,20 @@ public class Mp_update_controller {
 			@RequestParam("year") String year, @RequestParam("month") String month, @RequestParam("day") String day,
 			@RequestParam("phone1") String phone1, @RequestParam("phone2") String phone2,
 			@RequestParam("phone3") String phone3) throws IllegalStateException, IOException {
-		System.out.println(day);
-		System.out.println(month);
-		System.out.println(year);
-		System.out.println(phone1);
-		System.out.println(phone2);
-		System.out.println(phone3);
+			
+		System.out.println(member);
+		
+		System.out.println(member);
+		
+		System.out.println(member);
+		
+		System.out.println(member);
+		
+		System.out.println(member);
+		
+		System.out.println(member);
+		
+		System.out.println(member);
 	
 		if (member != null) { // 값이 있으면 update 실행
 			member.setMember_phone(phone1 + phone2 + phone3);

@@ -120,11 +120,10 @@
 					aria-describedby="inputGroup-sizing-default" name="member_intro"
 					id="member_intro" placeholder="자기소개를 해주세요"
 					style="width: 100%; resize: none;" cols="40" rows="8"></textarea>
-
+		
 			</div>
 		</div>
-		<hr class="mb-4">
-
+	
 
 		<button class="btn btn-primary btn-lg btn-block" type="submit">회원가입</button>
 		<hr class="mb-4">

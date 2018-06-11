@@ -82,9 +82,26 @@
 
 		<img width="100%" height="100%" id="imgtagbox"
 			src="<%=request.getContextPath()%>/resources/BoardPhoto/${photo.photo_name}"
-			style="max-height: 600px; min-height: 600px; margin: 0 auto;"
+			style="max-height: 600px;position:relative; min-height: 600px; margin: 0 auto;"
 			class="border-0 img-thumbnail">
-
+			
+<c:forEach items="${urlList}" var="urlList" end="5"  begin="0" varStatus="status">
+		
+	<c:if test="${urlList.tag_idx!=null}">
+	
+	<div id="viewbox" class="check${status.count} block" data-toggle="modal" data-target="#exampleModal" style="left: ${urlList.tag_position_x}px;    position:absolute; top:${urlList.tag_position_y}px;">
+		<a href="#" class="aclick${status.count} " data-toggle="modal" data-target="#exampleModal">+</a>
+	</div>
+	<input type="hidden" id="tag${status.count}" value="${urlList.tag_idx}">
+	</c:if>
+	<c:if test="${urlList.tag_idx==null||urlList==null}">
+	<div id="viewbox" class="check${status.count} none" data-toggle="modal" data-target="#exampleModal">
+		<a href="#" class="aclick${status.count} " data-toggle="modal" data-target="#exampleModal">+</a>
+	</div>
+	<input type="hidden" id="tag${status.count}">
+	</c:if>
+</c:forEach>
+	<input type="hidden" id="tagIdx" class="tagno">
 	</div>
 
 
@@ -104,13 +121,15 @@
 		<input type="hidden" id="hidden_board_idx" value="${board_idx}"
 			name="board_idx">
 	</div>
+	
+		
 
-	<div id="viewbox" class="check1 none" data-toggle="modal" data-target="#exampleModal">
+
+<div id="viewbox" class="check1 none" data-toggle="modal" data-target="#exampleModal">
 
 		<a href="#" class="aclick1 " data-toggle="modal" data-target="#exampleModal">+</a>
 	</div>
-
-	<div id="viewbox" class="check2 none" data-toggle="modal" data-target="#exampleModal" style="left: ${urlList.get(0).tag_position_x}px; top: ${urlList.get(0).tag_position_y}px;position: absolute ">
+	<div id="viewbox" class="check2 none" data-toggle="modal" data-target="#exampleModal" >
 		<a href='#' class='aclick2'>+</a>
 	</div>
 	
@@ -123,9 +142,11 @@
 	<div id="viewbox" class="check5 none" data-toggle="modal" data-target="#exampleModal">
 		<a href='#' class='aclick5'>+</a>
 	</div>
-	<input type="hidden" id="tag1"> <input type="hidden" id="tag2">
-	<input type="hidden" id="tag3"> <input type="hidden" id="tag4">
-	<input type="hidden" id="tag5">
+	<input type="hidden" id="tag1"> 
+	<input type="hidden" id="tag2">
+	<input type="hidden" id="tag3"> 
+	<input type="hidden" id="tag4">
+	<input type="hidden" id="tag5"> 
 	
 	
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,15 +170,27 @@
 </div>
 	
 </div>
-
+<%-- 	<c:forEach items="${urlList}" var="urlList" varStatus="status">
+		
+		<input type="hidden" value="${urlList.tag_idx}" id="tag_idx${status.count}">
+	<input type="hidden" value="${urlList.tag_position_x}" id="tag_x${status.count}">
+	<input type="hidden" value="${urlList.tag_position_y}" id="tag_y${status.count}">
+	</c:forEach> --%>
 <script>
-	$(document).ready(function(){
 
-		var tagsd = $('.sss').val();
+$(document).ready(function (){
+	var list = $('#urllist').val();
+	alert(list);
+	
+	var url = list.split('Url_Tag [')
+	var lists = url[1].split(',')
+	var sss = lists[3].split('=');
 		
-		alert(tagsd);
+	var date = new Object();
+
+
 		
-		
-	})
+	
+});
 
 </script>

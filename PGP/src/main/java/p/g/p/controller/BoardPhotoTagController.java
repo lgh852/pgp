@@ -28,18 +28,31 @@ public class BoardPhotoTagController {
 		String view = "home";
 		String page ="";
 		Board_Photo photo = service.phototagselect(board_idx);	
+		System.out.println(photo);
 		
 		if(photo !=null) {
 			page = "board/boardPhotoTagForm.jsp";
 			int baord_idxs = Integer.parseInt(board_idx);
 		    List<Url_Tag> urlList = photodetailservice.selectUrl(baord_idxs);
-			   
+			System.out.println("adasdasdasd"+urlList); 
+			System.out.println("adasdasdasd"+urlList); 
+			System.out.println("adasdasdasd"+urlList); 
+			System.out.println("adasdasdasd"+urlList); 
+			System.out.println("adasdasdasd"+urlList); 
+			
 		    model.addAttribute("urlList",urlList);
 			model.addAttribute("page",page);
 			model.addAttribute("photo",photo);
 			model.addAttribute("board_idx",board_idx);
 			
 		}else {
+			System.out.println("2번");
+			System.out.println("2번");
+			System.out.println("2번");
+			System.out.println("2번");
+			System.out.println("2번");
+			System.out.println("2번");
+			System.out.println("2번");
 			model.addAttribute("page",page);
 			model.addAttribute("photo",photo);
 		}

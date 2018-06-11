@@ -31,24 +31,22 @@ public class Mp_update_service {
 	}
 	
 	public int Mp_update(Member_info member,HttpServletRequest request) throws IllegalStateException, IOException {
-		if(member.getMember_photo()!=null) {
+		
+		if(member.getPhotofile()!=null) {
 			//새로운 사진값이 있을 경우에만w
 			service.memberPhotoUpload(member, request);
 		}
+		System.out.println("membsadasd"+member.getMember_photo());
 
-		
-	    dao = sqlSessionTemplate.getMapper(Mp_dao.class);
-        
         int resultCnt = dao.updatemember(member);
-		if(resultCnt>0) {
+	
+        if(resultCnt>0) {
 			//성공
 		}else {
 			//실패 
 			resultCnt=-1;
 		}
-	
-		
-		
+
 		System.out.println("===========================================================");
 		System.out.println(resultCnt);
 		

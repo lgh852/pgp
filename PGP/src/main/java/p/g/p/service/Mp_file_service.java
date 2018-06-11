@@ -24,15 +24,8 @@ public class Mp_file_service {
 
 	public void memberPhotoUpload(Member_info member, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		
-		dao = sqlSessionTemplate.getMapper(Mp_dao.class);
-		
-	 	
-    	
 		String uploadURI = "/resources/memberphoto";
 		String dir = request.getSession().getServletContext().getRealPath(uploadURI);
-	
-		
 		
 		// 업로드 파일의 물리적 저장
 		// 파일 저장 : 증명사진.jpg
@@ -41,8 +34,13 @@ public class Mp_file_service {
 		if (!member.getPhotofile().isEmpty() ) {
 			// 새로운 파일 이름 생성 -> 파일 저장 -> DB에 저장할 파일이름 set
 			String fileName = member.getMember_id()+"_"+member.getPhotofile().getOriginalFilename();
+			
 			member.getPhotofile().transferTo(new File(dir, fileName));
+			
 			member.setMember_photo(fileName);
+			
+			System.out.println("asdasdasd"+member);
+
 		
 		}
 		
