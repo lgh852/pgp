@@ -156,14 +156,15 @@ public class StoryBoardController {
 */	@RequestMapping(value = "story/storyboardCommentDelete")
 	@ResponseBody
 	public String storyCommentDelete(StoryBoard_Comment storyboardComment) {
-		System.out.println(storyboardComment);
+		
 	int result = storyboardservice.deleteStoryComment(storyboardComment.getStoryboard_comment_idx()); // 댓글 삭제
-		if(result>0) {
-			
+		String idx ="";
+	if(result>0) {
+		idx = String.valueOf(storyboardComment.getStoryboard_comment_idx());
 		}else {
-			
+			idx = "";
 		}
-	return "";
+	return idx;
 }
 	// 스토리 보드 삭제
 	@RequestMapping(value = "story/storyboardDelete", method = RequestMethod.GET)

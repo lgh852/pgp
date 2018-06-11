@@ -242,7 +242,7 @@ var seck = $('#seck').val();
 								</small>
 							</div> <span class="text" > <c:if
 									test="${listStroyComment.member_idx==user.member_idx}">
-									<a href="#"onclick="deletestrorycomment(${listStroyComment.storyboard_comment_idx})">삭제</a>
+									<a  type="button" class="btn btn-dark"onclick="deletestrorycomment(${listStroyComment.storyboard_comment_idx})">삭제</a>
 
 								</c:if></span>
 						</li>
@@ -351,13 +351,13 @@ var seck = $('#seck').val();
 	
 						var member_id = $('#member_id').val();
 						
-						var html = '<li class="list-group-item d-flex justify-content-between lh-condensed"';
+						var html = '<li class="list-group-item d-flex justify-content-between lh-condensed" id="storycomments'+data+'"';
 							html +='style="width: 100%">';
 							html +='<div><h6 class="my-0">'+storyboard_comment_contents+'</h6>';
-							html +='<small class="text-muted">ID:';
+							html +='<small class="text" style="color:black">ID:';
 							html +=member_id+'&nbsp &nbsp'+NowTime+'</small></div>';
 							html +='<span class="text-muted">';
-							html +='<a href="#" onclick="deletestrorycomment('+data+')">삭제</a>';
+							html +='<a  type="button" class="btn btn-dark" onclick="deletestrorycomment('+data+')">삭제</a>';
 							html +='</span></li>';
 							$('#comlists').append(html);
 				
@@ -388,7 +388,8 @@ var seck = $('#seck').val();
 				data : {
 					storyboard_comment_idx:storyboard_comment_idx
 				},success : function(data) {
-					$('#storycomments'+e).remove();
+					alert('storycomments'+data)
+					$('#storycomments'+data).remove();
 					
 				}
 	
