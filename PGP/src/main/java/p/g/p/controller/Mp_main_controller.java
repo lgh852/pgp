@@ -158,8 +158,9 @@ public class Mp_main_controller {
 
 		if (member != null) {
 			
+			
 			List<Join_MemberInfo_StoryBoard> mpListStory = storyboardservice.selectMpStory(like,member);
-
+			
 			view = "home";
 			page = "mypage/mp_myStory.jsp";
 			
@@ -188,9 +189,7 @@ public class Mp_main_controller {
 		String view = "";
 		
 		member = pagelistservice.userck(session, member);
-		
-		System.out.println("멤버정보 왜 이거들어오냐?"+member);
-		
+	
 		if (member != null) {
 			page = "mypage/mp_myComment.jsp";
 			view = "home";

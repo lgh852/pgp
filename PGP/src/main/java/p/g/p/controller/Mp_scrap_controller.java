@@ -17,6 +17,7 @@ import p.g.p.model.Join_Scrap_scrapFN;
 import p.g.p.model.Member_info;
 import p.g.p.model.Scrap;
 import p.g.p.model.scrapFN;
+import p.g.p.service.Mp_MyPageList;
 import p.g.p.service.Mp_scrap_service;
 import p.g.p.service.Sb_scrap_service;
 
@@ -29,6 +30,8 @@ public class Mp_scrap_controller {
    @Autowired
    private Sb_scrap_service service2;
    
+   @Autowired
+	private Mp_MyPageList pagelistservice;
    
    @RequestMapping(value="/mypage/mp_scrap",method=RequestMethod.GET)
    public String mypageScrap(Model model,
@@ -153,28 +156,40 @@ public class Mp_scrap_controller {
    }
    
    @RequestMapping(value="/sidebar/scrapdelete",method=RequestMethod.GET)
-   public String ScrapDelete(@RequestParam("scrap_name")String scrap_name,
-         @RequestParam("member_idx")int member_idx,scrapFN scrapfn,
-         Model model,HttpSession session) {
+   public String ScrapDelete(scrapFN scrapfn,Model model,HttpSession session,Member_info member) {
       
-      Member_info member = (Member_info)session.getAttribute("user");
-      model.addAttribute("member", member);
+      member=pagelistservice.userck(session,member);
+      	
       
-      
-      
-      int resultC = service2.deleteScrapFolder(scrapfn);
+	   if(member!=null) {
+		   
+		   int scrapFN_idx = service2.getscrapfnIdx(scrapfn);
+		   
+		   
+		   //먼저 스크랩 폴더랑 연결되있는 스크랩 부터 모두 삭제하고 
+		   int r = service2.DeleteMpScrap(scrapFN_idx);
+		   
+		   System.out.println("서비스 됐쟈"+scrapFN_idx);
+		   
+		   if(r>0) {
+		   //스크랩 폴더 삭제
+		   int resultC = service2.deleteScrapFolder(scrapfn);
+		   
+		   if(resultC>0) {
+		         System.out.println("폴더를 삭제하지 ");
+		      }else {
+		         System.out.println("멍청아!!!!!!!!");
+		      }
+		   }else {
+			   //스크랩 삭제 오류
+		   }
+	   }else {
+		   //오류
+	   }
       
      
+        model.addAttribute("member_id",member.getMember_id());
       
-      if(resultC>0) {
-         System.out.println("폴더를 삭제하지 ");
-      }else {
-         System.out.println("멍청아!!!!!!!!");
-      }
-      
-      model.addAttribute("member_id",member.getMember_id());
-      
-
         List<scrapFN> scrapNameList = service2.folder(member.getMember_idx());
       
         model.addAttribute("scrapNameList", scrapNameList);
