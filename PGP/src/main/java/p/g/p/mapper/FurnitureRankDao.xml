@@ -24,10 +24,4 @@ select * from url_tag,board where url_tag.board_idx=board.board_idx order by boa
 </select>
 
 
-
-
-
-
-
-
 </mapper>

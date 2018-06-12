@@ -4,6 +4,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 </style>
+<script type="text/javascript">
+	$(function () {
+		
+		$(window).scroll(function () {
+			var scrollHeight = $(window).scrollTop() + $(window).height();
+			var documentHeight = $(document).height();
+			
+			if( scrollHeight + 200 >= documentHeight ){
+				for(i=0 ; i<10 ; i++){
+					$("body").append("<h1>jquery 무한 스크롤</h1>");
+				}
+			}
+		});
+		
+		for(i=0 ; i<20 ; i++){
+			$("body").append("<h1>jquery 무한 스크롤</h1>");
+		}
+	});
+</script>
+
 
 <ul class="nav nav-pills float-right">
    <li class="nav-item dropdown  btn-lg "><a
@@ -33,7 +53,7 @@
       <div class="col-md-6">
          <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-primary">${status.count}위</strong>
+               <strong class="d-inline-block mb-2 text-primary"class="scrolling" data-bno="${status.count}">${status.count}위</strong>
                <h5 class="mb-0">
                   <a class="text-dark" href="${order.tag_url}">${order.tag_url_title}</a>
                </h5>

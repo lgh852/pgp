@@ -108,7 +108,7 @@ public class StoryBoardController {
 		model.addAttribute("listStory", listStory);
 		List<Join_MemberInfo_StoryBoardComment> listStroyComment = storyboardservice.storyCommentList(); // 스토리 댓글 리스트
 		model.addAttribute("listStroyComment", listStroyComment);
-		
+		System.out.println("이것봐!!1=>>"+resultStoryCnt+":"+resultStoryCnt2);
 		if (resultStoryCnt > 0 && resultStoryCnt2 > 0) {
 			page = "redirect:storyboardForm";
 		}
