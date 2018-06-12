@@ -6,22 +6,39 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.ManagerDao;
+import p.g.p.dao.PageMakerDao;
 import p.g.p.model.Notice;
+import p.g.p.model.PageMaker;
 
 public class Mg_noticeList_service {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	private ManagerDao dao;
+	private PageMakerDao dao2;
 
-	public List<Notice> getNoticeList() {
+	public int noticetestcount() {
+
+		dao2 = sqlSessionTemplate.getMapper(PageMakerDao.class);
+
+		int noticeListCount = dao2.testcount();
+
+		if (noticeListCount > 0) {
+
+		} else {
+			noticeListCount = 0;
+		}
+
+		return noticeListCount;
+	}
+
+	public List<Notice> noticeList(PageMaker pagemaker) {
 		
-		dao = sqlSessionTemplate.getMapper(ManagerDao.class);
+		dao2 = sqlSessionTemplate.getMapper(PageMakerDao.class);
 
-		List<Notice> list = dao.selectNoticeList();
+		List<Notice> list = dao2.noticelist(pagemaker);
 
-		return list;
+        return list;
 	}
 
 }

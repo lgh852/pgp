@@ -2,6 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function page(idx){
+	
+	var pagenum = idx;
+	location.href="/p/manager/noticelist?pagenum="+pagenum+"&contentnum=5";
+	
+}
+
+</script>
+
+<!-- 공지사항 헤더 -->
 
   <div class="row" style="margin-top: 30px;width: 100%">
      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="border:solid 1px; border-color:white;width: 100%;
@@ -10,12 +24,10 @@
                   <p  style="font-weight:bold;font-size: 50px; color: white">느그집 관련 공지사항 </p>
              </div>
         
-          
-   
-      </div>
+        </div>
       </div>
         
-<!--FAQ 리스트-->
+<!--공지사항 리스트-->
         
      
 <c:forEach var="notice" items="${notices}">
@@ -42,7 +54,8 @@
                    
                  
   <div class="col-12 col-md-8"></div>
-  <div class="col-6 col-md-4" style="text-align: right;font-weight: 600">작성일&emsp;<span style="margin: 0 10"><fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd"/></span></div>
+  <div class="col-6 col-md-4" style="text-align: right;font-weight: 600">작성일&emsp;<span style="margin: 0 10">
+  <fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd"/></span></div>
 
             </div>
       
@@ -70,7 +83,38 @@
 			</c:if>
         
         
-
-
 </c:forEach>
+
+
+<!-- 공지사항 페이지 처리 -->
+
+<div class="faq_footer" >
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  
+    <c:if test="${pagenum.prev}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getStartPage()-1});">Previous</a></li>
+    </c:if>
+    
+    
+    <c:forEach begin="${pagenum.getStartPage()}" end="${pagenum.getEndPage()}" var="idx">
+    
+    <li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
+   
+    </c:forEach> 
+    
+    
+    <c:if test="${pagenum.next}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getEndPage()+1});">Next</a></li>
+    </c:if>
+    
+  </ul>
+</nav>
+
+
+
+
+
+</div>
 

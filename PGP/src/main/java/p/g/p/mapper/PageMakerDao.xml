@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.PageMakerDao">
+
+<select id="noticelist" resultType="p.g.p.model.Notice" parameterType="p.g.p.model.PageMaker">
+
+select * from notice order by notice_idx desc limit #{pageChecknum},#{contentnum};
+
+</select>
+
+<select id="testcount" resultType="int">
+
+select count(*) from notice;
+
+</select>
+
+
+
+</mapper>
