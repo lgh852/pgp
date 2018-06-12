@@ -35,7 +35,6 @@
 <script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storylike55.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/storyreport3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport6.js"></script>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
@@ -275,8 +274,7 @@ div>nav>a{
 			class="p-2 text-muted"style="text-decoration: none;"
 			href="<%=request.getContextPath()%>/manager/faqlist">FAQ</a> <a
 			class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/manager/noticelist">공지사항</a>
-
+			href="<%=request.getContextPath()%>/manager/noticelist?pagenum=1&contentnum=5">공지사항</a>
 	</nav>
 
 </div>
