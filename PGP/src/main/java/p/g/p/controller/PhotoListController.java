@@ -233,24 +233,6 @@ public class PhotoListController {
 		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
 		model.addAttribute("Commentlist", Commentlist);
 		
-		
-		//String 형 변수에 담은거 다 고쳐라 
-		
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		//String 형 변수에 담은거 다 고쳐라 
-		
 		// 사진
 		String photoName = photodetailservice.photodetailView(board_idx);
 		model.addAttribute("photoName", photoName);
@@ -327,6 +309,7 @@ public class PhotoListController {
 
 	}
 
+	
 	// 댓글 쓰기 (insert)
 	/*@RequestMapping(value = "photo/photodetail",method = RequestMethod.POST)
 	public String detailComment(Model model, Board_Comment bc,
@@ -413,6 +396,7 @@ public class PhotoListController {
 	
 		
 		System.out.println("대댓글 : " + board_comment);
+		
 		photodetailservice.re_repleInsert(board_comment);
 
 		return "cody/repleOk";
@@ -505,8 +489,37 @@ public class PhotoListController {
 	@RequestMapping("photo/photoCommentDelete")
 	@ResponseBody
 	public String CommentDelete(Board_Comment comment) {
-		int resultCnt = photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
+	
+		
+		List<Board_Comment> reple = photodetailservice.childReple(comment);
+		System.out.println("1");
+		String ck = "";
+		if (reple.size()== 0) {
+			
+			System.out.println("2");
+			
+			photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
+			
+			System.out.println("3");
+			ck = "y";
+		} else {
+
+			System.out.println("4");
+			
+			comment.setBoard_comment_contents("댓글이 삭제되었습니다.");
+			
+			System.out.println("5");
+			
+			photodetailservice.commentUpdate(comment);
+		
+			System.out.println("6");
+			ck = "n";
+		}
+		/*int resultCnt = photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
+		
+		
 		if(resultCnt>0) {
+			
 		
 		//성공
 			
@@ -516,6 +529,6 @@ public class PhotoListController {
 			
 		}
 		
-		return "";
+	*/	return ck;
 	}
 }

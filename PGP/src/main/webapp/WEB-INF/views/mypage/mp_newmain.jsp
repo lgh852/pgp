@@ -19,6 +19,7 @@
     </div>
     
     <!-- 만약 나의 프로필 사진이 설정되어 있지 않다면! 기본사진이 나온다 -->
+
     <c:if test="${member.member_photo ==null}">
     <div class="col">
       <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/images/smilephoto.png" 

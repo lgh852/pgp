@@ -329,8 +329,8 @@ function tagsclick(e) {
 						
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed"
-											style="width: 100%" id="ck${c1.board_comment_idx}">
-											<div>
+											style="width: 100%" id="cks${c1.board_comment_idx}">
+											<div style="margin-left:${c1.reorder * 15}px">
 												<h6 class="my-0">${c1.board_comment_contents}</h6>
 												<small class="text" style="color:black">ID:${c1.member_id} &nbsp
 													&nbsp<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
@@ -342,9 +342,9 @@ function tagsclick(e) {
 														>삭제</a></td>
 														<!--href="<%=request.getContextPath()%>/photo/photoCommentDelete?board_comment_idx=${c1.board_comment_idx}&board_idx=${c1.board_idx}"-->
 												
-												<button class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})">답글</button>
+												
 				
-												</c:if></span>
+												</c:if><button class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})">답글</button></span>
 										</li>
 							
 								
@@ -355,7 +355,7 @@ function tagsclick(e) {
 								<input type="hidden"  id="board_comment_idx${c1.board_comment_idx}"value="${c1.board_comment_idx}">
 								<input type="hidden" id="redepth${c1.board_comment_idx}" value="${c1.redepth}">
 								<input type="hidden" id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
-								<input type="hidden" id="reparent${c1.board_comment_idx}" value="${c1.reparent}">
+								
 								
 						<input type="text" class="border border-secondary rounded" id="re_commenttext${c1.board_comment_idx}" style="width:100%;">
 					</form>
@@ -672,11 +672,14 @@ function tagsclick(e) {
 
 
 	<script>
+	
+	
     $(document).ready(function(){
-		alert('asdas');
-    	
+	
+		
 		
 		$('#replybutton').click(function(){
+			
 			var Now = new Date();
 
 			var NowTime = Now.getFullYear();
@@ -691,19 +694,19 @@ function tagsclick(e) {
 
 			NowTime += ':' + Now.getSeconds();
 
-			alert(NowTime);			
+			
 			var board_comment_contents = $('#replytext').val();
 			
-    		if(board_comment_contents==''){
+    		if(board_comment_contents.''){
+    			
     			//값이 없을시 
+    			
     			alert('내용을 입력해주세요');
     		}else{
+    			
 				//값이 존재할시 
 				var member_idx = $('#member_idx').val();
 				var board_idx = $('#board_idx').val();
-				alert('내용이다잉'+board_comment_contents);
-				
-				alert(member_idx);alert(board_idx);
 				
 				if(member_idx==''){
     					//로그인후 이용해주세요 
@@ -736,7 +739,7 @@ function tagsclick(e) {
     						
     							if(data>0){
     								alert('성공');
-    								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="ck'+data+'">';      
+    								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="cks'+data+'">';      
     								html+='<div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:';
     								html+= +member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px">';
     								html+='<a href="#" onclick="delectcomment('+data+')">삭제</a>'+'<button class="ml-3" onclick="re_comment('+data+')">답글</button>'+'</td></li>';
@@ -776,11 +779,18 @@ function tagsclick(e) {
 					board_comment_idx:board_comment_idx,
 				},
 				success : function(data) {
-					
-				if(data!=null){
+				
+				if(data =='n'){
 					//성공
-					alert('성공');
-					$('#ck'+board_comment_idx).remove();
+					alert('내용수정');
+					  $('#cks'+board_comment_idx +  'h6').text('');
+					   $('#cks'+board_comment_idx  + ' h6').text('댓글이 삭제되었습니다');
+					   
+				}else if(data =='y'){
+					alert('내용삭제 ');
+					
+					   $('#cks'+board_comment_idx).remove();
+					 
 				}else{
 					//실패
 					alert('다시한번 시도해주세요')
@@ -846,9 +856,9 @@ function tagsclick(e) {
 			var regroup = $('#regroup'+e).val();
 			var redepth = $('#redepth'+e).val();
 			var reorder = $('#reorder'+e).val();
-			var reparent = $('#reparent'+e).val();
+			var reparent = e;
 			var board_comment_contents = $('#re_commenttext'+e).val();
-			
+			if(member_idx!=''){
 			alert('board_comment_idx'+e);
 			alert('member_idx'+member_idx);
 			alert('board_idx'+board_idx);
@@ -883,7 +893,9 @@ function tagsclick(e) {
 	    				self.close();
 	    			}
 	    		});
-			
+			}else{
+				alert('로그인후 사용해주세요')
+			}
 	}
       
       

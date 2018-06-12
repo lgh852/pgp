@@ -28,9 +28,18 @@ public class PhotodetailService {
 	
 	public int ListInsertComment(Board_Comment board_comment) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		
 		System.out.println("댓글 성공" + board_comment);
+		
 		int group = maxRegroup();
+	
+		
 		System.out.println("2");
+		
+		
+		
+		
+		
 		
 		System.out.println("1");
 		board_comment.setRegroup(group);
@@ -135,6 +144,14 @@ public class PhotodetailService {
 		int resultCnt = dao.boardCommentDelete(board_idx);
 		return resultCnt;
 	}
+	
+	public int commentUpdate(Board_Comment comment) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		int result = dao.repleUpdate(comment);
+
+		return result;
+	}
+	
 
 	public int boardDelete(int board_idx) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
@@ -201,5 +218,17 @@ public class PhotodetailService {
 		return result;
 		
 	}
+
+	public List<Board_Comment> childReple(Board_Comment comment) {
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		
+		List<Board_Comment> list = dao.childReple(comment);
+			if(list.size()<0) {
+				
+				System.out.println("sdas");
+			}
+		return list;
+	}
+
 
 }

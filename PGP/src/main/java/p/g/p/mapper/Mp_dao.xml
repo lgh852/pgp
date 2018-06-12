@@ -11,11 +11,11 @@
 		MEMBER_ID = #{ID}
 
 	</select>
-	<select id="selectByIdx" resultType="p.g.p.model.Member_info">
+	<select id="selectByIdx" resultType="p.g.p.model.Member_info" parameterType="String">
 
 		SELECT * FROM MEMBER_INFO
 		WHERE
-		MEMBER_IDX = #{IDX}
+		MEMBER_IDX = #{Member_info}
 
 	</select>
 

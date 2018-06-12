@@ -335,8 +335,8 @@ var seck = $('#seck').val();
 						member_idx:member_idx
 						
 					},success : function(data) {
+						
 						var Now = new Date();
-						alert(data)
 						var NowTime = Now.getFullYear();
 
 						NowTime += '년 ' + Now.getMonth();

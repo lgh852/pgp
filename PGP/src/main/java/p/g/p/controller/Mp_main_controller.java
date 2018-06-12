@@ -158,9 +158,8 @@ public class Mp_main_controller {
 
 		if (member != null) {
 			
-			
 			List<Join_MemberInfo_StoryBoard> mpListStory = storyboardservice.selectMpStory(like,member);
-			
+
 			view = "home";
 			page = "mypage/mp_myStory.jsp";
 			

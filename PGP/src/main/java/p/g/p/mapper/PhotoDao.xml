@@ -3,7 +3,7 @@
 
 <mapper namespace="p.g.p.dao.PhotoDao">
 
-
+	
 
 	<select id="selectJoin_Board_Member" parameterType="p.g.p.model.Join_Board_MemberInfo" resultType="p.g.p.model.Join_Board_MemberInfo">
 	 select * from board, member_info where board.member_idx=member_info.member_idx and board_idx=#{board_idx};
@@ -30,8 +30,8 @@
       member_info.member_idx=board_comment.member_idx
       where
       board_idx=#{board_idx}
-      order by
-      board_comment_regdate asc;
+      order by regroup asc, reorder asc;
+      
    </select>
 
 
@@ -47,7 +47,7 @@
    </select>
 
    <update id="commentTotalUpdate" parameterType="p.g.p.model.Board">
-      update board set
+      update board set	
       board_comment=(select count(*) from board_comment where
       board_idx=#{board_idx}) where board_idx=#{board_idx}
    </update>
@@ -75,6 +75,7 @@
       board.board_idx=board_photo.board_idx
       order by board_cnt desc limit 3
    </select>
+   
 
    <!-- 삭제 버튼 누를시 글 그림 삭제 -->
    <delete id="boardCommentDelete">
@@ -107,23 +108,30 @@
    </delete>
    
    <delete id="categorySpaceDelete" >
+   
      delete from category_space where category_idx=(select category_idx2 from board where board_idx=#{board_idx});
    </delete>
+   
    
    <!-- url tag -->
    <select id="selectUrl" parameterType="p.g.p.model.Url_Tag"
       resultType="p.g.p.model.Url_Tag">
+      
       select * from url_tag where board_idx=#{board_idx};
+      
    </select>
+   
    
    <!-- url 태그클릭시 태그 조회수 증가  -->
    
    <update id="updateUrlCnt" parameterType="p.g.p.model.Url_Tag">
    update url_tag set
+   
       tag_url_cnt=tag_url_cnt+1 where tag_idx=#{tag_idx}
+      
    </update>
    
-   <select id="selectByBoardIdx" parameterType="p.g.p.model.Board"
+   <select id="selectByBoardIdx" parameterType="int"
    resultType="p.g.p.model.Board">
    
    SELECT *
@@ -170,6 +178,19 @@
 		update pgp.board_comment set reorder = reorder+1
 		where reorder > #{reorder} or reorder = #{reorder} and regroup=#{regroup} and board_comment_idx not in(#{board_comment_idx})
 	</update>
+   	
+   	
+   	<update id="repleUpdate" parameterType="p.g.p.model.Board_Comment">
+   	
+		update pgp.board_comment set board_comment_contents = #{board_comment_contents} where board_comment_idx=#{board_comment_idx}
+		
+	</update>
    
+   	<select id="childReple" parameterType="p.g.p.model.Board_Comment"
+   resultType="p.g.p.model.Board_Comment">
+   
+	select * from pgp.board_comment where reparent =#{board_comment_idx};
+        
+   </select>
    
 </mapper>
