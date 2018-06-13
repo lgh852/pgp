@@ -327,10 +327,10 @@
 								<img
 									src="<%=request.getContextPath()%>/resources/images/scrap.png"
 									height="20px" alt="..." class="rounded"><span
-									id="scrapCnts${status.count}">${list.board_scrap}</span>&nbsp<img
+									id="scrapCnts${status.count}">${list.board_scrap}</span><img
 									src="<%=request.getContextPath()%>/resources/images/heart.png"
 									height="20px" alt="..." class="rounded"><span
-									id="likecnt${status.count}">${list.board_like}</span>&nbsp<img
+									id="likecnt${status.count}">${list.board_like}</span><img
 									src="<%=request.getContextPath()%>/resources/images/mesage.png"
 									height="20px" alt="..." class="rounded"><span>
 									${list.board_comment} </span>
