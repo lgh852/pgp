@@ -11,8 +11,6 @@ public interface ManagerDao {
 
    public Manager loginSelect(String id);
 
-   /*public int insertManager(Manager manager);*/
-   
    //공지사항 입력하기 
    public int insertNotice(Notice notice);
    
@@ -31,7 +29,7 @@ public interface ManagerDao {
    //신고 리스트 보기 
    public List<report> selectReportList();
 
-   //faq리스트 보여주기 
+   //FAQ리스트 보여주기 
    public List<Faq> selectFaqList();
 
    //FAQ입력하기 

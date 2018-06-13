@@ -21,7 +21,6 @@ public class likeService {
 		PhotoListmodel like = dao.mypagelikeck(board_idx);
 		
 		
-		String likeck;
 		if(like ==null) {
 			//좋아요 이미 해당 user 가 체크함 해당 게시물에 
 		}else {
