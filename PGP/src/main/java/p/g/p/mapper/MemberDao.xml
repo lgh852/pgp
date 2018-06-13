@@ -124,6 +124,81 @@
       (#{member_id},#{member_pw},#{member_phone},
       #{member_name},#{member_gender},#{member_birth});
    </insert>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 
+<select id="selectChkId" resultType="String" parameterType="p.g.p.model.Member_info">
+	select member_id from
+	pgp.member_info where member_name = #{member_name} and member_birth = #{member_birth} and member_phone =
+	#{member_phone};
+	</select>
+
+
+	<select id="selectChkPw" resultType="String" parameterType="p.g.p.model.Member_info">
+	select member_pw from pgp.member_info where member_id = #{member_id} and member_name = #{member_name} and
+	member_birth = #{member_birth};
+	</select>
+
+
+	<select id="selectChkById" resultType="String" parameterType="p.g.p.model.Member_info">
+
+	select member_id from
+	pgp.member_info where member_name = #{member_name} and member_birth =
+	#{member_birth} and member_intro = #{member_intro};
+	</select>
+	
+	
+	<update id="updateChkPw" parameterType="p.g.p.model.Member_info">
+	<!-- UPDATE 테이블명 SET 필드명='변경할값' WHERE 필드명=해당값; -->
+	<!-- update member set member_pw = #{member_pw} where  = #{member_id}; -->
+	
+	
+	
+	 UPDATE pgp.member_info SET member_pw = #{member_pw} WHERE member_id = #{member_id} and member_name = #{member_name};
+	</update>
+
+
+
+	<select id="selectByEmail" resultType="String" parameterType="p.g.p.model.Member_info">
+	select member_id from
+	pgp.member_info where member_id = #{member_id} and member_name = #{member_name} and member_phone = #{member_phone};
+	</select>
+	
+	
+	
+	<update id="updateChgPw" parameterType="p.g.p.model.Member_info"> 
+	update pgp.member_info set member_pw = #{member_pw1} where member_pw = #{member_pw} and member_id = #{member_id};
+	<!-- <set>
+		<if test="member_pw != null and member_pw != ''">member_pw = #{member_pw} and member_idx = #{member_idx}</if>
+	</set> -->
+	</update>
+	
+	<select id="selectPw" resultType="String" parameterType="p.g.p.model.Member_info">
+
+      select member_pw from
+      pgp.member_info where member_pw = #{pw};
+   </select>
+
+	<update id="finalChgPw" parameterType="p.g.p.model.Member_info"> 
+	update pgp.member_info set member_pw = #{member_pw1} where member_pw = #{member_pw2};
+	<!-- <set>
+		<if test="member_pw != null and member_pw != ''">member_pw = #{member_pw} and member_idx = #{member_idx}</if>
+	</set> -->
+	</update>
+	
+	<select id="selectName" resultType="String" parameterType="p.g.p.model.Member_info">
+
+      select member_name from
+      pgp.member_info where member_name = member_id= #{member_id} and member_phone = #{member_phone};
+   </select>
+	
 
 </mapper>

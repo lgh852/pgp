@@ -178,19 +178,6 @@ where board_idx=#{board_idx};
 
 </select>
 
-<delete id="deleteMpScrap">
-
-delete from pgp.scrap where scrapFN_idx=#{scrapFN_idx};
-
-</delete>
-
-<select id="getScrapfnIdx" parameterType="p.g.p.model.scrapFN" resultType="int">
-
-select scrapFN_idx from pgp.scrapfn where scrap_name=#{scrap_name};
-
-</select>
-
-
 
 
  

@@ -128,6 +128,8 @@
 	<h6 class="border-bottom border-gray pb-2 mb-0">다른 계정으로 연동하기</h6>
 	<div class="media text-muted pt-3">
 		<!--네이버  -->
+		<button class="btn btn-lg btn-primary btn-block" onclick="memberidfind()">아이디 찾기</button>
+	<button class="btn btn-lg btn-primary btn-block" onclick="memberpwfind()">비밀번호 찾기</button>
 		<div id="naverIdLogin"></div>
 		<!--페이스북 -->
 		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
@@ -144,7 +146,7 @@
 </div>
 </div>
 
-
+ href="<%=request.getContextPath()%>
 
 
 
@@ -192,3 +194,22 @@
 		style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none">
 		FACEBOOK LOGIN</a>
 </form> --%>
+
+<script>
+function memberidfind() {
+	
+	window.open('/p/member/idchk', '아이디찾기',
+			'width=600px , height=600', '_blank',
+			left = '500', top = '500');
+}
+
+memberpwfind
+function memberpwfind() {
+	
+	window.open('/p/member/pwchk', '비밀번호찾기',
+			'width=600px , height=600', '_blank',
+			left = '500', top = '500');
+}
+
+
+</script>

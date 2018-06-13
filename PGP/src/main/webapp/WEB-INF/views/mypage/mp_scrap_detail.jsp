@@ -29,26 +29,11 @@
      
     </div>
     <div class="col-md-auto">
-    
-    
-       <c:if test="${member.member_photo ==null}">
-       
-        <div class="image" style="float:left;">         
-              <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/images/smilephoto.png" 
-              width="100px" height="100px" >
-              </div>
-  
-    
-    </c:if>
-    
-    
-    <c:if test="${member.member_photo !=null}">
-      <div class="image" style="float:left;">         
+     
+              <div class="image" style="float:left;">         
               <img class="rounded-circle" src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}" 
               width="100px" height="100px" >
               </div>
-    </c:if>
-
                 
                  
           <div class="user_name" style="float:left; margin-left:60px;">

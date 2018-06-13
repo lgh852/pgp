@@ -697,7 +697,7 @@ function tagsclick(e) {
 			
 			var board_comment_contents = $('#replytext').val();
 			
-    		if(board_comment_contents.''){
+    		if(board_comment_contents==''){
     			
     			//값이 없을시 
     			

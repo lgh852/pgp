@@ -9,7 +9,7 @@ import p.g.p.model.Member_info;
 public class Mp_MyPageList {
 	
 	@Autowired
-	MypageService services;
+	Mp_update_service services;
 
 	public Member_info userck(HttpSession session, Member_info member) {
 		

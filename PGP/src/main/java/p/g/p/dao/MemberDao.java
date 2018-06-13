@@ -30,5 +30,24 @@ public interface MemberDao {
 	//좋아요 최근 사진 가져오기 
 	public String LatestLikePhoto(int member_idx);
 	
+
+	//////////////////////////////////////////
+	public String selectChkId(Member_info member);
+
+	public String selectChkPw(Member_info member);
+
+	public String selectChkById(Member_info member);
+
+	public int updateChkPw(Member_info member);
+
+	public String selectByEmail(Member_info member);
+
+	public int updateChgPw(Member_info member);
+
+	public String selectPw(Member_info member);
+
+	public int finalChgPw(Member_info member);
+	
+	public String selectName(Member_info member);
 	
 }
