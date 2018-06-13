@@ -12,7 +12,9 @@
 <meta name="author" content="">
 <title>home</title>
 <!-- r글씨체 -->
-<link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Stylish" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Gamja+Flower|Stylish"
+	rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
@@ -95,200 +97,204 @@
 	color: white !important;
 }
 
-#homeName{
-font-family: 'Gamja Flower', cursive;
-text-decoration: none;
-}
-div>nav>a{
-/* font-size: 25px; */
-
+#homeName {
+	font-family: 'Gamja Flower', cursive;
+	text-decoration: none;
 }
 
-
+div>nav>a {
+	/* font-size: 25px; */
+	
+}
 </style>
 </head>
-<body style="
-    padding-top: 0px;
-">
-<header class="blog-header py-3">
-	<div class="row flex-nowrap justify-content-between align-items-center">
-		<div class="col-4 pt-1"></div>
-		<div class="col-4 text-center">
-			<a class="blog-header-logo text-dark" id="homeName"
-				href="<%=request.getContextPath()%>/"
-				style="text-decoration: none; font-size: 50px; font-weight: 700; color: black;font-family: 'Gamja Flower', cursive;">
-				느그집</a>
+<body style="padding-top: 0px;">
+	<header class="blog-header py-3">
+		<div
+			class="row flex-nowrap justify-content-between align-items-center">
+			<div class="col-4 pt-1"></div>
+			<div class="col-4 text-center">
+				<a class="blog-header-logo text-dark" id="homeName"
+					href="<%=request.getContextPath()%>/"
+					style="text-decoration: none; font-size: 50px; font-weight: 700; color: black; font-family: 'Gamja Flower', cursive;">
+					느그집</a>
+			</div>
+			<div class="col-4 d-flex justify-content-end align-items-center">
+
+			</div>
 		</div>
-		<div class="col-4 d-flex justify-content-end align-items-center">
 
-		</div>
-	</div>
-	
-	<!--e두번쨰   -->
-	<div class="row" style="margin: auto; width: 1400px;">
-		<div class="col-md-8"></div>
-		<div class="col-md-4">
-			<!--form 지워야함   -->
-			<form method="post"
-				action="<%=request.getContextPath()%>/board/boardserach"
-				id="serachform" class="form-inline mt-2 mt-md-0">
+		<!--e두번쨰   -->
+		<div class="row" style="margin: auto; width: 1400px;">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<!--form 지워야함   -->
+				<form method="post"
+					action="<%=request.getContextPath()%>/board/boardserach"
+					id="serachform" class="form-inline mt-2 mt-md-0">
 
-				<div style="margin-left: 40px;">
+					<div style="margin-left: 40px;">
 
-					<ul id="searchlist" class="list-group "
-						style="width: 120px; display: none;">
-						<li class="list-group-item listli" style="position: relative">
-							<div style="position: absolute; bottom: 3px;"
-								onclick="choicesearch(1)"id="srtitle1">사진 검색</div>
-						</li>
-						<li class="list-group-item listli" style="position: relative">
-							<div style="position: absolute; bottom: 3px;"
-								onclick="choicesearch(2)"id="srtitle2">작성자 검색</div>
-						</li>
-						<li class="list-group-item listli" style="position: relative">
-							<div style="position: absolute; bottom: 3px;"
-								onclick="choicesearch(3)"id="srtitle3">제목 검색</div>
-						</li>
-						<li class="list-group-item listli" style="position: relative">
-							<div style="position: absolute; bottom: 3px;"
-								onclick="choicesearch(4)"id="srtitle4">내용 검색</div>
-						</li>
-						<li class="list-group-item listli" style="position: relative">
-							<div style="position: absolute; bottom: 3px;"
-								onclick="choicesearch(5)"id="srtitle5">전체 검색</div>
-						</li>
+						<ul id="searchlist" class="list-group "
+							style="width: 120px; display: none;">
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(1)" id="srtitle1">사진 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(2)" id="srtitle2">작성자 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(3)" id="srtitle3">제목 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(4)" id="srtitle4">내용 검색</div>
+							</li>
+							<li class="list-group-item listli" style="position: relative">
+								<div style="position: absolute; bottom: 3px;"
+									onclick="choicesearch(5)" id="srtitle5">전체 검색</div>
+							</li>
 
-					</ul>
+						</ul>
 
 
 
-					<div id="serachs" style="display: none;">
+						<div id="serachs" style="display: none;">
 
-						<input id="inputserach" class="form-control mr-sm-2" type="text"
-							name="search" placeholder="" aria-label="Search"
-							style="height: 31px; width: 170px;">
-						<button class="btn btn-outline-secondary my-2 my-sm-0"
-							type="submit"
-							style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
-						<input type="hidden" name="choice" id="sear"> <input
-							type="hidden" name="Alignment" value="board_idx"> <input
-							type="hidden" name="room"> <input type="hidden"
-							name="space">
+							<input id="inputserach" class="form-control mr-sm-2" type="text"
+								name="search" placeholder="" aria-label="Search"
+								style="height: 31px; width: 170px;">
+							<button class="btn btn-outline-secondary my-2 my-sm-0"
+								type="submit"
+								style="margin: auto; height: 31px; padding-bottom: 0px; padding-top: 0px;">Search</button>
+							<input type="hidden" name="choice" id="sear"> <input
+								type="hidden" name="Alignment" value="board_idx"> <input
+								type="hidden" name="room"> <input type="hidden"
+								name="space">
+
+						</div>
 
 					</div>
+				</form>
+			</div>
 
-				</div>
-			</form>
 		</div>
-	
-	</div>
-	<!--d여기까지  -->	
-	<div class="mb-3"></div>
-	
-	<!--세번째  -->
-	<div class="row" style="margin: auto; width: 1400px;">
-		<div class="col-md-8"></div>
-		<div class="col-md-4">
-			<ul class="nav">
-				<ul style="list-style: none;">
-					<li class="nav-item dropdown" style="text-decoration: none;">
-						<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
-						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> 검색 </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
-								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
-								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
-								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
-								검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
-								검색</a>
-							
-						</div>
-					</li>
+		<!--d여기까지  -->
+		<div class="mb-3"></div>
+
+		<!--세번째  -->
+		<div class="row" style="margin: auto; width: 1400px;">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<ul class="nav">
+					<ul style="list-style: none;">
+						<li class="nav-item dropdown" style="text-decoration: none;">
+							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
+							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> 검색 </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
+									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
+									검색</a>
+
+							</div>
+						</li>
+					</ul>
+
+					<c:if test="${user==null}">
+						<a class="btn btn-sm btn-outline-secondary"
+							href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
+						<a class="btn btn-sm btn-outline-secondary"
+							href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
+					</c:if>
+					<c:if test="${manager==null&&user==null}">
+						<a class="btn btn-sm btn-outline-secondary"
+							href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
+					</c:if>
+					<c:if test="${manager!=null}">
+						<a class="btn btn-sm btn-outline-secondary"
+							href="<%=request.getContextPath()%>/manager/main">관리자</a>
+					</c:if>
+					<c:if test="${user!=null}">
+						<a class="btn btn-sm btn-outline-secondary" id="logout"
+							style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
+
+
+						<li class="nav-item dropdown"
+							style="height: 31px; list-style: none;">
+							<!--<a class="nav-link">  --> <a
+							class="dropdown-toggle btn btn-sm btn-outline-secondary"
+							id="navbarDropdownMenuLink"
+							href="<%=request.getContextPath()%>/mypage/mp_main"
+							id="navbarDropdownMenuLink" style="text-decoration: none;"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								마이페이지 </a>
+
+							<div class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_main">모음</a> <a
+									class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
+								<a class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_myStory?member_idx=${member.member_idx}">스토리</a>
+								<a class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">좋아요</a>
+								<a class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_scrap?member_idx=${member.member_idx}">스크랩</a>
+								<a class="dropdown-item"
+									href="<%=request.getContextPath()%>/mypage/mp_myComment?member_idx=${member.member_idx}">댓글</a>
+							</div>
+						</li>
+
+					</c:if>
 				</ul>
-
-				<c:if test="${user==null}">
-					<a class="btn btn-sm btn-outline-secondary"
-						href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
-					<a class="btn btn-sm btn-outline-secondary"
-						href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
-				</c:if>
-				<c:if test="${manager==null&&user==null}">
-					<a class="btn btn-sm btn-outline-secondary"
-						href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
-				</c:if>
-				<c:if test="${manager!=null}">
-					<a class="btn btn-sm btn-outline-secondary"
-						href="<%=request.getContextPath()%>/manager/main">관리자</a>
-				</c:if>
-				<c:if test="${user!=null}">
-					<a class="btn btn-sm btn-outline-secondary" id="logout"
-						style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
-
-
-					<li class="nav-item dropdown"
-						style="height: 31px; list-style: none;">
-						<!--<a class="nav-link">  --> <a
-						class="dropdown-toggle btn btn-sm btn-outline-secondary"
-						id="navbarDropdownMenuLink"
-						href="<%=request.getContextPath()%>/mypage/mp_main"
-						id="navbarDropdownMenuLink" style="text-decoration: none;"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							마이페이지 </a>
-
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item"
-								href="<%=request.getContextPath()%>/mypage/mp_main">모음</a> <a
-								class="dropdown-item" href="#">사진</a> <a class="dropdown-item"
-								href="#">스토리</a> <a class="dropdown-item" href="#">좋아요</a> <a
-								class="dropdown-item" href="#">스크랩</a> <a class="dropdown-item"
-								href="#">댓글</a>
-						</div>
-					</li>
-
-				</c:if>
-			</ul>
+			</div>
 		</div>
+		<!--세번쨰 여기까지  -->
+
+
+	</header>
+
+
+	<!-- <div class="nav-scroller py-1 mb-2" -->
+	<div class="nav-scroller  "
+		style="background-color: #000000; border-bottom-color: #EAEAEA">
+		<nav class="nav d-flex justify-content-between"
+			style="width: 1100px; margin: auto;">
+			<!-- style="width: 1100px; margin: auto;" -->
+			<a class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">사진</a>
+			<a class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/furniture/furnitureRank">가구랭킹</a>
+			<a class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a> <a
+				class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/story/storyboardForm">스토리</a> <a
+				class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/manager/faqlist">FAQ</a> <a
+				class="p-2 text-muted" style="text-decoration: none;"
+				href="<%=request.getContextPath()%>/manager/noticelist?pagenum=1&contentnum=5">공지사항</a>
+		</nav>
+
 	</div>
-	<!--세번쨰 여기까지  -->
-	
-	
-</header>
+	<div class="mb-3"></div>
+	<div class="mb-3"></div>
 
 
-<!-- <div class="nav-scroller py-1 mb-2" -->
-<div class="nav-scroller  "
-	style="background-color: #000000; border-bottom-color: #EAEAEA">
-	<nav class="nav d-flex justify-content-between"
-		style="width: 1100px; margin: auto;">
-		<!-- style="width: 1100px; margin: auto;" -->
-		<a class="p-2 text-muted" style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">사진</a>
-		<a class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/furniture/furnitureRank">가구랭킹</a>
-		<a class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/board/boardFrom">글쓰기</a> <a
-			class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/story/storyboardForm">스토리</a> <a
-			class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/manager/faqlist">FAQ</a> <a
-			class="p-2 text-muted"style="text-decoration: none;"
-			href="<%=request.getContextPath()%>/manager/noticelist?pagenum=1&contentnum=5">공지사항</a>
-	</nav>
+	<main role="main" class="container">
+	<div class="row" style="margin-top: 30px">
 
-</div>
-<div class="mb-3"></div>
-<div class="mb-3"></div>
+		<jsp:include page="${page}" />
 
-
-<main role="main" class="container">
-<div class="row" style="margin-top: 30px">
-
-	<jsp:include page="${page}" />
-
-</div>
-</main>
+	</div>
+	</main>
 
 </body>
 </html>

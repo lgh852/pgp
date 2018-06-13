@@ -22,8 +22,7 @@
    <!--사이드바 Sb_scrap_service빈  -->
    <beans:bean id="Sb_scrap_service" class="p.g.p.service.Sb_scrap_service"/>
    
-   <beans:bean id="Mg_manage_service" class="p.g.p.service.Mg_manage_service"/>
-   
-   <beans:bean id="Mg_faq_service" class="p.g.p.service.Mg_faq_service"/>
+    <!--마이페이지 빈 -->
+      <beans:bean id="MypageService" class="p.g.p.service.MypageService"/>
    
    </beans:beans>

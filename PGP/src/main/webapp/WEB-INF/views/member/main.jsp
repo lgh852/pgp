@@ -118,27 +118,33 @@
                         <p class="card-text"><small class="text-muted">가구 정보</small></p>
                     </div>
                 </div>
+           
               <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> 
-                      <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/FAQ.PNG" alt="Card image cap">
+                     <a href="<%=request.getContextPath()%>/story/storyboardForm"> 
+                     <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/storyboard.png" alt="Card image cap"></a>
                     <div class="card-body">
-                        <h5 class="card-title">FQA</h5>
-                        <p class="card-text"><small class="text-muted">질문과답변</small></p>
-                    </div>
-                </div>
-              <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> 
-                      <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/FAQ.PNG" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">스토리</h5>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
              <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px">
-                       <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/FAQ.PNG" alt="Card image cap">
+                   <a href="<%=request.getContextPath()%>/manager/noticelist?pagenum=1&contentnum=5">
+                   <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/notice.png" alt="Card image cap"></a>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">공지사항</h5>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
+                   <div class="card rounded border-0 " style="margin-left: 50px;margin-right: 50px;margin-top: 50px"> 
+                     <a href="<%=request.getContextPath()%>/manager/faqlist"> 
+                     <img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/FAQ.PNG" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">FAQ</h5>
+                        <p class="card-text"><small class="text-muted">질문과답변</small></p>
+                    </div>
+                </div>
+           
+           
             </div>
 
 

@@ -74,31 +74,17 @@
 
 	<beans:bean id="space" class="p.g.p.model.Category_Space" />
 
-	<!-- 마이페이지 Mp_update_service 빈 -->
-	<beans:bean id="Mp_update_service" class="p.g.p.service.Mp_update_service" />
+
 
 	<!-- 마이페이지 Mp_file_service 빈 -->
 	<beans:bean id="Mp_file_service" class="p.g.p.service.Mp_file_service" />
 
-	<!-- 마이페이지 Mp_scrap_service 빈 -->
-	<beans:bean id="Mp_scrap_service" class="p.g.p.service.Mp_scrap_service" />
 
-	<!-- 마이페이지 Mp_myphoto_service 빈 -->
-	<beans:bean id="Mp_myphoto_service" class="p.g.p.service.Mp_myphoto_service" />
 
 	<!-- 관리자 ManagerService 빈 -->
 	<beans:bean id="ManagerService" class="p.g.p.service.ManagerService" />
 
-	<!-- 관리자 Mg_noticeInsert_service 빈 -->
-	<beans:bean id="Mg_noticeInsert_service" class="p.g.p.service.Mg_noticeInsert_service" />
-	<!-- Mp_myComment_service -->
-	<beans:bean id="comment" class="p.g.p.service.Mp_myComment_service" />
-	<!-- 관리자 Mg_noticeList_service 빈 -->
-	<beans:bean id="Mg_noticeList_service" class="p.g.p.service.Mg_noticeList_service" />
-
-	<!-- 관리자 Mg_noticeView_service 빈 -->
-	<beans:bean id="Mg_noticeView_service" class="p.g.p.service.Mg_noticeView_service" />
-
+	
 
    <context:component-scan base-package="p.g.p"/>
    
