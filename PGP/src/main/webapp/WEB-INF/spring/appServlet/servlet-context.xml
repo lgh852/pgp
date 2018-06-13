@@ -28,17 +28,17 @@
 
 	<context:component-scan base-package="p.g.p" />
 
-	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<!-- 식별자 -->
-		<beans:property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+	   <beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+      <!-- 식별자 -->
+      <beans:property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
 
-		  <beans:property name="jdbcUrl"
+        <beans:property name="jdbcUrl"
 
          value="jdbc:mysql://localhost/pgp?allowMultiQueries=true&amp;serverTimezone=UTC" />
-		<beans:property name="user" value="bit" />
+      <beans:property name="user" value="bit" />
 
-		<beans:property name="password" value="bit" />
-	</beans:bean>
+      <beans:property name="password" value="bit" />
+   </beans:bean>
 	<!--MyBatis&Spring 연동 -->
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -115,13 +115,14 @@
  -->
  
  	<!-- 메일 보내기 설정 -->
-	<context:component-scan base-package="com.bitcamp.view" />
+
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 
 		<beans:property name="host" value="smtp.gmail.com" />
+		 <beans:property name="port" value="587" />
 
-		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+
 
 		<beans:property name="username" value="dlrjsgmlv39@gmail.com" />
 
@@ -131,7 +132,7 @@
 
 		<beans:property name="javaMailProperties">
 			<beans:props>
-				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				
 				<beans:prop key="mail.smtp.auth">true</beans:prop>
 				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
 				<beans:prop key="mail.debug">true</beans:prop>

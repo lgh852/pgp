@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import p.g.p.model.Member_info;
-import p.g.p.service.MainPageService;
+
 import p.g.p.service.MemberService;
-import p.g.p.service.sha256;
 
 @Controller
 public class LoginController {
 	@Autowired
 	MemberService service;
-	@Autowired
-	MainPageService service2;
+	
 
 	@RequestMapping(value = "/member/loginform", method = RequestMethod.GET)
 	public String loginform(Model model) {
@@ -41,31 +39,28 @@ public class LoginController {
 	public String login(@RequestParam("member_id") String id, @RequestParam("member_pw") String pw, Model model,
 			HttpSession session) {
 		
-		sha256 secret = new sha256();
+
 		
-		System.out.println("!!!!!!! :::: --> "+pw.length());
 		
-		pw = secret.encrypt(pw); 
-		// 새로 생성하니까 같은 비밀번호라도 값이 다르다...
-		System.out.println("왜 널이야 !!? : " +pw);
-		/* String page = "member/login.jsp"; */
-		String page = "member/main.jsp";
+		pw = service.sha256(pw); 
+		String page ="";
 		String view = "home";	
+		
 		Member_info member = service.loginService(id, pw);
 		
 		
 		if (member != null) {
 			// null아니면 성공
-				
+			page = "member/main.jsp";
 			session.setAttribute("user", member);
-			model.addAttribute("msg", "로그인 성공");
-			System.out.println("지금은!? : " + member);
+			model.addAttribute("page", page);
 		} else {
-			System.out.println("시류ㅐ실패");
-			model.addAttribute("msg", "로그인실패");
+			view = "redirect:/member/loginform";
+			model.addAttribute("longinCheck","failure");
+	
 		}
 
-		model.addAttribute("page", page);
+		
 		return view;
 	}
 
@@ -83,7 +78,8 @@ public class LoginController {
 
 		} else {
 			// 회원가입 처리 디비 저장
-
+	
+			
 			session.setAttribute("user", member);
 			ck = "y";
 
@@ -148,5 +144,68 @@ public class LoginController {
 		}
 
 		return ck;
+	}
+	
+	
+	@RequestMapping(value="/member/mypage3", method=RequestMethod.POST)
+	public String pwChk(Member_info member, Model model, HttpSession session) {
+
+		String view = "";
+		String msg = "";
+		
+		if(member.getMember_name()!=null&&member.getMember_id()!=null&&member.getMember_phone()!=null) {
+			
+			member = service.pwChk(member); // 임시 비밀번호 생성
+			
+		if(member==null) {
+			view = "/member/memberFail";
+			msg = "일치하는 비밀번호가 없습니다";
+			
+		}else {
+			
+			view = "member/mypage3";
+			msg = "임시 비밀번호가 발송되었습니다";
+		}
+		
+		}else {
+			
+			view = "/member/memberFail";
+			msg = "일치하는 비밀번호가 없습니다";
+			//실패
+		}
+		model.addAttribute("msg",msg);
+	
+		
+		return view; 
+	}
+	
+	@RequestMapping(value="/member/pwchk", method=RequestMethod.GET)
+	public String chkPw() {
+		
+		return "member/pwchk";
+		
+	}
+	
+	@RequestMapping(value = "/member/idchk", method = RequestMethod.GET)
+	public String chkId() {
+
+		return "member/idchk";
+	}
+
+	
+	@RequestMapping(value="/member/mypage2", method = RequestMethod.POST)
+	public String idChk(Model model,Member_info member) {
+
+	
+		String member_id= service.idchk(member);
+
+		if(member_id!=null) {
+			model.addAttribute("member_id", member_id);	
+		}else {
+			//실패 햇을시 
+		}
+		
+		
+		return "member/mypage2";
 	}
 }

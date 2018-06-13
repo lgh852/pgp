@@ -145,11 +145,7 @@
 
 </div>
 </div>
-
- href="<%=request.getContextPath()%>
-
-
-
+<input type="hidden" value="${longinCheck}" class="longinCheck">
 
 
 
@@ -196,6 +192,17 @@
 </form> --%>
 
 <script>
+$(document).ready(function(){
+	
+	var check = ('.longinCheck').val();
+	
+	if(check.trim().length<0){
+		alert('아이디와 비밀번호가 틀렸습니다 ')
+	}
+	
+})
+
+
 function memberidfind() {
 	
 	window.open('/p/member/idchk', '아이디찾기',
@@ -203,7 +210,6 @@ function memberidfind() {
 			left = '500', top = '500');
 }
 
-memberpwfind
 function memberpwfind() {
 	
 	window.open('/p/member/pwchk', '비밀번호찾기',
