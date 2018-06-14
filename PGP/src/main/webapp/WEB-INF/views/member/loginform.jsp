@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<style>
+
+</style>
 <script>
 
 	(function(d, s, id) {
@@ -140,69 +143,28 @@
 
 <div class="my-3 p-3 bg-white rounded box-shadow" style="margin: auto">
 	<h6 class="border-bottom border-gray pb-2 mb-0">SNS계정으로 간편 로그인/회원가입</h6>
-	<div class="media text-muted pt-3">
-		<!--네이버  -->
 	
-		<div id="naverIdLogin"></div>
+		<div class="media text-muted pt-3">
+		<div id="naverIdLogin" style="width: 300px;height: 49px; background-image: url('/p/resources/images/naverbtn.PNG'); background-size: cover; background-position-y:-8px; border-radius: 5px 5px 5px 5px" ><img src="<%=request.getContextPath()%>" width="45" height="300px"></div>
 		<!--페이스북 -->
+		</div>
 		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
+			<div class="media text-muted pt-3">
+			
 		<a href="javascript:void(0);" onclick="fbLoginAction();"> <img
-			src="<%=request.getContextPath()%>/resources/images/facebook.png"
-			width="45px" height="45px" style="margin-left:5px;margin-right:5px">
+			src="<%=request.getContextPath()%>/resources/images/facebookbtn.PNG"
+			 width="300px" style="margin-left:5px;margin-right:5px;border-radius: 5px 5px 5px 5px;margin-left: 0px">
 		</a>
-		<!--카카오  -->
-		<%-- 	<img
-			src="<%=request.getContextPath()%>/resources/images/kakao.png"width="45px" height="45px"> --%>
-<a id="kakao-login-btn"></a> <a
-			href="http://developers.kakao.com/logout"></a>
+		</div>
+		
+		<div class="media text-muted pt-3">
+			
+<div id="kakao-login-btn"></div> 
 
 </div>
 </div>
 <input type="hidden" value="${longinCheck}" class="longinCheck">
 
-
-
-
-
-
-
-
-
-
-<%-- <hr class="featurette-divider" style="width: 100%">
-
-
-<div class="row" style="margin: 0 0 20px 100px;">
-	<a href="javascript:;"><img id="facebookLoginBtn"
-		src="/resources/img/account_facebook_login_button.png"
-		style="width: 200px; height: auto;" alt="페이스북아이디로로그인"></a>
-</div>
-
-<form action="<%=request.getContextPath()%>/member/loginform"
-	method="post">
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-			<span class="input-group-text" id="inputGroup-sizing-default">id</span>
-		</div>
-		<input type="text" class="form-control" aria-label="Default"
-			aria-describedby="inputGroup-sizing-default" name="member_id">
-	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-			<span class="input-group-text" id="inputGroup-sizing-default">password</span>
-		</div>
-		<input type="text" class="form-control" aria-label="Default"
-			aria-describedby="inputGroup-sizing-default" name="member_pw">
-	</div>
-	<input type="submit" value="로그인"> <a id="kakao-login-btn"></a>
-	<a href="http://developers.kakao.com/logout"></a>
-
-	<div id="naverIdLogin"></div>
-	<div id="fb-root"></div>
-	<a href="javascript:void(0);" onclick="fbLoginAction();"
-		style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none">
-		FACEBOOK LOGIN</a>
-</form> --%>
 
 <script>
 $(document).ready(function(){
@@ -232,3 +194,5 @@ function memberpwfind() {
 
 
 </script>
+
+

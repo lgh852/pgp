@@ -64,8 +64,13 @@ $(document).ready(function() {
       fail : function(err) {
          alert(JSON.stringify(err));
       }
-   });
+      
+      
+  
+      
+      
 
+   });
         	
         	
         	   var naverLogin = new naver.LoginWithNaverId(
@@ -76,8 +81,7 @@ $(document).ready(function() {
         	               loginButton : {
         	                  color : "green",
         	                  type : 1,
-        	                  height : 45,
-        	                  width:300
+        	        
         	                
         	              }
         	            /* 로그인 버튼의 타입을 지정  */

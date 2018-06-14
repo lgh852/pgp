@@ -34,7 +34,7 @@
 
 <script src="<%=request.getContextPath()%>/resources/js/members23.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/kakao31.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storylike55.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport6.js"></script>
@@ -197,67 +197,65 @@ text-align: center;
 
 		<!--세번째  -->
 		<div class="row" style="margin: auto; width: 1400px;">
-			<div class="col-md-8"></div>
-			<div class="col-md-4">
-				
-						
-							<a class="dropdown-toggle atag "
-							href="#" id="navbarDropdown" style ="text-decoration: none;"role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> 검색 </a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
-									검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
-									검색</a>
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+         <ul class="nav">
+            <ul style="list-style: none;">
+               <li class="nav-item dropdown " style="text-decoration: none;">
+                  <a class="dropdown-toggle btn btn-link  atag"
+                  href="#" id="navbarDropdown" role="button"  style ="text-decoration:none"data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"> 검색 </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
+                        검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(2)">작성자
+                        검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(3)">제목
+                        검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(4)">내용
+                        검색</a> <a class="dropdown-item" href="#" onclick="choicesearch(5)">전체
+                        검색</a>
+                     
+                  </div>
+               </li>
+            </ul>
 
-							</div>
-				
-					<c:if test="${user==null}">
-						<a class="btn btn-link atag" style ="text-decoration: none;"
-							href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
-						<a class="btn btn-link atag"
-							href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
-					</c:if>
-					<c:if test="${manager==null&&user==null}">
-						<a class="btn btn-link atag" style ="text-decoration: none;"
-							href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
-					</c:if>
-					<c:if test="${manager!=null}">
-						<a class="btn btn-link atag" style ="text-decoration: none;"
-							href="<%=request.getContextPath()%>/manager/main">관리자</a>
-					</c:if>
-					<c:if test="${user!=null}">
-						<a class="btn btn-link atag" id="logout" style ="text-decoration: none;"
-							style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
+            <c:if test="${user==null}">
+               <a class="btn btn-link atag" style ="text-decoration:none"
+                  href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
+                  
+            <a class="btn btn-link atag"  style ="text-decoration:none" href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
+            </c:if>
+            <c:if test="${manager==null&&user==null}">
+               <a class="btn btn-link atag" style ="text-decoration:none"
+                  href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
+            </c:if>
+            <c:if test="${manager!=null}">
+               <a class="btn btn-link atag" style ="text-decoration:none"
+                  href="<%=request.getContextPath()%>/manager/main">관리자</a>
+            </c:if>
+            <c:if test="${user!=null}">
+               <a class="btn btn-link atag" style ="text-decoration:none" id="logout"
+                  style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
 
 
-					
-							<!--<a class="nav-link">  --> <a
-							class="dropdown-toggle bbtn-link atag" style ="text-decoration: none;"
-							id="navbarDropdownMenuLink"
-							href="<%=request.getContextPath()%>/mypage/mp_main"
-							id="navbarDropdownMenuLink" style="text-decoration: none;"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								마이페이지 </a>
+               <li class="nav-item dropdown"
+                  style="height: 31px; list-style: none;">
+                  <!--<a class="nav-link">  --> <a
+                  class="dropdown-toggle btn btn-link atag"
+                  id="navbarDropdownMenuLink"
+                  href="<%=request.getContextPath()%>/mypage/mp_main"
+                  id="navbarDropdownMenuLink" style="text-decoration: none;"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     마이페이지 </a>
 
-							<div class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_main">모음</a> <a
-									class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_myphoto?member_idx=${member.member_idx}">사진</a>
-								<a class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_myStory?member_idx=${member.member_idx}">스토리</a>
-								<a class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_myLike?member_idx=${member.member_idx}">좋아요</a>
-								<a class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_scrap?member_idx=${member.member_idx}">스크랩</a>
-								<a class="dropdown-item"
-									href="<%=request.getContextPath()%>/mypage/mp_myComment?member_idx=${member.member_idx}">댓글</a>
-							</div>
-			
+                  <div class="dropdown-menu"
+                     aria-labelledby="navbarDropdownMenuLink">
+                     <a class="dropdown-item"
+                        href="<%=request.getContextPath()%>/mypage/mp_main">모음</a> <a
+                        class="dropdown-item" href="#">사진</a> <a class="dropdown-item"
+                        href="#">스토리</a> <a class="dropdown-item" href="#">좋아요</a> <a
+                        class="dropdown-item" href="#">스크랩</a> <a class="dropdown-item"
+                        href="#">댓글</a>
+                  </div>
+               </li>
 
 					</c:if>
 			

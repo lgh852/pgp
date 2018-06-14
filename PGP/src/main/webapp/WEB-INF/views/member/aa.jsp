@@ -35,8 +35,7 @@
 				callbackHandle : true,
 				loginButton : {
 					color : "green",
-					type : 5,
-					height : 45,
+					type : 1,
 					  width:300
 				}
 			/* 로그인 버튼의 타입을 지정  */

@@ -3,14 +3,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="container">
-	<div class="row" style="text-align: center;">
+	<div class="row border-bottom border-top"  style="text-align: center;">
 		<div class="col-sm">
-			<div class="dropdown">
+			<div class="dropdown border-right">
 				<button class="btn dropdown-toggle"
 					style="background-color: white; width: 150px;" type="button"
 					id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<p>정렬</p>
+					<p style="font-size: 20px;">정렬</p>
 					<span> <c:choose>
 							<c:when test="${Alignment =='board_idx'}">
                     최신순
@@ -43,7 +43,7 @@
 				style="background-color: white; width: 150px;" type="button"
 				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false">
-				<p>공간</p>
+				<p style="font-size: 20px;"> 공간</p>
 				<span style="text-align: center; color: black; font-weight: 300px;">
 					<c:choose>
 						<c:when test="${room=='1'}">
@@ -161,12 +161,12 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-sm">
-			<button class="btn dropdown-toggle"
+		<div class="col-sm border-left">
+			<button class="btn dropdown-toggle "
 				style="background-color: white; width: 150px;" type="button"
 				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false">
-				<p>평수</p>
+				<p style="font-size: 20px;">평수</p>
 				<span style="text-align: center; color: black;"> <c:choose>
 
 						<c:when test="${space=='1'}">
@@ -230,18 +230,18 @@
 
         <c:forEach var="list" items="${list}" varStatus="status">
 
-    <div class="col-md-3 listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  style="height: 270px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
+    <div class="col-md-3 listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 98%;"> <img class="card-img-top"  style="height: 270px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
-       
-	<div class="row">
+       </div>
+	<div class="row ">
 
   <div class="col-8"><img src="<%=request.getContextPath()%>/resources/images/scrap.png" height="20px" alt="..." class="rounded"><span id="scrapCnts${status.count}">${list.board_scrap}</span><img src="<%=request.getContextPath()%>/resources/images/heart.png" height="20px" alt="..." class="rounded"><span id="likecnt${status.count}">${list.board_like}</span><img src="<%=request.getContextPath()%>/resources/images/mesage.png" height="20px" alt="..." class="rounded"><span> ${list.board_comment} </span></div>
 
   <div class="col-4"><small>조회수</small><span id="f">${list.board_cnt}</span></div>
 
-        </div></div></a>
+        </div></a>
         
-  <div class="card-body border-right border-bottom border-left" style="height: 150px ; width:98%; padding-left: 0px; padding-right: 0px">
+  <div class="card-body border-right border-bottom border-left" style="height: 150px ; width:98%; padding-left: 0px; padding-right: 0px; ">
 
    <div class="row no-gutters">
        
