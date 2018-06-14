@@ -140,7 +140,7 @@
 							</h5>
 						</div>
 
-						<div class="col-6 col-md-4" style="height: 35px; margin-left:35px;">
+						<div class="col-6 col-md-4" style="height: 35px; width:40px;">
 							<c:if test="${list.likeck==null}">
 
 								<a onclick="liclick(${status.count})"> <img

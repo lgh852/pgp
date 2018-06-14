@@ -108,11 +108,25 @@
 			class="sr-only">Password</label> <input type="password"
 			id="inputPassword" class="form-control" placeholder="Password"
 			name="member_pw" required="">
+		
+		<div class="find" style="margin-top:20px;">
 		<div class="checkbox mb-3">
-			<label> <input type="checkbox" value="remember-me">
-				Remember me
-			</label>
+			
+			<div class="container">
+			 <div class="row">
+			  <div class="col">
+      <a href="#" onclick="memberidfind()" style="color:black;">아이디찾기</a>
+    </div>
+    <div class="col">
+       <a href="#" onclick="memberpwfind()" style="color:black;">비밀번호찾기</a>
+    </div>
+ 
+  </div>
+       </div>
+		
 		</div>
+		</div>
+		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 			in</button>
 		<p class="mt-5 mb-3 text-muted">
@@ -125,11 +139,10 @@
 
 
 <div class="my-3 p-3 bg-white rounded box-shadow" style="margin: auto">
-	<h6 class="border-bottom border-gray pb-2 mb-0">다른 계정으로 연동하기</h6>
+	<h6 class="border-bottom border-gray pb-2 mb-0">SNS계정으로 간편 로그인/회원가입</h6>
 	<div class="media text-muted pt-3">
 		<!--네이버  -->
-		<button class="btn btn-lg btn-primary btn-block" onclick="memberidfind()">아이디 찾기</button>
-	<button class="btn btn-lg btn-primary btn-block" onclick="memberpwfind()">비밀번호 찾기</button>
+	
 		<div id="naverIdLogin"></div>
 		<!--페이스북 -->
 		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->

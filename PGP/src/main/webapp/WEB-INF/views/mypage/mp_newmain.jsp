@@ -186,13 +186,14 @@
                  <div class="sidebar_topmargin" style="margin-top: 33px;">
           
           <c:if test="${scrapLatestPhoto !=null}">
-          <div class="p-3 mb-3 bg-light rounded" style="height:150px;">
+          <div class="p-3 mb-3 bg-light rounded" style="height:100px;">
               
               <div class="scrapPhoto" >
               <a href="<%=request.getContextPath() %>/mypage/mp_scrap?member_id=${member.member_id}">
-              <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${scrapLatestPhoto}" class="img-fluid" alt="Responsive image" style="width:100%; height:100px; border-radius: 5px">
-            <div class="scrapbook" style="position: absolute; top:20%; margin-left: 55px; text-aligh:center; font-size:38px;  "> 
-                <span style="color: white">스크랩북</span></div>
+              <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${scrapLatestPhoto}" class="img-fluid" alt="Responsive image" 
+              style="width:100%; height:100px; border-radius: 5px;">
+            <div class="scrapbook" style="position: absolute; top:18%; margin-left: 65px; text-aligh:center; font-size:45px;  "> 
+                <span style="color:white;">스크랩북</span></div>
                 </a>
               </div>
               
@@ -226,8 +227,9 @@
             
             <div class="likePhoto">
            <a href="<%=request.getContextPath() %>/mypage/mp_myLike">
-           <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${likeLatestPhoto}" class="img-fluid" alt="Responsive image" style="width:100%; height:100px; border-radius: 5px">
-            <div class="scrapbook" style="position: absolute; top:62%; margin-left: 70px; text-aligh:center; font-size:38px;  "> 
+           <img src="<%=request.getContextPath()%>/resources/BoardPhoto/${likeLatestPhoto}" class="img-fluid" alt="Responsive image" 
+           style="width:100%; height:100px; border-radius: 5px;">
+            <div class="scrapbook" style="position: absolute; top:47%; margin-left: 100px; text-aligh:center; font-size:45px;  "> 
                 <span style="color: white">좋아요</span></div>
                 </a>
                      </div>

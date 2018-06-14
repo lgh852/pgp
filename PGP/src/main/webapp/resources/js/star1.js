@@ -23,9 +23,9 @@ $(document)
                               
                               var scrapbookcheck;
                               
-                              if( $("#scrap_book").text() != null){
-                            	 var scrapbookcheck = $("#scrap_book").text();
-                              }
+                              
+                              var scrapbookcheck = $("#scrap_book").text();
+                              
                           
                              
                               
@@ -69,17 +69,16 @@ $(document)
                                              alert('실패ㅠㅠㅠㅠㅠㅠㅠ');
                                           }
                                           
-                                          if(scrapbookcheck =='스크랩북'){
+                                        
                                         	  
-                                        	  alert('if문에는 들어오나?');
-                                        	  
+                                        	 
                                         	 $('.scrapemtyimage').append('<img class="card-img-top" alt="스크랩 폴더가 비어있어요!" id="scrapemtyimage("'+c+'")" style="height: 225px; width: 100%; display: block;" src="/p/resources/images/empty-glass.png">' )
                                         	 $('.scarpfoldernameadd').append('<a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name='+scrapFolderName+'">'+'<span class="name" style="color:black">'+scrapFolderName+'</span></a>')
                                         	 
-                                        	 alert('잘모르겠당');
+                                        
                                         	
                                         	 
-                                         }
+                                        
                                           $("#scrapPopup").hide();
                                        }
                                     });

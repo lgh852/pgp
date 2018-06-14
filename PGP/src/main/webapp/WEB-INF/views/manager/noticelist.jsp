@@ -88,7 +88,7 @@ function page(idx){
 
 <!-- 공지사항 페이지 처리 -->
 
-<div class="faq_footer" >
+<div class="faq_footer" style="margin-top:30px; margin-left:470px;">
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
@@ -111,8 +111,6 @@ function page(idx){
     
   </ul>
 </nav>
-
-
 
 
 

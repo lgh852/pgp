@@ -145,7 +145,8 @@
               
            <div class="scarpfoldername" style="font-size:60px; position: absolute; top: 60px; left:100px; font-color:white;">
              
-            <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList[status.index].scrap_name}">
+            <a href="<%=request.getContextPath()%>/sidebar/scrapdetail?scrap_name=${scrapNameList[status.index].scrap_name}" 
+            style="text-decoration: none;">
             
                 <span class="name" style="color:white">${scrapNameList[status.index].scrap_name}</span></a>
               
