@@ -15,6 +15,17 @@ select count(*) from notice;
 
 </select>
 
+<select id="faqtestcount" resultType="int">
+
+select count(*) from pgp.faq;
+
+</select>
+
+<select id="faqlist" resultType="p.g.p.model.Faq" parameterType="p.g.p.model.PageMaker">
+
+select * from pgp.faq order by faq_idx desc limit #{pageChecknum},#{contentnum};
+
+</select>
 
 
 </mapper>

@@ -3,6 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function page(idx){
+	
+	var pagenum = idx;
+	location.href="/p/manager/faqlist?pagenum="+pagenum+"&contentnum=5";
+	
+}
+
+</script>
+
+
 <!--FAQ 상위 섹션-->
 
 
@@ -85,7 +100,35 @@
 	</c:forEach>
 
 
+<!-- FAQ 페이지 처리 -->
 
+<div class="faq_footer" style="margin-top:30px; margin-left:470px;">
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  
+    <c:if test="${pagenum.prev}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getStartPage()-1});">Previous</a></li>
+    </c:if>
+    
+    
+    <c:forEach begin="${pagenum.getStartPage()}" end="${pagenum.getEndPage()}" var="idx">
+    
+    <li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
+   
+    </c:forEach> 
+    
+    
+    <c:if test="${pagenum.next}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getEndPage()+1});">Next</a></li>
+    </c:if>
+    
+  </ul>
+</nav>
+
+
+
+</div>
 
 
 
