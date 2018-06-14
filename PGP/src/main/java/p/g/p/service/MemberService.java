@@ -257,22 +257,31 @@ public Member_info pwChk(Member_info member) {
 			if(member.getMember_pw()!=null&&member_pw!=null) {
 				member.setMember_pw(member_pw);
 				
-				int result = dao.updateChgPw(member);
 				//임시비밀번호가 발급 되었습니다 
-				if(result>0) {
-					
 					
 					int resultmail = sendMailAttach(member);
 					
-					if(resultmail<0) {
+					if(resultmail>0) {
+						
+						member.setMember_pw(sha256(member.getMember_pw()));
+						int result = dao.updateChgPw(member);
+						
+						if(result<0) {
 							member = null;
+						}else {
+							
+						}
+							
+							
+							
+					}else {
+						member = null;
+					
+						
+						
 					}
 
-				}else {
-					
-					member = null;
-					
-				}
+			
 				
 			}else {
 				member = null;

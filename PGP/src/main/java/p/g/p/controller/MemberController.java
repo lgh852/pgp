@@ -76,52 +76,6 @@ public class MemberController {
 		return ck;
 	}
 
-	@RequestMapping(value="/member/change_pw",method = RequestMethod.GET)
-	public String change_pwfrom() {
-
-		
-		return "member/change_pw";
-	}
-	@RequestMapping(value="/member/change_pw",method = RequestMethod.POST)
-	public String change_pw(Model model,Member_info member,@RequestParam("member_pw1") String member_pw1,@RequestParam("member_pw2") String member_pw2) {
-		String view = "member/change_pwcheck";
-		String msg = "";
-		String member_pw = member.getMember_pw();
-		System.out.println(member);
-		member = service.loginService(member.getMember_id(),member.getMember_pw());
-		
-		System.out.println(member);
-		if(member.getMember_name() !=null) {
-			member.setMember_pw(member_pw);
-			if(member_pw1.equals(member_pw2)) {
-				member.setMember_pw(member_pw1);
-				//일치 업데이트 실행
-				int result = service.change_pw(member);
-				if(result>0) {
-					//성공
-					msg = "성공";
-				}else {
-					//실패
-					msg = "";
-				}
-			
-				
-			}else {
-				//변경할 비밀번호
-				//비밀번호 불일치 
-				msg = "";
-			}
-			//아이디 불일치
-			//성공
-			
-		}else {
-			msg = "";
-			//실패 페이지
-		}
-		model.addAttribute("msg",msg);
-		
-		return view;
-	}
 	
 
 }
