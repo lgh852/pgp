@@ -125,6 +125,8 @@ ul.list-group {
 
 <body class="bg-light">
 
+
+
 	<div class="container">
 		<!-- 	<div class="py-5 text-center"></div> -->
 
@@ -239,24 +241,16 @@ function tagsclick(e) {
 	max-width: 100%;
 }
 </style>
-			<div class="row featurette" style="width: 100%; margin: auto;">
+
+
+<div class="row featurette" style="width: 100%; margin: auto;">
 				<div class="col-md-7">
-					<h2 class="featurette-heading" style="text-align: center">[
+					<h2 class="featurette-heading" style="text-align: center; margin-top:35px;">[
 						${board.board_title} ]</h2>
-					<div id style="text-align: right">ID:${boardMemberinfo.member_id}</div>
-					&nbsp &nbsp &nbsp
-					<div style="text-align: right">
-						<span class="text-muted"> Date: <fmt:formatDate
-								pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${board.board_regdate}" /></span>
-					</div>
-
-
-					<p class="lead">${board.board_contents}</p>
-					<div style="font-weight: bold; text-align: right;">조회수 :
-						${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</div>
-
+				
+				
 					<div class="imgcenter"
-						style="border: solid 15px #c39d331f; border-radius: 20px;">
+						style="border: solid 15px #c39d331f; border-radius: 20px; margin-top:40px;">
 						<div id="imgbox" class="border"
 							style="max-width: 100%; width: 602px; margin: 0 auto;">
 							<img width="100%" height="100%" id="imgtagbox"
@@ -308,6 +302,24 @@ function tagsclick(e) {
 							</div>
 						</c:forEach>
 					</div>
+					
+					
+									
+					
+						
+						<!-- 글 내용하고 부가적인  -->
+						
+						<div class="contents" style="border: solid #0000001a; border-radius:10px; height:100px; margin-top:20px;">
+					
+								<div class="board_contents" style="text-align:center; margin-top:20px;">
+								${board.board_contents}</div>
+								
+									<div style=" text-align: right; padding-right:30px; ">
+									<p style="color:#848484; font-size:12px;">조회수 : ${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</p></div>
+						
+					</div>
+					
+					
 					<!--사진까지 ^^^^ -->
 					<div class="mb-3"></div>
 					<div>
@@ -396,7 +408,7 @@ function tagsclick(e) {
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="border: solid #0000001a; border-radius: 20px; margin-top: 120px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top: 200px;">
+						style="border: solid #0000001a; border-radius: 20px;  padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top:120px; ">
 						<a
 							href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}">
 							<img class="rounded-circle"
@@ -406,7 +418,7 @@ function tagsclick(e) {
 								${boardMemberinfo.member_id}</h2>
 						</a>
 
-						<div style="text-align: center;">
+						<div style="text-align: center; margin-top:25px;">
 
 
 
@@ -505,7 +517,7 @@ function tagsclick(e) {
 						</div>
 
 						<p>
-						<div class="buttons" style="z-index: 30">
+						<div class="buttons" style="z-index: 30 margin-top:25px;">
 							<div
 								style="height: 60px; width: 100%; text-align: center; margin-top: 20px;">
 
@@ -558,8 +570,14 @@ function tagsclick(e) {
 								</div>
 							</div>
 						</div>
+						
+						
+						<!--사이드바 등록한 날짜 -->
 
-
+	                <div style="text-align:center;">
+						<span class="text-dark"> Date: <fmt:formatDate
+								pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${board.board_regdate}" /></span>
+					</div>
 
 
 
@@ -575,7 +593,7 @@ function tagsclick(e) {
 									</div>
 									<div class="modal-body">
 										<ul class="list-group scrapList" id="scrapli"
-											style="list-style: none;'">
+											style="list-style:none;">
 
 											<c:forEach var="scrapNameList" items="${scrapNameList}"
 												varStatus="status">
@@ -620,7 +638,7 @@ function tagsclick(e) {
 						</div>
 
 						<div class="sharing_info">
-							<div class="label" style="padding-top: 10px;">
+							<div class="label" style="padding-top: 25px;">
 								공유하기 <img
 									alt="<%=request.getContextPath()%>/resources/images/share2.png"
 									src="<%=request.getContextPath()%>/resources/images/share2.png"

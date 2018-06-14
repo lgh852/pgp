@@ -140,8 +140,13 @@
 							</h5>
 						</div>
 
-						<div class="col-6 col-md-4" style="height: 35px; width:40px;">
-							<c:if test="${list.likeck==null}">
+						<div class="col-6 col-md-4" style="height: 35px; ">
+						
+						<div class="container">
+  <div class="row">
+    
+    <div class="col">
+     		<c:if test="${list.likeck==null}">
 
 								<a onclick="liclick(${status.count})"> <img
 									src="<%=request.getContextPath()%>/resources/images/heart.png"
@@ -157,7 +162,10 @@
 									height="25px" alt="..." class="rounded heart${status.count}"></a>
 
 							</c:if>
-
+    </div>
+  </div>
+					
+</div>
 
 						</div>
 					</div>
