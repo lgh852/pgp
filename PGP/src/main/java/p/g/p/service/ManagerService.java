@@ -108,6 +108,16 @@ public class ManagerService {
 	      return re;
 	   }
 	   
+	   public List<Faq> faqList(PageMaker pagemaker) {
+		   
+		   dao2 = sqlSessionTemplate.getMapper(PageMakerDao.class);
+
+			List<Faq> list = dao2.faqlist(pagemaker);
+
+	        return list;
+		
+		}
+	   
 	   //////////////////////////////////////////////////////////////////////////////Notice 관련
 	   
 	   public int noticeInsert(Notice notice) {
@@ -183,6 +193,24 @@ public class ManagerService {
 			
 			return r;
 		}
+
+		public int faqtestcount() {
+			
+			dao2 = sqlSessionTemplate.getMapper(PageMakerDao.class);
+
+			int faqListCount = dao2.faqtestcount();
+
+			if (faqListCount > 0) {
+
+			} else {
+				faqListCount = 0;
+			}
+
+			return faqListCount;
+			
+		}
+
+		
 
 	   
 	   

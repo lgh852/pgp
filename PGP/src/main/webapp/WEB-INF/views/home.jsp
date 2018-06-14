@@ -282,7 +282,7 @@ text-align: center;
 				class="p-2 text-muted" style="text-decoration: none;"
 				href="<%=request.getContextPath()%>/story/storyboardForm">스토리</a> <a
 				class="p-2 text-muted" style="text-decoration: none;"
-				href="<%=request.getContextPath()%>/manager/faqlist">FAQ</a> <a
+				href="<%=request.getContextPath()%>/manager/faqlist?pagenum=1&contentnum=5">FAQ</a> <a
 				class="p-2 text-muted" style="text-decoration: none;"
 				href="<%=request.getContextPath()%>/manager/noticelist?pagenum=1&contentnum=5">공지사항</a>
 		</nav>
