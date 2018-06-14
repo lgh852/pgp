@@ -148,29 +148,30 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/member/mypage3", method=RequestMethod.POST)
-	public String pwChk(Member_info member, Model model, HttpSession session) {
+	public String pwChk(Member_info member, Model model, HttpSession session, @RequestParam("phone1") String phone1,
+			@RequestParam("phone2") String phone2, @RequestParam("phone3") String phone3) {
 
 		String view = "";
 		String msg = "";
-		
+		member.setMember_phone(phone1 + phone2 + phone3);
 		if(member.getMember_name()!=null&&member.getMember_id()!=null&&member.getMember_phone()!=null) {
 			
 			member = service.pwChk(member); // 임시 비밀번호 생성
 			
 		if(member==null) {
 			view = "/member/memberFail";
-			msg = "일치하는 비밀번호가 없습니다";
+			msg = "일치하는 비밀번호가 없습니다.";
 			
 		}else {
 			
-			view = "member/mypage3";
-			msg = "임시 비밀번호가 발송되었습니다";
+			view = "/member/mypage3";
+			msg = "임시 비밀번호가 발송되었습니다.";
 		}
 		
 		}else {
 			
 			view = "/member/memberFail";
-			msg = "일치하는 비밀번호가 없습니다";
+			msg = "일치하는 비밀번호가 없습니다.";
 			//실패
 		}
 		model.addAttribute("msg",msg);

@@ -188,7 +188,7 @@ function memberidfind() {
 function memberpwfind() {
 	
 	window.open('/p/member/pwchk', '비밀번호찾기',
-			'width=600px , height=600', '_blank',
+			'width=620px , height=670px', '_blank',
 			left = '500', top = '500');
 }
 
