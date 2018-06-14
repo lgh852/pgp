@@ -106,6 +106,16 @@ div>nav>a {
 	/* font-size: 25px; */
 	
 }
+.atag{
+
+text-decoration:none;
+
+color:black;
+
+text-align: center;
+}
+
+
 </style>
 </head>
 <body style="padding-top: 0px;">
@@ -116,7 +126,7 @@ div>nav>a {
 			<div class="col-4 text-center">
 				<a class="blog-header-logo text-dark" id="homeName"
 					href="<%=request.getContextPath()%>/"
-					style="text-decoration: none; font-size: 50px; font-weight: 700; color: black; font-family: 'Gamja Flower', cursive;">
+					style="text-decoration: none; font-size: 50px; width:30%; font-weight: 700; color: black; font-family: 'Gamja Flower', cursive;">
 					느그집</a>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
@@ -189,11 +199,10 @@ div>nav>a {
 		<div class="row" style="margin: auto; width: 1400px;">
 			<div class="col-md-8"></div>
 			<div class="col-md-4">
-				<ul class="nav">
-					<ul style="list-style: none;">
-						<li class="nav-item dropdown" style="text-decoration: none;">
-							<a class="dropdown-toggle btn btn-sm btn-outline-secondary"
-							href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				
+						
+							<a class="dropdown-toggle atag "
+							href="#" id="navbarDropdown" style ="text-decoration: none;"role="button" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"> 검색 </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#" onclick="choicesearch(1)">사진
@@ -204,32 +213,29 @@ div>nav>a {
 									검색</a>
 
 							</div>
-						</li>
-					</ul>
-
+				
 					<c:if test="${user==null}">
-						<a class="btn btn-sm btn-outline-secondary"
+						<a class="btn btn-link atag" style ="text-decoration: none;"
 							href="<%=request.getContextPath()%>/member/loginform">로그인 </a>
-						<a class="btn btn-sm btn-outline-secondary"
+						<a class="btn btn-link atag"
 							href="<%=request.getContextPath()%>/member/memberform">회원가입</a>
 					</c:if>
 					<c:if test="${manager==null&&user==null}">
-						<a class="btn btn-sm btn-outline-secondary"
+						<a class="btn btn-link atag" style ="text-decoration: none;"
 							href="<%=request.getContextPath()%>/manager/managerloginform">관리자</a>
 					</c:if>
 					<c:if test="${manager!=null}">
-						<a class="btn btn-sm btn-outline-secondary"
+						<a class="btn btn-link atag" style ="text-decoration: none;"
 							href="<%=request.getContextPath()%>/manager/main">관리자</a>
 					</c:if>
 					<c:if test="${user!=null}">
-						<a class="btn btn-sm btn-outline-secondary" id="logout"
+						<a class="btn btn-link atag" id="logout" style ="text-decoration: none;"
 							style="height: 31px;" href="<%=request.getContextPath()%>/">로그아웃</a>
 
 
-						<li class="nav-item dropdown"
-							style="height: 31px; list-style: none;">
+					
 							<!--<a class="nav-link">  --> <a
-							class="dropdown-toggle btn btn-sm btn-outline-secondary"
+							class="dropdown-toggle bbtn-link atag" style ="text-decoration: none;"
 							id="navbarDropdownMenuLink"
 							href="<%=request.getContextPath()%>/mypage/mp_main"
 							id="navbarDropdownMenuLink" style="text-decoration: none;"
@@ -251,10 +257,10 @@ div>nav>a {
 								<a class="dropdown-item"
 									href="<%=request.getContextPath()%>/mypage/mp_myComment?member_idx=${member.member_idx}">댓글</a>
 							</div>
-						</li>
+			
 
 					</c:if>
-				</ul>
+			
 			</div>
 		</div>
 		<!--세번쨰 여기까지  -->
@@ -267,7 +273,7 @@ div>nav>a {
 	<div class="nav-scroller  "
 		style="background-color: #000000; border-bottom-color: #EAEAEA">
 		<nav class="nav d-flex justify-content-between"
-			style="width: 100%; margin: auto;">
+			style="min-width:60%; max-width:60%; margin: auto;">
 			<!-- style="width: 1100px; margin: auto;" -->
 			<a class="p-2 text-muted" style="text-decoration: none;"
 				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">사진</a>

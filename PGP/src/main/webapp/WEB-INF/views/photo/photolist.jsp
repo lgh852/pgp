@@ -230,7 +230,7 @@
 
         <c:forEach var="list" items="${list}" varStatus="status">
 
-    <div class="col-md-3 border listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  height="190px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
+    <div class="col-md-3 listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 16rem;"> <img class="card-img-top"  style="height: 270px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
        
 	<div class="row">
@@ -241,17 +241,17 @@
 
         </div></div></a>
         
-  <div class="card-body" style="width:300px;height: 150px ;">
+  <div class="card-body border-right border-bottom border-left" style="height: 150px ; width:98%; padding-left: 0px; padding-right: 0px">
 
    <div class="row no-gutters">
        
-  <div class="col-12 col-sm-6 col-md-8">
+  <div class="col-12 col-sm-6 col-md-9">
   
   <h5 class="card-title"><img src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}" height="25px" alt="..." class="rounded-circle"><small> ${list.member_id}</small>
 
    </h5></div>
   
-  <div class="col-6 col-md-4" style="height: 35px;">
+  <div class="col-6 col-md-3" style="height: 35px;">
    <c:if test="${list.likeck==null}"> 
              
       <a onclick="liclick(${status.count})">
@@ -341,15 +341,15 @@
 						</div>
 					</div></a>
 
-				<div class="card-body" style="width: 300px; height: 150px;">
+				<div class="card-body " style="height: 150px;">
 					<div class="row no-gutters">
 
 						<div class="col-12 col-sm-6 col-md-8">
 
-							<h5 class="card-title">
+							<h5 class="card-title  ">
 								<img
 									src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}"
-									height="25px" alt="..." class="rounded-circle"><small>
+									height="25px"  class="rounded-circle"><small>
 									${list.member_id}</small>
 							</h5>
 						</div>
