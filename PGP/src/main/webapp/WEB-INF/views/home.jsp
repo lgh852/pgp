@@ -267,7 +267,7 @@ div>nav>a {
 	<div class="nav-scroller  "
 		style="background-color: #000000; border-bottom-color: #EAEAEA">
 		<nav class="nav d-flex justify-content-between"
-			style="width: 1100px; margin: auto;">
+			style="width: 100%; margin: auto;">
 			<!-- style="width: 1100px; margin: auto;" -->
 			<a class="p-2 text-muted" style="text-decoration: none;"
 				href="<%=request.getContextPath()%>/photo/photoList?Alignment=board_idx&room=&space=">사진</a>
