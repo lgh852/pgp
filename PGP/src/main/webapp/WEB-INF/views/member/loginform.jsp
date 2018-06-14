@@ -147,7 +147,7 @@
 		<div class="media text-muted pt-3">
 		<div id="naverIdLogin" style="width: 300px;height: 49px; background-image: url('/p/resources/images/naverbtn.PNG'); background-size: cover; background-position-y:-8px; border-radius: 5px 5px 5px 5px" ><img src="<%=request.getContextPath()%>" width="45" height="300px"></div>
 		<!--페이스북 -->
-		</div>
+		</div>  
 		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
 			<div class="media text-muted pt-3">
 			
