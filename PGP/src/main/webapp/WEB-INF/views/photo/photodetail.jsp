@@ -4,7 +4,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+
+function page(idx){
+	
+	var pagenum = idx;
+	var board_idx = $("#boardidx").val();
+	location.href="/p/photo/photodetail?board_idx="+board_idx+"&pagenum="+pagenum+"&contentnum=5";
+	
+}
+
+</script>
 
 
 <script>
@@ -373,11 +385,55 @@ function tagsclick(e) {
 					</form>
 						<button id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})">저장</button>
 					</div>
+					
+					<input type="hidden" id="boardidx" value="${c1.board_idx}">
+					
 									</c:forEach>
 								</ul>
 					
 						</div>
 					</div>
+					
+					
+					<!-- 댓글 페이지 처리 -->
+
+ <div class="comment_footer" style="margin-top:20px; ">
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  
+    <c:if test="${pagenum.prev}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getStartPage()-1});">Previous</a></li>
+    </c:if>
+    
+    
+    <c:forEach begin="${pagenum.getStartPage()}" end="${pagenum.getEndPage()}" var="idx">
+    
+    <li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
+   
+    </c:forEach> 
+    
+    
+    <c:if test="${pagenum.next}">
+    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getEndPage()+1});">Next</a></li>
+    </c:if>
+    
+  </ul>
+</nav>
+
+   
+
+</div> 
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<!--  카테고리 추천사진 -->
 					<div class="mb-3"></div>
 					<p style="font-weight: bold">카테고리 추천 사진</p>

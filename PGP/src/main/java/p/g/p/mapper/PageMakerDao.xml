@@ -25,6 +25,7 @@ select count(*) from pgp.faq;
 
 select * from pgp.faq order by faq_idx desc limit #{pageChecknum},#{contentnum};
 
+
 </select>
 
 

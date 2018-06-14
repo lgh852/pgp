@@ -11,8 +11,22 @@ public class PageMaker {
     private int currentblock; //현재 페이지 블록
     private int lastblock; //마지막 페이지 블록
     private int pageChecknum;
+    
+    private int board_idx;
+    
+    
 	
-    public void prevnext(int pagenum) {
+    public int getBoard_idx() {
+		return board_idx;
+	}
+
+    public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
+	}
+
+
+
+	public void prevnext(int pagenum) {
     	
     	if(pagenum >0 && pagenum<6) {
     		setPrev(false);

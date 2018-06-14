@@ -97,8 +97,6 @@ public class ManagerController {
 		pagemaker.setCurrentblock(cpagenum);
 		
 	   
-		
-		
 		//마지막 블록 번호를 전체 게시글 수를 통해 
 		pagemaker.setLastblock(pagemaker.getTotalcount());
 		

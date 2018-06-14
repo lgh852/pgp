@@ -7,6 +7,7 @@ import p.g.p.model.Board_Comment;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.PageMaker;
 import p.g.p.model.Url_Tag;
 
 public interface PhotoDao {
@@ -63,6 +64,9 @@ public interface PhotoDao {
 	
 	// 대댓글 저장시 댓글의 순서 변경
    public int reorderPlus(Board_Comment board_comment);
+
+   //댓글 페이징 
+ public List<Join_BoardComment_MemberInfo> selectCommentList(PageMaker pagemaker);
 
    
 }

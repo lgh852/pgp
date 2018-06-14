@@ -230,7 +230,7 @@
 
         <c:forEach var="list" items="${list}" varStatus="status">
 
-    <div class="col-md-3 listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}" style="text-decoration:none;color: black"><div class="card" style="width: 98%;"> <img class="card-img-top"  style="height: 270px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
+    <div class="col-md-3 listBno" data-bno="${status.count}" style=" margin-top: 10px; margin-bottom: 10px"> <a href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}&pagenum=1&contentnum=5" style="text-decoration:none;color: black"><div class="card" style="width: 98%;"> <img class="card-img-top"  style="height: 270px"src="<%=request.getContextPath()%>/resources/BoardPhoto/${list.photo_name}" alt="이미지가 없습니다">
         
        </div>
 	<div class="row ">
@@ -313,7 +313,7 @@
 			<div class="col-md-3 border"
 				style="margin-top: 10px; margin-bottom: 10px">
 				<a
-					href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}"
+					href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${list.board_idx}&pagenum=1&contentnum=5"
 					style="text-decoration: none; color: black"><div class="card"
 						style="width: 16rem;">
 						

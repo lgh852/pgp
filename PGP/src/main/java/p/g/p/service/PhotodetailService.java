@@ -11,6 +11,7 @@ import p.g.p.model.Board_Comment;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
+import p.g.p.model.PageMaker;
 import p.g.p.model.Url_Tag;
 
 public class PhotodetailService {
@@ -229,6 +230,17 @@ public class PhotodetailService {
 			}
 		return list;
 	}
+	
+   //photodeatail에서 댓글 가져오는데 페이징 처리하느라 
+	public List<Join_BoardComment_MemberInfo> selectCommentList(PageMaker pagemaker) {
+		
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		List<Join_BoardComment_MemberInfo> list = dao.selectCommentList(pagemaker);
+
+		return list;
+
+	}
+
 
 
 }

@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
 import p.g.p.model.Board_Photo;
+import p.g.p.model.Faq;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_Board_Category_RoomNSpace;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.Like;
 import p.g.p.model.Member_info;
+import p.g.p.model.PageMaker;
 import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Scrap;
 import p.g.p.model.Url_Tag;
@@ -205,7 +207,7 @@ public class PhotoListController {
 	@RequestMapping(value = "photo/photodetail",method = RequestMethod.GET)
 	public String detail(@RequestParam(value = "del", defaultValue = "default") String del, Model model,
 			HttpSession session, @RequestParam(value = "board_idx", defaultValue = "0") int board_idx, Board boardboard,
-			Scrap scrap, Like like, Board_Photo photo) {
+			Scrap scrap, Like like, Board_Photo photo,HttpServletRequest request) {
 
 		System.out.println("뭐야!!!!!!!!!!!!!!!!!!!!" + board_idx);
 
@@ -229,9 +231,58 @@ public class PhotoListController {
 		// 댓글 디비에 저장
 		int commentUpdate = photodetailservice.commentTotalUpdate(board_idx);
 		model.addAttribute("commentUpdate", commentUpdate);
-
-		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
+		
+		/////////////////////////////////////댓글 페이징 처리 해보쟈 
+		
+		
+        PageMaker pagemaker = new PageMaker();
+		
+		String pagenum = request.getParameter("pagenum");
+		String contentnum = request.getParameter("contentnum");	
+		
+	    int ccpagenum =Integer.parseInt(pagenum);
+		int cccontentnum=Integer.parseInt(contentnum);
+		
+		//전체 게시물 갯수
+		pagemaker.setTotalcount(commentCnt);
+		
+		//쿼리에서 첫 페이지 0이라 페이지에서 -1해줘야함
+		pagemaker.setPagenum(ccpagenum-1);
+		
+	    //한 페이지에 몇개씩 게시글을 보여줄지 지정
+		pagemaker.setContentnum(cccontentnum);
+		
+		//현재 페이지 블록의 몇번인지 현재 페이지 번호를 통해서 
+		pagemaker.setCurrentblock(ccpagenum);
+		
+	   
+		
+		
+		//마지막 블록 번호를 전체 게시글 수를 통해 
+		pagemaker.setLastblock(pagemaker.getTotalcount());
+		
+		//쿼리에 들어가는 페이지 시작 글 idx 
+		pagemaker.setPageChecknum(pagemaker.getPagenum());
+		
+		//화살표
+		pagemaker.prevnext(ccpagenum);
+		
+		pagemaker.setStartPage(pagemaker.getCurrentblock());
+		
+	    pagemaker.setEndPage(pagemaker.getLastblock(),pagemaker.getCurrentblock());
+	    
+	    pagemaker.setBoard_idx(board_idx);
+		
+		
+	    List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.selectCommentList(pagemaker);
 		model.addAttribute("Commentlist", Commentlist);
+		model.addAttribute("pagenum", pagemaker);	
+		
+		
+		System.out.println("왜 안나올까"+Commentlist);
+
+		/*List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
+		model.addAttribute("Commentlist", Commentlist);*/
 		
 		// 사진
 		String photoName = photodetailservice.photodetailView(board_idx);
