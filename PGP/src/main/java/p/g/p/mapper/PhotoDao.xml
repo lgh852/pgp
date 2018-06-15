@@ -33,10 +33,8 @@
 		member_info.member_idx=board_comment.member_idx
 		where
 		board_idx=#{board_idx}
-		order by regroup reorder asc;
-
+		order by regroup,reorder asc;
 	</select>
-
 
 	<delete id="deleteComment" parameterType="p.g.p.model.Board_Comment">
 		delete from

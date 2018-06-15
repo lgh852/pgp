@@ -363,20 +363,25 @@ function tagsclick(e) {
 											class="list-group-item d-flex justify-content-between lh-condensed"
 											style="width: 100%" id="cks${c1.board_comment_idx}">
 											<div style="margin-left:${c1.reorder * 15}px">
-												<h6 class="my-0">${c1.board_comment_contents}</h6>
+												<c:if test="${c1.reorder!=0}">
+												<h6 class="my-0">└</c:if>
+												<c:if test="${c1.reorder==0 }">
+												<h6 class="my-0"></c:if> ${c1.board_comment_contents}</h6>
+												
 												<small class="text" style="color:black">ID:${c1.member_id} &nbsp
 													&nbsp<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 														value="${c1.board_comment_regdate}" />
 												</small>
 											</div> <span class="text-muted"><c:if
 													test="${c1.member_id==user.member_id}">
-													<td width="50px"><a href="#" onclick="delectcomment(${c1.board_comment_idx})"
-														>삭제</a></td>
-														<!--href="<%=request.getContextPath()%>/photo/photoCommentDelete?board_comment_idx=${c1.board_comment_idx}&board_idx=${c1.board_idx}"-->
+													<td width="50px">
+													<a  onclick="delectcomment(${c1.board_comment_idx})"
+														><img src="<%=request.getContextPath()%>/resources/images/garbage.png" height="25px"     style="    margin-top: 15px;" alt=""></a></td>
+														
 												
 												
 				
-												</c:if><button class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})">답글</button></span>
+												</c:if><a class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})"><img src="<%=request.getContextPath()%>/resources/images/chat.png" height="25px"     style="    margin-top: 15px;"  alt=""></a></span>
 										</li>
 							
 								
@@ -388,10 +393,16 @@ function tagsclick(e) {
 								<input type="hidden" id="redepth${c1.board_comment_idx}" value="${c1.redepth}">
 								<input type="hidden" id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
 								
+								<div class="input-group">
+									└ <input name="board_comment_contents" type="text" class="form-control" placeholder="댓글을 입력해보세요." id="re_commenttext${c1.board_comment_idx}">
+
+									<div class="input-group-append">
+										<button type="button" id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})"class="btn btn-secondary">send</button>
+									</div>
+								</div>
 								
-						<input type="text" class="border border-secondary rounded" id="re_commenttext${c1.board_comment_idx}" style="width:100%;">
+						
 					</form>
-						<button id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})">저장</button>
 					</div>
 					
 					<input type="hidden" id="boardidx" value="${c1.board_idx}">
@@ -580,7 +591,11 @@ function tagsclick(e) {
 									<a class="btn btn-danger"
 										style="border-radius: 40px; padding: auto;"
 										href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.board_idx}"
-										role="button">삭제 </a>
+										role="button">
+										
+										삭제 
+										
+										</a>
 									<!-- 태그 달기 -->
 									<a class="btn btn-info"
 										style="border-radius: 40px; padding: auto;"
