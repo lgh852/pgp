@@ -54,6 +54,8 @@ public class MypageController {
 		String ck = "s";
 
 		member = pagelistservice.userck(session, member);
+		
+
 		if (member != null) {
 			// 성공
 			int member_idx = member.getMember_idx();
@@ -511,6 +513,8 @@ public class MypageController {
 
 			String page = "mypage/mp_update.jsp";
 			String view = "home";
+			
+			model.addAttribute("member", member);
 			model.addAttribute("page", page);
 
 			return view;

@@ -13,7 +13,7 @@
 <title>home</title>
 <!-- r글씨체 -->
 <link
-	href="https://fonts.googleapis.com/css?family=Gamja+Flower|Stylish"
+	href="https://fonts.googleapis.com/css?family=Dokdo|East+Sea+Dokdo|Gamja+Flower|Gugi|Hi+Melody|Nanum+Gothic+Coding:400,700|Nanum+Myeongjo|Sunflower:300|Yeon+Sung"
 	rel="stylesheet">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -59,6 +59,11 @@
 }
 </style>
 <style>
+a {
+font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+}
+
 .botton_common {
 	display: inline-block;
 	width: 24%;
@@ -199,7 +204,7 @@ div>nav>a {
 					<ul style="list-style: none;">
 						<li class="nav-item dropdown " style="text-decoration: none;">
 							<a class="dropdown-toggle btn btn-link  atag" href="#"
-							id="navbarDropdown" role="button" style="text-decoration: none"
+							id="navbarDropdown" role="button" style="text-decoration: none;"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								검색 </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -286,7 +291,7 @@ div>nav>a {
 		</nav>
 
 	</div>
-	
+
 	<div class="mb-3"></div>
 	<div class="mb-3">
 		<div class="card mb-4 box-shadow"
@@ -297,24 +302,26 @@ div>nav>a {
 			</div>
 			<div class="card-body"
 				style="margin: auto; padding-top: 0px; padding-bottom: 8px;">
-					<div id="oneimg"><img id="imgone" width="128" height="128"></div>
+				<div id="oneimg">
+					<img id="imgone" width="128" height="128">
+				</div>
 			</div>
 		</div>
 	</div>
-<input type="hidden" id="photoname1">
-<input type="hidden" id="photoname2">
-<input type="hidden" id="photoname3">
-<input type="hidden" id="latelyck">
-<input type="hidden" value="${fn:length(latelylist)}" id="rowmin">
-<input type="hidden" value="${fn:length(latelylist)}" id="listsize">
+	<input type="hidden" id="photoname1">
+	<input type="hidden" id="photoname2">
+	<input type="hidden" id="photoname3">
+	<input type="hidden" id="latelyck">
+	<input type="hidden" value="${fn:length(latelylist)}" id="rowmin">
+	<input type="hidden" value="${fn:length(latelylist)}" id="listsize">
 
 
-<c:forEach var="latelylist" items="${latelylist}" varStatus="status">
+	<c:forEach var="latelylist" items="${latelylist}" varStatus="status">
 
-	<input type="hidden" id="latelyck${status.count}"
-		value="${latelylist.photo_name}">
+		<input type="hidden" id="latelyck${status.count}"
+			value="${latelylist.photo_name}">
 
-</c:forEach>
+	</c:forEach>
 
 	<main role="main" class="container">
 
