@@ -513,6 +513,8 @@ public class MypageController {
 
 			String page = "mypage/mp_update.jsp";
 			String view = "home";
+			
+			model.addAttribute("member", member);
 			model.addAttribute("page", page);
 
 			return view;
