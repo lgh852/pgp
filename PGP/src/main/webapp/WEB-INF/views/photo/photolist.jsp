@@ -269,10 +269,10 @@ font-weight:bold;
   <div class="col-12 col-sm-6 col-md-9">
   
   <h5 class="card-title">
-  <c:if test="${boardMemberinfo.member_photo==null}">
+  <c:if test="${list.member_photo==null}">
   <img src="<%=request.getContextPath()%>/resources/images/smilephoto.png" height="25px" alt="" class="rounded-circle"><small> ${list.member_id}</small>
   </c:if>
-  <c:if test="${boardMemberinfo.member_photo!=null}">
+  <c:if test="${list.member_photo!=null}">
   <img src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}" height="25px" alt="" class="rounded-circle"><small> ${list.member_id}</small>
 </c:if>
    </h5></div>
