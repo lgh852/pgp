@@ -25,13 +25,13 @@
 	
 	<select id="selectuserid" resultType="p.g.p.model.Member_info" parameterType="int">
 	
-	SELECT member_id FROM pgp.member_info where member_idx=#{member_idx}	
+	SELECT member_id member_photo FROM pgp.member_info where member_idx=#{member_idx}	
 	
 	</select>
 	
 	<select id="selectuserids" resultType="p.g.p.model.Member_info" parameterType="int">
 	
-	SELECT member_id FROM pgp.member_info where member_idx=#{member_idx}	
+	SELECT member_id member_photo FROM pgp.member_info where member_idx=#{member_idx}	
 	
 	</select>
 	

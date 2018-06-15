@@ -43,13 +43,9 @@
 		<div class="mb-3" style="text-align: center;">
 			<h4>${msg}</h4>
 			<br>
-			<c:set var="msgs" value="${msg}" />
-			${msgs}
-			<c:if test="${msgs eq '임시 비밀번호가 발송되었습니다.'}">
-비밀번호 변경후 로그인 가능합니다. 
-<a href="<%=request.getContextPath()%>/member/change_pw">비밀번호 변경하기</a>
+		
+			
 
-			</c:if>
 
 		</div>
 

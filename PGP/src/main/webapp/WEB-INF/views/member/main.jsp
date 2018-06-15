@@ -40,7 +40,7 @@
 								<h4>${board.get(0).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(0).member_photo}" width="25px"
 									height="25px" class="rounded-circle">${memberlist.get(0).member_id}</span>
 							</div>
 						</a>
@@ -55,7 +55,7 @@
 								<h4>${board.get(1).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}" width="25px"
 									height="25px" class="rounded-circle">${memberlist.get(1).member_id}</span>
 							</div></a>
 					</div>
@@ -69,7 +69,7 @@
 								<h4>${board.get(2).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="%EC%9E%A0%EB%93%AC.png" width="25px"
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(2).member_photo}" width="25px"
 									height="25px" class="rounded-circle">${memberlist.get(2).member_id}</span>
 							</div></a>
 					</div>
@@ -216,35 +216,7 @@
 </div>
 
 <!-- 최근 본 게시물  -->
-<div class="card mb-4 box-shadow" style="width: 180px;" id="latelybox">
-	<div class="card-header">
-		<h5 class="my-0 font-weight-normal">최근 본 게시물</h5>
-	</div>
-	<div class="card-body"
-		style="margin: auto; padding-top: 0px; padding-bottom: 8px;">
 
-		<ul class="list-unstyled mt-3 mb-4">
-
-			<li id="oneimg"><img id="imgone" width="128" height="128"></li>
-		</ul>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination2">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true"
-						style="color: #000000ad;"> <!-- &laquo; -->◀
-					</span> <span class="sr-only">Previous</span>
-				</a></li>
-
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true"
-						style="color: #000000ad;"> <!-- &raquo; -->▶
-					</span> <span class="sr-only">Next</span>
-				</a></li>
-			</ul>
-		</nav>
-
-	</div>
-</div>
 
 
 <!-- <div

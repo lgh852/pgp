@@ -34,7 +34,6 @@ public class LoginController {
 
 	}
 
-	@SuppressWarnings("static-access")
 	@RequestMapping(value = "/member/loginform", method = RequestMethod.POST)
 	public String login(@RequestParam("member_id") String id, @RequestParam("member_pw") String pw, Model model,
 			HttpSession session) {
@@ -131,11 +130,15 @@ public class LoginController {
 		String ck = "y";
 
 		if (members != null) {
+			
 			// 이미 가입된 아이디
+			
 			session.setAttribute("user", members);
+			
 			ck = "n";
 
 		} else {
+			
 			// 회원가입 처리 디비 저장
 
 			session.setAttribute("user", member);
@@ -191,17 +194,23 @@ public class LoginController {
 	public String chkId() {
 
 		return "member/idchk";
+		
 	}
 
 	
-	@RequestMapping(value="/member/mypage2", method = RequestMethod.POST)
-	public String idChk(Model model,Member_info member) {
+	@RequestMapping(value="/member/idcks", method = RequestMethod.POST)
+	public String idChk(Model model,Member_info member, @RequestParam("year") String year,
+			@RequestParam("month") String month, @RequestParam("day") String day, @RequestParam("phone1") String phone1,
+			@RequestParam("phone2") String phone2, @RequestParam("phone3") String phone3) {
 
-	
+
+		member.setMember_phone(phone1 + phone2 + phone3);
+
+		member.setMember_birth(year + "-" + month + "-" + day);
 		String member_id= service.idchk(member);
 
 		if(member_id!=null) {
-			model.addAttribute("member_id", member_id);	
+			model.addAttribute("member", member);	
 		}else {
 			//실패 햇을시 
 		}

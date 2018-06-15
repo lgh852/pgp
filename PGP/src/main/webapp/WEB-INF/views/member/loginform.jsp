@@ -51,10 +51,7 @@
 						var email = fb_data.email;
 						var member_name = fb_data.name;
 
-						/*     alert(email);
-						   	alert(member_id);
-						   	alert(member_name);
-						 */if (email === undefined || email === null) {
+						if (email === undefined || email === null) {
 
 						} else {
 							//email 값이 있으면 id값으로 사용 
@@ -145,10 +142,9 @@
 	<h6 class="border-bottom border-gray pb-2 mb-0">SNS계정으로 간편 로그인/회원가입</h6>
 	
 		<div class="media text-muted pt-3">
+		<!-- <div id="naverIdLogin"></div> -->
 		<div id="naverIdLogin" style="width: 300px;height: 49px; background-image: url('/p/resources/images/naverbtn.PNG'); background-size: cover; background-position-y:-8px; border-radius: 5px 5px 5px 5px" ><img src="<%=request.getContextPath()%>" width="45" height="300px"></div>
-		<!--페이스북 -->
 		</div>  
-		<!-- style="display: block; width: 150px; color: white; background-color: rgb(54, 88, 153); text-align: center; font-weight: 500; border-radius: 8px 8px 8px 8px; text-decoration: none" -->
 			<div class="media text-muted pt-3">
 			
 		<a href="javascript:void(0);" onclick="fbLoginAction();"> <img
