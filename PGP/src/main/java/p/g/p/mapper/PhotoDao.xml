@@ -33,7 +33,7 @@
 		member_info.member_idx=board_comment.member_idx
 		where
 		board_idx=#{board_idx}
-		order by regroup asc, reorder asc;
+		order by regroup reorder asc;
 
 	</select>
 
