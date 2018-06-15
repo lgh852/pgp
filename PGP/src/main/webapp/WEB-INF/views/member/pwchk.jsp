@@ -25,7 +25,12 @@
 	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
 	crossorigin="anonymous"></script>
 
+<script>
+ function closeclick(){
+	 window.onbeforeunload={#closeBtn};
 
+ }
+</script>
 <title>비밀번호 찾기</title>
 </head>
 <body>
@@ -81,14 +86,12 @@
 				</div>
 			</div>
 			<div class="mb-3"></div>
-
-				
 			<div class="row">
 				<div class="col">
 					<button class="btn btn-primary  btn-block" type="submit">찾기</button>
 				</div>
 				<div class="col">
-					<button class="btn btn-secondary  btn-block" type="reset">초기화</button>
+					<button class="btn btn-secondary  btn-block" type="reset" onclick="closeclick()" id="closeBtn">닫기</button>
 				</div>
 			</div>
 
