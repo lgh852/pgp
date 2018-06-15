@@ -54,6 +54,8 @@ public class MypageController {
 		String ck = "s";
 
 		member = pagelistservice.userck(session, member);
+		
+
 		if (member != null) {
 			// 성공
 			int member_idx = member.getMember_idx();
