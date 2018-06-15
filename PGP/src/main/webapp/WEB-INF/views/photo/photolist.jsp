@@ -394,7 +394,8 @@
 								height="25px" alt="" class="rounded"></a>
 						</div>
 					</div>
-					<p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
+					<p class="card-text" style="display:block;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px;  height: 50px;  margin-left: 20px;">${list.board_contents}</p>
+		
 				</div>
 				<input type="hidden" class="likech${status.count}"
 					value="${list.like_check}"> <input type="hidden"
@@ -409,111 +410,10 @@
 
 
       </div>
-    <!--   	<input type="hidden" id="board_idx">
-         <input type="hidden" id="scrapCnt">       
-         <input type="hidden" id="ck">         -->        
-     <%--  <div class="modal-footer">
-    <div class="row">
-  <div class="col">
-  <input type="hidden" class="listnumber" value="${fn:length(scrapNameList)}"> 
-    
-  <input type="text" class="input-group-text scrapFolderName" style="width: 400px; margin-left:30px ; margin-bottom: 10px"
-                                 placeholder="Scrap Folder Name를 입력해주세요" />
-                                 </div>                             
-  <div class="w-100"></div>
- <div class="col-4"></div>
-  <div class="col-8"> <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 10px;">Close</button>
-        <button type="button" class="btn btn-primary add" >추가</button></div>
-   
-</div>
-       
-     
-       
-      </div> --%>
+  
     </div>
   </div>
 </div>
-
-<!-- <script>
-$(document).ready(function(){
-	 var lastScrollTop = 0;
-	    var easeEffect = 'easeInQuint';
-
-
-
-	      $(window).scroll(function(){
-	       
-	            //창의 상단 스크롤 위치 
-	          var currentScrollTop = $(window).scrollTop();
-
-	           if( currentScrollTop - lastScrollTop  ){
-	                if ($(window).scrollTop()>= ($(document).height() - $(window).height())){
-	        	
-	                		//현재 뽑고 있는 list으  last 요소를 찾아서 data-bno 의 값을 가져옴
-	                	var lastbno = $(".listBno:last").attr("data-bno");
-	                	$.ajax({
-	                        type : 'post',  // 요청 method 방식
-	                        url : 'photoListdwon',// 요청할 서버의 url
-	                        headers : {
-	                            "Content-Type" : "application/json",
-	                            "X-HTTP-Method-Override" : "POST"
-	                        },
-	                        dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
-	                        data : JSON.stringify({ // 서버로 보낼 데이터 명시
-	                            bno : lastbno
-	                        }),
-	                        success : function(data){
-	                        	alert(data);
-	                        }//success
-	                    });// ajax
-				
-				
-	                }else{
-	                    //큽
-	                    alert('지워야댐')
-	                    
-
-	                }
-
-	                console.log("down-scroll");
-	                
-	               
-	           }else{
-	                console.log("up-scroll");          
-	                
-	               alert('up');
-
-	           }
-
-
-	      
-	      });
-	     
-	     /*$(window).scroll(function () {
-					//스크롤 최초 이벤트 발생 )
-	            
-				
-	            var top = $(window).scrollTop();
-	           /* alert(top);
-	            alert("sssss"+$(document).height());
-	            alert('aa'+$(window).height());
-	            var heig = $(document).height();
-	            var sheig = $(document).height();
-	       
-
-	            var ms = heig-sheig;
-	         
-			if(top>=ms){
-	            alert('카트라이더')
-				
-				
-			}
-			})	*/
-			
-		});
-	        
-</script> -->
-
 
 		
 	
