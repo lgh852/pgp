@@ -215,7 +215,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">FAQ</h5>
-		</div>
+		</div>  
 	</div>
 
 
