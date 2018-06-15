@@ -238,8 +238,16 @@ public class PhotoListController {
         PageMaker pagemaker = new PageMaker();
 		
 		String pagenum = request.getParameter("pagenum");
-		String contentnum = request.getParameter("contentnum");	
+		if(pagenum==null) {
+			pagenum = "1";
+			
+		}
 		
+		String contentnum = request.getParameter("contentnum");	
+		if(contentnum==null) {
+			contentnum ="5";
+			
+		}
 	    int ccpagenum =Integer.parseInt(pagenum);
 		int cccontentnum=Integer.parseInt(contentnum);
 		

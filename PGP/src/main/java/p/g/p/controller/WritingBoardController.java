@@ -46,15 +46,29 @@ public class WritingBoardController {
 			Board_Photo photo, HttpServletRequest request, HttpSession session)
 			throws IllegalStateException, IOException {
 		// 받은값들 넣어주기
-
+			System.out.println(category_room);
+			System.out.println(category_space);
+			System.out.println(board);
+			System.out.println(photo);
+			System.out.println(category_room);
+			System.out.println(category_space);
+			System.out.println(board);
+			System.out.println(photo);	
+			System.out.println(category_room);
+			System.out.println(category_space);
+			System.out.println(board);
+			System.out.println(photo);
 		String page = "";
 		String msg = "";
 		String view = "";
 		space.setCategory_space(category_space);
 		room.setCategory_room(category_room);
+		
 		int resultCnt = serviec.BoardAllService(request, photo, room, space, board, session);
+		
 		System.out.println("sss");
 		if (resultCnt > 0) {
+			
 			// 성공
 		//	page = "board/boardPhotoPage.jsp";
 	

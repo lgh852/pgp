@@ -75,7 +75,7 @@ $(document).ready(function() {
         	
    var naverLogin = new naver.LoginWithNaverId(
            {
-              clientId: "4zEiZaP09VSRXmZR87vq",
+              clientId: "4zEiZaP09 VSRXmZR87vq",
             callbackUrl: "http://localhost:8080/p/member/naver",   
             isPopup : true, /* 팝업을 통한 연동처리 여부 */
             loginButton : {color: "green", type: 3, height: 50}

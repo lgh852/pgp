@@ -464,14 +464,14 @@ function tagsclick(e) {
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="border: solid #0000001a; border-radius: 20px;  padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top:120px; ">
+						style="border: solid #0000001a; border-radius: 20px;  padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top:120px; text-align: center">
 						<a
 							href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}">
 							<img class="rounded-circle"
 							src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
 							alt="" width="140" height="140">
-							<h2 style="color: #00000066;">ID:
-								${boardMemberinfo.member_id}</h2>
+							<h5 style="color: #00000066;margin-top: 10px;">ID:
+								${boardMemberinfo.member_id}</h5>
 						</a>
 
 						<div style="text-align: center; margin-top:25px;">
