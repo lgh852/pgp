@@ -78,13 +78,7 @@ $(document).ready(function() {
               clientId: "4zEiZaP09VSRXmZR87vq",
             callbackUrl: "http://localhost:8080/p/member/naver",   
             isPopup : true, /* 팝업을 통한 연동처리 여부 */
-              loginButton : {
-                 color : "green",
-                 type : 1,
-                 height : 45,
-                 width:300
-               
-             }
+            loginButton : {color: "green", type: 3, height: 50}
            /* 로그인 버튼의 타입을 지정  */
            }
            
@@ -93,8 +87,9 @@ $(document).ready(function() {
      /* 설정정보를 초기화하고 연동을 준비  */
      naverLogin.init(
           
+    		 
      );
-        	      		
+        	 $('#naverIdLogin_loginButton img').attr('width','300px')     		
         	
         	      
         	      

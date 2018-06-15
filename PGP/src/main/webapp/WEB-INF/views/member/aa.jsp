@@ -32,13 +32,7 @@
 				   clientId: "4zEiZaP09VSRXmZR87vq",
 		            callbackUrl: "http://localhost:8080/p/member/naver",   
 		            isPopup : true, /* 팝업을 통한 연동처리 여부 */
-		              loginButton : {
-		                 color : "green",
-		                 type : 1,
-		                 height : 45,
-		                 width:300
-		               
-				}
+		            loginButton : {color: "green", type: 3, height: 50}
 			/* 로그인 버튼의 타입을 지정  */
 			}
 

@@ -56,7 +56,14 @@ public class HomeController {
 				if(board!=null) {
 					
 			List<Member_info> memberlist = service.imguserid(board);
-		
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
+			System.out.println(memberlist);
 				model.addAttribute("memberlist",memberlist);
 			}
 		}else {

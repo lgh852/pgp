@@ -143,7 +143,7 @@
 	
 		<div class="media text-muted pt-3">
 		<!-- <div id="naverIdLogin"></div> -->
-		<div id="naverIdLogin" style="width: 300px;height: 49px; background-image: url('/p/resources/images/naverbtn.PNG'); background-size: cover; background-position-y:-8px; border-radius: 5px 5px 5px 5px" ><img src="<%=request.getContextPath()%>" width="45" height="300px"></div>
+		<div id="naverIdLogin"></div>
 		</div>  
 			<div class="media text-muted pt-3">
 			

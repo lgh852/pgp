@@ -15,7 +15,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Gamja+Flower|Stylish"
 	rel="stylesheet">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -28,13 +28,13 @@
 <script src="<%=request.getContextPath()%>/resources/js/board2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/list3.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/list2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star1.js"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/members23.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/kakao31.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/kakao3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyboard.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storylike55.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/storyreport6.js"></script>
@@ -286,6 +286,7 @@ div>nav>a {
 		</nav>
 
 	</div>
+	
 	<div class="mb-3"></div>
 	<div class="mb-3">
 		<div class="card mb-4 box-shadow"
@@ -300,7 +301,20 @@ div>nav>a {
 			</div>
 		</div>
 	</div>
+<input type="hidden" id="photoname1">
+<input type="hidden" id="photoname2">
+<input type="hidden" id="photoname3">
+<input type="hidden" id="latelyck">
+<input type="hidden" value="${fn:length(latelylist)}" id="rowmin">
+<input type="hidden" value="${fn:length(latelylist)}" id="listsize">
 
+
+<c:forEach var="latelylist" items="${latelylist}" varStatus="status">
+
+	<input type="hidden" id="latelyck${status.count}"
+		value="${latelylist.photo_name}">
+
+</c:forEach>
 
 	<main role="main" class="container">
 

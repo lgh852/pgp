@@ -45,8 +45,9 @@ $(document)
 
 							if (latelyck.length > 3) {
 								$('#latelybox')
-										.append('<div class="col" id ="asdasddsasda"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div>	<div class="col" id ="ssssadas"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true" style="color: #000000ad; text-decoration: none;" onclick="back()">◀</span></a></div>')
-								// 마지막 부터 보여주게 변경
+								.append('<div class="row"><div class="col" id ="ssssadas"><a class="page-link border-0" href="#" aria-label="Previous" style="padding-left: 0px; margin-left: 15px;"><span aria-hidden="true" style="color: #000000ad; text-decoration: none;padding-left: 30px;" onclick="back()">◀</span></a></div> <div class="col" id ="asdasddsasda"><a class="page-link border-0" href="#" aria-label="Next" style="margin-right: 10px;"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div><div>')
+										$('#latelybox').css('height', '250px');
+										// 마지막 부터 보여주게 변경
 							}
 
 						} else if ((latelyck.length % 3) == 2
@@ -54,7 +55,7 @@ $(document)
 
 							$('#latelybox')
 									.append(
-											'<div id="twoimg"><img id="imgtwo" width="128" height="128"></div>')
+											'<div id="twoimg" class="card-body"	style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgtwo" width="128" height="128" style="margin-left: 10px;"></div>')
 											 
 											
 											$('#imgone').attr(
@@ -73,19 +74,20 @@ $(document)
 
 							if (latelyck.length > 3) {
 								$('#latelybox')
-								.append('<div class="col" id ="asdasddsasda"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div>	<div class="col" id ="ssssadas"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true" style="color: #000000ad; text-decoration: none;" onclick="back()">◀</span></a></div>')
-						}
+									.append('<div class="row"><div class="col" id ="ssssadas"><a class="page-link border-0" href="#" aria-label="Previous" style="padding-left: 0px; margin-left: 15px;"><span aria-hidden="true" style="color: #000000ad; text-decoration: none;padding-left: 30px;" onclick="back()">◀</span></a></div> <div class="col" id ="asdasddsasda"><a class="page-link border-0" href="#" aria-label="Next" style="margin-right: 10px;"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div><div>')
+										$('#latelybox').css('height', '390px');
+							}
 
 						} else if ((latelyck.length % 3) == 0
 								&& latelyck.length < 3) {
 							alert('three');
 							$('#latelybox')
 									.append(
-											'<div id="twoimg"><img id="imgtwo" width="128" height="128"></div>')
+									'<div id="twoimg" class="card-body"	style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgtwo" width="128" height="128" style="margin-left: 10px;"></div>')
+									
 							$('#latelybox')
 									.append(
-											'<div id="threeimg"><img id="imgthree" width="128" height="128"></div>')
-						
+											'<div id="threeimg" class="card-body" style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgthree" width="128" height="128" style="margin-left: 10px;"></div>')
 							$('#imgone').attr(
 									'src',
 									'/p/resources/BoardPhoto/'
@@ -105,17 +107,19 @@ $(document)
 							$('#photoname3').val(size3);
 							if (latelyck.length > 3) {
 								$('#latelybox')
-								.append('<div class="col" id ="asdasddsasda"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div>	<div class="col" id ="ssssadas"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true" style="color: #000000ad; text-decoration: none;" onclick="back()">◀</span></a></div>')
-					
+								.append('<div class="row"><div class="col" id ="ssssadas"><a class="page-link border-0" href="#" aria-label="Previous" style="padding-left: 0px; margin-left: 15px;"><span aria-hidden="true" style="color: #000000ad; text-decoration: none;padding-left: 30px;" onclick="back()">◀</span></a></div> <div class="col" id ="asdasddsasda"><a class="page-link border-0" href="#" aria-label="Next" style="margin-right: 10px;"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div><div>')
+										$('#latelybox').css('height', '520px');
 							}
 
-						} else if (latelyck.length >= 3) {
+						} else if (latelyck.length > 3) {
+						
+				
 							$('#latelybox')
 									.append(
-											'<div id ="twoimg"style="width: 130px;height: 130px;border: 1px solid black; margin: 0 auto; margin-top: 10px"><img width="128"height="128"></div>')
+											'<div id ="twoimg" style="width: 130px;height: 130px; margin: 0 auto; margin-top: 10px; margin-left: 20px"><img id="imgtwo" width="128"height="128"></div>')
 							$('#latelybox')
 									.append(
-											'<div id ="threeimg"style="width: 130px;height: 130px;border: 1px solid black; margin: 0 auto; margin-top: 10px"><img width="128"height="128"></div>')
+											'<div id ="threeimg" style="width: 130px;height: 130px; margin: 0 auto; margin-top: 10px;margin-left: 20px"><img id="imgthree" width="128"height="128"></div>')
 							$('#imgone').attr(
 									'src',
 									'/p/resources/BoardPhoto/'
@@ -135,8 +139,9 @@ $(document)
 							$('#photoname3').val(size3);
 							if (latelyck.length > 3) {
 								$('#latelybox')
-								.append('<div class="col" id ="asdasddsasda"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div>	<div class="col" id ="ssssadas"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true" style="color: #000000ad; text-decoration: none;" onclick="back()">◀</span></a></div>')
-							// 마지막 부터 보여주게 변경
+								.append('<div class="row"><div class="col" id ="ssssadas"><a class="page-link border-0" href="#" aria-label="Previous" style="padding-left: 0px; margin-left: 15px;"><span aria-hidden="true" style="color: #000000ad; text-decoration: none;padding-left: 30px;" onclick="back()">◀</span></a></div> <div class="col" id ="asdasddsasda"><a class="page-link border-0" href="#" aria-label="Next" style="margin-right: 10px;"><span aria-hidden="true" style="color: #000000ad;  text-decoration: none" onclick="front()">▶</span></a></div><div>')
+									$('#latelybox').css('height', '520px');
+								// 마지막 부터 보여주게 변경
 							}
 						}
 
