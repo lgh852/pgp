@@ -46,13 +46,13 @@
 }
 
 #viewbox {
-	width: 40px;
+	/* width: 40px;
 	height: 40px;
 	border: 0px solid black;
 	border-radius: 100px 100px 100px 100px;
 	position: absolute;
 	background-color: gray;
-	text-align: center;
+	text-align: center; */
 }
 
 .none {
@@ -89,8 +89,18 @@
 		
 	<c:if test="${urlList.tag_idx!=null}">
 	
-	<div id="viewbox" class="check${status.count} block" data-toggle="modal" data-target="#exampleModal" style="left: ${urlList.tag_position_x}px;    position:absolute; top:${urlList.tag_position_y}px;">
-		<a href="#" class="aclick${status.count} " data-toggle="modal" data-target="#exampleModal">+</a>
+	<div id="viewbox" class="check${status.count} block" data-toggle="modal" data-target="#exampleModal" <%-- style="left: ${urlList.tag_position_x}px;    position:absolute; top:${urlList.tag_position_y}px;" --%>>
+		<a href="#" class="aclick${status.count} " data-toggle="modal" data-target="#exampleModal">
+		
+			<img
+									src="<%=request.getContextPath()%>/resources/images/plus.png"
+									alt="" width="40px" height="40px"style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
+									
+									
+		
+		
+		
+		</a>
 	</div>
 	<input type="hidden" id="tag${status.count}" value="${urlList.tag_idx}">
 	</c:if>

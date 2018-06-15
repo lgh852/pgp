@@ -225,13 +225,13 @@ function tagsclick(e) {
 }
 
 .viewbox {
-	width: 40px;
+/* 	width: 40px;
 	height: 40px;
 	border: 0px solid black;
 	border-radius: 100px 100px 100px 100px;
 	position: relative;
 	background-color: green;
-	text-align: center;
+	text-align: center; */
 }
 
 .list-group-item-warning {
@@ -275,9 +275,17 @@ function tagsclick(e) {
 
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
 							<div id="viewbox${status.count}" class="check viewbox"
-								style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
+								<%-- style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute " --%>>
 								<a href="#" data-toggle="modal"
-									data-target=#tagurlbox${status.count}>x</a> <input
+									data-target=#tagurlbox${status.count}>
+									
+									<img
+									src="<%=request.getContextPath()%>/resources/images/plus.png"
+									alt="" width="40px" height="40px"style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
+									
+									
+									</a> 
+									<input
 									type="hidden" id="url${status.count}"
 									value="${urlList.tag_url}">
 							</div>
@@ -467,9 +475,18 @@ function tagsclick(e) {
 						style="border: solid #0000001a; border-radius: 20px;  padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top:120px; text-align: center">
 						<a
 							href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}">
+							
+							
+							<c:if test="${boardMemberinfo.member_photo!=null}">
 							<img class="rounded-circle"
 							src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
 							alt="" width="140" height="140">
+							</c:if>
+							<c:if test="${boardMemberinfo.member_photo==null}">
+							<img class="rounded-circle"
+							src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
+							alt="" width="140" height="140">
+							</c:if>
 							<h5 style="color: #00000066;margin-top: 10px;">ID:
 								${boardMemberinfo.member_id}</h5>
 						</a>
