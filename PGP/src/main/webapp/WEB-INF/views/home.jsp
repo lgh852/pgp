@@ -60,8 +60,8 @@
 </style>
 <style>
 a {
-font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
+font-family: 'Nanum Gothic', sans-serif;
+  
 }
 
 .botton_common {
