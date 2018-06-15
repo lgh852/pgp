@@ -297,7 +297,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},
 					success : function(data) {
-						alert(data);
+					
 						if (data == 'null') {
 							alert('에러');
 
@@ -330,7 +330,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},
 					success : function(data) {
-						alert(data);
+						
 						if (data == 'null') {
 							alert('에러');
 
@@ -363,7 +363,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},
 					success : function(data) {
-						alert(data);
+					
 						if (data == 'null') {
 							alert('에러');
 
@@ -396,7 +396,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},
 					success : function(data) {
-						alert(data);
+					
 						if (data == 'null') {
 							alert('에러');
 

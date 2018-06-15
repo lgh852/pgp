@@ -43,14 +43,13 @@ $(document)
                                        },
                                        success : function(data) {
 
-                                          alert('들어오나?');
+                                         
                                           if (data == 'y') {
                                
-                                             alert('스브랩북 추가는 성공ㅎㅎㅎㅎ');
 
                                              c = ++c;
 
-                                             alert(c);
+                                           
 
                                              $('.scrapList')
                                              .append(
@@ -116,12 +115,9 @@ $(document)
                   var member_idx = $("#member_idx").val();
                   var report_contents = $("#report_contents").val();
 
-                  alert(board_idx);
-                  /* alert(storyboard_idx); */
-                  alert(member_idx);
-                  alert(report_contents);
+                
+             
 
-                  alert('이얍');
 
                   $.ajax({
                      type : 'GET',
@@ -136,7 +132,7 @@ $(document)
 
                      success : function(data) {
 
-                        alert('들어오냐?0?');
+      
 
                         if (data == 'y') {
                            // 실행
@@ -161,31 +157,28 @@ $(document)
 
 function scrapButton(s) {
 	
-	alert('스크랩 입력 함수 들어옴! ');
+	
    
 	var board_idx = $("#board_idx").val();
 
    var member_idx = $("#member_idx").val();
 
    var scrap_name_choice = $(".scrapSuccess"+s).text();
-  
-   alert(scrap_name_choice);
+ 
    
    var scrapcnts = $('#scrapCnt').text();
    var scrapcnt = parseInt(scrapcnts);
-   
-   alert(scrapcnt);
+  
   
    if($('#scrapCnts'+listnum).text() !='undefined'){
    
    var scrapcntString = $('#scrapCnts'+listnum).text();
-   alert(1);
+
    var scrapcnts = $('#scrapCnt').text();
-   alert(2);
+   
    
    if(scrapcnts==null||scrapcnts==''){
-	   	alert('ads');
-	   	alert($('#scrapCnt').val());
+
 	   	
 	   	scrapcnts = $('#scrapCnt').val();
 	   }
@@ -218,11 +211,10 @@ function scrapButton(s) {
 
       success : function(data) {
 
-         alert('스크랩 폴더 버튼이 눌림');
+       
 
          if (data == 'y') {
 
-            alert('스크랩성공!!!');
             
             scrapcnt = scrapcnt + 1;
             
@@ -238,9 +230,7 @@ function scrapButton(s) {
             
             }
             
-            //저장
-            alert('카운트업');
-            
+       
             $('#scrapid').removeClass('btn btn-outline-info').addClass(
                   'btn btn-info');
             $('#scrapCnts'+s).text(scrapcnt);
@@ -252,7 +242,7 @@ function scrapButton(s) {
 
          } else if (data == 'n') {
 
-            alert('스크랩해제한다!');
+   
             scrapcnt = scrapcnt - 1;
             $('.count').text(scrapcnt);
             $('.count').text(scrapcnt);
@@ -290,7 +280,7 @@ function scrapPopup() {
    var scrapcnts = $('#scrapCnt').text();
    var scrapcnt = parseInt(scrapcnts);
 
-   alert('스크랩 팝업!!!!!!');
+ 
 
    $.ajax({
 
@@ -305,7 +295,7 @@ function scrapPopup() {
 
       success : function(data) {
 
-         alert('함수 들어오냐');
+      
 
          if (data == 'y') {
         	
@@ -317,14 +307,13 @@ function scrapPopup() {
 
          } else if (data == 'n') {
 
-            alert('스크랩해제><');
             scrapcnt = scrapcnt - 1;
 
             $('.count').text(scrapcnt);
             $('#scrapid').removeClass('btn btn-info').addClass(
                   'btn btn-outline-info');
             $('#scrapCnts'+s).text(scrapcnt);
-            alert('스크랩 버튼 바뀜');
+    
 
          } else {
 
@@ -360,21 +349,19 @@ function likeClick() {
 
          if (data == 'y') {
 
-            alert('좋아요!');
+       
 
             likecnt = likecnt + 1;
 
             $('.countcount').text(likecnt);
             $('#ck').text(likecnt);
 
-            alert('좋아요수 카운트 업업!!!');
+     
 
             $('#likeid').removeClass('btn btn-outline-danger').addClass(
                   'btn btn-danger');
             
          } else if (data == 'n') {
-
-            alert('좋취');
 
             if (likecnt > 0) {
 
@@ -382,7 +369,7 @@ function likeClick() {
 
                $('.countcount').text(likecnt);
 
-               alert('좋아요수 카운트 다운다운!');
+            
 
                $('#likeid').removeClass('btn btn-danger').addClass(
                      'btn btn-outline-danger');
@@ -423,8 +410,7 @@ function scrapPopups(e) {
 
 	      success : function(data) {
 
-	         alert('함수 들어오냐');
-	      	alert(data);
+
 	         if (data == 'y') {
 	       
 	        	 //안했으면 show
@@ -434,7 +420,7 @@ function scrapPopups(e) {
 	            listnum = e;
 	         } else if (data == 'n') {
 
-	            alert('스크랩해제><');
+	       
 	            scrapcnt = scrapcnt - 1;
 	            
 	         
@@ -453,7 +439,6 @@ function scrapPopups(e) {
 	            $('#scrapid').removeClass('btn btn-info').addClass(
 	                  'btn btn-outline-info');
 
-	            alert('스크랩 버튼 바뀜');
 
 	         } else {
 

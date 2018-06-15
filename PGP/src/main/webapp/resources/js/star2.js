@@ -47,7 +47,7 @@ $(document).ready(function() {
    
       $("#close").click(function(){
          
-         alert('닫아줘');
+   
          $("#pop").hide();
          
          

@@ -30,22 +30,6 @@
 			<div id="carouselExampleSlidesOnly" class="carousel slide"
 				data-ride="carousel">
 				<div class="carousel-inner">
-				<c:if test="${maxcntimg==null}">
-				<div class="carousel-item active">
-			
-						<a
-							href=""
-							style="color: white"> <img class="d-block w-100"
-							src=""
-							id="imgtagbox" height="450px" alt="First slide">
-				
-						
-
-								
-							</div>
-						</a>
-					</div>
-				</c:if>
 						<c:if test="${maxcntimg!=null}">
 					<div class="carousel-item active">
 			
@@ -58,8 +42,8 @@
 								<h4>${board.get(0).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(0).member_photo}" width="25px"
-									height="25px" class="rounded-circle">${memberlist.get(0).member_id}</span>
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(0).member_photo}" width="55px"
+									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(0).member_id}</span>
 							</div>
 						</a>
 					</div>
@@ -73,8 +57,8 @@
 								<h4>${board.get(1).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}" width="25px"
-									height="25px" class="rounded-circle">${memberlist.get(1).member_id}</span>
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}" width="55px"
+									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(1).member_id}</span>
 							</div></a>
 					</div>
 					<div class="carousel-item">
@@ -87,8 +71,8 @@
 								<h4>${board.get(2).board_title}</h4>
 								<h1></h1>
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(2).member_photo}" width="25px"
-									height="25px" class="rounded-circle">${memberlist.get(2).member_id}</span>
+								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(2).member_photo}" width="55px"
+									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(2).member_id}</span>
 							</div></a>
 					</div>
 					</c:if>

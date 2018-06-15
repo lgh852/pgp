@@ -74,7 +74,7 @@ $(document).ready(function() {
 	function liclick(s) {
 			
 		var logcks=$('#logcks').val();
-		alert(logcks);
+
 		if(logcks!=''){
 		var likcnts = $('#likecnt'+s).text();
 		var likecnt =parseInt(likcnts);

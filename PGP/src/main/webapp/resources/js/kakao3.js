@@ -42,7 +42,7 @@ $(document).ready(function() {
                   },
                   url : "kakaologin",
                   success : function(date) {
-                     alert(date);
+                 
                      if(date=='y'){
                         window.location = "/p/";
                      }else if(date=='n'){

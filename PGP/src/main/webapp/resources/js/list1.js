@@ -28,12 +28,11 @@ $(document)
 						$('#latelybox').css('display', 'none');
 
 					} else if (latelyck.length >= 1) {
-						alert("박보검" + latelyck.length);
+						
 						if ((latelyck.length % 3) == 1 && latelyck.length < 3) {
 
 							$('#latelybox').css('display', 'block');
 
-							alert('첫번째 이미지명' + size);
 
 							$('#buttonblock').css('display', 'none');
 
@@ -80,7 +79,7 @@ $(document)
 
 						} else if ((latelyck.length % 3) == 0
 								&& latelyck.length < 3) {
-							alert('three');
+							
 							$('#latelybox')
 									.append(
 									'<div id="twoimg" class="card-body"	style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgtwo" width="128" height="128" style="margin-left: 10px;"></div>')
@@ -150,13 +149,11 @@ $(document)
 				});
 
 function back() {
-	alert('back');
+	
 	var size1 = $('#photoname1').val();
 	var size2 = $('#photoname2').val();
 	var size3 = $('#photoname3').val();
-	alert('초기값' + size1);
-	alert('초기값' + size2);
-	alert('초기값' + size3)
+
 
 	var sizeString = $('#listsize').val()
 	var size = parseFloat(sizeString)
@@ -173,7 +170,7 @@ function back() {
 		size1 = size1 - 3;
 
 	} else {
-		alert('쳌1')
+	
 	}
 	if (size2 != null && (size2 - 3) >= 0) {
 
@@ -181,9 +178,7 @@ function back() {
 
 	} else {
 
-		alert('쳌2')
-
-
+	
 	}
 	if (size3 != null && (size3 - 3) >= 0) {
 
@@ -191,21 +186,15 @@ function back() {
 
 	} else {
 
-		alert('쳌3')
-
 	
 	}
 	
 	if (size3 == ck3) {
 
-		// 값이 변화가 없으면 없앰
-		alert('3번 변화없음 ');
-		size3 = -2;
+
 		$('#oneimg').hide();
 		$('#latelybox').css('height', '360px')
 	} else {
-		alert(size3);
-		alert(latelyck[size3]);
 		$('#imgone').attr('src', '/p/resources/BoardPhoto/' + latelyck[size3]);
 		// 변화가 잇으면
 
@@ -222,8 +211,7 @@ function back() {
 		$('#twoimg').hide();
 		$('#latelybox').css('height','230px')
 
-	} else {3
-		alert(size3);
+	} else {
 	
 		$('#imgtwo').attr('src', '/p/resources/BoardPhoto/' + latelyck[size2]);
 	
@@ -236,7 +224,7 @@ function back() {
 
 	
 	} else {
-		alert(size1);
+		
 		$('#imgthree').attr('src',
 				'/p/resources/BoardPhoto/' + latelyck[size1]);
 		// 변화가 잇으면
@@ -252,10 +240,6 @@ function back() {
 	ck1 = size1;
 	ck2 = size2;
 	ck3 = size3;
-	alert('size1'+size1);
-	alert('비교값' + ck1);
-	alert('비교값' + ck2);
-	alert('비교값' + ck3);
 
 }
 
@@ -265,9 +249,6 @@ function front() {
 	var size2 = parseFloat($('#photoname2').val());
 	var size3 = parseFloat($('#photoname3').val());
 	$('#latelybox').css('height','490px')
-	alert('초기값' + size1);
-	alert('초기값' + size2);
-	alert('초기값' + size3)
 
 	var sizeString = $('#listsize').val()
 
@@ -285,14 +266,14 @@ function front() {
 		x++;
 	}
 
-	alert('쳌크드')
+
 
 	if (size3 != null && (size3 + 3) < latelyck.length) {
 		
 		size3 = size3 + 3;
 		
 	} else {
-		alert('쳌1')
+	
 		
 	}
 	if (size2 != null && (size2 + 3) < latelyck.length) {
@@ -301,7 +282,7 @@ function front() {
 
 	} else {
 		
-		alert('쳌2')
+
 	}
 	if (size1 != null && (size3 + 1) < latelyck.length) {
 
@@ -309,7 +290,6 @@ function front() {
 
 	} else {
 
-		alert('쳌3')
 	}
 	
 	
@@ -319,7 +299,7 @@ function front() {
 	
 	
 	$('#photoname2').val(size2);
-	size3
+
 	
 	
 	$('#photoname3').val(size3);
