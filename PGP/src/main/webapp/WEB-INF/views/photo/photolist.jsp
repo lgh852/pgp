@@ -9,7 +9,10 @@
 .container{
 /* font-family: 'Sunflower', sans-serif; */
 }
+
+
 </style>	
+
 <div class="container">
 	<div class="row border-bottom border-top"  style="text-align: center;">
 		<div class="col-sm">
@@ -308,7 +311,7 @@
 
 </div>
  
-    <p class="card-text" style="text-overflow: ellipsis;">${list.board_contents}</p>
+    <p class="card-text textboard_contents" style="text-overflow: ellipsis;">${list.board_title}</p>
 
   </div>
   
@@ -394,8 +397,7 @@
 								height="25px" alt="" class="rounded"></a>
 						</div>
 					</div>
-					<p class="card-text" style="display:block;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px;  height: 50px;  margin-left: 20px;">${list.board_contents}</p>
-		
+					<p class="card-text">${list.board_contents}</p>
 				</div>
 				<input type="hidden" class="likech${status.count}"
 					value="${list.like_check}"> <input type="hidden"
@@ -405,7 +407,7 @@
 					<input type="hidden"id="member_idx" value="${list.member_idx}">
 
 			</div>
-		</c:forEach>
+			</c:forEach>
 		<input type="text" id="logcks" value="${member}">
 
 
