@@ -30,7 +30,25 @@
 			<div id="carouselExampleSlidesOnly" class="carousel slide"
 				data-ride="carousel">
 				<div class="carousel-inner">
+				<c:if test="${maxcntimg==null}">
+				<div class="carousel-item active">
+			
+						<a
+							href=""
+							style="color: white"> <img class="d-block w-100"
+							src=""
+							id="imgtagbox" height="450px" alt="First slide">
+				
+						
+
+								
+							</div>
+						</a>
+					</div>
+				</c:if>
+						<c:if test="${maxcntimg!=null}">
 					<div class="carousel-item active">
+			
 						<a
 							href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(0).board_idx}"
 							style="color: white"> <img class="d-block w-100"
@@ -73,6 +91,8 @@
 									height="25px" class="rounded-circle">${memberlist.get(2).member_id}</span>
 							</div></a>
 					</div>
+					</c:if>
+					
 				</div>
 			</div>
 		</div>
@@ -136,9 +156,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">평수필터</h5>
-			<p class="card-text">
-				<small class="text-muted">평수별로 집 구경</small>
-			</p>
+			
 		</div>
 	</div>
 
@@ -151,9 +169,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">공간필터</h5>
-			<p class="card-text">
-				<small class="text-muted">공간별로 사진보기</small>
-			</p>
+			
 		</div>
 	</div>
 	<div class="card rounded border-0 "
@@ -164,9 +180,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">가구랭킹</h5>
-			<p class="card-text">
-				<small class="text-muted">가구 정보</small>
-			</p>
+			
 		</div>
 	</div>
 
@@ -178,9 +192,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">스토리</h5>
-			<p class="card-text">
-				<small class="text-muted">Last updated 3 mins ago</small>
-			</p>
+			
 		</div>
 	</div>
 	<div class="card rounded border-0 "
@@ -193,9 +205,6 @@
 		</a>
 		<div class="card-body">
 			<h5 class="card-title">공지사항</h5>
-			<p class="card-text">
-				<small class="text-muted">Last updated 3 mins ago</small>
-			</p>
 		</div>
 	</div>
 	<div class="card rounded border-0 "
@@ -206,9 +215,6 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">FAQ</h5>
-			<p class="card-text">
-				<small class="text-muted">질문과답변</small>
-			</p>
 		</div>
 	</div>
 

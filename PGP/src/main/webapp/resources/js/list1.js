@@ -55,7 +55,7 @@ $(document)
 
 							$('#latelybox')
 									.append(
-											'<div id="twoimg" class="card-body"	style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgtwo" width="128" height="128" style="margin-left: 10px;"></div>')
+											'<div id="twoimg" class="card-body"	style="padding-top: 0px; padding-bottom: 8px;"><img id="imgtwo" width="128" height="128"></div>')
 											 
 											
 											$('#imgone').attr(

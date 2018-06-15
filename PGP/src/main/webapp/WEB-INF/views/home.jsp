@@ -12,6 +12,7 @@
 <meta name="author" content="">
 <title>home</title>
 <!-- r글씨체 -->
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Dokdo|East+Sea+Dokdo|Gamja+Flower|Gugi|Hi+Melody|Nanum+Gothic+Coding:400,700|Nanum+Myeongjo|Sunflower:300|Yeon+Sung"
 	rel="stylesheet">
@@ -28,7 +29,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/board2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/list2.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/list1.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star1.js"></script>
 
@@ -323,7 +324,7 @@ div>nav>a {
 
 	</c:forEach>
 
-	<main role="main" class="container">
+	<main role="main" class="container border-bottom">
 
 
 	<div class="row" style="margin-top: 30px">
@@ -331,7 +332,15 @@ div>nav>a {
 		<jsp:include page="${page}" />
 
 	</div>
+	
 	</main>
+	<footer class="blog-footer border-top" >
+      <p style="text-align: center;margin-top: 20px;font-family: 'Anton', sans-serif;">© Playground 느그집</p>
+    
+      
+    </footer>
 
 </body>
 </html>
+
+

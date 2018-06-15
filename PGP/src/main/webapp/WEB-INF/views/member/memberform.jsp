@@ -28,13 +28,13 @@
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="userPw">비밀번호<span id="userPwck"></span></label> <input
-					type="text" class="form-control" name="member_pw" id="userPw"
+					type="password" class="form-control" name="member_pw" id="userPw"
 					placeholder="" value="" required="">
 				<div class="invalid-feedback">Valid first name is required.</div>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="userPw2">비밀번호 확인 <span id="userPwck2"></span></label> <input
-					type="text" class="form-control" name="userPw" id="userPw2"
+					type="password" class="form-control" name="userPw" id="userPw2"
 					placeholder="" value="" required="">
 				
 			</div>

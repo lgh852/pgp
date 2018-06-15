@@ -129,7 +129,7 @@
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 			in</button>
-		<p class="mt-5 mb-3 text-muted">
+		<p class="mt-5 mb-3" style="color: black; font-weight: 600;">
 			© Playground <br>2017.12-2018.06
 		</p>
 	</form>
