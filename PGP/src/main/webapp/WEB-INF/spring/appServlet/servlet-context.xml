@@ -84,7 +84,7 @@
 	<beans:bean id="ManagerService" class="p.g.p.service.ManagerService" />
 
 
-	<context:component-scan base-package="p.g.p" />
+
 
 
 

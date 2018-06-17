@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p.g.p.dao.PhotoDao">
+
+
+
+	<select id="selectJoin_Board_Member" parameterType="p.g.p.model.Join_Board_MemberInfo"
+		resultType="p.g.p.model.Join_Board_MemberInfo">
+		select * from board, member_info where
+		board.member_idx=member_info.member_idx and board_idx=#{board_idx};
+	</select>
+
+	<insert id="insertComment" parameterType="p.g.p.model.Board_Comment"
+		useGeneratedKeys="true" keyProperty="board_comment_idx">
+		insert into
+		board_comment(regroup,board_comment_contents,member_idx,board_idx)
+		values(#{regroup},#{board_comment_contents},#{member_idx},#{board_idx})
+	</insert>
+
+
+	<select id="selectPhotoFeed" resultType="String"
+		parameterType="p.g.p.model.Board_Photo">
+		select photo_name from board_photo where
+		board_idx=#{board_idx}
+	</select>
+
+
+	<select id="selectCommentAll" resultType="p.g.p.model.Join_BoardComment_MemberInfo"
+		parameterType="p.g.p.model.Join_BoardComment_MemberInfo">
+		select * from
+		board_comment left join member_info on
+		member_info.member_idx=board_comment.member_idx
+		where
+		board_idx=#{board_idx}
+		order by regroup,reorder asc;
+	</select>
+
+	<delete id="deleteComment" parameterType="p.g.p.model.Board_Comment">
+		delete from
+		board_comment where board_comment_idx=#{board_comment_idx}
+	</delete>
+
+	<!-- 댓글 수 -->
+	<select id="commentTotalCnt" resultType="int">
+		select count(*) from
+		board_comment where board_idx=#{board_idx}
+	</select>
+
+	<update id="commentTotalUpdate" parameterType="p.g.p.model.Board">
+		update board set
+		board_comment=(select count(*) from board_comment where
+		board_idx=#{board_idx}) where board_idx=#{board_idx}
+	</update>
+
+	<!-- 조회수 증가 -->
+	<update id="boardCntUpdate" parameterType="p.g.p.model.Join_Board_MemberInfo">
+		update board set
+		board_cnt=board_cnt+1 where board_idx=#{board_idx}
+	</update>
+
+	<!-- 조회수 출력 -->
+	<select id="boardCntSelect" resultType="int" parameterType="p.g.p.model.Board">
+		select board_cnt from board where board_idx=#{board_idx}
+	</select>
+
+	<select id="boardSelect" resultType="p.g.p.model.Board"
+		parameterType="p.g.p.model.Board">
+		select * from board where board_idx=#{board_idx}
+	</select>
+
+	<!--조회수 기준으로 카테고리 인기 사진 출력 -->
+	<select id="popluarphotoSelect" resultType="p.g.p.model.Join_board_boardphoto">
+		select *
+		from board,board_photo where
+		board.board_idx=board_photo.board_idx
+		order by board_cnt desc limit 3
+	</select>
+
+
+	<!-- 삭제 버튼 누를시 글 그림 삭제 -->
+	<delete id="boardCommentDelete">
+		delete from board_comment where
+		board_idx=#{board_idx};
+	</delete>
+
+	<delete id="boardPhotoDelete">
+		delete from board_photo where board_idx=#{board_idx};
+	</delete>
+
+	<delete id="boardDelete">
+		delete from board where board_idx=#{board_idx};
+	</delete>
+
+	<delete id="urlDelete">
+		delete from url_tag where board_idx=#{board_idx};
+	</delete>
+
+	<delete id="scrapDelete">
+		delete from scrap where board_idx=#{board_idx};
+	</delete>
+
+	<delete id="likeDelete">
+		delete from pgp.like where board_idx=#{board_idx};
+	</delete>
+
+	<delete id="categoryRoomDelete">
+		delete from category_room where category_idx=(select category_idx from board
+		where board_idx=#{board_idx});
+	</delete>
+
+	<delete id="categorySpaceDelete">
+
+		delete from category_space where category_idx=(select category_idx2 from
+		board where board_idx=#{board_idx});
+	</delete>
+
+
+	<!-- url tag -->
+	<select id="selectUrl" parameterType="p.g.p.model.Url_Tag"
+		resultType="p.g.p.model.Url_Tag">
+
+		select * from url_tag where board_idx=#{board_idx};
+
+	</select>
+
+
+	<!-- url 태그클릭시 태그 조회수 증가 -->
+
+	<update id="updateUrlCnt" parameterType="p.g.p.model.Url_Tag">
+		update url_tag set
+
+		tag_url_cnt=tag_url_cnt+1 where tag_idx=#{tag_idx}
+
+	</update>
+
+	<select id="selectByBoardIdx" parameterType="int" resultType="p.g.p.model.Board">
+
+		SELECT *
+		FROM pgp.board
+		where board_idx=#{board_idx};
+
+	</select>
+
+
+
+	<select id="tagcksmember" parameterType="p.g.p.model.Board"
+		resultType="String">
+
+		select board_idx from pgp.board where member_idx =#{member_idx} and
+		board_idx = #{board_idx}
+
+	</select>
+
+
+
+	<!-- 첫댓글 저장시 그룹값 증가 -->
+	<select id="maxSelect" resultType="int">
+		select max(regroup)+1
+		from
+		pgp.board_comment
+	</select>
+
+	<!-- 대댓글 입력 -->
+	<insert id="re_repleInsert" parameterType="p.g.p.model.Board_Comment">
+		insert into
+		pgp.board_comment (regroup ,reparent, redepth, reorder,
+		board_comment_contents,member_idx,board_idx)
+		values ( #{regroup},
+		#{reparent}, #{redepth}+1 , #{reorder}+1,
+		#{board_comment_contents},#{member_idx},#{board_idx} )
+	</insert>
+
+	<select id="selectByIdx" resultType="p.g.p.model.Board_Comment"
+		parameterType="int">
+		select *
+		from pgp.board_comment
+		where board_comment_idx =
+		#{board_comment_idx}
+	</select>
+
+	<select id="maxIdx" resultType="int">
+		select max(board_comment_idx)
+		from pgp.board_comment;
+	</select>
+
+	<!-- 대댓글 저장시 댓글의 순서 변경 -->
+	<update id="reorderPlus" parameterType="p.g.p.model.Board_Comment">
+		update pgp.board_comment
+		set reorder = reorder+1
+		where reorder > #{reorder} or reorder =
+		#{reorder} and regroup=#{regroup} and board_comment_idx not
+		in(#{board_comment_idx})
+	</update>
+
+
+	<update id="repleUpdate" parameterType="p.g.p.model.Board_Comment">
+
+		update pgp.board_comment set board_comment_contents =
+		#{board_comment_contents} where board_comment_idx=#{board_comment_idx}
+
+	</update>
+
+	<select id="childReple" parameterType="p.g.p.model.Board_Comment"
+		resultType="p.g.p.model.Board_Comment">
+
+		select * from pgp.board_comment where reparent =#{board_comment_idx};
+
+	</select>
+
+	<select id="selectCommentList" parameterType="p.g.p.model.PageMaker"
+		resultType="p.g.p.model.Join_BoardComment_MemberInfo">
+
+
+		select * from pgp.board_comment as a
+		join pgp.member_info as b
+		on a.member_idx =b.member_idx
+		where board_idx=#{board_idx} order by board_comment_idx desc limit
+		#{pageChecknum},#{contentnum};
+
+	</select>
+
+</mapper>
