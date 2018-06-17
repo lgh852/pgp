@@ -58,6 +58,7 @@ public class LoginController {
 			view = "redirect:/member/loginform";
 			
 			
+			
 			model.addAttribute("longinCheck","failure");
 	
 		}
