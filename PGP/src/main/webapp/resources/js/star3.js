@@ -94,25 +94,12 @@ $(document)
 
                $("#reportPopup").hide();
 
-               /*
-                * function reportPopup() {
-                * 
-                * $("#report > a").blur(); $("#reportPopup").show();
-                * $("#reportPopup a").focus();
-                * 
-                * $("#closeeeee").click(function(){
-                * 
-                * $("#reportPopup").hide();
-                * 
-                * });
-                * 
-                * });
-                */
+            
 
                $("#report_submit").click(function() {
 
                   var board_idx = $("#board_idx").val();
-                  /* var storyboard_idx = $("#storyboard_idx").val(); */
+               
                   var member_idx = $("#member_idx").val();
                   var report_contents = $("#report_contents").val();
 
@@ -140,11 +127,6 @@ $(document)
 
                            alert('성공');
 
-                           /*
-                            * $("#report > a").focus();
-                            * $("#reportPopupform").submit();
-                            * $("#reportPopup").hide();
-                            */
 
                         } else {
                            alert('실패');

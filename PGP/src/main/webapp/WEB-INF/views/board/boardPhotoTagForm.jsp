@@ -182,29 +182,7 @@
 				</div>
 			
 
-	<!-- <div id="viewbox" class="check1 none" data-toggle="modal"
-		data-target="#exampleModal">
-
-		<a href="#" class="aclick1 " data-toggle="modal"
-			data-target="#exampleModal">+</a>
-	</div>
-	<div id="viewbox" class="check2 none" data-toggle="modal"
-		data-target="#exampleModal">
-		<a href='#' class='aclick2'>+</a>
-	</div>
-
-	<div id="viewbox" class="check3 none" data-toggle="modal"
-		data-target="#exampleModal">
-		<a href='#' class='aclick3'>+</a>
-	</div>
-	<div id="viewbox" class="check4 none" data-toggle="modal"
-		data-target="#exampleModal">
-		<a href='#' class='aclick4'>+</a>
-	</div>
-	<div id="viewbox" class="check5 none" data-toggle="modal"
-		data-target="#exampleModal">
-		<a href='#' class='aclick5'>+</a>
-	</div> -->
+	
 	</div>
 	
 	<input type="hidden" id="tag1"> <input type="hidden" id="tag2">
@@ -235,17 +213,10 @@
 	</div>
 
 </div>
-<%-- 	<c:forEach items="${urlList}" var="urlList" varStatus="status">
-		
-		<input type="hidden" value="${urlList.tag_idx}" id="tag_idx${status.count}">
-	<input type="hidden" value="${urlList.tag_position_x}" id="tag_x${status.count}">
-	<input type="hidden" value="${urlList.tag_position_y}" id="tag_y${status.count}">
-	</c:forEach> --%>
+
 <script>
 	$(document).ready(function() {
 		var list = $('#urllist').val();
-		alert(list);
-
 		var url = list.split('Url_Tag [')
 		var lists = url[1].split(',')
 		var sss = lists[3].split('=');
