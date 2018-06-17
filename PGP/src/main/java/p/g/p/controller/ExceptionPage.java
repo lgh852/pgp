@@ -8,9 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mysql.cj.exceptions.DataTruncationException;
 
-@ControllerAdvice
 public class ExceptionPage {
-
+/*
 	@ExceptionHandler(NullPointerException.class)	
 	public ModelAndView Nullexception(NullPointerException e) {        
 
@@ -74,5 +73,5 @@ public class ExceptionPage {
 	        return mav;
 
 	    }
-
+*/
 }
