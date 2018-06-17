@@ -42,10 +42,7 @@ public interface PhotoDao {
    
    public String tagcksmember(Board boardboard);
   
-   
-   
-   
-   
+
    public List<Board_Comment> childReple(Board_Comment Comment);
    //////////////////////////////////////////////////////////
    
@@ -67,6 +64,12 @@ public interface PhotoDao {
 
    //댓글 페이징 
  public List<Join_BoardComment_MemberInfo> selectCommentList(PageMaker pagemaker);
+ 
+ 
+ 
+ public int selectroom(Board board);
+ public int selectspace(Board board);
+ 
 
    
 }

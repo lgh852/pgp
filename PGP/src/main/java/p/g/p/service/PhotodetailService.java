@@ -276,4 +276,18 @@ public class PhotodetailService {
 		return list;
 	}
 
+	public int selectroom(Board board) {
+		
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		
+		return dao.selectroom(board);
+	}
+
+	public int selectspace(Board board) {
+		
+		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
+		return dao.selectspace(board);
+	
+	}
+
 }

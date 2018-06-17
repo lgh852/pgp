@@ -219,5 +219,14 @@
 		#{pageChecknum},#{contentnum};
 
 	</select>
+	
+	<select id="selectspace" resultType="int" parameterType="p.g.p.model.Board">
+	
+	SELECT category_space FROM pgp.category_space where category_idx = #{category_idx}
+	</select>
+	<select id="selectroom" resultType="int" parameterType="p.g.p.model.Board">
+	
+	SELECT category_room FROM pgp.category_room where category_idx = #{category_idx}
+	</select>
 
 </mapper>

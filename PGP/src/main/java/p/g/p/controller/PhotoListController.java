@@ -406,14 +406,24 @@ public class PhotoListController {
 		String view = "home";
 		String page = "photo/updatePhotodetail.jsp";
 		model.addAttribute("page", page);
-
+		
 		// 글 제목
 		Board board = photodetailservice.boardSelectView(board_idx);
 		model.addAttribute("board", board);
-
 		// 사진
+		if(board!=null) {
+		int roomno = photodetailservice.selectroom(board);
+		int spaceno =photodetailservice.selectspace(board);
+		model.addAttribute("spaceno", spaceno);
+		model.addAttribute("roomno", roomno);
+		}
+		
+		
+		
 		String photoName = photodetailservice.photodetailView(board_idx);
 		model.addAttribute("photoName", photoName);
+		
+		
 		
 	
 
