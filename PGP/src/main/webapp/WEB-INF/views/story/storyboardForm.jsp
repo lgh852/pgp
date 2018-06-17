@@ -27,8 +27,6 @@
 $(document).ready(function () {
 var seck = $('#seck').val();
   
-
-  
 	   $('#storyreg').submit(function(){
 		  
 		   if(seck==''){
@@ -37,6 +35,8 @@ var seck = $('#seck').val();
 			   return false;		
 			} 
        });
+	   
+	   
 	   $('#cmments').submit(function() {
 		
 		   if(seck==''){
@@ -46,6 +46,8 @@ var seck = $('#seck').val();
 			} 
 		   
 	});
+	   
+	   
 	   $('#inputGroupFile02').click(function(){
 		   if(seck==''){
 			   alert('로그인후 이용부탁드립니다');

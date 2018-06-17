@@ -27,17 +27,17 @@
 	</beans:bean>
 
 
-	   <beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-      <!-- 식별자 -->
-      <beans:property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 식별자 -->
+		<beans:property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
 
-        <beans:property name="jdbcUrl"
+		<beans:property name="jdbcUrl"
 
-         value="jdbc:mysql://localhost/pgp?allowMultiQueries=true&amp;serverTimezone=UTC" />
-      <beans:property name="user" value="bit" />
+			value="jdbc:mysql://localhost/pgp?allowMultiQueries=true&amp;serverTimezone=UTC" />
+		<beans:property name="user" value="bit" />
 
-      <beans:property name="password" value="bit" />
-   </beans:bean>
+		<beans:property name="password" value="bit" />
+	</beans:bean>
 	<!--MyBatis&Spring 연동 -->
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -83,42 +83,29 @@
 	<!-- 관리자 ManagerService 빈 -->
 	<beans:bean id="ManagerService" class="p.g.p.service.ManagerService" />
 
-	
 
-   <context:component-scan base-package="p.g.p"/>
-   
-   <beans:import resource="Star.xml"/>
-   <beans:import resource="rlakdyd.xml"/>
+	<context:component-scan base-package="p.g.p" />
 
 
 
-	<!-- <interceptors>
-		한개의 핸들러인터셉터를 생성
-		<interceptor>
-			핸들러인터셉터를 적용할 경로 설정
-			<mapping path="/**" />
-			경로중 일부 경로를 제외하고 싶을 때
-			<exclude-mapping path="/member/**"/>
-			<exclude-mapping path="/manager/managerloginform"/>
-			<exclude-mapping path="/home"/>
-			<exclude-mapping path="/p/"/>
-			인터셉터 클래스를 상속받아 사용할 메서드가 있는 클래스 경로
-			<beans:bean class="p.g.p.Interceptor.LoginCkInterceptor"/>
-		</interceptor>
-	</interceptors>
- -->
 
-	<!-- photoList  -->
-	<!-- <beans:bean id="photolistview" class="p.g.p.service.PhotoService"/>
- -->
- 
- 	<!-- 메일 보내기 설정 -->
+
+	<!-- <interceptors> 한개의 핸들러인터셉터를 생성 <interceptor> 핸들러인터셉터를 적용할 경로 설정 <mapping 
+		path="/**" /> 경로중 일부 경로를 제외하고 싶을 때 <exclude-mapping path="/member/**"/> <exclude-mapping 
+		path="/manager/managerloginform"/> <exclude-mapping path="/home"/> <exclude-mapping 
+		path="/p/"/> 인터셉터 클래스를 상속받아 사용할 메서드가 있는 클래스 경로 <beans:bean class="p.g.p.Interceptor.LoginCkInterceptor"/> 
+		</interceptor> </interceptors> -->
+
+	<!-- photoList -->
+	<!-- <beans:bean id="photolistview" class="p.g.p.service.PhotoService"/> -->
+
+	<!-- 메일 보내기 설정 -->
 
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 
 		<beans:property name="host" value="smtp.gmail.com" />
-		 <beans:property name="port" value="587" />
+		<beans:property name="port" value="587" />
 
 
 
@@ -136,18 +123,28 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
- 
- 
- 	 	
- 	<beans:bean id="mainpage" class="p.g.p.service.MainPageService"/>
- 	
- 	<beans:bean id="mpmypages" class="p.g.p.service.Mp_MyPageList"/>
- 	
- 	<beans:bean id="MemberTemppwService" class="p.g.p.service.MemberTemppwService"/>
- 	
-	<context:component-scan base-package="p.g.p" />
-	
 
+
+
+	<beans:bean id="mainpage" class="p.g.p.service.MainPageService" />
+
+	<beans:bean id="mpmypages" class="p.g.p.service.Mp_MyPageList" />
+
+	<beans:bean id="MemberTemppwService" class="p.g.p.service.MemberTemppwService" />
+
+	<context:component-scan base-package="p.g.p" />
+
+
+	<!--포토디테일서비스 빈 -->
+	<beans:bean id="photodetailservice" class="p.g.p.service.PhotodetailService" />
+	<beans:bean id="furniturerankservice" class="p.g.p.service.FurnitureRankService" />
+	<beans:bean id="storyboardservice" class="p.g.p.service.StoryBoardService" />
+	<beans:bean id="navershopping" class="p.g.p.service.NaverShoppingService" />
+
+	<beans:bean id="SidebarSerivce" class="p.g.p.service.SidebarSerivce" />
+
+	<!--마이페이지 빈 -->
+	<beans:bean id="MypageService" class="p.g.p.service.MypageService" />
 
 </beans:beans>
 
