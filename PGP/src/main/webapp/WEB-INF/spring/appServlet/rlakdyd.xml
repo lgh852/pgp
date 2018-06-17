@@ -7,13 +7,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	
-	
-	
-	
-	 <!--포토디테일서비스 빈-->
+	<!--포토디테일서비스 빈-->
    <beans:bean id="photodetailservice" class="p.g.p.service.PhotodetailService"/>
-   <beans:bean id="photofeedservice" class="p.g.p.service.PhotofeedService"/>
-   <beans:bean id="photodetailupdateservice" class="p.g.p.service.PhotoDetailUpdateService"/>
    <beans:bean id="furniturerankservice" class="p.g.p.service.FurnitureRankService"/>
    <beans:bean id="storyboardservice" class="p.g.p.service.StoryBoardService"/>
+	
+	
+	
+	 
 </beans:beans>

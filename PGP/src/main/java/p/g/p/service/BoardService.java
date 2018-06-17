@@ -1,5 +1,7 @@
 package p.g.p.service;
 
+import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import p.g.p.model.Category_Space;
 import p.g.p.model.Like;
 import p.g.p.model.Member_info;
 import p.g.p.model.PhotoListmodel;
+import p.g.p.model.StoryBoard;
 import p.g.p.model.Url_Tag;
 
 public class BoardService {
@@ -80,10 +83,7 @@ public class BoardService {
 			Board board, HttpSession session) throws IllegalStateException, IOException {
 		int result = 0;
 		// 사진업로드
-		System.out.println(photo);
-		System.out.println(room);
-		System.out.println(space);
-		System.out.println(board);
+	
 		if (room.getCategory_room()!=null) {
 			int resultroom = insertroom(room);
 			// idx 가져와서 넣어줌 key 값으로
@@ -186,9 +186,7 @@ public class BoardService {
 		dao = sessionTemplate.getMapper(BoarDao.class);
 		String tag_url =  dao.selectTagInfo(tag);
 
-		System.out.println("확인!!!"+tag_url);
-
-		
+	
 		if (tag_url!=null) {
 			return tag_url;
 		}else {
@@ -200,9 +198,7 @@ public class BoardService {
 	public String deletetag(Url_Tag tag) {
 	
 		dao = sessionTemplate.getMapper(BoarDao.class);
-		System.out.println("이승기"+tag);
 	
-		
 		int resultcnt = dao.tagdelete(tag);
 		String check ="";
 		
@@ -247,6 +243,7 @@ public class BoardService {
 		
 		return list;
 	}
-
+ 
+	
 
 }

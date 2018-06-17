@@ -2,8 +2,10 @@ package p.g.p.dao;
 
 import java.util.List;
 
+
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
@@ -42,14 +44,10 @@ public interface PhotoDao {
    
    public String tagcksmember(Board boardboard);
   
-   
-   
-   
-   
    public List<Board_Comment> childReple(Board_Comment Comment);
    //////////////////////////////////////////////////////////
    
-// 첫댓글 저장시 그룹값 증가
+   // 첫댓글 저장시 그룹값 증가
    public int maxSelect();
    
    public  int repleUpdate(Board_Comment board_comment);
@@ -66,7 +64,11 @@ public interface PhotoDao {
    public int reorderPlus(Board_Comment board_comment);
 
    //댓글 페이징 
- public List<Join_BoardComment_MemberInfo> selectCommentList(PageMaker pagemaker);
+   public List<Join_BoardComment_MemberInfo> selectCommentList(PageMaker pagemaker);
+ 
+  
+  ////////////////////////////////////////////////////////////////photofeed
 
-   
-}
+
+
+   }

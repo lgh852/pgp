@@ -3,6 +3,7 @@ package p.g.p.controller;
 
 import java.io.IOException;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +34,9 @@ import p.g.p.model.Url_Tag;
 import p.g.p.model.report;
 import p.g.p.model.scrapFN;
 import p.g.p.service.BoardPhotoUpLoad;
-import p.g.p.service.PhotoDetailUpdateService;
-import p.g.p.service.PhotoListLeeService;
 import p.g.p.service.PhotoService;
 import p.g.p.service.PhotodetailService;
-import p.g.p.service.PhotofeedService;
+
 
 import p.g.p.service.SidebarSerivce;
 @Controller
@@ -46,22 +45,12 @@ public class PhotoListController {
 	private PhotoService photoervice;
 
 	@Autowired
-	private PhotoListLeeService listservice;
-	
-	@Autowired
-	private PhotofeedService photofeedservice;
-	
-	@Autowired
 	private SidebarSerivce sidebarservice;
 	
 	@Autowired
 	private PhotodetailService photodetailservice;
 
-		
-	@Autowired
-	private PhotoDetailUpdateService photodetailupdateservice;
-
-	@Autowired
+    @Autowired
 	private BoardPhotoUpLoad photoup;
 	
 	@RequestMapping("/photo/photoList")
@@ -120,16 +109,16 @@ public class PhotoListController {
 			like.setMember_idx(member_idx);
 
 			/* board 와 member_idx 기준으로 조회하는 select 문 */
-			Like likeck = listservice.likeck(like);
+			Like likeck = photoervice.likeck(like);
 
 			if (likeck == null) {
 				// 실행
 
-				int result = listservice.listLikeup(like);
+				int result = photoervice.listLikeup(like);
 
 				if (result > 0) {
 					// 성공
-					int resultCnt = listservice.updateLikecntUP(like);
+					int resultCnt = photoervice.updateLikecntUP(like);
 
 					if (resultCnt > 0) {
 
@@ -145,9 +134,9 @@ public class PhotoListController {
 				}
 			} else {
 				// 값이 있으면 삭제후 -1 감소 실행
-				int resultcnt = listservice.deltelike(likeck);
+				int resultcnt = photoervice.deltelike(likeck);
 				if (resultcnt > 0) {
-					int result = listservice.udateLikecntDown(like);
+					int result = photoervice.udateLikecntDown(like);
 					// 실패
 					ck = "n";
 					// 감소문 실행
@@ -178,7 +167,7 @@ public class PhotoListController {
 		
 		
 		
-		List<Board_Photo> photoList=photofeedservice.BoardPhotoList();
+		List<Board_Photo> photoList=photodetailservice.BoardPhotoList();
 		if(photoList!=null) {
 			view ="home";
 			page="photo/photofeed.jsp";
@@ -189,13 +178,6 @@ public class PhotoListController {
 		}
 		
 		
-		/*//글 그림 데이터 다 삭제 
-		int allDeleteCnt=photodetailservice.AllDelete(board_idx);
-		if(allDeleteCnt<0) {
-			page = "photo/photoCommentFail.jsp";
-			model.addAttribute("page", page);
-		}
-		*/
 		model.addAttribute("page",page);
 		
 		return view;
@@ -358,7 +340,7 @@ public class PhotoListController {
 
 		List<Board_Photo> latelylist = (List<Board_Photo>) session.getAttribute("latelylist");
 		//최근 사진 들어올시 session 추가 
-		listservice.latestlist(session,latelylist,photoName,photo);
+		photoervice.latestlist(session,latelylist,photoName,photo);
 		
 		
 		model.addAttribute("page", page);
@@ -368,68 +350,6 @@ public class PhotoListController {
 	}
 
 	
-	// 댓글 쓰기 (insert)
-	/*@RequestMapping(value = "photo/photodetail",method = RequestMethod.POST)
-	public String detailComment(Model model, Board_Comment bc,
-			@RequestParam("board_comment_contents") String board_comment_contents, HttpSession session,
-			@RequestParam(value = "board_idx", defaultValue = "0") int board_idx) {
-		
-		String view = "home";
-		Member_info member = (Member_info) session.getAttribute("user");
-		int member_idx = member.getMember_idx();
-
-		bc.setMember_idx(member_idx);
-		bc.setBoard_idx(board_idx);
-		bc.setBoard_comment_contents(board_comment_contents);
-
-		int comment = photodetailservice.ListInsertComment(bc);
-		String page = "photo/photodetail.jsp";
-		model.addAttribute("page", page);
-		// 실패하면
-		if (comment < 0) {
-			page = "photo/photoCommentFail.jsp";
-			model.addAttribute("page", page);
-		}
-		List<Join_BoardComment_MemberInfo> Commentlist = photodetailservice.ListselectCommentAll(board_idx);
-		model.addAttribute("Commentlist", Commentlist);
-
-		// 댓글수
-		int commentCnt = photodetailservice.commentTotalCntView(board_idx);
-		model.addAttribute("commentCnt", commentCnt);
-		// 댓글 디비에 저장
-		int commentUpdate = photodetailservice.commentTotalUpdate(board_idx);
-		model.addAttribute("commentUpdate", commentUpdate);
-
-		// 조회수 출력
-		int board_cnt_view = photodetailservice.boardCntView(board_idx);
-		model.addAttribute("board_cnt_view", board_cnt_view);
-
-		// 사진 출력
-		String photoName = photodetailservice.photodetailView(board_idx);
-		model.addAttribute("photoName", photoName);
-
-		// 글 제목 내용
-		Board board = photodetailservice.boardSelectView(board_idx);
-		model.addAttribute("board", board);
-
-		// board, memberinfo 조인
-		Join_Board_MemberInfo boardMemberinfo = photodetailservice.selectJoin_Board_Member(board_idx);
-		model.addAttribute("boardMemberinfo", boardMemberinfo);
-
-		// 조회수 기준 인기사진 출력
-		List<Join_board_boardphoto> popularPhotoList = photodetailservice.popluarphotoSelect();
-		model.addAttribute("popularPhotoList", popularPhotoList);
-		
-		// url 태그
-	      List<Url_Tag> urlList = photodetailservice.selectUrl(board_idx);
-	      
-	     
-	      model.addAttribute("urlList", urlList);
-		
-		
-		return view;
-
-	}*/
 	@RequestMapping("/photo/comment")
 	@ResponseBody
 	public String commentinset(Board_Comment board_comment) {
@@ -511,10 +431,10 @@ public class PhotoListController {
 		
 		photoup.fileupload(request, session, board_photo);
 
-		int result = photodetailupdateservice.AllPhotoDetailUpdate(board, board_photo, joinBoardRoomNSpace);
-		System.out.println("RESULT값===>"+result);
+		int result = photodetailservice.AllPhotoDetailUpdate(board, board_photo, joinBoardRoomNSpace);
+		
 		if (result > 0) {
-			System.out.println("이것보세요~!!!!!!!!!!!!!!!=>"+board.getBoard_idx());
+			
 			page = "redirect:photodetail?board_idx="+board.getBoard_idx();
 	
 		}else {
@@ -527,21 +447,6 @@ public class PhotoListController {
 		return page;
 
 	}
-	/*@RequestMapping("photo/photoCommentDelete")
-	public String CommentDelete(@RequestParam(value = "board_idx") int board_idx,
-			@RequestParam(value = "board_comment_idx") int board_comment_idx) {
-
-	
-		String del = "del_success";
-		String page = "";
-		if (resultCnt > 0) {
-			page = "../";
-			page = "redirect:photodetail?board_idx=" + board_idx + "&del=" + del;
-		}else {
-			//에러 페이지 내나 
-		}
-		return page;
-	}*/
 	
 	
 	@RequestMapping("photo/photoCommentDelete")
@@ -550,43 +455,22 @@ public class PhotoListController {
 	
 		
 		List<Board_Comment> reple = photodetailservice.childReple(comment);
-		System.out.println("1");
+		
 		String ck = "";
 		if (reple.size()== 0) {
 			
-			System.out.println("2");
-			
 			photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
 			
-			System.out.println("3");
 			ck = "y";
 		} else {
 
-			System.out.println("4");
-			
-			comment.setBoard_comment_contents("댓글이 삭제되었습니다.");
-			
-			System.out.println("5");
+		    comment.setBoard_comment_contents("댓글이 삭제되었습니다.");
 			
 			photodetailservice.commentUpdate(comment);
 		
-			System.out.println("6");
+			
 			ck = "n";
 		}
-		/*int resultCnt = photodetailservice.ListdeleteComment(comment.getBoard_comment_idx());
-		
-		
-		if(resultCnt>0) {
-			
-		
-		//성공
-			
-		}else {
-			//성공 안함
-			
-			
-		}
-		
-	*/	return ck;
+			return ck;
 	}
 }

@@ -6,9 +6,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.PhotoDao;
+import p.g.p.dao.PhotoDetailUpdateDao;
+import p.g.p.dao.PhotoFeedDao;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Comment;
+import p.g.p.model.Board_Photo;
 import p.g.p.model.Join_BoardComment_MemberInfo;
+import p.g.p.model.Join_Board_Category_RoomNSpace;
 import p.g.p.model.Join_Board_MemberInfo;
 import p.g.p.model.Join_board_boardphoto;
 import p.g.p.model.PageMaker;
@@ -18,6 +22,10 @@ public class PhotodetailService {
 
 	PhotoDao dao;
 
+	PhotoDetailUpdateDao dao2;
+	
+    PhotoFeedDao dao3;
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
@@ -224,6 +232,48 @@ public class PhotodetailService {
 
 	}
 
-
+	/////////////////////////////////////////////photodetail update 서비스
+	public int  UpdateBoard(Board board) {
+		dao2 = sqlSessionTemplate.getMapper(PhotoDetailUpdateDao.class);
+		int resultCnt=dao2.UpdateBoard(board);
+		return resultCnt;
+	}
+	
+	public int  UpdateBoardPhoto(Board_Photo board_photo) {
+		dao2 = sqlSessionTemplate.getMapper(PhotoDetailUpdateDao.class);
+		int resultCnt=dao2.UpdateBoardPhoto(board_photo); 
+		return resultCnt;
+	}
+	
+	public int  UpdateCategoryRoom(Join_Board_Category_RoomNSpace joinBoardRoom) {
+		dao2 = sqlSessionTemplate.getMapper(PhotoDetailUpdateDao.class);
+		int resultCnt=dao2.UpdateCategoryRoom(joinBoardRoom);
+		return resultCnt;
+	}
+	
+	public int  UpdateCategorySpace(Join_Board_Category_RoomNSpace joinBoardSpace) {
+		dao2 = sqlSessionTemplate.getMapper(PhotoDetailUpdateDao.class);
+		int resultCnt=dao2.UpdateCategorySpace(joinBoardSpace);
+		return resultCnt;
+	}
+	
+	public int AllPhotoDetailUpdate(Board board,Board_Photo board_photo,Join_Board_Category_RoomNSpace joinBoardRoomNSpace) {
+	
+		
+		
+		int result1=UpdateBoard(board);
+		int result2=UpdateBoardPhoto(board_photo);
+		int result3=UpdateCategoryRoom(joinBoardRoomNSpace);
+		int result4=UpdateCategorySpace(joinBoardRoomNSpace);
+		
+	    return result1;
+	}
+	
+  ////////////////////////////////////////////////////////photofeed
+	public  List<Board_Photo> BoardPhotoList(){
+		dao3 = sqlSessionTemplate.getMapper(PhotoFeedDao.class);
+		List<Board_Photo> list = dao3.selectPhotoFeed();
+		return list;
+	}
 
 }
