@@ -30,26 +30,15 @@ public class PhotodetailService {
 	public int ListInsertComment(Board_Comment board_comment) {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		
-		System.out.println("댓글 성공" + board_comment);
-		
-		int group = maxRegroup();
+			int group = maxRegroup();
 	
 		
-		System.out.println("2");
-		
-		
-		
-		
-		
-		
-		System.out.println("1");
 		board_comment.setRegroup(group);
-		System.out.println("2");
+	    
 		int resultCnt = dao.insertComment(board_comment);
-		System.out.println("3");
 		
 		if (resultCnt > 0) {
-			System.out.println("댓글성공");
+			
 		} else {
 			resultCnt = -1;
 		}
@@ -90,7 +79,7 @@ public class PhotodetailService {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 		int resultCnt = 0;
 		resultCnt = dao.commentTotalCnt(board_idx);
-		System.out.println(resultCnt + "dsdsdsdjajdjasjkdjajksdjsadjk이거야야야야ㅑ야야야야ㅑ ");
+		
 		return resultCnt;
 	}
 
@@ -98,7 +87,7 @@ public class PhotodetailService {
 		dao = sqlSessionTemplate.getMapper(PhotoDao.class);
 
 		int resultCnt = dao.boardCntUpdate(board_idx);
-		System.out.println("조회수ㅜ우우우ㅜ우우우ㅜ우우우우ㅜ우웅");
+		
 		return resultCnt;
 	}
 
@@ -171,10 +160,7 @@ public class PhotodetailService {
 		int resultCnt3 = boardCommentDelete(board_idx);
 		int resultCnt4 = boardDelete(board_idx);//꼭 삭제 
 		
-		System.out.println("야야야야얍!!!!!!!==>"+resultCnt);
-		System.out.println("야야야야얍!!!!!!!==>"+resultCnt2);
-		System.out.println("야야야야얍!!!!!!!==>"+resultCnt3);
-		System.out.println("야야야야얍!!!!!!!==>"+resultCnt4);
+		
 		if (resultCnt > 0 && resultCnt4 > 0) {
 
 			return resultCnt;
@@ -207,14 +193,12 @@ public class PhotodetailService {
 		int result = dao.re_repleInsert(board_comment);
 		
 		if (result > 0) {
-			System.out.println(1);
+			
 			int idx = dao.maxIdx();
 			board_comment = dao.selectByIdx(idx);
 			
-			System.out.println("reple : " + board_comment);
+		    dao.reorderPlus(board_comment);
 			
-			dao.reorderPlus(board_comment);
-			System.out.println(3);
 		}
 		return result;
 		
@@ -225,8 +209,7 @@ public class PhotodetailService {
 		
 		List<Board_Comment> list = dao.childReple(comment);
 			if(list.size()<0) {
-				
-				System.out.println("sdas");
+							
 			}
 		return list;
 	}

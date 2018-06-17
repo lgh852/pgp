@@ -2,6 +2,7 @@ package p.g.p.controller;
 
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,8 @@ import p.g.p.service.PhotoListLeeService;
 import p.g.p.service.PhotoService;
 import p.g.p.service.PhotodetailService;
 import p.g.p.service.PhotofeedService;
-import p.g.p.service.Sb_like_service;
-import p.g.p.service.Sb_scrap_service;
+
+import p.g.p.service.SidebarSerivce;
 @Controller
 public class PhotoListController {
 	@Autowired
@@ -51,14 +52,12 @@ public class PhotoListController {
 	private PhotofeedService photofeedservice;
 	
 	@Autowired
-	private Sb_scrap_service scrap_service;
+	private SidebarSerivce sidebarservice;
 	
 	@Autowired
 	private PhotodetailService photodetailservice;
 
-	@Autowired
-	private Sb_like_service sblikeservice;
-	
+		
 	@Autowired
 	private PhotoDetailUpdateService photodetailupdateservice;
 
@@ -81,12 +80,12 @@ public class PhotoListController {
 				
 				 scrap.setMember_idx(member.getMember_idx());
 			
-				List<scrapFN> scrapNameList = scrap_service.folder(member.getMember_idx());
+				List<scrapFN> scrapNameList = sidebarservice.folder(member.getMember_idx());
 			       model.addAttribute("scrapNameList", scrapNameList);
 			     
 			     //스크랩 체크
 			     
-			     list= scrap_service.Listscrapck(list,scrap);
+			     list= sidebarservice.Listscrapck(list,scrap);
 
 			}
 			model.addAttribute("page",page);
@@ -308,7 +307,7 @@ public class PhotoListController {
 		List<Join_board_boardphoto> popularPhotoList = photodetailservice.popluarphotoSelect();
 		model.addAttribute("popularPhotoList", popularPhotoList);
 
-		Board boardInfo = sblikeservice.selectBoardInfo(board_idx);
+		Board boardInfo = sidebarservice.selectBoardInfo(board_idx);
 		model.addAttribute("boardInfo", boardInfo);
 
 	
@@ -316,13 +315,13 @@ public class PhotoListController {
 		if (member != null) {
 			boardboard.setMember_idx(member.getMember_idx());
 			// 스크랩 체크
-			Scrap scrapck = scrap_service.scrapck(scrap);
+			Scrap scrapck = sidebarservice.scrapck(scrap);
 			model.addAttribute("scrapck", scrapck);
 			// 좋아요 체크
-			Like likecheck = sblikeservice.likeck(like);
+			Like likecheck = sidebarservice.likeck(like);
 			model.addAttribute("likecheck", likecheck);
 			// 스크랩 목록
-			List<scrapFN> scrapNameList = scrap_service.folder(member.getMember_idx());
+			List<scrapFN> scrapNameList = sidebarservice.folder(member.getMember_idx());
 			model.addAttribute("scrapNameList", scrapNameList);
 		}else {
 			Scrap scrapck = null;

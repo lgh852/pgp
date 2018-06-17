@@ -1,6 +1,7 @@
 package p.g.p.controller;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,8 @@ import p.g.p.model.scrapFN;
 import p.g.p.service.MemberService;
 import p.g.p.service.Mp_MyPageList;
 import p.g.p.service.MypageService;
-import p.g.p.service.Sb_scrap_service;
+
+import p.g.p.service.SidebarSerivce;
 import p.g.p.service.StoryBoardService;
 
 @Controller
@@ -41,7 +43,7 @@ public class MypageController {
     @Autowired
 	private MypageService mpservice;
     @Autowired
-    private Sb_scrap_service service2;
+    private SidebarSerivce service2;
     
     ////////////////////////////////////////////////////마이페이지 들어가면 메인 
     @RequestMapping("/mypage/mp_main")

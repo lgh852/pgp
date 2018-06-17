@@ -26,28 +26,6 @@
 		</div>
 
 
-		<div class="mb-3">
-			<label for="member_passpword">현재 사용중인 비밀번호<span
-				id="member_pwmsg"></span> <span id="useridck"></span></label> <input
-				type="text" class="form-control" id="member_password"
-				name="member_pw">
-		</div>
-		<input type="hidden" id="pw" value="${member.member_pw}">
-
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<label for="userPw">변경하실 비밀번호<span id="userPwck"></span>
-				</label> <input type="text" class="form-control" name="userPw1"
-					id="changePw1">
-				<div class="invalid-feedback">Valid first name is required.</div>
-			</div>
-			<div class="col-md-6 mb-3">
-				<label for="userPw2">변경하실 비밀번호 확인 <span id="userPwck2"></span>
-				</label> <input type="text" class="form-control" name="userPw2"
-					id="changePw2">
-
-			</div>
-		</div>
 
 		<div class="mb-3">
 			<label for="userName">이름 <span id="userNameck"></span></label> <input

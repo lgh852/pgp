@@ -7,19 +7,121 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.Sb_dao;
 import p.g.p.model.Board;
+import p.g.p.model.Like;
 import p.g.p.model.PhotoListmodel;
 import p.g.p.model.Scrap;
+import p.g.p.model.report;
 import p.g.p.model.scrapFN;
 
-public class Sb_scrap_service {
-
+public class SidebarSerivce {
+	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private Sb_dao dao;
+	
+	////////////////////////////////////////////////////////좋아요
+	
+	public Like likeck(Like like) {
+		
+		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+		like = dao.selectlikeck(like);
+		
+		
+		return like;
+	}
 
-	public scrapFN selectScrpaIdx;
 
+	public int Likeup(Like like) {
+		
+		dao=sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		int resultCnt=dao.likeup(like);
+		
+		if(resultCnt>0) {
+			
+		}else {
+			resultCnt=0;
+		}
+		
+		return resultCnt;
+	}
+
+	public int updateLikecntUp(Board board) {
+		
+		dao=sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		int resultCnt = dao.likeUpdateUP(board);
+		
+		return resultCnt;
+	}
+	
+	
+
+
+	public int deletelike(Like like) {
+		
+		dao=sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		int result = dao.deletelike(like);
+		
+		if(result>0) {
+			
+		}else {
+			result=-1;
+		}
+		
+		return result;
+	}
+
+
+	public int updateLikecntDown(Board board) {
+
+		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		int result = dao.likeupdateDown(board);
+		
+		if(result>0) {
+			
+		}else {
+			result=-1;
+		}
+		return result;
+	}
+
+
+	public Board selectBoardInfo(int board_idx) {
+		
+		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		Board bI = dao.selectBoardInfo(board_idx);
+		
+        return bI;
+	}
+
+	/////////////////////////////////////////////////////신고
+	
+	public int reportSubmit(report report) {
+		
+		System.out.println(report);
+		
+		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
+		
+		int result = dao.reportboard(report);
+		
+		if(result>0) {
+			System.out.println("성공");
+		}else {
+			result=-1;
+		}
+		
+		return result;
+	}
+
+	
+	
+	////////////////////////////////////////////////////스크랩
+	
 	public List<scrapFN> folder(int member_idx) {
 
 		dao = sqlSessionTemplate.getMapper(Sb_dao.class);

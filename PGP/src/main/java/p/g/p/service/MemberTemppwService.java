@@ -21,56 +21,9 @@ public class MemberTemppwService {
 			
 			
 			dao =sqlSessionTemplate.getMapper(MemberDao.class);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
-			System.out.println(member);
 			
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
-			
-			System.out.println(member);
-			System.out.println(member);
 			
 			int member_pw =dao.updateChkPw(member);
-			System.out.println("데이터베이스 : "+member_pw);
-			System.out.println("데이터베이스 : "+member_pw);
-			System.out.println("데이터베이스 : "+member_pw);
 			
 			Member_info member_id = dao.loginSelect(member.getMember_id());
 			

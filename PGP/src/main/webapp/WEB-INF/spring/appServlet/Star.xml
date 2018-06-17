@@ -10,17 +10,7 @@
       
    <beans:bean id="navershopping" class="p.g.p.service.NaverShoppingService"/>
    
-    <!-- 사이드바 Sb_like_service 빈 -->
-   <beans:bean id="Sb_like_service" class="p.g.p.service.Sb_like_service" />
-   
-   <!-- 사이드바 Sb_report_service 빈 -->
-   <beans:bean id="Sb_report_service" class="p.g.p.service.Sb_report_service"/>
-   
-   <!-- likeService -->
-   <beans:bean id="likeService" class="p.g.p.service.likeService"/>
-   
-   <!--사이드바 Sb_scrap_service빈  -->
-   <beans:bean id="Sb_scrap_service" class="p.g.p.service.Sb_scrap_service"/>
+   <beans:bean id="SidebarSerivce" class="p.g.p.service.SidebarSerivce"/>
    
     <!--마이페이지 빈 -->
       <beans:bean id="MypageService" class="p.g.p.service.MypageService"/>
