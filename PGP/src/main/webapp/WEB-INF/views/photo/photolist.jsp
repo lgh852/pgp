@@ -4,14 +4,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- r글씨체 -->
 <link
+
 	href="https://fonts.googleapis.com/css?family=Cute+Font|Gamja+Flower|Nanum+Gothic|Stylish"
+
 	rel="stylesheet">
+
 <style>
+
 .container {
 	/* font-family: 'Sunflower', sans-serif; */
 	font-family: 'Nanum Gothic', sans-serif;
 	font-weight: bold;
 }
+
 </style>
 
 <div class="container">

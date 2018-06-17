@@ -336,6 +336,7 @@ div>nav>a {
 	
 	</main>
 	<footer class="blog-footer border-top" >
+	
       <p style="text-align: center;margin-top: 20px;font-family: 'Anton', sans-serif;">© Playground 느그집</p>
     
       
