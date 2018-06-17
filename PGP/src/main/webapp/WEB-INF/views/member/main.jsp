@@ -30,53 +30,91 @@
 			<div id="carouselExampleSlidesOnly" class="carousel slide"
 				data-ride="carousel">
 				<div class="carousel-inner">
-						<c:if test="${maxcntimg!=null}">
-					<div class="carousel-item active">
-			
-						<a
-							href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(0).board_idx}"
-							style="color: white"> <img class="d-block w-100"
-							src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(0).photo_name}"
-							id="imgtagbox" height="450px" alt="First slide">
-							<div style="position: absolute; left: 20px; bottom: 30px;">
-								<h4>${board.get(0).board_title}</h4>
-								<h1></h1>
+					<c:if test="${maxcntimg!=null}">
+						<div class="carousel-item active">
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(0).member_photo}" width="55px"
-									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(0).member_id}</span>
-							</div>
-						</a>
-					</div>
-					<div class="carousel-item">
-						<a
-							href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(1).board_idx}"
-							style="color: white"><img class="d-block w-100"
-							src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(1).photo_name}"
-							id="imgtagbox" height="450px" alt="Second slide">
-							<div style="position: absolute; left: 20px; bottom: 30px;">
-								<h4>${board.get(1).board_title}</h4>
-								<h1></h1>
+							<a
+								href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(0).board_idx}"
+								style="color: white"> <img class="d-block w-100"
+								src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(0).photo_name}"
+								id="imgtagbox" height="450px" alt="First slide">
+								<div style="position: absolute; left: 20px; bottom: 30px;">
+									<h4>${board.get(0).board_title}</h4>
+									<h1></h1>
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}" width="55px"
-									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(1).member_id}</span>
-							</div></a>
-					</div>
-					<div class="carousel-item">
-						<a
-							href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(2).board_idx}"
-							style="color: white"> <img class="d-block w-100"
-							src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(2).photo_name}"
-							id="imgtagbox" height="450px" alt="Third slide">
-							<div style="position: absolute; left: 20px; bottom: 30px;">
-								<h4>${board.get(2).board_title}</h4>
-								<h1></h1>
+									<c:if test="${memberlist.get(0).member_photo ==null}">
 
-								<span> <img src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(2).member_photo}" width="55px"
-									height="55px" style="margin-right: 15px;" class="rounded-circle">${memberlist.get(2).member_id}</span>
-							</div></a>
-					</div>
+
+										<span> <img
+											src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
+											width="55px" height="55px" style="margin-right: 15px;"
+											class="rounded-circle">${memberlist.get(0).member_id}</span>
+									</c:if>
+
+
+
+
+									<c:if test="${memberlist.get(0).member_photo !=null}">
+
+
+										<span> <img
+											src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(0).member_photo}"
+											width="55px" height="55px" style="margin-right: 15px;"
+											class="rounded-circle">${memberlist.get(0).member_id}</span>
+
+									</c:if>
+								</div>
+							</a>
+						</div>
+						<div class="carousel-item">
+							<a
+								href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(1).board_idx}"
+								style="color: white"><img class="d-block w-100"
+								src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(1).photo_name}"
+								id="imgtagbox" height="450px" alt="Second slide">
+								<div style="position: absolute; left: 20px; bottom: 30px;">
+									<h4>${board.get(1).board_title}</h4>
+									<h1></h1>
+
+									<c:if test="${memberlist.get(1).member_photo ==null}">
+
+
+										<span> <img
+											src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
+											width="55px" height="55px" style="margin-right: 15px;"
+											class="rounded-circle">${memberlist.get(1).member_id}</span>
+
+
+									</c:if>
+
+
+									<c:if test="${memberlist.get(1).member_photo !=null}">
+										
+										<span> <img
+											src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}"
+											width="55px" height="55px" style="margin-right: 15px;"
+											class="rounded-circle">${memberlist.get(1).member_id}</span>
+									</c:if>
+								</div></a>
+						</div>
+						<div class="carousel-item">
+							<a
+								href="<%=request.getContextPath()%>/photo/photodetail?board_idx=${maxcntimg.get(2).board_idx}"
+								style="color: white"> <img class="d-block w-100"
+								src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(2).photo_name}"
+								id="imgtagbox" height="450px" alt="Third slide">
+								<div style="position: absolute; left: 20px; bottom: 30px;">
+									<h4>${board.get(2).board_title}</h4>
+									<h1></h1>
+
+									<span> <img
+										src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(2).member_photo}"
+										width="55px" height="55px" style="margin-right: 15px;"
+										class="rounded-circle">${memberlist.get(2).member_id}</span>
+								</div></a>
+						</div>
 					</c:if>
-					
+
 				</div>
 			</div>
 		</div>
@@ -140,7 +178,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">평수필터</h5>
-			
+
 		</div>
 	</div>
 
@@ -153,7 +191,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">공간필터</h5>
-			
+
 		</div>
 	</div>
 	<div class="card rounded border-0 "
@@ -164,7 +202,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">가구랭킹</h5>
-			
+
 		</div>
 	</div>
 
@@ -176,7 +214,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">스토리</h5>
-			
+
 		</div>
 	</div>
 	<div class="card rounded border-0 "
@@ -199,7 +237,7 @@
 			alt="Card image cap"></a>
 		<div class="card-body">
 			<h5 class="card-title">FAQ</h5>
-		</div>  
+		</div>
 	</div>
 
 
