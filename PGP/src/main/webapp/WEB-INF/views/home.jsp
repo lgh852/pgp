@@ -26,7 +26,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/offcanvas.js"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/dist/summernote.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/board2.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/board3.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/list1.js"></script>

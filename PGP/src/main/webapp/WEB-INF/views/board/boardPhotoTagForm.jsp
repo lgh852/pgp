@@ -190,7 +190,7 @@
 
 $(document).ready(function (){
 	var list = $('#urllist').val();
-	alert(list);
+	
 	
 	var url = list.split('Url_Tag [')
 	var lists = url[1].split(',')

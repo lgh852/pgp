@@ -40,7 +40,7 @@ public class HomeController {
 			if(latelylist!=null) {
 			
 				for(int i =0;i<latelylist.size();i++) {
-					System.out.println("체크");
+					
 					model.addAttribute("latelylist",latelylist);
 				
 				}
@@ -52,18 +52,11 @@ public class HomeController {
 
 			
 			model.addAttribute("board",board);
-			System.out.println("ㅇㅇㅇ");
+			
 				if(board!=null) {
 					
 			List<Member_info> memberlist = service.imguserid(board);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
-			System.out.println(memberlist);
+			
 				model.addAttribute("memberlist",memberlist);
 			}
 		}else {
