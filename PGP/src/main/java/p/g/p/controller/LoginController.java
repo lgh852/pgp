@@ -38,10 +38,7 @@ public class LoginController {
 	@RequestMapping(value = "/member/loginform", method = RequestMethod.POST)
 	public String login(@RequestParam("member_id") String id, @RequestParam("member_pw") String pw, Model model,
 			HttpSession session) {
-		
-
-		
-		
+	
 		pw = service.sha256(pw); 
 		String page ="";
 		String view = "home";	
@@ -51,11 +48,16 @@ public class LoginController {
 		
 		if (member != null) {
 			// null아니면 성공
-			page = "member/main.jsp";
+			
+			view = "redirect:/";
 			session.setAttribute("user", member);
-			model.addAttribute("page", page);
+			
+			
+			
 		} else {
 			view = "redirect:/member/loginform";
+			
+			
 			model.addAttribute("longinCheck","failure");
 	
 		}
@@ -68,7 +70,7 @@ public class LoginController {
 	@ResponseBody
 	public String kakaologin(Member_info member, HttpSession session) {
 		// 비교 서비스
-		Member_info members = service.kakaock(member);
+		Member_info members = service.apilogin(member);
 		String ck = "y";
 
 		if (members != null) {
@@ -104,7 +106,7 @@ public class LoginController {
 	public String naverLogin(Member_info member, HttpSession session) {
 		// 비교 서비스
 
-		Member_info members = service.kakaock(member);
+		Member_info members = service.apilogin(member);
 
 		String ck = "y";
 
@@ -127,7 +129,7 @@ public class LoginController {
 	@RequestMapping("/member/facebook")
 	@ResponseBody
 	public String facebookLogin(Member_info member, HttpSession session) {
-		Member_info members = service.kakaock(member);
+		Member_info members = service.apilogin(member);
 		String ck = "y";
 
 		if (members != null) {

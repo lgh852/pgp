@@ -110,7 +110,7 @@ public class MemberService {
 		return LikeList;
 	}
 
-	public Member_info kakaock(Member_info member) {
+	public Member_info apilogin(Member_info member) {
 		dao = sqlSessionTemplate.getMapper(MemberDao.class);
 		Member_info memberck = dao.loginSelect(member.getMember_id());
 		int cks = 0;
