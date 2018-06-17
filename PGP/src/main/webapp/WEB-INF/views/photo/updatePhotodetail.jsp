@@ -1,6 +1,6 @@
  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>  
 <div style="margin: 0 auto;width: 100%">
             <div class="imgcenter">    
            <div id="imgbox" class="border" style="max-width: 100%;width: 700px;margin: 0 auto;">    
