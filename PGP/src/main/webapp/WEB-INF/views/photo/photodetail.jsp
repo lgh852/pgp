@@ -154,7 +154,7 @@ function tagsclick(e) {
    //어떤 tag번호 값을 가지고 증가시키냐 
       /* var tagIdx = $('#tagIdx').val(); */
       var tagIdx=e;
-       alert("호잇"+tagIdx);
+     
       $.ajax({
            type : 'GET',
            url :'/p/photo/photodetailtagcnt',
@@ -164,10 +164,10 @@ function tagsclick(e) {
              },
              success : function(data) {
                 if(data>0){
-                   alert('성공이요!'+data);
+                  
                    }
                 else{
-                   alert('실패당'+data);
+                   alert('실패'+data);
                 }
                 
              }    
@@ -823,7 +823,6 @@ function tagsclick(e) {
 						
     				}else{
     					
-    					alert('들어옴다 ')
     					
     					$.ajax({
     						type : 'GET',
@@ -839,12 +838,12 @@ function tagsclick(e) {
     							
     						var html;
     						var member_id =$('#member_id').val();
-    						alert('asdasdasdasdasd'+data)
+    						
     						
     						
     						
     							if(data>0){
-    								alert('성공');
+    								
     								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="cks'+data+'">';      
     								html+='<div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:';
     								html+= +member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px">';
@@ -858,7 +857,7 @@ function tagsclick(e) {
     					
     				}
 				
-    			alert(board_comment_contents);
+    			
     	    }
     	});
     	
@@ -871,12 +870,12 @@ function tagsclick(e) {
     function delectcomment(e) {
 	
 		var board_comment_idx = e;
-		alert(board_comment_idx)
+		
 		
 		if(board_comment_idx!=null){
 			//있으면
 			
-			alert(board_comment_idx)
+			
 			$.ajax({
 				type : 'GET',
 				url : '/p/photo/photoCommentDelete',
@@ -888,12 +887,12 @@ function tagsclick(e) {
 				
 				if(data =='n'){
 					//성공
-					alert('내용수정');
+					
 					  $('#cks'+board_comment_idx +  'h6').text('');
 					   $('#cks'+board_comment_idx  + ' h6').text('댓글이 삭제되었습니다');
 					   
 				}else if(data =='y'){
-					alert('내용삭제 ');
+					
 					
 					   $('#cks'+board_comment_idx).remove();
 					 
@@ -943,11 +942,11 @@ function tagsclick(e) {
       //대댓글 
       
       function re_commentshow(e) {
-    	  alert(e);
+    	
     	  var board_comment_idx = e;
     	  var member_idx = $('#member_idx').val();
     	  if ($('#re_commentbox'+board_comment_idx).css('display') == 'none') {
-    			alert('성공');
+    			
     		  $('.re_reple').hide();
     			$('#re_commentbox'+board_comment_idx).show();
     		} else {
@@ -965,14 +964,6 @@ function tagsclick(e) {
 			var reparent = e;
 			var board_comment_contents = $('#re_commenttext'+e).val();
 			if(member_idx!=''){
-			alert('board_comment_idx'+e);
-			alert('member_idx'+member_idx);
-			alert('board_idx'+board_idx);
-			alert('regroup'+regroup);
-			alert('redepth'+redepth);
-			alert('reorder'+reorder);
-			alert('reparent'+reparent);
-			alert('board_comment_contents'+board_comment_contents);
 			
 	    	  $.ajax({
 	    			type : 'GET',
