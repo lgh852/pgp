@@ -12,7 +12,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import p.g.p.dao.BoarDao;
-import p.g.p.dao.PhotoleeDao;
+import p.g.p.dao.PhotolistDao;
 import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
 import p.g.p.model.Category_Room;
@@ -28,7 +28,7 @@ public class BoardService {
 
 	BoarDao dao;
 	
-	PhotoleeDao photodao;
+	PhotolistDao photodao;
 
 	@Autowired
 	PhotoService service;

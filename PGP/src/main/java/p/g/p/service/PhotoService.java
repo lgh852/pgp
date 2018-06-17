@@ -9,7 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import p.g.p.dao.PhotoleeDao;
+import p.g.p.dao.PhotolistDao;
 import p.g.p.model.Board_Photo;
 import p.g.p.model.Like;
 import p.g.p.model.Member_info;
@@ -18,14 +18,14 @@ import p.g.p.model.PhotoListmodel;
 @Controller
 public class PhotoService {
 
-	PhotoleeDao dao;
+	PhotolistDao dao;
 
 	@Autowired
 	SqlSessionTemplate sessionTemplate;
 
 	public List<PhotoListmodel> photolistview(Like like, PhotoListmodel photolist, Member_info member) {
 
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 		List<PhotoListmodel> list;
 
 		if (photolist.getAlignment().equals("board_cnt")) {
@@ -84,7 +84,7 @@ public class PhotoService {
 	}
 
 	public List<Like> selectimg(Like like) {
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 		List<Like> likelist = dao.seleteimg(like);
 
 		if (likelist != null) {
@@ -99,7 +99,7 @@ public class PhotoService {
 
 	public int listLikeup(Like like) {
 
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 
 		int resultcnt = dao.likeUp(like);
 
@@ -113,7 +113,7 @@ public class PhotoService {
 
 	public Like likeck(Like like) {
 
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 		like = dao.selectlikeck(like);
 		// 성공여부에 상관없이 반환
 
@@ -121,7 +121,7 @@ public class PhotoService {
 	}
 
 	public int updateLikecntUP(Like like) {
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 
 		int resultcnt = dao.likeupdatUp(like);
 		if (resultcnt > 0) {
@@ -133,7 +133,7 @@ public class PhotoService {
 	}
 
 	public int udateLikecntDown(Like like) {
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 		int result = dao.likeupdatDown(like);
 
 		if (result > 0) {
@@ -145,7 +145,7 @@ public class PhotoService {
 	}
 
 	public int deltelike(Like likeck) {
-		dao = sessionTemplate.getMapper(PhotoleeDao.class);
+		dao = sessionTemplate.getMapper(PhotolistDao.class);
 
 		int reslut = dao.deletelike(likeck);
 

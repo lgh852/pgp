@@ -9,7 +9,6 @@ $(document).ready(function() {
 			$('#useridck').css('color', 'red');
 
 		} else {
-			alert('ss');
 			$('#useridck').text('');
 			$.ajax({
 				type : 'GET',

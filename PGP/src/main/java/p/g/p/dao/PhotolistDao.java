@@ -5,7 +5,7 @@ import java.util.List;
 import p.g.p.model.Like;
 import p.g.p.model.PhotoListmodel;
 
-public interface PhotoleeDao {
+public interface PhotolistDao {
    
    public List<PhotoListmodel> photolist( PhotoListmodel photolist);
    public List<PhotoListmodel> photolistcnt( PhotoListmodel photolist);
