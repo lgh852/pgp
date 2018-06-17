@@ -27,7 +27,7 @@ $(document).ready(function() {
                 }
              
                 var todays = year+"-"+month+"-"+day;
-                alert(todays);
+                
                 var today = String(todays);
                
                $.ajax({
@@ -56,13 +56,13 @@ $(document).ready(function() {
                });
             },
             fail : function(error) {
-               alert(JSON.stringify(error));
+               
             }
          });
 
       },
       fail : function(err) {
-         alert(JSON.stringify(err));
+        
       }
       
       

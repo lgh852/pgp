@@ -65,7 +65,8 @@ $(document)
                                                    scrapFolderName);
 
                                           } else {
-                                             alert('실패ㅠㅠㅠㅠㅠㅠㅠ');
+                                            
+                                        	  
                                           }
                                           
                                         
@@ -189,7 +190,7 @@ function scrapButton(s) {
    
    }
    
-  alert('if문 지났냐');
+ 
    
 
    
@@ -234,7 +235,7 @@ function scrapButton(s) {
             $('#scrapid').removeClass('btn btn-outline-info').addClass(
                   'btn btn-info');
             $('#scrapCnts'+s).text(scrapcnt);
-            alert('스크랩 버튼 바뀜');
+            
             
             
             $("#scrapPopup").hide();
@@ -249,7 +250,7 @@ function scrapButton(s) {
 
          } else {
 
-            alert('스크랩 그냥 실패 ㅠㅠ');
+         
 
          }
 
@@ -317,7 +318,7 @@ function scrapPopup() {
 
          } else {
 
-            alert('스크랩 그냥 실패 ㅠㅠ');
+            
 
          }
 

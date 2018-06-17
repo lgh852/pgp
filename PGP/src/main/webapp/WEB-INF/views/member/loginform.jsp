@@ -46,7 +46,7 @@
 					function(response) {
 						var fb_data = jQuery
 								.parseJSON(JSON.stringify(response));
-						alert(fb_data);
+					
 						var member_id = fb_data.id;
 						var email = fb_data.email;
 						var member_name = fb_data.name;
@@ -70,7 +70,8 @@
 
 							},
 							success : function(date) {
-								alert(date);
+							
+							
 								if (date == 'y') {
 									window.location = "/p/";
 								} else if (date == 'n') {

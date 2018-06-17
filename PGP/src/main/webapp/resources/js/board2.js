@@ -43,7 +43,7 @@ $(document).ready(
 			imgtagbox.click(function(event) {
 				tag_position__x = event.offsetX;
 				tag_position__y = event.offsetY;
-				// alert('x'+x+'y'+y)
+				
 				if(cnt<6){
 				
 				$('.serchbox').css({
@@ -155,7 +155,6 @@ $(document).ready(
 								ch5 =$('#tag5').val();	
 								cnt= cnt+1;
 							} if (data == '55') {
-								alert('체크1')
 								
 								alert('태그를 더이상 생성할수 없습니다 ')
 								$('.serchbox').css({
@@ -163,7 +162,7 @@ $(document).ready(
 								})
 							} 
 						} else {
-						alert('김하영용용용')
+						
 							alert('태그를 더이상 생성할수 없습니다.')
 							$('.serchbox').css({
 								"display" : 'none'
@@ -178,8 +177,7 @@ $(document).ready(
 			
 				var tag_nos = $('.tagno').val();
 				board_idxs = $("#hidden_board_idx").val()
-				alert(tag_nos);
-				alert(board_idxs);
+				
 				$.ajax({
 					type : 'GET',
 					url : '/p/board/tagdelete',
@@ -189,7 +187,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},
 					success : function(data) {
-						alert(data);
+						
 						if (data == 'y') {
 							// 성공
 							$('.taginfo').hide('fast');
@@ -249,8 +247,7 @@ $(document).ready(
 
 				var tag1 = $('#tag1').val();
 				board_idxs = $("#hidden_board_idx").val();
-				alert('tag1' + tag1);
-				alert('board_idxs' + board_idxs);
+			
 				$('.taginfo').css({
 					"top" : '200px',
 					"left" : '200px'
@@ -264,7 +261,7 @@ $(document).ready(
 						board_idx : board_idxs
 					},	
 					success : function(data) {
-						alert(data);
+						
 						if (data == 'null') {
 							alert('에러');
 

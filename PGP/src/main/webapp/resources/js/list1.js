@@ -203,7 +203,7 @@ function back() {
 	if (size2 == ck2) {
 		// 값이 변화가 없으면 없앰
 	
-		alert('2번 변화없음 ');
+		
 		
 	$('#twoimg').hide();
 	
@@ -220,8 +220,7 @@ function back() {
 
 	if (size1 == ck1) {
 		// 값이 변화가 없으면 없앰
-		alert('1번 변화없음 ');
-
+		
 	
 	} else {
 		

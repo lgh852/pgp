@@ -38,7 +38,7 @@ $(document).ready(function() {
                   $("#pop").hide();
                
                }else{
-                  alert('다시해라ㅡㅡ');
+                
                }
                
             }   
