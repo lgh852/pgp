@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import p.g.p.model.Board;
 import p.g.p.model.Board_Photo;
@@ -23,7 +24,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model,HttpSession session) {
-	
 		String page ="member/main.jsp";
 		List<Board_Photo> list = service.mainimg();
 		

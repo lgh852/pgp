@@ -111,6 +111,7 @@ font-family: 'Nanum Gothic', sans-serif;
 div>nav>a {
 	/* font-size: 25px; */
 	
+	
 }
 
 .atag {
