@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import p.g.p.model.Manager;
 import p.g.p.model.Member_info;
 
 import p.g.p.service.MemberService;
 
 @Controller
 public class LoginController {
+	
 	@Autowired
 	MemberService service;
 	
@@ -217,5 +218,37 @@ public class LoginController {
 		
 		
 		return "member/mypage2";
+	}
+	
+	/////////////////////////////////////////////////////////////로그아웃
+	
+
+	@RequestMapping("/member/logout")
+	public String logout(HttpSession session) {
+		
+		Member_info member = (Member_info) session.getAttribute("user");
+
+		Manager manager = (Manager) session.getAttribute("manager");
+		
+		
+
+		String check="";
+		//유저 로그인 정보가 있을경우 
+		  if(session!=null) {
+	           
+	         
+		if(member!=null) {
+			 session.invalidate();
+			 check = "U";
+		}
+		//관리자 로그인 정보가 있을경우 
+		if(manager!=null) {
+			 session.invalidate();
+			 check = "u";
+		}
+		  }
+		
+		return "home";
+		
 	}
 }

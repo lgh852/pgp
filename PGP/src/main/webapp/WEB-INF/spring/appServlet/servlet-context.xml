@@ -138,11 +138,12 @@
 	</beans:bean>
  
  
- 	<beans:bean id="photolistlservice" class="p.g.p.service.PhotoListLeeService"/>
- 	
+ 	 	
  	<beans:bean id="mainpage" class="p.g.p.service.MainPageService"/>
  	
  	<beans:bean id="mpmypages" class="p.g.p.service.Mp_MyPageList"/>
+ 	
+ 	<beans:bean id="MemberTemppwService" class="p.g.p.service.MemberTemppwService"/>
  	
 	<context:component-scan base-package="p.g.p" />
 	
