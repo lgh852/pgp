@@ -267,11 +267,11 @@
 							<div class="col-8">
 								<img
 									src="<%=request.getContextPath()%>/resources/images/scrap.png"
-									height="20px" alt="" class="rounded"><span
+									height="20px" alt="" class="rounded" style="margin-right:5px;"><span
 									id="scrapCnts${status.count}">${list.board_scrap}</span>&nbsp;
 								<img
 									src="<%=request.getContextPath()%>/resources/images/heart.png"
-									height="20px" alt="" class="rounded"><span
+									height="20px" alt="" class="rounded" style="margin-right:5px;" ><span
 									id="likecnt${status.count}">${list.board_like}</span>&nbsp; <img
 									src="<%=request.getContextPath()%>/resources/images/mesage.png"
 									height="20px" alt="" class="rounded"><span>
