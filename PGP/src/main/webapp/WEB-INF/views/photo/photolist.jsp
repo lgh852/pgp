@@ -18,7 +18,7 @@
 }
 
 </style>
-
+<input type="hidden" value="list" id="scraplist">
 <div class="container">
 	<div class="row border-bottom border-top" style="text-align: center;">
 		<div class="col-sm">

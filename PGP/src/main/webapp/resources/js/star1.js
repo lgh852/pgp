@@ -99,69 +99,78 @@ $(document)
 /////////////////////////////////////////사이드바 스크랩 추가 
 
 function scrapButton(s) {
+	var scraplistck = $('#scraplist').val();
 
-	var member_idx = $("#member_idx").val();
-	var board_idx = $("#board_idx").val();
-	var scrap_name_choice = $(".scrapSuccess" + s).text();
-    var scrapcnts = $('#scrapCnt').text();
-	var scrapcnt = parseInt(scrapcnts);
-	
-	alert(member_idx);
-	alert(board_idx);
-	alert(scrapcnt);
+	if(scraplistck=='list'){
+		alert(s);
+		 var member_idx = $("#memb_idx").val();
+			var board_idx = $("#board_idx").val();
+			var scrap_name_choice = $(".scrapSuccess"+s).text();
+			 var scrapcnts = $('#scrapCnts'+listnum).text();
+			alert(typeof(listnum));
+			  
+	}else{
+		
+		var member_idx = $("#member_idx").val();
+		var board_idx = $("#board_idx").val();
+		var scrap_name_choice = $(".scrapSuccess" + s).text();
+	    var scrapcnts = $('#scrapCnt').text();
+		var scrapcnt = parseInt(scrapcnts);
 
 
 
-	$.ajax({
+		$.ajax({
 
-		type : 'GET',
-		url : '/p/sidebar/scrapInsert',
-		dataType : 'text',
-		data : {
+			type : 'GET',
+			url : '/p/sidebar/scrapInsert',
+			dataType : 'text',
+			data : {
 
-			board_idx : board_idx,
-			member_idx : member_idx,
-			board_scrap : scrapcnt,
-			scrap_name : scrap_name_choice
+				board_idx : board_idx,
+				member_idx : member_idx,
+				board_scrap : scrapcnt,
+				scrap_name : scrap_name_choice
 
-		},
+			},
 
-		success : function(data) {
+			success : function(data) {
 
-			if (data == 'y') {
+				if (data == 'y') {
 
-				scrapcnt = scrapcnt + 1;
+					scrapcnt = scrapcnt + 1;
 
-				
-				$('#scrapid').removeClass('btn btn-outline-info').addClass(
-							'btn btn-info');
-				$('.count').text(scrapcnt);
 					
-					$("#scrapPopup").hide();
-					
-					$(".fade").hide();
-				}else if (data == 'n') {
-				
-					scrapcnt = scrapcnt - 1;
-
+					$('#scrapid').removeClass('btn btn-outline-info').addClass(
+								'btn btn-info');
 					$('.count').text(scrapcnt);
-					$('#scrapid').removeClass('btn btn-info').addClass(
-							'btn btn-outline-info');
+						
+						$("#scrapPopup").hide();
+						
+						$(".fade").hide();
+					}else if (data == 'n') {
 					
-			} else {
+						scrapcnt = scrapcnt - 1;
+
+						$('.count').text(scrapcnt);
+						$('#scrapid').removeClass('btn btn-info').addClass(
+								'btn btn-outline-info');
+						
+				} else {
+
+				}
 
 			}
 
-		}
-
-	});
+		});
+	}
+	
 
 }
 
 //////////////////////////////////////////////사이드바 스크랩 해제 
 
 function scrapPopup() {
-
+	
 	var board_idx = $("#board_idx").val();
 	var member_idx = $("#member_idx").val();
 	var scrapcnts = $('#scrapCnt').text();
@@ -202,6 +211,8 @@ function scrapPopup() {
 
 		}
 	});
+	
+	
 }
 
 function likeClick() {
@@ -261,7 +272,8 @@ function scrapPopups(e) {
 	var board_idx = $("#board_idx" + e).val();
 	var member_idx = $("#member_idx" + e).val();
 	var scrapcnts = $('#scrapCnts' + e).text();
-
+	 listnum = e;///////asdasdasda
+	
 	var scrapcnt = parseInt(scrapcnts);
 
 	$.ajax({
