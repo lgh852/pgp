@@ -297,8 +297,12 @@ public class PhotoListController {
 		if (member != null) {
 			boardboard.setMember_idx(member.getMember_idx());
 			// 스크랩 체크
+			scrap.setMember_idx(member.getMember_idx());
 			Scrap scrapck = sidebarservice.scrapck(scrap);
+			System.out.println("그럼 이게 안넘어가나봐"+scrap);
+			System.out.println("스크랩체크 찍히나요????"+scrapck);
 			model.addAttribute("scrapck", scrapck);
+			
 			// 좋아요 체크
 			Like likecheck = sidebarservice.likeck(like);
 			model.addAttribute("likecheck", likecheck);

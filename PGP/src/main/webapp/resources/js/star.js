@@ -64,10 +64,6 @@ $(document).ready(function() {
       }
    });
 
-   /*$("#pop button").click(function() {
-      $("#scrapNameDetail > a").focus();
-      $("#pop").hide();
-   });*/
-   
+ 
    
 });

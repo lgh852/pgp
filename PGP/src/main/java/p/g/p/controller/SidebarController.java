@@ -167,14 +167,15 @@ public class SidebarController {
 	       String ck = "q";
 	       
 	       if(member != null) {
-	          System.out.println("11");
+	          System.out.println("1");
 	          int member_idx = member.getMember_idx();
 	          scrap.setMember_idx(member_idx);
 
-	          System.out.println("11");
+	          System.out.println("2");
 	          Scrap scrapck = service.scrapck(scrap);
 
-	          System.out.println("11");
+	          System.out.println("3");
+	          
 	          if(scrapck==null) {
 
 		    
@@ -186,7 +187,7 @@ public class SidebarController {
 	             int result = service.insertScrap(scrap);
 
 		      
-	         	System.out.println("3");
+	         	System.out.println("343423422455678");
 	             	
 	             if(result>0) {
 	                int c = service.scrapCountUp(board);
@@ -252,14 +253,13 @@ public class SidebarController {
 	          
 	          Scrap scrapck = service.scrapck(scrap);
 	  
-	          
+	         
 	       
 	       if(scrapck==null) {
 	     	  
 	          return ch="y";
 	          
-	          
-	       }else {
+	          }else {
 	          int r = service.DeleteScrap(scrap);
 	          if(r>0) {
 	             int a = service.scrapCountDown(board);

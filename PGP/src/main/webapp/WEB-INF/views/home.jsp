@@ -31,7 +31,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/photolist2.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/list.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/star.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/star3.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/star2.js"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/memberss.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>

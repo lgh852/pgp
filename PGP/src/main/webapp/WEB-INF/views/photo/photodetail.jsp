@@ -394,7 +394,7 @@ function tagsclick(e) {
 								<input type="hidden" id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
 								
 								<div class="input-group">
-									└ <input name="board_comment_contents" type="text" class="form-control" placeholder="댓글을 입력해보세요." id="re_commenttext${c1.board_comment_idx}">
+									 <input name="board_comment_contents" type="text" class="form-control" placeholder="댓글을 입력해보세요." id="re_commenttext${c1.board_comment_idx}">
 
 									<div class="input-group-append">
 										<button type="button" id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})"class="btn btn-secondary">send</button>
@@ -504,30 +504,16 @@ function tagsclick(e) {
 
 						<div style="text-align: center; margin-top:25px;">
 
+
+
+
+
                     <button type="button" style="border-radius: 40px; padding: auto;" class="btn btn-warning"
 					data-toggle="modal" data-target="#reportBtn"
-					onclick="reportClickBtn()">신고</button>
+					onclick="reportClickBtn()"><span style="color:white;">신고</span></button>
 
 		
-							<%-- <div id="reportPopup">
-								<div class="report_reason">
-									<select class="reason" id="report_contents">
-										<option selected value="0">주제와 맞지 않음</option>
-										<option selected value="1">정보가 부정확함</option>
-										<option selected value="2">지나친 광고성 게시물</option>
-										<option selected value="3">도배 및 중복 게시물</option>
-										<option selected value="4">저작권 침해가 우려됨</option>
-										<option selected value="5">욕설/비방이 심함</option>
-										<option selected value="6">외설적인 게시물</option>
-									</select>
-								</div>
-								<button type="button" id="report_submit">신고당해랏</button>
-								<button type="button" id="closeeeee">닫기</button>
-								<input type="hidden" id="storyboard_idx"
-									value="${storyboard_idx}"> <input type="hidden"
-									id="board_idx" value="${board.board_idx}"> <input
-									type="hidden" id="member_idx" value="${member.member_idx}">
-							</div> --%>
+							
 
 
 
@@ -610,6 +596,7 @@ function tagsclick(e) {
 							<div
 								style="height: 60px; width: 100%; text-align: center; margin-top: 20px;">
 
+                        <!-- 좋아요///////////////////////////////////////////////////// -->
 								<div id="like" class="likeArea">
 									<a onclick="likeClick();">
 									 <c:if test="${likecheck==null}">
@@ -634,6 +621,8 @@ function tagsclick(e) {
 									<input type="hidden" id="member_idx" value="${member_idx}">
 
 								</div>
+								
+								<!-- //////////////////////////////////////////////////스크랩 -->
 
 								<div id="scrap" class="scrapArea">
 									<a onclick="scrapPopup();"> <c:if test="${scrapck==null}">
@@ -695,8 +684,8 @@ function tagsclick(e) {
 											</c:forEach>
 										</ul>
 									</div>
-									<input type="hidden" id="board_idx"> <input
-										type="hidden" id="scrapCnt"> <input type="hidden"
+									<input type="hidden" id="board_idx" value="${board.board_idx}"> <input
+										type="hidden" id="scrapCnt" value="${boardInfo.board_scrap}"> <input type="hidden"
 										id="ck">
 									<div class="modal-footer">
 										<div class="row">

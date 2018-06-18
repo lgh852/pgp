@@ -234,7 +234,7 @@ System.out.println("2");
 
 		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
 		scrap = dao.selectscrapck(scrap);
-
+        System.out.println("서비스에서 scra찎히나요"+scrap);
 		return scrap;
 	}
 

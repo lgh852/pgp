@@ -83,9 +83,7 @@ $(document).ready(
 			var member_idx = $("#member_idx").val();
 			var report_contents = $("#report_contents").val();
             var board_idx = $("#board_idx").val();
-            alert(member_idx);
-            alert(report_contents);
-            alert(board_idx);
+            
             
 			$.ajax({
 				type : 'GET',
