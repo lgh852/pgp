@@ -430,18 +430,11 @@
 											height="25px" alt="" class="rounded heart${status.count}"></a>
 
 									</c:if>
-
 									<c:if test="${list.likeck!=null}">
-
-
 										<a onclick="liclick(${status.count})"> <img
 											src="<%=request.getContextPath()%>/resources/images/heart2.png"
 											height="25px" alt="" class="rounded heart${status.count}"></a>
-
 									</c:if>
-
-
-
 									<a onclick="scrapPopups(${status.count})"><img
 										src="<%=request.getContextPath()%>/resources/images/scrap.png"
 										height="25px" alt="" class="rounded"></a>
@@ -455,14 +448,11 @@
 							type="hidden" id="board_idx${status.count}"
 							value="${list.board_idx}"> <input type="hidden"
 							id="member_idx" value="${list.member_idx}">
-
 					</div>
 				</c:forEach>
+			
 				<input type="text" id="logcks" value="${member}">
-
-
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -486,8 +476,10 @@
 								class="scrapSuccess${status.count} list-group-item list-group-item-action active"
 								onclick="scrapButton(${status.count})">${scrapNameList.scrap_name}</button>
 						</li>
+						
 
 					</c:forEach>
+					
 				</ul>
 			</div>
 			<input type="hidden" id="board_idx"> <input type="hidden"
@@ -519,3 +511,4 @@
 		</div>
 	</div>
 </div>
+	<input type="hidden" id="memb_idx" value="${member.member_idx}">

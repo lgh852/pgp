@@ -35,7 +35,7 @@ $(document).ready(function() {
                   
                   $('.s').text(updateFolderName);
                   
-                  $("#pop").hide();
+                  $("#fade").hide();
                
                }else{
                 

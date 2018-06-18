@@ -12,20 +12,25 @@ $(document)
                $(".add")
                      .click(
                            function() {
-                        
+                        alert(1);
                               var scrapFolderName = $(
                                     ".scrapFolderName").val();
-                            
+                              alert(1);
                               var c = $(".listnumber").val();
+                              alert(1);
+                              var member_idx = $("#memb_idx").val();
+                              if(member_idx==null){
+                            	  alert('');
+                            	  member_idx = $('#member_idx').val();
+                              }
                               
-                              var member_idx = $("#member_idx").val();
-                           
+                              alert(1);
                               
                               var scrapbookcheck;
-                              
-                              
+                              alert(1);
+                              alert(member_idx);
                               var scrapbookcheck = $("#scrap_book").text();
-                              
+                              alert(1);
                           
                              
                               
@@ -42,7 +47,7 @@ $(document)
 
                                        },
                                        success : function(data) {
-
+                                    	     alert(data);
                                          
                                           if (data == 'y') {
                                
@@ -57,6 +62,7 @@ $(document)
 
                                                          + scrapFolderName
                                                          + "</button></span></li>");
+                                             
 
                                        $(
                                              '.scrapSuccess'
@@ -125,11 +131,10 @@ $(document)
                         if (data == 'y') {
                            // 실행
 
-                           alert('성공');
 
 
                         } else {
-                           alert('실패');
+                  
                         }
 
                      }
@@ -140,12 +145,17 @@ $(document)
 
 function scrapButton(s) {
 	
-	
-   
-	var board_idx = $("#board_idx").val();
-
-   var member_idx = $("#member_idx").val();
-
+    
+    var member_idx = $("#memb_idx").val();
+    alert('1')
+    if(member_idx==null){
+		member_idx =$('member_idx').val();
+		alert('d')
+	}
+    var board_idx = $("#board_idx").val();
+/*
+   var member_idx = $("#member_idx").val();*/
+    alert('ssss')
    var scrap_name_choice = $(".scrapSuccess"+s).text();
  
    
@@ -161,9 +171,7 @@ function scrapButton(s) {
    
    
    if(scrapcnts==null||scrapcnts==''){
-
-	   	
-	   	scrapcnts = $('#scrapCnt').val();
+         scrapcnts = $('#scrapCnt').val();
 	   }
   
    var scrapcntss = parseInt(scrapcntString);
@@ -171,10 +179,7 @@ function scrapButton(s) {
    
    
    }
-   
  
-   
-
    
 
    $.ajax({
@@ -194,23 +199,28 @@ function scrapButton(s) {
 
       success : function(data) {
 
-       
-
+     
          if (data == 'y') {
 
             
             scrapcnt = scrapcnt + 1;
             
-            
-            if(scrapcntss !=''){
-            
+            if(scrapcnt >0){
+     
+            typeof(variable)
             	scrapcntss =scrapcntss +1;
+            	
             $('.count').text(scrapcnt);
             
             var ss = $('#ck').val()
+            
             $('#scrapCnts'+listnum).text(scrapcntss);
             $('.scrapckss'+listnum).attr('src','/p/resources/images/scrap2.png')
+
             
+            $("#scrapPopup").hide();
+            
+            $(".fade").hide();
             }
             
        

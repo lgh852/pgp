@@ -165,7 +165,7 @@ where board_idx = #{board_idx};
 
 <select id="getScrapIdx" parameterType="p.g.p.model.scrapFN" resultType="int">
 
-select * from pgp.scrapfn where scrap_name = #{scrap_name} and
+select scrapFN_idx from pgp.scrapfn where scrap_name = #{scrap_name} and
 member_idx=#{member_idx};
 
 </select>

@@ -28,9 +28,9 @@ $(document)
 						$('#latelybox').css('display', 'none');
 
 					} else if (latelyck.length >= 1) {
-						
+					
 						if ((latelyck.length % 3) == 1 && latelyck.length < 3) {
-
+					
 							$('#latelybox').css('display', 'block');
 
 
@@ -51,7 +51,7 @@ $(document)
 
 						} else if ((latelyck.length % 3) == 2
 								&& latelyck.length < 3) {
-
+						
 							$('#latelybox')
 									.append(
 											'<div id="twoimg" class="card-body"	style="padding-top: 0px; padding-bottom: 8px;"><img id="imgtwo" width="128" height="128"></div>')
@@ -78,15 +78,15 @@ $(document)
 							}
 
 						} else if ((latelyck.length % 3) == 0
-								&& latelyck.length < 3) {
-							
+								&& latelyck.length <= 3) {
+				
 							$('#latelybox')
 									.append(
-									'<div id="twoimg" class="card-body"	style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgtwo" width="128" height="128" style="margin-left: 10px;"></div>')
+									'<div id="twoimg" class="card-body"	style="padding-top: 0px; padding-bottom: 8px;"><img id="imgtwo" width="128" height="128"></div>')
 									
 							$('#latelybox')
 									.append(
-											'<div id="threeimg" class="card-body" style="margin: auto; padding-top: 0px; padding-bottom: 8px; margin-left: 20px"><img id="imgthree" width="128" height="128" style="margin-left: 10px;"></div>')
+											'<div id="threeimg" class="card-body" style="padding-top: 0px; padding-bottom: 8px;"><img id="imgthree" width="128" height="128" ></div>')
 							$('#imgone').attr(
 									'src',
 									'/p/resources/BoardPhoto/'
@@ -112,7 +112,7 @@ $(document)
 
 						} else if (latelyck.length > 3) {
 						
-				
+			
 							$('#latelybox')
 									.append(
 											'<div id ="twoimg" style="width: 130px;height: 130px; margin: 0 auto; margin-top: 10px; margin-left: 20px"><img id="imgtwo" width="128"height="128"></div>')

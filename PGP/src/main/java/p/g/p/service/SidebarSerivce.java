@@ -146,11 +146,18 @@ public class SidebarSerivce {
 	}
 
 	public int insertScrap(Scrap scrap) {
-
+		
+System.out.println();
+System.out.println(scrap);
+System.out.println(scrap);
+System.out.println();
+System.out.println(scrap);
+System.out.println();
 		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
-
+		System.out.println("1");
+		
 		int resultCk = dao.InsertScrap(scrap);
-
+System.out.println("2");
 		if (resultCk > 0) {
 			// 실행
 		} else {
@@ -281,9 +288,10 @@ public class SidebarSerivce {
 
 	public int getFnIdx(scrapFN scrapfn) {
 		System.out.println("입력됨?");
+		System.out.println(scrapfn);System.out.println(scrapfn);System.out.println(scrapfn);System.out.println(scrapfn);System.out.println(scrapfn);
 		dao = sqlSessionTemplate.getMapper(Sb_dao.class);
 		int idx = dao.getScrapIdx(scrapfn);
-		System.out.println("insert(성공" + idx);
+		System.out.println("scrapfnidx가져오는거" + idx);
 		return idx;
 	}
 

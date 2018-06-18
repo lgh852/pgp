@@ -320,11 +320,9 @@ var seck = $('#seck').val();
 		var storyboard_comment_contents = $('#commenttext'+e).val();
 		var member_idx = $('#seck').val();
 		
-		alert(storyboard_idx);
-		alert(storyboard_comment_contents);
-		alert(member_idx);
+		
 		if(storyboard_comment_contents!=''){
-			alert('값있음')
+		
 			if(member_idx!=''){
 				$.ajax({
 					type : 'GET',
@@ -363,7 +361,7 @@ var seck = $('#seck').val();
 							html +='</span></li>';
 							$('#comlists').append(html);
 				
-							alert(html);
+							
 					}
 					});
 				
@@ -380,7 +378,7 @@ var seck = $('#seck').val();
 		
 		var storyboard_comment_idx = e;
 			
-		alert(storyboard_comment_idx);
+		
 		if(storyboard_comment_idx!=null){
 			//있으면
 		$.ajax({
@@ -390,7 +388,8 @@ var seck = $('#seck').val();
 				data : {
 					storyboard_comment_idx:storyboard_comment_idx
 				},success : function(data) {
-					alert('storycomments'+data)
+				
+					
 					$('#storycomments'+data).remove();
 					
 				}

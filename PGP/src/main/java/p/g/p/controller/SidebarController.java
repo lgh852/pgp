@@ -167,32 +167,43 @@ public class SidebarController {
 	       String ck = "q";
 	       
 	       if(member != null) {
-	          
+	          System.out.println("11");
 	          int member_idx = member.getMember_idx();
 	          scrap.setMember_idx(member_idx);
-	          	
+
+	          System.out.println("11");
 	          Scrap scrapck = service.scrapck(scrap);
-	          
+
+	          System.out.println("11");
 	          if(scrapck==null) {
-	         	 
+
+		    
 	             int idx = service.getFnIdx(scrapfn);
-	             
+
 	             scrap.setScrapFN_idx(idx);
 	            
 	          
 	             int result = service.insertScrap(scrap);
+
+		      
+	         	System.out.println("3");
 	             	
 	             if(result>0) {
 	                int c = service.scrapCountUp(board);
+	            	System.out.println("4");
 	               
 	                if(c>0) {
 	                   ck="y";
-	                   
+	                   System.out.println("5");
 	                }else {
 	                   ck="s";
+
+	                   System.out.println("6");
 	                }
 	             }else {
 	                ck="s";
+
+	                   System.out.println("7");
 	               
 	             }
 	          }else {//scrapck에 값이 있음
