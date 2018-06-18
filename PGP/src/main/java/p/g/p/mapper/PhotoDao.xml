@@ -215,7 +215,7 @@
 		select * from pgp.board_comment as a
 		join pgp.member_info as b
 		on a.member_idx =b.member_idx
-		where board_idx=#{board_idx} order by board_comment_idx desc limit
+		where board_idx=#{board_idx} order by regroup,reorder asc limit
 		#{pageChecknum},#{contentnum};
 
 	</select>

@@ -504,11 +504,11 @@ function tagsclick(e) {
 
 						<div style="text-align: center; margin-top:25px;">
 
+                    <button type="button" style="border-radius: 40px; padding: auto;" class="btn btn-warning"
+					data-toggle="modal" data-target="#reportBtn"
+					onclick="reportClickBtn()">신고</button>
 
-
-							<a class="btn btn-warning" role="button" data-toggle="modal"
-								data-target="#reportBtn"
-								style="border-radius: 40px; padding: auto; color: white;">신고</a>
+		
 							<%-- <div id="reportPopup">
 								<div class="report_reason">
 									<select class="reason" id="report_contents">
@@ -559,6 +559,7 @@ function tagsclick(e) {
 														<option selected value="6">외설적인 게시물</option>
 													</select>
 												</div>
+												
 												 <input type="hidden"
 													id="board_idx" value="${board.board_idx}">
 													<input type="hidden" id="member_id" value="${member.member_id}"> <input

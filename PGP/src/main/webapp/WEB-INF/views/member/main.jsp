@@ -72,13 +72,14 @@
 								style="color: white"><img class="d-block w-100"
 								src="<%=request.getContextPath()%>/resources/BoardPhoto/${maxcntimg.get(1).photo_name}"
 								id="imgtagbox" height="450px" alt="Second slide">
+								
 								<div style="position: absolute; left: 20px; bottom: 30px;">
+									
 									<h4>${board.get(1).board_title}</h4>
 									<h1></h1>
 
 									<c:if test="${memberlist.get(1).member_photo ==null}">
-
-
+				
 										<span> <img
 											src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
 											width="55px" height="55px" style="margin-right: 15px;"
@@ -89,12 +90,14 @@
 
 
 									<c:if test="${memberlist.get(1).member_photo !=null}">
-										
+
 										<span> <img
 											src="<%=request.getContextPath()%>/resources/memberphoto/${memberlist.get(1).member_photo}"
 											width="55px" height="55px" style="margin-right: 15px;"
 											class="rounded-circle">${memberlist.get(1).member_id}</span>
+											
 									</c:if>
+								
 								</div></a>
 						</div>
 						<div class="carousel-item">

@@ -93,7 +93,7 @@ public class SidebarController {
 	   
 	   ///////////////////////////////////////////////////신고
 	   
-	    @RequestMapping(value="/sidebar/sb_report",method=RequestMethod.POST)
+	    @RequestMapping(value="/sidebar/sb_report",method=RequestMethod.GET)
 		@ResponseBody
 		public String sidebarReport(report report) {
 			
