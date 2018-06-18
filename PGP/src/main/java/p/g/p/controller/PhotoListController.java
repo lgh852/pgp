@@ -299,11 +299,10 @@ public class PhotoListController {
 			// 스크랩 체크
 			scrap.setMember_idx(member.getMember_idx());
 			Scrap scrapck = sidebarservice.scrapck(scrap);
-			System.out.println("그럼 이게 안넘어가나봐"+scrap);
-			System.out.println("스크랩체크 찍히나요????"+scrapck);
 			model.addAttribute("scrapck", scrapck);
 			
 			// 좋아요 체크
+			like.setMember_idx(member.getMember_idx());
 			Like likecheck = sidebarservice.likeck(like);
 			model.addAttribute("likecheck", likecheck);
 			// 스크랩 목록
@@ -384,6 +383,7 @@ public class PhotoListController {
 		return "cody/repleOk";
 		
 	}
+	
 	@RequestMapping("photo/photofeedAllDelete")
 	public String feedAllDelete(@RequestParam(value = "board_idx") int board_idx) {
 		int resultCnt = photodetailservice.AllDelete(board_idx);
@@ -398,12 +398,7 @@ public class PhotoListController {
 		
 		
 		return page;
-		
-		
-		
 	}
-	
-	
 	
 	@RequestMapping(value = "photo/updatePhotodetail",method = RequestMethod.GET)
 	public String UpdateDetail(Model model, @RequestParam(value = "board_idx", defaultValue = "0") int board_idx) {
@@ -422,15 +417,9 @@ public class PhotoListController {
 		model.addAttribute("roomno", roomno);
 		}
 		
-		
-		
 		String photoName = photodetailservice.photodetailView(board_idx);
 		model.addAttribute("photoName", photoName);
 		
-		
-		
-	
-
 		return view;
 
 	}

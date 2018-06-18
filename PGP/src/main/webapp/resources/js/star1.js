@@ -104,14 +104,59 @@ function scrapButton(s) {
 	if(scraplistck=='list'){
 		alert(s);
 		 var member_idx = $("#memb_idx").val();
-			var board_idx = $("#board_idx").val();
+		if(member_idx!=''){
+		
+			var board_idx = $(".bidx"+listnum).val();
 			var scrap_name_choice = $(".scrapSuccess"+s).text();
 			 var scrapcnts = $('#scrapCnts'+listnum).text();
-			alert(typeof(listnum));
+			 alert(member_idx);
+			 alert(board_idx);
+			 alert(scrap_name_choice);
+			 alert(scrapcnts);
+			 $.ajax({
+
+					type : 'GET',
+					url : '/p/sidebar/scrapInsert',
+					dataType : 'text',
+					data : {
+						board_idx : board_idx,
+						member_idx : member_idx,
+						board_scrap : scrapcnts,
+						scrap_name : scrap_name_choice
+					},
+					success : function(data) {
+						if(data=='y'){
+							alert('성공')
+							
+							$('#scrapCnts'+listnum).text( parseInt(scrapcnts)+1);
+								$('.scrapckss'+listnum).attr('src','/p/resources/images/scrap2.png');
+							$('.fade').hide();
+						}else{
+							
+						
+							
+						}
+						
+						
+					
+						
+					}
+					
+					
+
+				});
+				
+		}else{
+			alert('로그인후 이용 부탁드립니다')
+		}
+		
 			  
 	}else{
 		
 		var member_idx = $("#member_idx").val();
+		if(member_idx!=null){
+			
+	
 		var board_idx = $("#board_idx").val();
 		var scrap_name_choice = $(".scrapSuccess" + s).text();
 	    var scrapcnts = $('#scrapCnt').text();
@@ -156,13 +201,16 @@ function scrapButton(s) {
 								'btn btn-outline-info');
 						
 				} else {
-
+					
 				}
 
 			}
 
 		});
-	}
+		}else{
+			alert('로그인후 이용 부탁드립니다')
+		}
+		}
 	
 
 }
@@ -170,47 +218,52 @@ function scrapButton(s) {
 //////////////////////////////////////////////사이드바 스크랩 해제 
 
 function scrapPopup() {
+	var member_idx =$("#member_idx").val();
 	
-	var board_idx = $("#board_idx").val();
-	var member_idx = $("#member_idx").val();
-	var scrapcnts = $('#scrapCnt').text();
-	var scrapcnt = parseInt(scrapcnts);
+	if(member_idx!=''){
+		var board_idx = $("#board_idx").val();
+		var scrapcnts = $('#scrapCnt').text();
+		var scrapcnt = parseInt(scrapcnts);
 
-	$.ajax({
+		$.ajax({
 
-		type : 'GET',
-		url : '/p/sidebar/scrapCheck',
-		dataType : 'text',
-		data : {
-			board_idx : board_idx,
-			member_idx : member_idx,
-			board_scrap : scrapcnt
-		},
+			type : 'GET',
+			url : '/p/sidebar/scrapCheck',
+			dataType : 'text',
+			data : {
+				board_idx : board_idx,
+				member_idx : member_idx,
+				board_scrap : scrapcnt
+			},
 
-		success : function(data) {
+			success : function(data) {
 
-			if (data == 'y') {
+				if (data == 'y') {
 
-				// 안했으면 show
+					// 안했으면 show
 
-				$("#scrap > a").blur();
-				$("#scrapPopup").show();
-				$("#scrapPopup a").focus();
+					$("#scrap > a").blur();
+					$("#scrapPopup").show();
+					$("#scrapPopup a").focus();
 
-			} else if (data == 'n') {
+				} else if (data == 'n') {
 
-				scrapcnt = scrapcnt - 1;
+					scrapcnt = scrapcnt - 1;
 
-				$('.count').text(scrapcnt);
-				$('#scrapid').removeClass('btn btn-info').addClass(
-						'btn btn-outline-info');
-				$('#scrapCnts' + s).text(scrapcnt);
-			} else {
+					$('.count').text(scrapcnt);
+					$('#scrapid').removeClass('btn btn-info').addClass(
+							'btn btn-outline-info');
+					$('#scrapCnts' + s).text(scrapcnt);
+				} else {
+
+				}
 
 			}
-
-		}
-	});
+		});
+	}else{
+		alert('로그인후 이용 부탁드립니다')
+	}
+	
 	
 	
 }
@@ -219,7 +272,6 @@ function likeClick() {
 
 	var likcnts = $('#likecnt').text();
 	var likecnt = parseInt(likcnts);
-
 	var board_idx = $("#board_idx").val();
 	var member_idx = $("#member_idx").val();
 
