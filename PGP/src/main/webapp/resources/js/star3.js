@@ -12,25 +12,23 @@ $(document)
                $(".add")
                      .click(
                            function() {
-                        alert(1);
-                              var scrapFolderName = $(
+                                                     var scrapFolderName = $(
                                     ".scrapFolderName").val();
-                              alert(1);
+                             
                               var c = $(".listnumber").val();
-                              alert(1);
+                           
                               var member_idx = $("#memb_idx").val();
                               if(member_idx==null){
-                            	  alert('');
+                          
                             	  member_idx = $('#member_idx').val();
                               }
                               
-                              alert(1);
+                          
                               
                               var scrapbookcheck;
-                              alert(1);
-                              alert(member_idx);
+                        
                               var scrapbookcheck = $("#scrap_book").text();
-                              alert(1);
+                       
                           
                              
                               
@@ -145,32 +143,36 @@ $(document)
 
 function scrapButton(s) {
 	
-    
+	
+	
     var member_idx = $("#memb_idx").val();
-    alert('1')
+
     if(member_idx==null){
-		member_idx =$('member_idx').val();
-		alert('d')
+		member_idx =$('#member_idx').val();
+		
 	}
     var board_idx = $("#board_idx").val();
 /*
    var member_idx = $("#member_idx").val();*/
-    alert('ssss')
+  
    var scrap_name_choice = $(".scrapSuccess"+s).text();
- 
-   
+
    var scrapcnts = $('#scrapCnt').text();
    var scrapcnt = parseInt(scrapcnts);
   
+
   
-   if($('#scrapCnts'+listnum).text() !='undefined'){
-   
+  
+   /*if($('#scrapCnts'+listnum).text() !='undefined'){
+   aletr('asdasdasd1asd')
+
    var scrapcntString = $('#scrapCnts'+listnum).text();
 
    var scrapcnts = $('#scrapCnt').text();
    
    
    if(scrapcnts==null||scrapcnts==''){
+	   alert('zxczxc')
          scrapcnts = $('#scrapCnt').val();
 	   }
   
@@ -178,9 +180,9 @@ function scrapButton(s) {
    var scrapcnt = parseInt(scrapcnts);
    
    
-   }
- 
-   
+   }*/
+
+
 
    $.ajax({
 
@@ -205,15 +207,15 @@ function scrapButton(s) {
             
             scrapcnt = scrapcnt + 1;
             
-            if(scrapcnt >0){
+            if(scrapcnt==''){
      
             typeof(variable)
-            	scrapcntss =scrapcntss +1;
+            	scrapcntss =scrapcnt +1;
             	
             $('.count').text(scrapcnt);
             
             var ss = $('#ck').val()
-            
+            alert(listnum)
             $('#scrapCnts'+listnum).text(scrapcntss);
             $('.scrapckss'+listnum).attr('src','/p/resources/images/scrap2.png')
 
@@ -221,21 +223,13 @@ function scrapButton(s) {
             $("#scrapPopup").hide();
             
             $(".fade").hide();
+            }else{
+            	$('#scrapid').removeClass('btn btn-outline-info').addClass(
+                'btn btn-info');
+          $('#scrapCnts'+s).text(scrapcnt);
+          $("#scrapPopup").hide();
             }
-            
-       
-            $('#scrapid').removeClass('btn btn-outline-info').addClass(
-                  'btn btn-info');
-            $('#scrapCnts'+s).text(scrapcnt);
-            
-            
-            
-            $("#scrapPopup").hide();
-            
-
          } else if (data == 'n') {
-
-   
             scrapcnt = scrapcnt - 1;
             $('.count').text(scrapcnt);
             $('.count').text(scrapcnt);
