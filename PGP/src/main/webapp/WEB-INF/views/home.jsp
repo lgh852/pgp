@@ -130,7 +130,7 @@ div>nav>a {
 				<a class="blog-header-logo text-dark" id="homeName"
 					href="<%=request.getContextPath()%>/"
 					style="text-decoration: none; font-size: 50px; width: 30%; font-weight: 700; color: black; font-family: 'Gamja Flower', cursive;">
-					느그집</a>
+					러브  하우스</a>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 
@@ -337,7 +337,7 @@ div>nav>a {
 	</main>
 	<footer class="blog-footer border-top" >
 	
-      <p style="text-align: center;margin-top: 20px;font-family: 'Anton', sans-serif;">© Playground 느그집</p>
+      <p style="text-align: center;margin-top: 20px;font-family: 'Anton', sans-serif;">© Playground 러브 하우스</p>
     
       
     </footer>

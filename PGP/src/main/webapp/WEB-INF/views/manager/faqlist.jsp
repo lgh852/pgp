@@ -28,7 +28,7 @@ function page(idx){
 		style="border:solid 1px; border-color:white;width: 100%;
      background-image:url('<%=request.getContextPath()%>/resources/images/g.jpg');background-size:100%100%">
 		<div class="faq_head " style="height: 80px; margin: 10px">
-			<p style="font-weight: bold; font-size: 50px; color: white">느그집
+			<p style="font-weight: bold; font-size: 50px; color: white">러브 하우스
 				관련 FAQ</p>
 		</div>
 

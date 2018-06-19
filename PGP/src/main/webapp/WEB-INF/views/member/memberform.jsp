@@ -128,7 +128,7 @@
 		<button class="btn btn-primary btn-lg btn-block" type="submit">회원가입</button>
 		<hr class="mb-4">
 	</form>
-	<div style="text-align: center;">© Playground 느그집</div>
+	
 	<div style="height: 30px;"></div>
 </div>
 

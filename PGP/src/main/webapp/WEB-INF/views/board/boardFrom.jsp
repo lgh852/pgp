@@ -14,7 +14,6 @@
   <div class="row " style="margin-top: 10px" >
     <div class="col">
         
-        <select class="custom-select" id="inputGroupSelect02"
             name="category_room">
             <option selected value="0">모든 공간</option>
             <option value="1">원룸</option>

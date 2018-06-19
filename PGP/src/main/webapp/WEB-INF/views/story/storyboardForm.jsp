@@ -71,7 +71,7 @@ var seck = $('#seck').val();
 <div class="py-5 text-center" style="width: 100%;    background-image: url(/p/resources/images/roompic6.jpg);color:white;">
 	
 	<h2>
-		느그집
+		러브 하우스
 		<code style="font-weight: bolder;color:#b36d13a8;">STORY</code>
 	</h2>
 	<p class="lead" style="TEXT-ALIGN: CENTER;font-weight: bolder;">함께 소통해보세요</p>
@@ -86,7 +86,7 @@ var seck = $('#seck').val();
 		style="width: 100%; position: relative;" id="storyreg" name="form1">
 
 		<div class="card-body">
-			<h5 class="card-title">느그집 Story</h5>
+			<h5 class="card-title">러브하우스 Story</h5>
 			<div>
 				<textarea rows="8"
 					style="resize: none; width: 100%; border: 1px solid #0000002e;"

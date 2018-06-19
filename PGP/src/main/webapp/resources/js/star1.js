@@ -41,7 +41,7 @@ $(document)
 
 													},
 													success : function(data) {
-														alert(data);
+														
 
 														if (data == 'y') {
 
@@ -102,17 +102,14 @@ function scrapButton(s) {
 	var scraplistck = $('#scraplist').val();
 
 	if(scraplistck=='list'){
-		alert(s);
+		
 		 var member_idx = $("#memb_idx").val();
 		if(member_idx!=''){
 		
 			var board_idx = $(".bidx"+listnum).val();
 			var scrap_name_choice = $(".scrapSuccess"+s).text();
 			 var scrapcnts = $('#scrapCnts'+listnum).text();
-			 alert(member_idx);
-			 alert(board_idx);
-			 alert(scrap_name_choice);
-			 alert(scrapcnts);
+			
 			 $.ajax({
 
 					type : 'GET',
@@ -126,7 +123,7 @@ function scrapButton(s) {
 					},
 					success : function(data) {
 						if(data=='y'){
-							alert('성공')
+							
 							
 							$('#scrapCnts'+listnum).text( parseInt(scrapcnts)+1);
 								$('.scrapckss'+listnum).attr('src','/p/resources/images/scrap2.png');
