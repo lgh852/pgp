@@ -134,7 +134,7 @@
 
 							<h5 class="card-title">
 								<img
-									src="<%=request.getContextPath()%>/resources/memberphoto/${list.member_photo}"
+									src="<%=request.getContextPath()%>/resources/memberphoto/${member.member_photo}"
 									height="25px" alt="..." class="rounded-circle"><small>
 									${list.member_id}</small>
 							</h5>

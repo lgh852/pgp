@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
 
@@ -225,13 +226,14 @@ function tagsclick(e) {
 }
 
 .viewbox {
-/* 	width: 40px;
+	/* 	width: 40px;
 	height: 40px;
 	border: 0px solid black;
 	border-radius: 100px 100px 100px 100px;
 	position: relative;
 	background-color: green;
 	text-align: center; */
+	
 }
 
 .list-group-item-warning {
@@ -255,14 +257,15 @@ function tagsclick(e) {
 </style>
 
 
-<div class="row featurette" style="width: 100%; margin: auto;">
+			<div class="row featurette" style="width: 100%; margin: auto;">
 				<div class="col-md-7">
-					<h2 class="featurette-heading" style="text-align: center; margin-top:35px;">[
+					<h2 class="featurette-heading"
+						style="text-align: center; margin-top: 35px;">[
 						${board.board_title} ]</h2>
-				
-				
+
+
 					<div class="imgcenter"
-						style="border: solid 15px #c39d331f; border-radius: 20px; margin-top:40px;">
+						style="border: solid 15px #c39d331f; border-radius: 20px; margin-top: 40px;">
 						<div id="imgbox" class="border"
 							style="max-width: 100%; width: 602px; margin: 0 auto;">
 							<img width="100%" height="100%" id="imgtagbox"
@@ -271,22 +274,18 @@ function tagsclick(e) {
 								style="max-height: 600px; min-height: 600px; margin: 0 auto; width: 600px"
 								class="border-0 img-thumbnail">
 						</div>
-			
+
 
 						<c:forEach items="${urlList}" var="urlList" varStatus="status">
-							<div id="viewbox${status.count}" class="check viewbox"
-								<%-- style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute " --%>>
+							<div id="viewbox${status.count}" class="check viewbox"<%-- style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute " --%>>
 								<a href="#" data-toggle="modal"
-									data-target=#tagurlbox${status.count}>
-									
-									<img
+									data-target=#tagurlbox${status.count}> <img
 									src="<%=request.getContextPath()%>/resources/images/plus.png"
-									alt="" width="40px" height="40px"style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
-									
-									
-									</a> 
-									<input
-									type="hidden" id="url${status.count}"
+									alt="" width="40px" height="40px"
+									style="left: ${urlList.tag_position_x}px; top: ${urlList.tag_position_y}px;position: absolute ">
+
+
+								</a> <input type="hidden" id="url${status.count}"
 									value="${urlList.tag_url}">
 							</div>
 						</c:forEach>
@@ -322,137 +321,163 @@ function tagsclick(e) {
 							</div>
 						</c:forEach>
 					</div>
-					
-					
-									
-					
-						
-						<!-- 글 내용하고 부가적인  -->
-						
-						<div class="contents" style="border: solid #0000001a; border-radius:10px; height:100px; margin-top:20px;">
-					
-								<div class="board_contents" style="text-align:center; margin-top:20px;">
-								${board.board_contents}</div>
-								
-									<div style=" text-align: right; padding-right:30px; ">
-									<p style="color:#848484; font-size:12px;">조회수 : ${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</p></div>
-						
+
+
+
+
+
+					<!-- 글 내용하고 부가적인  -->
+
+					<div class="contents"
+						style="border: solid #0000001a; border-radius: 10px; height: 100px; margin-top: 20px;">
+
+						<div class="board_contents"
+							style="text-align: center; margin-top: 20px;">
+							${board.board_contents}</div>
+
+						<div style="text-align: right; padding-right: 30px;">
+							<p style="color: #848484; font-size: 12px;">조회수 :
+								${board_cnt_view} &nbsp &nbsp 댓글 수 : ${commentCnt}</p>
+						</div>
+
 					</div>
-					
-					
+
+
 					<!--사진까지 ^^^^ -->
 					<div class="mb-3"></div>
 					<div>
 						<!--  댓글 쓰기 기능 -->
 						<div style="width: 100%">
-						
-								<div class="input-group">
-									<input name="board_comment_contents" type="text"
-										class="form-control" placeholder="댓글을 입력해보세요." id="replytext">
 
-									<div class="input-group-append">
-										<button type="button" id="replybutton" class="btn btn-secondary">send</button>
-									</div>
+							<div class="input-group">
+								<input name="board_comment_contents" type="text"
+									class="form-control" placeholder="댓글을 입력해보세요." id="replytext">
+
+								<div class="input-group-append">
+									<button type="button" id="replybutton"
+										class="btn btn-secondary">send</button>
 								</div>
+							</div>
 
-								<!--댓글 리스트  -->
-								<ul class="list-group mb-3" style="width: 100%" id="commentlist">
-									<c:forEach var="c1" items="${Commentlist}" >
-						
-										<li
-											class="list-group-item d-flex justify-content-between lh-condensed"
-											style="width: 100%" id="cks${c1.board_comment_idx}">
-											<div style="margin-left:${c1.reorder * 15}px">
-												<c:if test="${c1.reorder!=0}">
-												<h6 class="my-0">└</c:if>
-												<c:if test="${c1.reorder==0 }">
-												<h6 class="my-0"></c:if> ${c1.board_comment_contents}</h6>
-												
-												<small class="text" style="color:black">ID:${c1.member_id} &nbsp
-													&nbsp<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
-														value="${c1.board_comment_regdate}" />
-												</small>
-											</div> <span class="text-muted"><c:if
-													test="${c1.member_id==user.member_id}">
-													<td width="50px">
-													<a  onclick="delectcomment(${c1.board_comment_idx})"
-														><img src="<%=request.getContextPath()%>/resources/images/garbage.png" height="25px"     style="    margin-top: 15px;" alt=""></a></td>
-														
-												
-												
-				
-												</c:if><a class="ml-3" onclick="re_commentshow(${c1.board_comment_idx})"><img src="<%=request.getContextPath()%>/resources/images/chat.png" height="25px"     style="    margin-top: 15px;"  alt=""></a></span>
-										</li>
-							
-								
-								<div class="re_reple" id="re_commentbox${c1.board_comment_idx}" style="display: none; margin-top: 5px;">
-					<form id="re_commentForm${repleList.reple_idx }" style="display: inline-block;">
-			 
-							<input type="hidden" id="regroup${c1.board_comment_idx}" value="${c1.regroup}">
-								<input type="hidden"  id="board_comment_idx${c1.board_comment_idx}"value="${c1.board_comment_idx}">
-								<input type="hidden" id="redepth${c1.board_comment_idx}" value="${c1.redepth}">
-								<input type="hidden" id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
-								
-								<div class="input-group">
-									 <input name="board_comment_contents" type="text" class="form-control" placeholder="댓글을 입력해보세요." id="re_commenttext${c1.board_comment_idx}">
+							<!--댓글 리스트  -->
+							<ul class="list-group mb-3" style="width: 100%" id="commentlist">
+								<c:forEach var="c1" items="${Commentlist}">
 
-									<div class="input-group-append">
-										<button type="button" id="re_repleSave"  onclick="re_commentSave(${c1.board_comment_idx})"class="btn btn-secondary">send</button>
+									<li
+										class="list-group-item d-flex justify-content-between lh-condensed"
+										style="width: 100%" id="cks${c1.board_comment_idx}">
+										<div style="margin-left:${c1.reorder * 15}px">
+											<c:if test="${c1.reorder!=0}">
+												<h6 class="my-0">└
+											</c:if>
+											<c:if test="${c1.reorder==0 }">
+												<h6 class="my-0">
+											</c:if>
+											${c1.board_comment_contents}
+											</h6>
+									
+											<small class="text" style="color: black">ID:${c1.member_id}
+												&nbsp &nbsp<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+													value="${c1.board_comment_regdate}" />
+											</small>
+										</div> <span class="text-muted"><c:if
+												test="${c1.member_id==user.member_id}">
+												<td width="50px"><a
+													onclick="delectcomment(${c1.board_comment_idx})"><img
+														src="<%=request.getContextPath()%>/resources/images/garbage.png"
+														height="25px" style="margin-top: 15px;" alt=""></a></td>
+
+
+
+
+											</c:if><a class="ml-3"
+											onclick="re_commentshow(${c1.board_comment_idx})"><img
+												src="<%=request.getContextPath()%>/resources/images/chat.png"
+												height="25px" style="margin-top: 15px;" alt=""></a></span>
+									</li>
+
+
+									<div class="re_reple" id="re_commentbox${c1.board_comment_idx}"
+										style="display: none; margin-top: 5px;">
+										<form id="re_commentForm${repleList.reple_idx }"
+											style="display: inline-block;">
+
+											<input type="hidden" id="regroup${c1.board_comment_idx}"
+												value="${c1.regroup}"> <input type="hidden"
+												id="board_comment_idx${c1.board_comment_idx}"
+												value="${c1.board_comment_idx}"> <input
+												type="hidden" id="redepth${c1.board_comment_idx}"
+												value="${c1.redepth}"> <input type="hidden"
+												id="reorder${c1.board_comment_idx}" value="${c1.reorder}">
+
+											<div class="input-group">
+												<input name="board_comment_contents" type="text"
+													class="form-control" placeholder="댓글을 입력해보세요."
+													id="re_commenttext${c1.board_comment_idx}">
+
+												<div class="input-group-append">
+													<button type="button" id="re_repleSave"
+														onclick="re_commentSave(${c1.board_comment_idx})"
+														class="btn btn-secondary">send</button>
+												</div>
+											</div>
+
+
+										</form>
 									</div>
-								</div>
-								
-						
-					</form>
-					</div>
-					
-					<input type="hidden" id="boardidx" value="${c1.board_idx}">
-					
-									</c:forEach>
-								</ul>
-					
+
+									<input type="hidden" id="boardidx" value="${c1.board_idx}">
+
+								</c:forEach>
+							</ul>
+
 						</div>
 					</div>
-					
-					
+
+
 					<!-- 댓글 페이지 처리 -->
 
- <div class="comment_footer" style="margin-top:20px; ">
+					<div class="comment_footer" style="margin-top: 20px;">
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-  
-    <c:if test="${pagenum.prev}">
-    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getStartPage()-1});">Previous</a></li>
-    </c:if>
-    
-    
-    <c:forEach begin="${pagenum.getStartPage()}" end="${pagenum.getEndPage()}" var="idx">
-    
-    <li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
-   
-    </c:forEach> 
-    
-    
-    <c:if test="${pagenum.next}">
-    <li class="page-item"><a class="page-link" href="javascript:page(${pagenum.getEndPage()+1});">Next</a></li>
-    </c:if>
-    
-  </ul>
-</nav>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
 
-   
+								<c:if test="${pagenum.prev}">
+									<li class="page-item"><a class="page-link"
+										href="javascript:page(${pagenum.getStartPage()-1});">Previous</a></li>
+								</c:if>
 
-</div> 
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+
+								<c:forEach begin="${pagenum.getStartPage()}"
+									end="${pagenum.getEndPage()}" var="idx">
+
+									<li class="page-item"><a class="page-link"
+										href="javascript:page(${idx});">${idx}</a></li>
+
+								</c:forEach>
+
+
+								<c:if test="${pagenum.next}">
+									<li class="page-item"><a class="page-link"
+										href="javascript:page(${pagenum.getEndPage()+1});">Next</a></li>
+								</c:if>
+
+							</ul>
+						</nav>
+
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+
 					<!--  카테고리 추천사진 -->
 					<div class="mb-3"></div>
 					<p style="font-weight: bold">카테고리 추천 사진</p>
@@ -483,37 +508,38 @@ function tagsclick(e) {
 				<!-- 사이드바  -->
 				<div class="col-md-5">
 					<div class="col-lg-4"
-						style="border: solid #0000001a; border-radius: 20px;  padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top:120px; text-align: center">
+						style="border: solid #0000001a; border-radius: 20px; padding-top: 20px; width: 300px; margin: auto; margin-bottom: 200px; margin-top: 120px; text-align: center">
 						<a
 							href="<%=request.getContextPath()%>/mypage/mp_main?member_idx=${boardMemberinfo.member_idx}&member_photo=${boardMemberinfo.member_photo}&member_id=${boardMemberinfo.member_id}">
-							
-							
+
+
 							<c:if test="${boardMemberinfo.member_photo!=null}">
-							<img class="rounded-circle"
-							src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
-							alt="" width="140" height="140">
+								<img class="rounded-circle"
+									src="<%=request.getContextPath()%>/resources/memberphoto/${boardMemberinfo.member_photo}"
+									alt="" width="140" height="140">
+							</c:if> <c:if test="${boardMemberinfo.member_photo==null}">
+								<img class="rounded-circle"
+									src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
+									alt="" width="140" height="140">
 							</c:if>
-							<c:if test="${boardMemberinfo.member_photo==null}">
-							<img class="rounded-circle"
-							src="<%=request.getContextPath()%>/resources/images/smilephoto.png"
-							alt="" width="140" height="140">
-							</c:if>
-							<h5 style="color: #00000066;margin-top: 10px;">ID:
+							<h5 style="color: #00000066; margin-top: 10px;">ID:
 								${boardMemberinfo.member_id}</h5>
 						</a>
 
-						<div style="text-align: center; margin-top:25px;">
+						<div style="text-align: center; margin-top: 25px;">
 
 
 
 
 
-                    <button type="button" style="border-radius: 40px; padding: auto;" class="btn btn-warning"
-					data-toggle="modal" data-target="#reportBtn"
-					onclick="reportClickBtn()"><span style="color:white;">신고</span></button>
+							<button type="button" style="border-radius: 40px; padding: auto;"
+								class="btn btn-warning" data-toggle="modal"
+								data-target="#reportBtn" onclick="reportClickBtn()">
+								<span style="color: white;">신고</span>
+							</button>
 
-		
-							
+
+
 
 
 
@@ -545,10 +571,10 @@ function tagsclick(e) {
 														<option selected value="6">외설적인 게시물</option>
 													</select>
 												</div>
-												
-												 <input type="hidden"
-													id="board_idx" value="${board.board_idx}">
-													<input type="hidden" id="member_id" value="${member.member_id}"> <input
+
+												<input type="hidden" id="board_idx"
+													value="${board.board_idx}"> <input type="hidden"
+													id="member_id" value="${member.member_id}"> <input
 													type="hidden" id="member_idx" value="${member.member_idx}">
 
 											</div>
@@ -578,11 +604,7 @@ function tagsclick(e) {
 									<a class="btn btn-danger"
 										style="border-radius: 40px; padding: auto;"
 										href="<%=request.getContextPath()%>/photo/photofeedAllDelete?board_idx=${board.board_idx}"
-										role="button">
-										
-										삭제 
-										
-										</a>
+										role="button"> 삭제 </a>
 									<!-- 태그 달기 -->
 									<a class="btn btn-info"
 										style="border-radius: 40px; padding: auto;"
@@ -596,10 +618,9 @@ function tagsclick(e) {
 							<div
 								style="height: 60px; width: 100%; text-align: center; margin-top: 20px;">
 
-                        <!-- 좋아요///////////////////////////////////////////////////// -->
+								<!-- 좋아요///////////////////////////////////////////////////// -->
 								<div id="like" class="likeArea">
-									<a onclick="likeClick();">
-									 <c:if test="${likecheck==null}">
+									<a onclick="likeClick();"> <c:if test="${likecheck==null}">
 
 											<div id="likeid" class="btn btn-outline-danger "
 												style="float: left; width: 46%; height: 45px; padding-top: 10px;">
@@ -607,8 +628,7 @@ function tagsclick(e) {
 													style="padding-left: 20px;">${boardInfo.board_like}</span>
 											</div>
 
-										</c:if> 
-										<c:if test="${likecheck!=null}">
+										</c:if> <c:if test="${likecheck!=null}">
 
 											<div id="likeid" class="btn btn-danger "
 												style="float: left; width: 46%; height: 45px; padding-top: 10px;">
@@ -621,7 +641,7 @@ function tagsclick(e) {
 									<input type="hidden" id="member_idx" value="${member_idx}">
 
 								</div>
-								
+
 								<!-- //////////////////////////////////////////////////스크랩 -->
 
 								<div id="scrap" class="scrapArea">
@@ -648,14 +668,14 @@ function tagsclick(e) {
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<!--사이드바 등록한 날짜 -->
 
-	                <div style="text-align:center;">
-						<span class="text-dark"> Date: <fmt:formatDate
-								pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${board.board_regdate}" /></span>
-					</div>
+						<div style="text-align: center;">
+							<span class="text-dark"> Date: <fmt:formatDate
+									pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${board.board_regdate}" /></span>
+						</div>
 
 
 
@@ -671,7 +691,7 @@ function tagsclick(e) {
 									</div>
 									<div class="modal-body">
 										<ul class="list-group scrapList" id="scrapli"
-											style="list-style:none;">
+											style="list-style: none;">
 
 											<c:forEach var="scrapNameList" items="${scrapNameList}"
 												varStatus="status">
@@ -684,8 +704,9 @@ function tagsclick(e) {
 											</c:forEach>
 										</ul>
 									</div>
-									<input type="hidden" id="board_idx" value="${board.board_idx}"> <input
-										type="hidden" id="scrapCnt" value="${boardInfo.board_scrap}"> <input type="hidden"
+									<input type="hidden" id="board_idx" value="${board.board_idx}">
+									<input type="hidden" id="scrapCnt"
+										value="${boardInfo.board_scrap}"> <input type="hidden"
 										id="ck">
 									<div class="modal-footer">
 										<div class="row">
@@ -771,7 +792,7 @@ function tagsclick(e) {
 	
 	
     $(document).ready(function(){
-	
+    	var member_id = $('#member_id').val();
 		
 		
 		$('#replybutton').click(function(){
@@ -803,7 +824,7 @@ function tagsclick(e) {
 				//값이 존재할시 
 				var member_idx = $('#member_idx').val();
 				var board_idx = $('#board_idx').val();
-				
+			
 				if(member_idx==''){
     					//로그인후 이용해주세요 
     					
@@ -837,9 +858,14 @@ function tagsclick(e) {
     								var html = '<li	class="list-group-item d-flex justify-content-between lh-condensed" style="width: 100%"id="cks'+data+'">';      
     								html+='<div> <h6 class="my-0">'+board_comment_contents+'</h6><small class="text" style="color:black">ID:';
     								html+= +member_id+'&nbsp&nbsp'+NowTime+'</small></div><span class="text-muted"><td width="50px">';
-    								html+='<a href="#" onclick="delectcomment('+data+')">삭제</a>'+'<button class="ml-3" onclick="re_comment('+data+')">답글</button>'+'</td></li>';
+    								html+='<a href="#" onclick="delectcomment('+data+')"><img src="/p/resources/images/garbage.png" height="25px" style="    margin-top: 15px;" alt=""></a>'+'<a class="ml-3" onclick="re_commentshow('+data+')"><img src="/p/resources/images/chat.png" height="25px" style="    margin-top: 15px;" alt=""></a>'+'</td></li>';
+    								html+='<div class="re_reple" id="re_commentbox'+data+'" style="margin-top: 5px; display:none"><div class="input-group">'
+    								html+='<input name="board_comment_contents" type="text" class="form-control" placeholder="댓글을 입력해보세요." id="re_commenttext'+data+'">'
+ 									html+='<div class="input-group-append">'
+    								html+='<button type="button" id="re_repleSave" onclick="re_commentSave('+data+')" class="btn btn-secondary">send</button></div></div>'
+    											
+    								$('#commentlist').append(html);	
     								
-    								$('#commentlist').append(html);
     							}
     						}
     						});

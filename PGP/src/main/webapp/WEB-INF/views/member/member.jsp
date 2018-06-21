@@ -8,11 +8,11 @@
 		style="width: 100%; background-image: url(/p/resources/images/roompic5.jpg);">
 		<div class="col-md-5 p-lg-5 mx-auto my-5" style="color: white;">
 			
-			<h1 class="display-4 font-weight-normal">느그집</h1>
+			<h1 class="display-4 font-weight-normal">러브 하우스</h1>
 			<p class="lead font-weight-normal">
 				회원가입 되셨습니다.<br> 러브 하우스에 오신걸 환영합니다.
 			</p>
-			<a class="btn btn-outline-secondary" href="../" style="color: white;border:  solid;">느그집
+			<a class="btn btn-outline-secondary" href="../" style="color: white;border:  solid;">러브하우스
 				둘러보기</a>
 		</div>
 		<div class="product-device box-shadow d-none d-md-block"></div>

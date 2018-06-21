@@ -9,14 +9,12 @@ INSERT INTO
 pgp.report(
 report_contents,
 board_idx,
-member_idx,
-storyboard_idx
+member_idx
 )
 VALUES(
 #{report_contents},
 #{board_idx},
-#{member_idx},
-#{storyboard_idx}
+#{member_idx}
 );
 
 
